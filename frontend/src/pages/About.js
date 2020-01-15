@@ -3,7 +3,7 @@ import SocketService from '../services/SocketService';
 export default class About extends Component {
   state = {
     msg: { from: 'Me', txt: '' },
-    msgs: [],
+    msgs: ['hi'],
     topic: 'Love'
   };
 
