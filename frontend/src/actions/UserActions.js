@@ -1,4 +1,4 @@
-import UserService from '../services/UserService';
+import UserService from '../service/UserService';
 import { loading, doneLoading } from './SystemActions';
 // import history from './../history';
 

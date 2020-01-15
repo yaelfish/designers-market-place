@@ -1,4 +1,4 @@
-import ArtworkService from '../services/ArtworkService';
+import ArtworkService from '../service/ArtworkService';
 
 export function loadArtworks() {
   return async dispatch => {

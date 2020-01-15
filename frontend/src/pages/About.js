@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SocketService from '../services/SocketService';
+import SocketService from '../service/SocketService';
 export default class About extends Component {
   state = {
     msg: { from: 'Me', txt: '' },
@@ -8,14 +8,14 @@ export default class About extends Component {
   };
 
   componentDidMount() {
-    SocketService.setup();
-    SocketService.emit('chat topic', this.state.topic);
-    SocketService.on('chat addMsg', this.addMsg);
+    // SocketService.setup();
+    // SocketService.emit('chat topic', this.state.topic);
+    // SocketService.on('chat addMsg', this.addMsg);
   }
 
   componentWillUnmount() {
-    SocketService.off('chat addMsg', this.addMsg);
-    SocketService.terminate();
+    // SocketService.off('chat addMsg', this.addMsg);
+    // SocketService.terminate();
   }
 
   addMsg = newMsg => {

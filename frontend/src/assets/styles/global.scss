@@ -11,9 +11,12 @@
 @import "basics/buttons.scss";
 @import "basics/typography.scss";
 
+// Views
+@import "views/home-page.scss";
+@import "views/main-app-page.scss";
+
 // Components
 @import "components/main-header.scss";
+@import "components/artwork-list.scss";
 @import "components/cat-card.scss";
-
-// Views
-@import "components/home-page.scss";
+@import "components/tags.scss";
