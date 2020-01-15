@@ -13,7 +13,7 @@
     "price" : 16.99,
     "createdAt" : 582930400,
     "description" : "Do you love Tigres? Do you love coffee? then you havec come to the right place! you can have a great cup of cuffee with this lovely tigre, it's waiting for you.",
-    "reviews": [{"text" : "Best cup i've purchased! love the design!"}]
+    "reviews": [{"text" : "Best cup i've purchased! love the design!"}],
 }, 
 {
     "_id" : "222222",
