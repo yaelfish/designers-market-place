@@ -24,7 +24,7 @@ function getById(artworkId) {
   return HttpService.get(`artwork/${artworkId}`);
 }
 
-function edit(artwork) {
+async function edit(artwork) {
   const editedArtWork = await HttpService.put(`artwork/${artwork._id}`, artwork);
   return editedArtWork;
 }
