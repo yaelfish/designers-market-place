@@ -22,7 +22,7 @@ header {
     flex-direction: column;
 
     @include for-normal-layout {
-        height: 86vh;
+        // height: 86vh;
     }
 }
 

@@ -1,0 +1,22 @@
+.list-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 20px;
+
+    & .card-artwork {
+        box-shadow: 0px 0px 4px 1px #707070;
+    }
+        & .card-artwork img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+        & .card-artwork .preview-info {
+            width: 100%;
+            padding: 2px 7px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        p.preview-price {
+            text-decoration: none;
+        }
+}

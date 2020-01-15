@@ -1,16 +1,9 @@
 import HttpService from './HttpService';
-
-export default {
-  add,
-  query,
-  remove,
-  edit,
-  getById
-};
+// import { artworkData } from './data/artworks';
 
 function query() {
-  return HttpService.get('artwork');
-}
+    return HttpService.get('artwork');
+  }
 
 function remove(artworkId) {
   return HttpService.delete(`artwork/${artworkId}`);
@@ -28,3 +21,11 @@ async function edit(artwork) {
   const editedArtWork = await HttpService.put(`artwork/${artwork._id}`, artwork);
   return editedArtWork;
 }
+
+export default {
+  add,
+  query,
+  remove,
+  edit,
+  getById
+};
