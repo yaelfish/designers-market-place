@@ -1,0 +1,24 @@
+.card-cat {
+
+    background-color: lighten($clr1, 20%);
+    transition: background-color .3s;
+
+    .cat-tag {
+        font-family: caveat, serif;
+        color: $clr6;
+        font-size: rem(50px);
+    }
+    .cat-image {
+        mix-blend-mode: multiply;
+        filter: grayscale(1);
+        transition: transform .3s;
+    }
+    &:hover {
+        cursor: pointer;
+        background-color: $clr1;
+        
+        .cat-image {
+            transform: scale(1.1);
+        }
+    }
+}

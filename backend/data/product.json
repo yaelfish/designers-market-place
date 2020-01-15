@@ -1,33 +1,24 @@
 [
 {
     "_id" : "1111111",
-    "type": "mug",
     "artist": {"_id" : "u1", "fullName" : "Puki Ben David"},
     "likedByUsers" : [{"_id" : "u3", "fullName" : "Ben Muk"}],
-    "tags" : ["tigre", "animals", "coffee"],
-    "imgsUrls" : [
-        "https://ctl.s6img.com/society6/img/zbwVKMSbId1Jqf0oiO5JaEyu0IM/w_700/coffee-mugs/small/right/greybg/~artwork,fw_4600,fh_2000,iw_4600,ih_2000/s6-0026/a/12013356_10811188/~~/tigre-yie-mugs.jpg?wait=0&attempt=0",
-        "https://ctl.s6img.com/society6/img/GPbioV1XAu9IFm2hYuJqFbDajGo/w_700/coffee-mugs/small/left/greybg/~artwork,fw_4600,fh_2000,iw_4600,ih_2000/s6-0026/a/12013356_10811188/~~/tigre-yie-mugs.jpg?wait=0&attempt=0",
-        "https://ctl.s6img.com/society6/img/ZzDFqc3iRxuY5NhZynDpf1iVc0w/w_700/coffee-mugs/small/front/greybg/~artwork,fw_4600,fh_2000,iw_4600,ih_2000/s6-0026/a/12013356_10811188/~~/tigre-yie-mugs.jpg?wait=0&attempt=0"
-    ],
+    "tags" : ["river", "nature", "sunset"],
+    "imgUrl" : "https://mymodernmet.com/wp/wp-content/uploads/2019/10/aaron-reed-nature-photography-8.jpg",
     "price" : 16.99,
     "createdAt" : 582930400,
-    "description" : "Do you love Tigres? Do you love coffee? then you havec come to the right place! you can have a great cup of cuffee with this lovely tigre, it's waiting for you.",
-    "reviews": [{"text" : "Best cup i've purchased! love the design!"}],
+    "description" : "Beautiful river flowing over the sunset.",
+    "comments": [{"text" : "Beautiful picture, great for my living room"}]
 }, 
 {
     "_id" : "222222",
-    "type": "poster",
     "artist": {"_id" : "u2", "fullName" : "Shraga Puk"},
     "likedByUsers" : [{"_id" : "u4", "fullName" : "Muki Cohen"}],
-    "tags" : ["feelings", "happy", "text", "yellow"],
-    "imgsUrls" : 
-    ["https://ctl.s6img.com/society6/img/x3d2PVz-JviM4iFIUQ4yCxV6L0c/w_700/posters/18x24/front/~artwork,fw_2718,fh_3620,fx_-530,fy_-711,iw_3780,ih_5040/s6-original-art-uploads/society6/uploads/misc/427ecf32bc7f49798d78c2e344f0cc01/~~/its-a-good-day-to-be-happy-yellow-posters.jpg?wait=0&attempt=0",
-    "https://ctl.s6img.com/society6/img/A86Hr5MSArIm4quBWF5zGGS4g1I/w_700/posters/18x24/lifestyle/~artwork,fw_2718,fh_3620,fx_-530,fy_-711,iw_3780,ih_5040/s6-original-art-uploads/society6/uploads/misc/427ecf32bc7f49798d78c2e344f0cc01/~~/its-a-good-day-to-be-happy-yellow-posters.jpg?wait=0&attempt=0"
-],
+    "tags" : ["lake", "nature", "reflection"],
+    "imgUrl" : "https://mymodernmet.com/wp/wp-content/uploads/2019/10/aaron-reed-nature-photography-6.jpg",
     "price" : 19.99,
     "createdAt" : 582930582,
-    "description" : "Remind yourself that life is beautiful, stay positive and be happy.",
-    "reviews": [{"text": "My wall looks incredible now, Thank you! I couldn't be happier."}]
+    "description" : "Extraordinary lake during fall time.",
+    "comments": [{"text": "This picture makes me feel relaxed."}]
 }
 ]
