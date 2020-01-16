@@ -7,7 +7,7 @@ import './assets/styles/global.scss';
 import Home from './pages/Home';
 import AppArtwork from './pages/Artwork/AppArtwork';
 import AddArtwork from './pages/Artwork/AddArtwork';
-// import DetailsArtwork from './pages/Artwork/DetailsArtwork';
+import DetailsArtwork from './pages/Artwork/DetailsArtwork';
 // import EditArtwork from './pages/Artwork/EditArtwork';
 import MainNavbar from './cmps/MainNavbar';
 
@@ -27,7 +27,7 @@ function App() {
           <Route component={Home} path="/" exact />
           <Route component={AppArtwork} path="/artwork" exact />
           <Route component={AddArtwork} path="/artwork/add" exact />
-          {/* <Route component={DetailsArtwork} path="/artwork/:_id" exact /> */}
+          <Route component={DetailsArtwork} path="/artwork/:_id" exact />
           {/* <Route component={EditArtwork} path="/artwork/:_id/edit" /> */}
 
           {/* <Route path="/" component={About} exact/> */}

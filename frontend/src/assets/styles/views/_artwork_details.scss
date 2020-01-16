@@ -1,0 +1,15 @@
+.details-text-container {
+    .details-container {
+        .art-name {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .art-name::first-letter {
+            text-transform: capitalize;
+        }
+        td.like-icon {
+            background: url('../../images/greyheart.png')  no-repeat center center;
+            background-size: 16px;
+        }
+    }
+}

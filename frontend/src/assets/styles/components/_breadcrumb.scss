@@ -1,0 +1,28 @@
+.breadcrumb-container {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    font-size: 0.7rem;
+    color: #999999;
+
+    li {
+        display: inline-block;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: middle;
+        list-style: none;
+        font-family: inherit;
+        color: inherit;
+        text-transform: none;
+    }
+    li a {
+        display: inline-block;
+        padding-left: 14px;
+    }
+    .breadcrumb-separator:not(:last-child) {
+        content:' / ';
+        visibility: visible;
+    }
+}
