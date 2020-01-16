@@ -9,7 +9,7 @@ import AppArtwork from './pages/Artwork/AppArtwork';
 import AddArtwork from './pages/Artwork/AddArtwork';
 import DetailsArtwork from './pages/Artwork/DetailsArtwork';
 // import EditArtwork from './pages/Artwork/EditArtwork';
-import MainNavbar from './cmps/MainNavbar';
+
 
 import Login from './pages/Login';
 import About from './pages/About';
@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App"> 
       <Router history={history}>
-        <MainNavbar/>
+  
         <Switch>
           <Route path="/about" component={About} exact/>
           <Route path="/login" component={Login} exact/>
