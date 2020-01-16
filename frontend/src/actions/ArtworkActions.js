@@ -1,4 +1,5 @@
 import ArtworkService from '../service/ArtworkService';
+import { loading, doneLoading } from './SystemActions';
 
 export function loadArtworks() {
   return async dispatch => {
@@ -12,13 +13,16 @@ export function loadArtworks() {
   };
 }
 
-export function getArtworkById(artworkId) {
+export function loadArtworkById(artworkId) {
   return async dispatch => {
     try {
+      dispatch(loading());
       const currArtwork = await ArtworkService.getById(artworkId);
       dispatch(_setCurrArtwork(currArtwork));
     } catch (err) {
-      console.log('ArtworkActions: err in addArtwork', err);
+      console.log('ArtworkActions: err in loadArtworkById', err);
+    } finally {
+      dispatch(doneLoading());
     }
   }
 }
