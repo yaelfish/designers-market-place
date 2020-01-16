@@ -1,0 +1,21 @@
+.main-nav {
+    background-color: opacity($color: #000000);
+    width: 100%;
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 10px;
+
+        .nav-link {
+            text-decoration: none;
+            padding-left: 5px;
+            transition: .3s;     
+        }
+
+        .nav-link:hover{
+            color: white;  
+        }
+    }
+}

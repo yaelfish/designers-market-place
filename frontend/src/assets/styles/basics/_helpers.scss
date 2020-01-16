@@ -6,6 +6,7 @@
 .fs24 { font-size: rem(24px); }
 .fs28 { font-size: rem(28px); }
 .fs30 { font-size: rem(30px); }
+.fs60 { font-size: rem(60px); }
 
 // flex helpers
 
@@ -31,4 +32,10 @@
 
 .square-ratio {
     @include aspect-ratio(1, 1);
+}
+
+//positions
+
+.absolute {
+    position: absolute;
 }
