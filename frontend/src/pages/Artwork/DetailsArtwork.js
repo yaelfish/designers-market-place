@@ -9,6 +9,10 @@ import Breadcrumb from '../../cmps/Breadcrumb';
 
 class DetailsArtwork extends Component {
 
+    state = {
+        isAddedToCart: false
+    }
+
     componentDidMount() {
         this.loadArtwork();
     }
@@ -17,6 +21,10 @@ class DetailsArtwork extends Component {
         if (prevProps.match.params.id !== this.props.match.params.id) {
             this.loadArtwork();
         }
+    }
+
+    addToCart=()=> {
+        this.setState({ isAddedToCart: true })
     }
 
     async loadArtwork() {
@@ -66,7 +74,7 @@ class DetailsArtwork extends Component {
         // if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
         // const { selectedArtwork } = this.props;
         return <React.Fragment>
-            <Breadcrumb/>
+            <Breadcrumb />
             <section className="details-container flex">
                 <div className="container details-image-container">
                     <img src={selectedArtwork.imgUrl} ></img>
@@ -77,6 +85,8 @@ class DetailsArtwork extends Component {
                             <tr><td className="art-name">{selectedArtwork.name}</td><td className="like-icon"></td></tr>
                             <tr><td className="art-description">{selectedArtwork.description}</td></tr>
                             <tr><td className="art-price">Price</td><td>{selectedArtwork.price}$</td></tr>
+                            <button className="add-to-cart" onClick={this.addToCart}>Add To Cart</button>
+                            {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
                         </tbody>
                     </table>
 
@@ -86,8 +96,8 @@ class DetailsArtwork extends Component {
                         {/* {(this.props.user.userName === "admin") && <button className="btn warning" onClick={this.onDelete}>Delete</button>} */}
                     </div>
                 </div>
-                
-                
+
+
             </section>
         </React.Fragment>
     }
