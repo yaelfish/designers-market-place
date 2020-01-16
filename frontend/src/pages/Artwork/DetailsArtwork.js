@@ -6,6 +6,7 @@ import { heartIcon } from '../../assets/images/greyheart.png';
 import { loadArtworks, getArtworkById } from '../../actions/ArtworkActions'
 import ArtworkService from '../../service/ArtworkService';
 import Breadcrumb from '../../cmps/Breadcrumb';
+import MainNavbar from '../../cmps/MainNavbar';
 
 class DetailsArtwork extends Component {
 
@@ -74,7 +75,8 @@ class DetailsArtwork extends Component {
         // if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
         // const { selectedArtwork } = this.props;
         return <React.Fragment>
-            <Breadcrumb />
+            <MainNavbar /> 
+            <Breadcrumb/>
             <section className="details-container flex">
                 <div className="container details-image-container">
                     <img src={selectedArtwork.imgUrl} ></img>
