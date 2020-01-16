@@ -13,6 +13,10 @@ export default class Home extends Component {
       <MainNavbar isHome={this.state.isHome} />
       <div className="home">
         <div className="coverImg flex justify-center align-center">Artwork Gallery</div>
+ 
+        <li ><Link className="nav-link" to='/artwork' activeClassName="active-link" exact>Image Here</Link></li>
+        <li ><Link className="nav-link" to='/artwork' activeClassName="active-link" exact>Image Here</Link></li>
+        <li ><Link className="nav-link" to='/artwork' activeClassName="active-link" exact>Image Here</Link></li>
      </div>
      </React.Fragment>
     );

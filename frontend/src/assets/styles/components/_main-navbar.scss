@@ -2,6 +2,8 @@
     background-color: opacity($color: #000000);
     width: 100%;
 
+
+
     .nav-links {
         display: flex;
         list-style: none;
@@ -18,4 +20,10 @@
             color: white;  
         }
     }
+}
+
+.scrolled {
+    background-color: rgba(255, 255, 255, 0.596);
+    position: fixed;
+    transition: .5s;
 }
