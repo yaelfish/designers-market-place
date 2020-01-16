@@ -1,0 +1,40 @@
+
+.card-artwork {
+     box-shadow: 0px 0px 4px 1px #707070;
+     position:relative;
+
+     &:hover{
+        box-shadow: 0px 0px 9px 4px #121313;
+        .preview-price{
+            display:inline;
+            text-shadow: 1px 2px 10px #3b0edc;
+            font-weight:600;
+        }
+     }
+
+    .preview-price{
+        color:white;
+        position: absolute;
+        top:10px;
+        left:10px;
+    }
+        img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .preview-info {
+            width: 100%;
+            padding: 2px 7px 0;
+
+            p{
+                margin: rem(12px) 0 ;
+            } 
+
+            .preview-icon{
+                width:24px;
+                height:24px;
+            }
+        }
+
+     
+    }

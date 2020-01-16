@@ -38,6 +38,12 @@
     &.space-between{
         justify-content: space-between;
     }
+    &.justify-space-between{
+        justify-content: space-between;
+    }
+    &.justify-space-around{
+        justify-content: space-around;
+    }
 }
 
 // Media helpers
@@ -56,4 +62,7 @@
 
 .clean-list {
     list-style: none;
+//hide
+.none{
+    display:none;
 }
