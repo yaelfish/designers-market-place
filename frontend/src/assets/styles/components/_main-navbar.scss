@@ -2,8 +2,6 @@
     background-color: opacity($color: #000000);
     width: 100%;
 
-
-
     .nav-links {
         display: flex;
         list-style: none;
@@ -13,12 +11,14 @@
         .nav-link {
             text-decoration: none;
             padding-left: 5px;
-            transition: .3s;     
+            transition: .3s;   
+
+            &:hover {
+                color: white;  
+            }  
         }
 
-        .nav-link:hover{
-            color: white;  
-        }
+      
     }
 }
 

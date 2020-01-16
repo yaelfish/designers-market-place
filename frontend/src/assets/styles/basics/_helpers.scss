@@ -26,6 +26,18 @@
     &.align-center {
         align-items: center;
     }
+    &.row {
+        flex-direction: row;
+    }
+    &.column {
+        flex-direction: column;
+    }
+    &.wrap {
+        flex-wrap: wrap;
+    }
+    &.space-between{
+        justify-content: space-between;
+    }
 }
 
 // Media helpers
@@ -38,4 +50,10 @@
 
 .absolute {
     position: absolute;
+}
+
+// list 
+
+.clean-list {
+    list-style: none;
 }
