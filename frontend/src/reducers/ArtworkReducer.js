@@ -1,6 +1,6 @@
 const initialState = {
   artworks: [],
-  selectedArtwork: null
+  selectedArtwork: {}
 };
 
 export default function (state = initialState, action = {}) {

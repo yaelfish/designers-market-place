@@ -9,10 +9,9 @@ import beforeLike from '../../assets/images/icons/before-like.png';
 
 export default class ArtworkPreview extends Component {
 
-
     render() {
         const { _id, name, artist, price, type, imgUrl } = this.props.artwork;
-        return (
+        return ( <>
             <Link to={`/artwork/${_id}`}>
                 <div className="card-artwork flex justify-center align-center column">
                     <img src={imgUrl} alt={name} />
@@ -25,6 +24,7 @@ export default class ArtworkPreview extends Component {
                     <div className="preview-price none">price: {price}$</div>
                 </div>
             </Link>
+            </>
         )
     }
 }
