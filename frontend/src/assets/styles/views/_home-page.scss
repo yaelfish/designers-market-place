@@ -6,9 +6,9 @@
     .hello {
         flex: 1;
     }
-    .coverImg {
+    & .coverImg {
         height: 85vh;
-        background: url('../../assets/images/coverHome.jpg')  no-repeat center center fixed;
+        background-image: url('../../images/coverHome.jpg')  no-repeat center center fixed;
         background-size: cover;
     }
 
