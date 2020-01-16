@@ -14,8 +14,7 @@ class AppArtwork extends Component {
     render() {
         return (
         <React.Fragment>
-        <MainNavbar/>
-        
+        <MainNavbar/>        
             <main className="container main-app-container">
                 <header>
                     <h2>ART PRINTS</h2>
