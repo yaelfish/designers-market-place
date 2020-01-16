@@ -1,5 +1,6 @@
 import React from 'react';
 import ArtworkPreview from './ArtworkPreview';
+import { removeArtwork} from '../../actions/ArtworkActions';
 
 export default function ArtworkList(props) {
 
