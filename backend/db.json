@@ -169,14 +169,16 @@
             "userName" : "idop900",
             "fullName" : "Ido Pelkin",
             "password" : "thequickbrownfoxjumpsoverthelazydog",
-            "isArtist"	: false
+            "isArtist"	: false,
+            "imgUrl" : "http://lionhallattorneys.com.ng/wp-content/uploads/2015/12/empty-profile.png"
           },
           {
             "_id" : "rjf93941jhfie2",
             "userName" : "kerryjm2020",
             "fullName" : "Kerry James Marshall",
             "password" : "1234567890",
-            "isArtist"	: true
+            "isArtist"	: true,
+            "imgUrl" : "http://lionhallattorneys.com.ng/wp-content/uploads/2015/12/empty-profile.png"
           }
 
     ],
