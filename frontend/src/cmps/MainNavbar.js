@@ -1,13 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 export default function NavBar(props) {
-    return <nav className="main-nav">
-        <ul>
-            <li><NavLink to='/' activeClassName="active-link" exact>Home</NavLink></li>
-            <li><NavLink to='/about' activeClassName="active-link" exact>About</NavLink></li>
-            <li><NavLink to='/artwork' activeClassName="active-link" exact>Artworks</NavLink></li>
+
+    const scrollTrigger = useScrollTrigger();
+
+    return (   
+    <nav className={props.isHome ?  (scrollTrigger ? "main-nav absolute scrolled" : "main-nav absolute" ) : "main-nav"}>
+        <ul className="nav-links"> 
+            <li ><NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li>
+            <li ><NavLink className="nav-link" to='/about' activeClassName="active-link" exact>About</NavLink></li>
+            <li ><NavLink className="nav-link" to='/artwork' activeClassName="active-link" exact>Artworks</NavLink></li>
         </ul>
     </nav>
+    )
 }
 
