@@ -25,10 +25,21 @@
     &.align-center {
         align-items: center;
     }
+    &.justify-space-between{
+        justify-content: space-between;
+    }
+    &.justify-space-around{
+        justify-content: space-around;
+    }
 }
 
 // Media helpers
 
 .square-ratio {
     @include aspect-ratio(1, 1);
+}
+
+//hide
+.none{
+    display:none;
 }

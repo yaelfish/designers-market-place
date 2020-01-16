@@ -1,6 +1,7 @@
 import React from 'react';
 import ArtworkPreview from './ArtworkPreview';
 
+
 export default function ArtworkList(props) {
 
     return (
