@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { heartIcon } from '../../assets/images/greyheart.png';
-import { loadArtworks, loadArtworkById } from '../../actions/ArtworkActions'
-import ArtworkService from '../../service/ArtworkService';
+import { loadArtworkById } from '../../actions/ArtworkActions'
+import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import MainNavbar from '../../cmps/MainNavbar';
 
@@ -52,6 +50,8 @@ class DetailsArtwork extends Component {
             <Breadcrumb />
             <section className="details-container flex column">
                 <div className="container details-image-container">
+                    <Carousel artSrc={selectedArtwork.imgUrl}/>
+                    {/* <img src={selectedArtwork.imgUrl}/> */}
                     <div className="slider">
 
                         <a href="#slide-1">1</a>
@@ -66,16 +66,16 @@ class DetailsArtwork extends Component {
                             </div>
                             <div id="slide-2">
                                 2
-    </div>
+                            </div>
                             <div id="slide-3">
                                 3
-    </div>
+                            </div>
                             <div id="slide-4">
                                 4
-    </div>
+                            </div>
                             <div id="slide-5">
                                 5
-    </div>
+                             </div>
                         </div>
                     </div>
 
@@ -83,10 +83,16 @@ class DetailsArtwork extends Component {
                 <div className="details-text-container">
                     <table className="container details-container">
                         <tbody className="table-fill">
-                            <tr><td className="art-name">{selectedArtwork.name}</td><td className="like-icon"></td></tr>
-                            <tr><td className="art-description">{selectedArtwork.description}</td></tr>
-                            <tr><td className="art-price">Price: {selectedArtwork.price}$</td></tr>
-                            
+                            <tr>
+                                <td className="art-name">{selectedArtwork.name}</td>
+                                <td className="like-icon"></td>
+                            </tr>
+                            <tr>
+                                <td className="art-description">{selectedArtwork.description}</td>
+                            </tr>
+                            <tr>
+                                <td className="art-price">Price: {selectedArtwork.price}$</td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -104,6 +110,7 @@ class DetailsArtwork extends Component {
         </React.Fragment>
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         artworks: state.artwork.artworks,
@@ -112,8 +119,7 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    loadArtworkById,
-    loadArtworks
+    loadArtworkById
 }
 
 export default connect(
