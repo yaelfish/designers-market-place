@@ -2,15 +2,14 @@
     "artwork" : [
         {
             "_id": "1111111",
-            "name":"Drunk By Loneliness",
             "artist": {
-                "_id": "rjf93941jhfie2",
-                "fullName": "Kerry James Marshall"
+                "_id": "u1",
+                "fullName": "Puki Ben David"
             },
             "likedByUsers": [
                 {
-                    "_id": "p41243djfvru12",
-                    "fullName": "Ido Pelkin"
+                    "_id": "u3",
+                    "fullName": "Ben Muk"
                 }
             ],
             "tags": [
@@ -30,15 +29,14 @@
         },
         {
             "_id": "222223",
-            "name":"The Landscape Of Creation",
             "artist": {
-                "_id": "rjf93941jhfie2",
-                "fullName": "Kerry James Marshall"
+                "_id": "u2",
+                "fullName": "Shraga Puk"
             },
             "likedByUsers": [
                 {
-                    "_id": "p41243djfvru12",
-                    "fullName": "Ido Pelkin"
+                    "_id": "u4",
+                    "fullName": "Muki Cohen"
                 }
             ],
             "tags": [
@@ -58,15 +56,14 @@
         },
         {
             "_id": "1111114",
-            "name":"Picture 3",
             "artist": {
-                "_id": "rjf93941jhfie2",
-                "fullName": "Kerry James Marshall"
+                "_id": "u1",
+                "fullName": "Puki Ben David"
             },
             "likedByUsers": [
                 {
-                    "_id": "p41243djfvru12",
-                    "fullName": "Ido Pelkin"
+                    "_id": "u3",
+                    "fullName": "Ben Muk"
                 }
             ],
             "tags": [
@@ -86,15 +83,14 @@
         },
         {
             "_id": "2255222",
-            "name":"Picture 4",
             "artist": {
-                "_id": "rjf93941jhfie2",
-                "fullName": "Kerry James Marshall"
+                "_id": "u2",
+                "fullName": "Shraga Puk"
             },
             "likedByUsers": [
                 {
-                    "_id": "p41243djfvru12",
-                    "fullName": "Ido Pelkin"
+                    "_id": "u4",
+                    "fullName": "Muki Cohen"
                 }
             ],
             "tags": [
@@ -114,15 +110,14 @@
         },
         {
             "_id": "1261111",
-            "name":"Picture 5",
             "artist": {
-                "_id": "rjf93941jhfie2",
-                "fullName": "Kerry James Marshall"
+                "_id": "u1",
+                "fullName": "Puki Ben David"
             },
             "likedByUsers": [
                 {
-                    "_id": "p41243djfvru12",
-                    "fullName": "Ido Pelkin"
+                    "_id": "u3",
+                    "fullName": "Ben Muk"
                 }
             ],
             "tags": [
@@ -142,15 +137,14 @@
         },
         {
             "_id": "22772222",
-            "name":"Picture 6",
             "artist": {
-                "_id": "rjf93941jhfie2",
-                "fullName": "Kerry James Marshall"
+                "_id": "u2",
+                "fullName": "Shraga Puk"
             },
             "likedByUsers": [
                 {
-                    "_id": "p41243djfvru12",
-                    "fullName": "Ido Pelkin"
+                    "_id": "u4",
+                    "fullName": "Muki Cohen"
                 }
             ],
             "tags": [
@@ -169,40 +163,7 @@
             ]
         }
     ],
-    "user" : [ 
-        {
-            "_id" : "p41243djfvru12",
-            "userName" : "idop900",
-            "fullName" : "Ido Pelkin",
-            "password" : "thequickbrownfoxjumpsoverthelazydog",
-            "isArtist"	: false,
-            "imgUrl" : "http://lionhallattorneys.com.ng/wp-content/uploads/2015/12/empty-profile.png"
-          },
-          {
-            "_id" : "rjf93941jhfie2",
-            "userName" : "kerryjm2020",
-            "fullName" : "Kerry James Marshall",
-            "password" : "1234567890",
-            "isArtist"	: true,
-            "imgUrl" : "http://lionhallattorneys.com.ng/wp-content/uploads/2015/12/empty-profile.png"
-          }
+    "users" : [
 
-    ],
-
-    "order" : [
-        {
-            "_id" : "421jjfjej23",
-            "byUser": {"_id" : "p41243djfvru12", "fullName" : "Ido Pelkin"},
-            "artworks" : [{"_id" : "2255222","quantity" : "1"}, {"_id" : "1261111","quantity" : "2"}, {"_id" : "1111114","quantity" : "3"}],
-            "totalPrice" : 1650,
-            "createdAt" : 582930582
-        },
-        {
-            "_id" : "421jjfjej24",
-            "byUser": {"_id" : "p41243djfvru12", "fullName" : "Ido Pelkin"},
-            "artworks" : [{"_id" : "2255222","quantity" : "1"},{"_id" : "1111114","quantity" : "2"}],
-            "totalPrice" : 870,
-            "createdAt" : 582930582
-        }
     ]
 }
