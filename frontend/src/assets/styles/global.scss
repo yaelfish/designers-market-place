@@ -17,6 +17,7 @@
 @import "views/artwork_details";
 
 // Components
+@import "components/carouselle";
 @import "components/main-header.scss";
 @import "components/artwork-list.scss";
 @import "components/cat-card.scss";
@@ -24,9 +25,6 @@
 @import "components/breadcrumb";
 @import "components/artwork-preview";
 @import "components/main-navbar.scss";
-@import "components/breadcrumb";
-@import "components/artwork-preview";
-
 
 // Views
 @import "views/home-page.scss";
