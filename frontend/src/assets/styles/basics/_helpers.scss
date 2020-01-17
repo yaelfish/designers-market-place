@@ -6,6 +6,7 @@
 .fs24 { font-size: rem(24px); }
 .fs28 { font-size: rem(28px); }
 .fs30 { font-size: rem(30px); }
+.fs60 { font-size: rem(60px); }
 
 // flex helpers
 
@@ -25,10 +26,45 @@
     &.align-center {
         align-items: center;
     }
+    &.row {
+        flex-direction: row;
+    }
+    &.column {
+        flex-direction: column;
+    }
+    &.wrap {
+        flex-wrap: wrap;
+    }
+    &.space-between{
+        justify-content: space-between;
+    }
+    &.justify-space-between{
+        justify-content: space-between;
+    }
+    &.justify-space-around{
+        justify-content: space-around;
+    }
 }
 
 // Media helpers
 
 .square-ratio {
     @include aspect-ratio(1, 1);
+}
+
+//positions
+
+.absolute {
+    position: absolute;
+}
+
+// list 
+
+.clean-list {
+    list-style: none;
+}
+
+//hide
+.none{
+    display:none;
 }

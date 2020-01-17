@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SocketService from '../service/SocketService';
+import MainNavbar from '../cmps/MainNavbar';
 export default class About extends Component {
   state = {
     msg: { from: 'Me', txt: '' },
@@ -51,6 +52,8 @@ export default class About extends Component {
 
   render() {
     return (
+      <React.Fragment>
+      <MainNavbar/>
       <div className="about">
         <h1>About Us</h1>
         <p>We like You</p>
@@ -92,6 +95,8 @@ export default class About extends Component {
           ))}
         </ul>
       </div>
+      </React.Fragment>
+      
     );
   }
 }
