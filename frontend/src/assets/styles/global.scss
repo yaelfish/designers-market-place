@@ -15,6 +15,7 @@
 @import "views/home-page.scss";
 @import "views/main-app-page.scss";
 @import "views/artwork_details";
+@import "views/artist-page";
 
 // Components
 @import "components/carouselle";
@@ -25,8 +26,9 @@
 @import "components/breadcrumb";
 @import "components/artwork-preview";
 @import "components/main-navbar.scss";
+@import "components/tabs.scss"
 
-// Views
-@import "views/home-page.scss";
-@import "views/artist-page"
+
+
+
 
