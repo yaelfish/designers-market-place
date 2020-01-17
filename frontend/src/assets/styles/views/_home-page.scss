@@ -33,14 +33,25 @@
 
     }
 
-    .coverImg {
-        height: 85vh;
-        background: url('../../images/coverHome.jpg') no-repeat center center fixed;
-        background-size: cover;
+    .cover {
+        height: 80vh;
         font-family: caveat;
         font-size: rem(80px);
         text-align: center;
         color: rgb(0, 0, 0);
+       
+        .home-title{
+            background-color: rgba(255, 255, 255, 0.521);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        img {
+            height: 80vh;
+            object-fit: cover;
+            position: absolute;
+            z-index: -1;
+        }
     }
 }
 

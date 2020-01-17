@@ -21,6 +21,7 @@ class ArtistTabs extends Component {
         </div>
         <div label="Profile">
           Name: {this.props.user.fullName}
+          <div><button className="profileButton">Edit</button></div>
         </div>
       </Tabs>
     </div>
