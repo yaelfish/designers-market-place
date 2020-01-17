@@ -10,7 +10,8 @@ class DetailsArtwork extends Component {
 
     // TODO: order redux (cart)
     state = {
-        isAddedToCart: false
+        isAddedToCart: false,
+        isLiked: false
     }
 
     componentDidMount() {
@@ -25,6 +26,10 @@ class DetailsArtwork extends Component {
 
     addToCart = () => {
         this.setState({ isAddedToCart: true })
+    }
+
+    onToggleLike = () => {
+        this.setState(prevState => ({ isLiked: !prevState.isLiked }));
     }
 
     loadArtwork = async() => {
@@ -45,64 +50,44 @@ class DetailsArtwork extends Component {
       
         if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
         const { selectedArtwork } = this.props;
+        console.log(selectedArtwork);
+        // let likes = selectedArtwork.likedByUsers.length;
+        // console.log(likes);
+        
         return <React.Fragment>
             <MainNavbar />
             <Breadcrumb />
-            <section className="details-container flex column">
+            <section className="details-container flex">
                 <div className="container details-image-container">
-                    <Carousel artSrc={selectedArtwork.imgUrl}/>
-                    {/* <img src={selectedArtwork.imgUrl}/> */}
-                    <div className="slider">
-
-                        <a href="#slide-1">1</a>
-                        <a href="#slide-2">2</a>
-                        <a href="#slide-3">3</a>
-                        <a href="#slide-4">4</a>
-                        <a href="#slide-5">5</a>
-
-                        <div className="slides">
-                            <div id="slide-1">
-                                <img src={selectedArtwork.imgUrl} ></img>
-                            </div>
-                            <div id="slide-2">
-                                2
-                            </div>
-                            <div id="slide-3">
-                                3
-                            </div>
-                            <div id="slide-4">
-                                4
-                            </div>
-                            <div id="slide-5">
-                                5
-                             </div>
-                        </div>
-                    </div>
-
+                    {/* <Carousel artSrc={selectedArtwork.imgUrl}/> */}
+                    <img src={selectedArtwork.imgUrl} ></img>
                 </div>
                 <div className="details-text-container">
-                    <table className="container details-container">
-                        <tbody className="table-fill">
-                            <tr>
-                                <td className="art-name">{selectedArtwork.name}</td>
-                                <td className="like-icon"></td>
-                            </tr>
-                            <tr>
-                                <td className="art-description">{selectedArtwork.description}</td>
-                            </tr>
-                            <tr>
-                                <td className="art-price">Price: {selectedArtwork.price}$</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div className="action-btns flex justify-center">
-                        <button className="add-to-cart" onClick={this.addToCart}>Add To Cart</button>
-                        {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
-                        <button className="btn" onClick={this.goBack}>Back</button>
-                        {/* {(this.props.user.userName === "admin") && <Link className="btn" to={`/artwork/${artwork._id}/edit`}>Edit</Link>} */}
-                        {/* {(this.props.user.userName === "admin") && <button className="btn warning" onClick={this.onDelete}>Delete</button>} */}
-                    </div>
+                    <aside className="container details-container">
+                        <ul className="aside-fill">
+                            <li>
+                                <p className="art-name">{selectedArtwork.name}</p>
+                                <button className="like-display" onClick={this.onToggleLike}>
+                                    <span className={(this.state.isLiked ? 'liked-icon': 'like-icon')}></span>
+                                    <span className="likes-num">13</span>
+                                </button>
+                            </li>
+                            <li>
+                                <p className="art-description">{selectedArtwork.description}</p>
+                            </li>
+                            <li>
+                                <p className="art-price">Price: {selectedArtwork.price}$</p>
+                            </li>
+                        </ul>
+                        <button className="add-to-cart submit" onClick={this.addToCart}>Add To Cart</button>
+                        <div className="action-btns flex justify-center">
+                            
+                            {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
+                            <button className="btn back" onClick={this.goBack}>Back</button>
+                            {/* {(this.props.user.userName === "admin") && <Link className="btn" to={`/artwork/${artwork._id}/edit`}>Edit</Link>} */}
+                            {/* {(this.props.user.userName === "admin") && <button className="btn warning" onClick={this.onDelete}>Delete</button>} */}
+                        </div>
+                    </aside>
                 </div>
 
 

@@ -1,0 +1,31 @@
+button {
+    width: 100px;
+    padding: 8px 10px;
+    margin: 5px 0px;
+    font-size: rem(16px);
+    // font-family: oswald, arial;
+    font-weight: normal;
+    border: none;
+    background-color: $clr-btn;
+    color: $clr6;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: $clr-btn-hover;
+    }
+
+    &.submit {
+        width: 100%;
+        height: 60px;
+        font-weight: 500;
+        text-shadow: 0px 0px $clr2 ;
+        text-transform: uppercase;
+    }
+    &.back {
+        background-color: $clr2;
+        color: $clr6;
+    }
+}
