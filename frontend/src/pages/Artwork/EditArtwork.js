@@ -38,7 +38,6 @@ class EditArtwork extends Component {
         if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
         // const { selectedArtwork } = this.props;
         return (<>
-            <MainNavbar />
             <section className="container add-artwork-container flex column">
                 <h2>Edit Artwork</h2>
                 <ArtworkForm artwork={this.props.selectedArtwork} onSave={this.onEditArtwork} isAdd={false}/>
