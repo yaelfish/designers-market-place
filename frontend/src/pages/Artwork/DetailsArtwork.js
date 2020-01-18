@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import { loadArtworkById } from '../../actions/ArtworkActions'
-import Carousel from '../../cmps/Carousel';
+import { Link } from 'react-router-dom';
+import { loadArtworkById, removeArtwork } from '../../actions/ArtworkActions'
+// import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import MainNavbar from '../../cmps/MainNavbar';
 
@@ -34,15 +34,17 @@ class DetailsArtwork extends Component {
 
     loadArtwork = async() => {
         const { _id } = this.props.match.params;
-        const selected = await this.props.loadArtworkById(_id);
+        await this.props.loadArtworkById(_id);
     }
 
     goBack = () => {
         this.props.history.push('/artwork')
     }
 
-    onDelete = () => {
-        this.props.deleteToy(this.state.artwork._id)
+    onDelete = async () => {
+        // this.props.deleteToy(this.state.artwork._id)
+        const { _id } = this.props.match.params;
+        await this.props.removeArtwork(_id);
         this.props.history.push('/artwork')
     }
 
@@ -84,8 +86,8 @@ class DetailsArtwork extends Component {
                             
                             {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
                             <button className="btn back" onClick={this.goBack}>Back</button>
-                            {/* {(this.props.user.userName === "admin") && <Link className="btn" to={`/artwork/${artwork._id}/edit`}>Edit</Link>} */}
-                            {/* {(this.props.user.userName === "admin") && <button className="btn warning" onClick={this.onDelete}>Delete</button>} */}
+                            <button><Link className="btn" to={`/artwork/${selectedArtwork._id}/edit`}>Edit</Link></button>
+                            <button className="btn delete" onClick={this.onDelete}></button> 
                         </div>
                     </aside>
                 </div>
@@ -104,7 +106,8 @@ const mapStateToProps = (state) => {
     }
 }
 const mapDispatchToProps = {
-    loadArtworkById
+    loadArtworkById,
+    removeArtwork
 }
 
 export default connect(

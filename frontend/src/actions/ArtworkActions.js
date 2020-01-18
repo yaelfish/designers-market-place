@@ -28,10 +28,12 @@ export function loadArtworkById(artworkId) {
 }
 
 export function addArtwork(addedArtwork) {
+  console.log('add artwork action acrivated');
+  
   return async dispatch => {
     try {
-      const addedArtwork = await ArtworkService.add(addedArtwork);
-      dispatch(_addArtwork(addedArtwork));
+      const artwork = await ArtworkService.add(addedArtwork);
+      dispatch(_addArtwork(artwork));
     } catch (err) {
       console.log('ArtworkActions: err in addArtwork', err);
     }
@@ -51,11 +53,11 @@ export function removeArtwork(artworkId) {
 }
 
 
-export function editArtwork(editedArtwork) {
+export function editArtwork(artwork) {
   return async dispatch => {
     try {
-      const editedArtwork = await ArtworkService.edit(editedArtwork)
-      dispatch(_editArtwork(editedArtwork));
+      const editArtwork = await ArtworkService.edit(artwork)
+      dispatch(_editArtwork(editArtwork));
     } catch (err) {
       console.log('ArtworkActions: err in editArtwork', err);
     }
