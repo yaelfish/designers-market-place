@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MainNavbar from '../cmps/MainNavbar';
+import coverImg from '../assets/images/coverHome.jpg'
 
 export default class Home extends Component {
   state = {
@@ -12,7 +13,7 @@ export default class Home extends Component {
       <React.Fragment>
         <MainNavbar isHome={this.state.isHome} />
         <div className="home">
-          <div className="coverImg flex justify-center align-center">Artwork Gallery</div>
+    <div className="cover flex justify-center align-center"><img src={coverImg}></img><span className="home-title">Artwork Gallery</span></div>
           <ul className="category-links clean-list">
             <li>
               <Link className="category-link" to='/artwork'>
