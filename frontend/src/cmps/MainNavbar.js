@@ -8,7 +8,6 @@ import Search from '../cmps/Search'
 
 export default function NavBar(props) {
 
-    console.log(props)
 
     const scrollTrigger = useScrollTrigger({ threshold: 0, disableHysteresis: true });
     return (
