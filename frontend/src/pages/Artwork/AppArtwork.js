@@ -3,18 +3,25 @@ import { connect } from 'react-redux';
 import ArtworkList from '../../cmps/Artwork/ArtworkList';
 import { loadArtworks} from '../../actions/ArtworkActions';
 import Tags from '../../cmps/Tags';
-import MainNavbar from '../../cmps/MainNavbar';
 
 class AppArtwork extends Component {
 
+
+
     componentDidMount() {
-        this.props.loadArtworks();
+        this.loadArtworks();
     }
+
+    loadArtworks = () => {
+        this.props.loadArtworks()
+    }
+
+
 
     render() {
         return (
         <React.Fragment>
-        <MainNavbar/>        
+       
             <main className="container main-app-container">
                 <header>
                     <h2>ART PRINTS</h2>

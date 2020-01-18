@@ -46,7 +46,6 @@ class DetailsArtwork extends Component {
         if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
         const { selectedArtwork } = this.props;
         return <React.Fragment>
-            <MainNavbar />
             <Breadcrumb />
             <section className="details-container flex column">
                 <div className="container details-image-container">

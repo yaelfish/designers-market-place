@@ -10,7 +10,8 @@ var axios = Axios.create({
 
 export default {
     get(endpoint, data){
-        return ajax(endpoint, 'GET', data)
+        const filterBy = data;
+        return ajax(`${endpoint}?name=${filterBy.name}&artist=${filterBy.artist}&tags=${filterBy.tags}`, 'GET', data)
     },
     post(endpoint, data){
         return ajax(endpoint, 'POST', data)
