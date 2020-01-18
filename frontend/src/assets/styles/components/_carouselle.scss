@@ -1,6 +1,8 @@
 .carousel-container {
-    
-@keyframes tonext {
+    vertical-align: top;
+    width: 58%;
+
+    @keyframes tonext {
   75% {
     left: 0;
   }
