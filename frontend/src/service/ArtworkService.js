@@ -8,6 +8,7 @@ function query(filterBy) {
 function remove(artworkId) {
   return HttpService.delete(`artwork/${artworkId}`);
 }
+
 async function add(artwork) {
   const addedArtwork = await HttpService.post(`artwork`, artwork);
   return addedArtwork;
