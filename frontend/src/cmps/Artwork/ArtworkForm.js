@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CloudinaryService from '../../service/CloudinaryService';
 
 export default class ArtworkForm extends React.Component {
@@ -61,17 +62,17 @@ export default class ArtworkForm extends React.Component {
     }
 
     onSave = async (ev) => {
-        
-
         const { state, props } = this;
         const { artwork } = state;
-        ev.preventDefault();
-        
+        ev.preventDefault(); 
         console.log(artwork);
-        let artworkSent = await props.onSave(artwork)
+        
+        let artworkSent = await props.onSave({ ...artwork })
         console.log(artworkSent);
         console.log(state.isAddMode ? 'Item was added' : 'Item was edited')
-        if(state.isAddMode)  props.history.push('/artwork') 
+        // if(state.isAddMode)  props.history.push('/artwork') 
+        // else props.history.push('/artwork') 
+        // this.props.history.push(`/artwork/${artwork._id}`)
         // this.props.history.push(`/artwork/${this.state.artwork._id}`)
     }
 
@@ -140,8 +141,9 @@ export default class ArtworkForm extends React.Component {
             </label>
             <img src={artwork.imgUrl} alt="" width="250" />
 
-            <button className='btn submit' type="submit">Submit</button>
-            <button className='btn back' onClick={this.goBack}>Back</button>
+            <button className="btn submit" type="submit">Submit</button>
+            <button className="btn back" onClick={this.goBack}>Back</button>
+            {/* <button><Link className="btn back" to={`/artwork`}>Back</Link></button> */}
         </form>
         </>)
     }

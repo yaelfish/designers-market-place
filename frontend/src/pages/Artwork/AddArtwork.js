@@ -6,9 +6,10 @@ import { addArtwork } from '../../actions/ArtworkActions';
 
 class AddArtwork extends Component {
 
-    onAddArtwork = (artwork) => {
-        this.props.addArtwork(artwork)
-        console.log(artwork);
+    onAddArtwork = async (artwork) => {
+        let addedArt = this.props.addArtwork(artwork)
+        console.log(addedArt);
+        this.props.history.push('/artwork');
     }
 
     render() {

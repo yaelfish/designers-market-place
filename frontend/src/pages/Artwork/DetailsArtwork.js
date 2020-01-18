@@ -86,7 +86,7 @@ class DetailsArtwork extends Component {
                             
                             {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
                             <button className="btn back" onClick={this.goBack}>Back</button>
-                            <button><Link className="btn" to={`/artwork/${selectedArtwork._id}/edit`}>Edit</Link></button>
+                            <button><Link className="btn" to={`/artwork/edit/${selectedArtwork._id}`}>Edit</Link></button>
                             <button className="btn delete" onClick={this.onDelete}></button> 
                         </div>
                     </aside>

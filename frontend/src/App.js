@@ -26,8 +26,8 @@ function App() {
           <Route component={Home} path="/" exact />
           <Route component={AppArtwork} path="/artwork" exact />
           <Route component={AddArtwork} path="/artwork/add" exact />
+          <Route component={EditArtwork} path="/artwork/edit/:_id/" exact/>
           <Route component={DetailsArtwork} path="/artwork/:_id" exact />
-          <Route component={EditArtwork} path="/artwork/:_id/edit" exact/>
           <Route component={ArtistApp} path="/artist" exact />
 
         </Switch>
