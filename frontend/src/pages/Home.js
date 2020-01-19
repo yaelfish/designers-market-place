@@ -15,11 +15,11 @@ export default class Home extends Component {
         <div className="home">
     <div className="cover flex justify-center align-center"><img src={coverImg}></img><span className="home-title">Artwork Gallery</span></div>
           <ul className="category-links clean-list">
-            <li>
+            <li className="category-li"> 
               <Link className="category-link" to='/artwork'>
                 <img className="category-link" src="https://www.howardshollow.com/canvascolor/IMAGES/modernist/b/2a.jpg"/>
-                <div className="category-tag"></div>
               </Link>
+              <span className="category-tag">River</span>
             </li>
             <li>
               <Link className="category-link" to='/artwork'>

@@ -1,17 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Search from '../cmps/Search'
+import { render } from 'react-dom';
+import ScrollTrigger from './ScrollTrigger'
+
+
+export default class MainNavbar extends Component {
+
+    state= {
+        pathname: window.location.pathname,
+    }
+
+
+    componentDidMount() {
+        this.unlisten =  this.props.history.listen((e)=>{
+            this.setState( {pathName : window.location.pathname})
+        })
+    }
+
+
+    
+
+    componentWillUnmount(){
+        this.unlisten();
+    }
 
 
 
-
-export default function NavBar(props) {
-
-
-    const scrollTrigger = useScrollTrigger({ threshold: 0, disableHysteresis: true });
+    render() {
+      console.log(<ScrollTrigger />)
     return (
-        <nav className={(props.isHome) ? ((scrollTrigger) ? "main-nav absolute scrolled" : "main-nav absolute") : "main-nav"}>
+        <nav className={(this.state.pathname === "/") ? ((<ScrollTrigger />) ? "main-nav absolute scrolled" : "main-nav absolute") : "main-nav"}>
             <ul className="nav-links">
                 <li ><NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li><span className="nav-separator">|</span>
                 <li ><NavLink className="nav-link" to='/about' activeClassName="active-link" exact>About</NavLink></li><span className="nav-separator">|</span>
@@ -21,10 +41,11 @@ export default function NavBar(props) {
             </ul>
 
 
-            <Search history={props.history}></Search>
+            <Search history={this.props.history}></Search>
 
         </nav>
-    )
+    )}
 }
+
 
 //onFilter={props.onFilter}

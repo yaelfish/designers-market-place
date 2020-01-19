@@ -43,7 +43,7 @@ const mapStateToProps = state => {
     return {
         artworks: state.artwork.artworks,
         user: {
-            "_id" : "rjf93941jhfie2",
+            "_id" : "u1",
             "userName" : "kerryjm2020",
             "fullName" : "Kerry James Marshall",
             "password" : "1234567890",
