@@ -3,19 +3,23 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { heartIcon } from '../../assets/images/greyheart.png';
-import { loadArtworks, getArtworkById } from '../../actions/ArtworkActions'
+import { getArtworkById } from '../../actions/ArtworkActions'
+import { loadReviews } from '../../actions/ReviewActions'
 import ArtworkService from '../../service/ArtworkService';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import MainNavbar from '../../cmps/MainNavbar';
+import Reviews from '../../cmps/Artwork/Reviews'
+import { addReview } from '../../actions/ReviewActions'
 
 class DetailsArtwork extends Component {
 
     state = {
-        isAddedToCart: false
+        isAddedToCart: false,
     }
 
     componentDidMount() {
         this.loadArtwork();
+        this.loadReviews();
     }
 
     componentDidUpdate(prevProps) {
@@ -24,19 +28,29 @@ class DetailsArtwork extends Component {
         }
     }
 
+
     addToCart = () => {
         this.setState({ isAddedToCart: true })
     }
 
     async loadArtwork() {
-        const { id } = this.props.match.params;
-        const selectedArtwork = await this.props.getArtworkById(id)
-        // this.setState({ selectedArtwork })
+        const { _id } = this.props.match.params;
+        await this.props.getArtworkById(_id)
     }
+
+    loadReviews = async () => {
+        const { _id } = this.props.match.params;
+        await this.props.loadReviews({ aboutArtworkId: _id })
+    };
 
     goBack = () => {
         this.props.history.push('/artwork')
     }
+
+    addMsg = async newMsg => {
+        await this.props.addReview(newMsg, this.props.selectedArtwork._id)
+        this.loadReviews();
+    };
 
     // onDelete = () => {
     //     this.props.deleteToy(this.state.artwork._id)
@@ -44,34 +58,7 @@ class DetailsArtwork extends Component {
     // }
 
     render() {
-        const selectedArtwork = {
-            "_id": "1111111",
-            "name": "name of this art",
-            "artist": {
-                "_id": "u1",
-                "fullName": "Puki Ben David"
-            },
-            "likedByUsers": [
-                {
-                    "_id": "u3",
-                    "fullName": "Ben Muk"
-                }
-            ],
-            "tags": [
-                "river",
-                "nature",
-                "sunset"
-            ],
-            "imgUrl": "https://www.howardshollow.com/canvascolor/IMAGES/modernist/b/2a.jpg",
-            "price": 260,
-            "createdAt": 582930400,
-            "description": "Beautiful river flowing over the sunset.",
-            "comments": [
-                {
-                    "text": "Beautiful picture, great for my living room"
-                }
-            ]
-        }
+        console.log(this.props.reviews);
         // if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
         // const { selectedArtwork } = this.props;
         return <React.Fragment>
@@ -89,7 +76,7 @@ class DetailsArtwork extends Component {
 
                         <div className="slides">
                             <div id="slide-1">
-                                <img src={selectedArtwork.imgUrl} ></img>
+                                <img src={this.props.selectedArtwork.imgUrl} ></img>
                             </div>
                             <div id="slide-2">
                                 2
@@ -107,12 +94,13 @@ class DetailsArtwork extends Component {
                     </div>
 
                 </div>
+
                 <div className="details-text-container">
                     <table className="container details-container">
                         <tbody className="table-fill">
-                            <tr><td className="art-name">{selectedArtwork.name}</td><td className="like-icon"></td></tr>
-                            <tr><td className="art-description">{selectedArtwork.description}</td></tr>
-                            <tr><td className="art-price">Price</td><td>{selectedArtwork.price}$</td></tr>
+                            <tr><td className="art-name">{this.props.selectedArtwork.name}</td><td className="like-icon"></td></tr>
+                            <tr><td className="art-description">{this.props.selectedArtwork.description}</td></tr>
+                            <tr><td className="art-price">Price</td><td>{this.props.selectedArtwork.price}$</td></tr>
                             <button className="add-to-cart" onClick={this.addToCart}>Add To Cart</button>
                             {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
                         </tbody>
@@ -125,21 +113,24 @@ class DetailsArtwork extends Component {
                     </div>
                 </div>
 
-
+                <Reviews addMsg={this.addMsg} reviews={this.props.reviews} ></Reviews>
             </section>
         </React.Fragment>
     }
 }
 const mapStateToProps = (state) => {
     return {
-        artworks: state.artwork.artworks,
         selectedArtwork: state.artwork.selectedArtwork,
-        user: state.user
+        reviews: state.review.reviews,
+        user: state.user,
+        loggedInUser: state.user.loggedInUser
+
     }
 }
 const mapDispatchToProps = {
     getArtworkById,
-    loadArtworks
+    loadReviews,
+    addReview
 }
 
 export default connect(

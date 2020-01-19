@@ -26,8 +26,13 @@ function update(user) {
 }
 
 async function login(userCred) {
-    const user = await HttpService.post('auth/login', userCred)
-    return _handleLogin(user)
+    try {
+        const user = await HttpService.post('auth/login', userCred)
+        return _handleLogin(user)
+    }
+    catch (err) {
+        console.log("err:UserService ", err)
+    }
 }
 async function signup(userCred) {
     const user = await HttpService.post('auth/signup', userCred)
