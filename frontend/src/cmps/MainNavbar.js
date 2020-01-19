@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Search from '../cmps/Search'
 import { render } from 'react-dom';
-import ScrollTrigger from './ScrollTrigger'
+
 
 
 export default class MainNavbar extends Component {
