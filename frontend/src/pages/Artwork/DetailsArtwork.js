@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { loadArtworkById, removeArtwork, editArtwork } from '../../actions/ArtworkActions';
 import { loading, doneLoading } from '../../actions/SystemActions'
+import { loadReviews,addReview } from '../../actions/ReviewActions'
+import Reviews from '../../cmps/Artwork/Reviews'
 // import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import MainNavbar from '../../cmps/MainNavbar';
@@ -21,6 +23,7 @@ class DetailsArtwork extends Component {
 
     componentDidMount() {
         this.loadArtwork();
+        this.loadReviews();
     }
 
     componentDidUpdate(prevProps) {
@@ -28,6 +31,7 @@ class DetailsArtwork extends Component {
             this.loadArtwork();
         }
     }
+
 
     addToCart = () => {
         this.setState({ isAddedToCart: true })
@@ -55,6 +59,11 @@ class DetailsArtwork extends Component {
         await this.props.loadArtworkById(_id);
     }
 
+    loadReviews = async () => {
+        const { _id } = this.props.match.params;
+        await this.props.loadReviews({ aboutArtworkId: _id })
+    };
+
     goBack = () => {
         this.props.history.push('/artwork')
     }
@@ -64,6 +73,11 @@ class DetailsArtwork extends Component {
         await this.props.removeArtwork(_id);
         this.props.history.push('/artwork')
     }
+
+      addMsg = async newMsg => {
+        await this.props.addReview(newMsg, this.props.selectedArtwork._id)
+        this.loadReviews();
+    };
 
     render() {
         
@@ -94,9 +108,37 @@ class DetailsArtwork extends Component {
             <Breadcrumb />
             <section className="details-container flex">
                 <div className="container details-image-container">
+                    <div className="slider">
+
+                        <a href="#slide-1">1</a>
+                        <a href="#slide-2">2</a>
+                        <a href="#slide-3">3</a>
+                        <a href="#slide-4">4</a>
+                        <a href="#slide-5">5</a>
+
+                        <div className="slides">
+                            <div id="slide-1">
+                                <img src={this.props.selectedArtwork.imgUrl} ></img>
+                            </div>
+                            <div id="slide-2">
+                                2
+    </div>
+                            <div id="slide-3">
+                                3
+    </div>
+                            <div id="slide-4">
+                                4
+    </div>
+                            <div id="slide-5">
+                                5
+    </div>
+                        </div>
+                    </div>
+
                     {/* <Carousel artSrc={selectedArtwork.imgUrl}/> */}
                     <img src={selectedArtwork.imgUrl} ></img>
                 </div>
+
                 <div className="details-text-container">
                     <aside className="container details-container">
                         <ul className="aside-fill">
@@ -137,7 +179,7 @@ class DetailsArtwork extends Component {
                     </aside>
                 </div>
 
-
+                <Reviews addMsg={this.addMsg} reviews={this.props.reviews} ></Reviews>
             </section>
         </React.Fragment>
     }
@@ -148,7 +190,10 @@ const mapStateToProps = (state) => {
         isLoading: state.system.isLoading,
         artworks: state.artwork.artworks,
         selectedArtwork: state.artwork.selectedArtwork,
-        user: state.user
+        reviews: state.review.reviews,
+        user: state.user,
+        loggedInUser: state.user.loggedInUser
+
     }
 }
 const mapDispatchToProps = {
@@ -156,7 +201,9 @@ const mapDispatchToProps = {
     doneLoading,
     loadArtworkById,
     removeArtwork,
-    editArtwork
+    editArtwork,
+    addReview,
+    loadReviews
 }
 
 export default connect(
