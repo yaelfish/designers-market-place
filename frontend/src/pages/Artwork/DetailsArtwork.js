@@ -13,7 +13,6 @@ import liked from '../../assets/images/icons/liked.png';
 
 class DetailsArtwork extends Component {
 
-    // TODO: order redux (cart)
     state = {
         isAddedToCart: false,
         isLiked: false
@@ -35,20 +34,21 @@ class DetailsArtwork extends Component {
     }
 
     onToggleLike = async () => {
-        await this.setState(prevState => ({ isLiked: !prevState.isLiked }));
-        this.updateLiked(); 
+        await this.setState(prevState => ({ isLiked: !prevState.isLiked }), this.updateLiked); 
     }
 
     updateLiked = async () => {
         let { loggedInUser, selectedArtwork } = this.props;
-        console.log(loggedInUser, 'loggedInUser');
-        console.log(selectedArtwork, 'selectedArtwork');
         let artwork = { ...selectedArtwork };
         let usersLikes = artwork.likedByUsers;
-        this.state.isLiked ? usersLikes.push(loggedInUser) : usersLikes.filter(user => user._id === loggedInUser._id);
-        artwork = { ...artwork, usersLikes };
-        console.log(artwork);
+        let arrLikes = this.state.isLiked ? 
+                        usersLikes.push(loggedInUser) : 
+                        usersLikes.filter(user => { 
+                            return user._id !== loggedInUser._id 
+                        });
+        console.log(arrLikes, 'arrLikes');
         
+        artwork = { ...artwork, arrLikes };
         this.setState({artwork})
         await this.props.editArtwork(artwork);
     } 
@@ -79,14 +79,7 @@ class DetailsArtwork extends Component {
     };
 
     render() {
-        
-        if (!this.props.selectedArtwork) return this.props.loading() && <Spinner />
-        // <div className="loading">Loading...</div>
-        else this.props.doneLoading()
-
-        if (!this.props.selectedArtwork) return (
-            <Spinner/>
-        )
+        const {isLiked} = this.state
         const { selectedArtwork } = this.props;
         let artistObj = selectedArtwork.artist;
         let artist;
@@ -98,39 +91,25 @@ class DetailsArtwork extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }
-        console.log(likedByUsers);   
-        
-        // let likes = selectedArtwork.likedByUsers.length;
-        // console.log(likes);
         
         return <React.Fragment>
             <Breadcrumb />
             <section className="details-container flex">
                 <div className="container details-image-container">
                     <div className="slider">
-
                         <a href="#slide-1">1</a>
                         <a href="#slide-2">2</a>
                         <a href="#slide-3">3</a>
                         <a href="#slide-4">4</a>
                         <a href="#slide-5">5</a>
-
                         <div className="slides">
                             <div id="slide-1">
                                 <img src={this.props.selectedArtwork.imgUrl} ></img>
                             </div>
-                            <div id="slide-2">
-                                2
-    </div>
-                            <div id="slide-3">
-                                3
-    </div>
-                            <div id="slide-4">
-                                4
-    </div>
-                            <div id="slide-5">
-                                5
-    </div>
+                            <div id="slide-2">2</div>
+                            <div id="slide-3">3</div>
+                            <div id="slide-4">4</div>
+                            <div id="slide-5">5</div>
                         </div>
                     </div>
 
@@ -144,22 +123,18 @@ class DetailsArtwork extends Component {
                             <li>
                                 <p className="art-name">{selectedArtwork.name}</p>
                                 <p className="artist-name">{artist}</p>
-                                {/* <ByArtist/> */}
-                                <div className="like-display" onClick={this.onToggleLike}>
+                                <div className="like-display">
                                     <div className="preview-likes-container flex align-center">
                                         <label htmlFor="like-toggle">
-                                        {!this.state.isLiked && <img className="preview-icon-like" src={like} />}
-                                        {this.state.isLiked && <img className="preview-icon-like" src={liked} />}
+                                        <img onClick={this.onToggleLike} 
+                                             className="preview-icon-like" 
+                                             src={isLiked ? liked : like} 
+                                        />
                                         </label>
                                         <input type="checkbox" id="like-toggle"/>
                                         <span className="likes-counter">{likedByUsers}</span>
-                                        
                                     </div>
                                 </div>
-                                {/* <button className="like-display" onClick={this.onToggleLike}>
-                                    <span className={(this.state.isLiked ? 'liked-icon': 'like-icon')}></span>
-                                    <span className="likes-num">13</span>
-                                </button> */}
                             </li>
                             <li>
                                 <p className="art-description">{selectedArtwork.description}</p>
@@ -178,7 +153,6 @@ class DetailsArtwork extends Component {
                         </div>
                     </aside>
                 </div>
-
                 <Reviews addMsg={this.addMsg} reviews={this.props.reviews} ></Reviews>
             </section>
         </React.Fragment>
