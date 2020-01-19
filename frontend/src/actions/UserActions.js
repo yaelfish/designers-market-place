@@ -9,7 +9,7 @@ export function loadUsers() {
       // example for loading
       dispatch(loading());
       const users = await UserService.getUsers();
-      dispatch(setUsers(users));
+      dispatch(_setUsers(users));
     } catch (err) {
       console.log('UserActions: err in loadUsers', err);
       // example for rerouting - after changing the store
@@ -33,30 +33,48 @@ export function removeUser(userId) {
 // THUNK
 export function login(userCreds) {
   return async dispatch => {
-    const user = await UserService.login(userCreds);
-    dispatch(setUser(user));
+    try {
+      const user = await UserService.login(userCreds);
+      dispatch(_setUser(user));
+    } catch (err) {
+      console.log('UserActions: err in login User', err);
+    }
   };
 }
 export function signup(userCreds) {
   return async dispatch => {
-    const user = await UserService.signup(userCreds);
-    dispatch(setUser(user));
+    try {
+      const user = await UserService.signup(userCreds);
+      dispatch(_setUser(user));
+    } catch (err) {
+      console.log('UserActions: err in signup User', err);
+    }
   };
 }
 export function logout() {
   return async dispatch => {
-    await UserService.logout();
-    dispatch(setUser(null));
+    try {
+      await UserService.logout();
+      dispatch(_setUser(null));
+    } catch (err) {
+      console.log('UserActions: err in logout User', err);
+    }
+  };
+}
+export function loggedIn(user) {
+  return {
+    type: 'CURR_USER',
+    user
   };
 }
 
-export function setUser(user) {
+function _setUser(user) {
   return {
     type: 'SET_USER',
     user
   };
 }
-function setUsers(users) {
+function _setUsers(users) {
   return {
     type: 'SET_USERS',
     users

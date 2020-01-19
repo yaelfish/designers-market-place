@@ -10,29 +10,51 @@
   .art-name::first-letter {
     text-transform: capitalize;
   }
-  .like-icon {
-    background: url("../../images/icons/like.png") no-repeat center center;
-    width: 36px;
-  }
-  .liked-icon {
-    background: url("../../images/icons/liked.png") no-repeat center center;
-    width: 36px;
+  .preview-likes-container {
+    font-size: 12px;
+
+    // #like-toggle {
+    //   display: none;
+    //   background-image: url("../../images/icons/like.png");
+    // }
+
+    // #like-toggle:checked {
+    //   display: none;
+    //   background-image: url("../../images/icons/liked.png");
+    // }
+
+    // label:hover {
+    //   cursor: pointer;
+    // }
+
+    .preview-icon-like {
+      width: 17px;
+      height: 17px;
+      margin-left: 7px;
+      transition: 0.4s;
+    }
+    .preview-icon-like:hover {
+      width: 17px;
+      height: 17px;
+      transform: scale(1.3);
+      margin-left: 7px;
+    }
   }
   .action-btns {
     .edit-btn {
       width: 100px;
-    // padding: 8px 10px;
-    margin: 5px 0px;
-    font-size: 1rem;
-    font-weight: normal;
-    border: none;
-    background-color: #4CD4BF;
-    color: #fff;
-    border-radius: 2px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s;
-    cursor: pointer;
+      // padding: 8px 10px;
+      margin: 5px 0px;
+      font-size: 1rem;
+      font-weight: normal;
+      border: none;
+      background-color: #4cd4bf;
+      color: #fff;
+      border-radius: 2px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
     }
   }
 }
