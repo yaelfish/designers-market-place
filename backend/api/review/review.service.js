@@ -4,44 +4,48 @@ const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy = {}) {
     // const criteria = _buildCriteria(filterBy)
-    const collection = await dbService.getCollection('review')
+    var x = filterBy
+    const collection = await dbService.getCollection('Review')
     try {
         // const reviews = await collection.find(criteria).toArray();
         var reviews = await collection.aggregate([
             {
-                $match: filterBy
+                $match: {aboutArtworkId:ObjectId(filterBy.aboutArtworkId)}
             },
             {
                 $lookup:
                 {
-                    from: 'user',
+                    from: 'User',
                     localField: 'byUserId',
                     foreignField: '_id',
                     as: 'byUser'
                 }
-            }, 
+            },
             {
-                $unwind: '$byUser'
+                $unwind:
+                {
+                    path: '$byUser'
+                }
             },
             {
                 $lookup:
                 {
-                    from: 'user',
-                    localField: 'aboutUserId',
+                    from: 'Artwork',
+                    localField: 'aboutArtworkId',
                     foreignField: '_id',
-                    as: 'aboutUser'
+                    as: 'aboutArtwork'
                 }
-            }, 
+            },
             {
-                $unwind: '$aboutUser'
+                $unwind: {
+                    path: '$aboutArtwork'
+                }
             }
         ]).toArray()
 
         reviews = reviews.map(review => {
-            review.byUser = {_id: review.byUser._id, username: review.byUser.username}
-            review.aboutUser = {_id: review.aboutUser._id, username: review.aboutUser.username}
             delete review.byUserId;
-            delete review.aboutUserId;
+            delete review.aboutArtworkId;
             return review;
         })
 
@@ -53,9 +57,9 @@ async function query(filterBy = {}) {
 }
 
 async function remove(reviewId) {
-    const collection = await dbService.getCollection('review')
+    const collection = await dbService.getCollection('Review')
     try {
-        await collection.deleteOne({"_id":ObjectId(reviewId)})
+        await collection.deleteOne({ "_id": ObjectId(reviewId) })
     } catch (err) {
         console.log(`ERROR: cannot remove review ${reviewId}`)
         throw err;
@@ -65,9 +69,9 @@ async function remove(reviewId) {
 
 async function add(review) {
     review.byUserId = ObjectId(review.byUserId);
-    review.aboutUserId = ObjectId(review.aboutUserId);
+    review.aboutArtworkId = ObjectId(review.aboutArtworkId);
 
-    const collection = await dbService.getCollection('review')
+    const collection = await dbService.getCollection('Review')
     try {
         await collection.insertOne(review);
         return review;
