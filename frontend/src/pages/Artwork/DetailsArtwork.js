@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadArtworkById, removeArtwork } from '../../actions/ArtworkActions';
+import { loadArtworkById, removeArtwork, editArtwork } from '../../actions/ArtworkActions';
 import { loading, doneLoading } from '../../actions/SystemActions'
 // import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import MainNavbar from '../../cmps/MainNavbar';
 import ByArtist from '../../cmps/Artist/ByArtist';
 import Spinner from '../../cmps/Spinner';
+import like from '../../assets/images/icons/like.png';
+import Likes from '../../cmps/Artwork/Likes';
 
 class DetailsArtwork extends Component {
 
@@ -31,9 +33,22 @@ class DetailsArtwork extends Component {
         this.setState({ isAddedToCart: true })
     }
 
-    onToggleLike = () => {
-        this.setState(prevState => ({ isLiked: !prevState.isLiked }));
+    onToggleLike = async () => {
+        await this.setState(prevState => ({ isLiked: !prevState.isLiked }));
+        this.updateLiked(); 
     }
+
+    updateLiked = async () => {
+        let { currUser, selectedArtwork } = this.props;
+        let artwork = { ...selectedArtwork };
+        let usersLikes = artwork.likedByUsers;
+        this.state.isLiked ? usersLikes.push(currUser) : usersLikes.filter(user => user._id === currUser._id);
+        artwork = { ...artwork, usersLikes };
+        console.log(artwork);
+        
+        this.setState({artwork})
+        await this.props.editArtwork(artwork);
+    } 
 
     loadArtwork = async() => {
         const { _id } = this.props.match.params;
@@ -64,7 +79,13 @@ class DetailsArtwork extends Component {
         let artist;
         if (artistObj) {
             artist = artistObj.fullName;
-        }        
+        }     
+        let likedByUsersObj = selectedArtwork.likedByUsers;
+        let likedByUsers;
+        if (likedByUsersObj) {
+            likedByUsers = likedByUsersObj.length;
+        }
+        console.log(likedByUsers);   
         
         // let likes = selectedArtwork.likedByUsers.length;
         // console.log(likes);
@@ -83,10 +104,20 @@ class DetailsArtwork extends Component {
                                 <p className="art-name">{selectedArtwork.name}</p>
                                 <p className="artist-name">{artist}</p>
                                 {/* <ByArtist/> */}
-                                <button className="like-display" onClick={this.onToggleLike}>
+                                <div className="like-display" onClick={this.onToggleLike}>
+                                    <div className="preview-likes-container flex align-center">
+                                        <label htmlFor="like-toggle">
+                                            <img className="preview-icon-like" src={like} />
+                                        </label>
+                                        <input type="checkbox" id="like-toggle"/>
+                                        <span className="likes-counter">{likedByUsers}</span>
+                                        
+                                    </div>
+                                </div>
+                                {/* <button className="like-display" onClick={this.onToggleLike}>
                                     <span className={(this.state.isLiked ? 'liked-icon': 'like-icon')}></span>
                                     <span className="likes-num">13</span>
-                                </button>
+                                </button> */}
                             </li>
                             <li>
                                 <p className="art-description">{selectedArtwork.description}</p>
@@ -124,7 +155,8 @@ const mapDispatchToProps = {
     loading,
     doneLoading,
     loadArtworkById,
-    removeArtwork
+    removeArtwork,
+    editArtwork
 }
 
 export default connect(

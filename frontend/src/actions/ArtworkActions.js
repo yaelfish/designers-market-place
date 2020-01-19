@@ -65,6 +65,17 @@ export function editArtwork(artwork) {
   }
 }
 
+export function toggleLike(user) {
+  return async dispatch => {
+    try {
+      const editArtwork = await ArtworkService.toggleLike(user)
+      dispatch(_editArtwork(editArtwork));
+    } catch (err) {
+      console.log('ArtworkActions: err in toggle Like', err);
+    }
+  }
+}
+
 function _setArtworks(artworks) {
   return {
     type: 'SET_ARTWORKS',

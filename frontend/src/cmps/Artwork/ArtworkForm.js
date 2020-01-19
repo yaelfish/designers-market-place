@@ -7,8 +7,19 @@ export default class ArtworkForm extends React.Component {
         artwork: {
             name: '',
             artist: {
-                fullName: ''
+                _id: "u1",
+                fullName: "Kerry James Marshall"
             },
+            likedByUsers: [
+                {
+                    _id: "u1",
+                    fullName: "Kerry James Marshall"
+                },
+                {
+                    _id: "u2",
+                    fullName: "Shraga Puk"
+                }
+            ],
             imgUrl: [],
             tags: ["nature","modernism"],
             price: 0,
@@ -93,9 +104,9 @@ export default class ArtworkForm extends React.Component {
             <label>Name:</label>
             <input type="text" placeholder="name" name="name" 
                    onChange={this.onInputChange} value={artwork.name} />
-            <label>Artist:</label>
-            <input type="text" placeholder="artist" name="artist"
-                   onChange={this.onInputChange} value={artwork.artist} />
+            {/* TODO: create as dropdown with option to choose different creator name */}
+            {/* <input type="hidden" placeholder="artist" name="artist"
+                   onChange={this.onInputChange} value={artwork.artist} /> */}
             <label>Price:</label>
             <input type="number" placeholder="price" name="price"
                    onChange={this.onInputChange} value={artwork.price} />
