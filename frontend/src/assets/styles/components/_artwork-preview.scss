@@ -12,6 +12,16 @@
         }
      }
 
+     .art-preview-text {
+         p.preview-artwork-name {
+            font-weight: 800;
+            margin-bottom: 0;
+            margin: 0.75rem 0 0;
+        }
+        p.preview-artwork-artist {
+            font-size: 0.8rem;
+        }
+     }
     .preview-price{
         color:white;
         position: absolute;
@@ -26,9 +36,9 @@
             width: 100%;
             padding: 2px 7px 0;
 
-            p{
-                margin: rem(12px) 0 ;
-            } 
+            // p{
+            //     margin: rem(12px) 0 ;
+            // } 
 
             .preview-icon{
                 width:24px;

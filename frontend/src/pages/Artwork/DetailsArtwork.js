@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadArtworkById, removeArtwork } from '../../actions/ArtworkActions'
+import { loadArtworkById, removeArtwork } from '../../actions/ArtworkActions';
+import { loading, doneLoading } from '../../actions/SystemActions'
 // import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import MainNavbar from '../../cmps/MainNavbar';
+import ByArtist from '../../cmps/Artist/ByArtist';
+import Spinner from '../../cmps/Spinner';
 
 class DetailsArtwork extends Component {
 
@@ -42,17 +45,27 @@ class DetailsArtwork extends Component {
     }
 
     onDelete = async () => {
-        // this.props.deleteToy(this.state.artwork._id)
         const { _id } = this.props.match.params;
         await this.props.removeArtwork(_id);
         this.props.history.push('/artwork')
     }
 
     render() {
-      
-        if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
+        
+        if (!this.props.selectedArtwork) return this.props.loading() && <Spinner />
+        // <div className="loading">Loading...</div>
+        else this.props.doneLoading()
+
+        if (!this.props.selectedArtwork) return (
+            <Spinner/>
+        )
         const { selectedArtwork } = this.props;
-        console.log(selectedArtwork);
+        let artistObj = selectedArtwork.artist;
+        let artist;
+        if (artistObj) {
+            artist = artistObj.fullName;
+        }        
+        
         // let likes = selectedArtwork.likedByUsers.length;
         // console.log(likes);
         
@@ -69,6 +82,8 @@ class DetailsArtwork extends Component {
                         <ul className="aside-fill">
                             <li>
                                 <p className="art-name">{selectedArtwork.name}</p>
+                                <p className="artist-name">{artist}</p>
+                                {/* <ByArtist/> */}
                                 <button className="like-display" onClick={this.onToggleLike}>
                                     <span className={(this.state.isLiked ? 'liked-icon': 'like-icon')}></span>
                                     <span className="likes-num">13</span>
@@ -86,7 +101,7 @@ class DetailsArtwork extends Component {
                             
                             {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
                             <button className="btn back" onClick={this.goBack}>Back</button>
-                            <button><Link className="btn" to={`/artwork/edit/${selectedArtwork._id}`}>Edit</Link></button>
+                            <Link className="btn edit-btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}>Edit</Link>
                             <button className="btn delete" onClick={this.onDelete}></button> 
                         </div>
                     </aside>
@@ -100,12 +115,15 @@ class DetailsArtwork extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        isLoading: state.system.isLoading,
         artworks: state.artwork.artworks,
         selectedArtwork: state.artwork.selectedArtwork,
         user: state.user
     }
 }
 const mapDispatchToProps = {
+    loading,
+    doneLoading,
     loadArtworkById,
     removeArtwork
 }

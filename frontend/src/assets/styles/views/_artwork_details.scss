@@ -18,4 +18,21 @@
     background: url("../../images/icons/liked.png") no-repeat center center;
     width: 36px;
   }
+  .action-btns {
+    .edit-btn {
+      width: 100px;
+    // padding: 8px 10px;
+    margin: 5px 0px;
+    font-size: 1rem;
+    font-weight: normal;
+    border: none;
+    background-color: #4CD4BF;
+    color: #fff;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    }
+  }
 }
