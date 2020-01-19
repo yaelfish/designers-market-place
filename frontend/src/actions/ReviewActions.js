@@ -15,12 +15,11 @@ export function loadReviews(filterBy) {
 
 export function addReview(addedMsg, artworkId) {
     return async dispatch => {
-        const addedReview = {}
+        let addedReview = {}
         addedReview.msg = addedMsg;
         addedReview.aboutArtworkId = artworkId;
         try {
             addedReview = await ReviewService.add(addedReview);
-            dispatch(_addReview(addedReview));
         } catch (err) {
             console.log('ArtworkActions: err in addArtwork', err);
         }

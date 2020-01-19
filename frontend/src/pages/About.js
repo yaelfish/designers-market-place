@@ -53,7 +53,6 @@ export default class About extends Component {
   render() {
     return (
       <React.Fragment>
-      <MainNavbar/>
       <div className="about">
         <h1>About Us</h1>
         <p>We like You</p>
