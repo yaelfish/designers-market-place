@@ -11,13 +11,17 @@ import bin from '../../assets/images/icons/bin.png';
 class ArtworkPreview extends Component {
 
     render() {
-        const { _id, name, artist, price, type, imgUrl } = this.props.artwork;
+        let { _id, name, artist, price, type, imgUrl } = this.props.artwork;
+        artist = artist.fullName;
         return ( <>
             <Link to={`/artwork/${_id}`}>
                 <div className="card-artwork flex justify-center align-center column">
                     <img src={imgUrl} alt={name} />
                     <div className="preview-info flex align-center justify-space-between">
-                        <p className="preview-artwork">{name}</p>
+                        <div className="art-preview-text flex column align-start">
+                            <p className="preview-artwork-name">{name}</p>
+                            <p className="preview-artwork-artist">{artist}</p>
+                        </div>
                         {/* <button className="preview-icon btn delete" src={bin} 
                                 onClick={()=>this.props.removeArtwork(_id)}></button> */}
                         <img className="preview-icon" src={beforeLike}></img>

@@ -33,8 +33,13 @@ export function removeUser(userId) {
 // THUNK
 export function login(userCreds) {
   return async dispatch => {
-    const user = await UserService.login(userCreds);
-    dispatch(setUser(user));
+    try {
+      const user = await UserService.login(userCreds);
+      dispatch(setUser(user));
+    }
+    catch(err){
+      console.log('UserActions: err in login', err);
+    }
   };
 }
 export function signup(userCreds) {

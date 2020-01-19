@@ -6,7 +6,9 @@ export default class ArtworkForm extends React.Component {
     state = {
         artwork: {
             name: '',
-            artist: '',
+            artist: {
+                fullName: ''
+            },
             imgUrl: [],
             tags: ["nature","modernism"],
             price: 0,
@@ -14,7 +16,8 @@ export default class ArtworkForm extends React.Component {
             createdAt: Date.now()
         },
         isAddMode: false,
-        imgUrl: ''
+        imgUrl: '',
+        artistName: ''
     }
 
      componentDidMount() {
@@ -64,7 +67,14 @@ export default class ArtworkForm extends React.Component {
     onInputChange = (ev) => {
         let fieldName = ev.target.name;
         let value = (ev.target.type === 'number') ? +ev.target.value : ev.target.value;
-        this.setState(prevState => ({ artwork: { ...prevState.artwork, [fieldName]: value } }))
+        if (fieldName === 'artist') {
+            this.setState({ artist: value })
+            let currArtwork = { ...this.state.artwork }
+            currArtwork.artist = {fullName: value};
+            this.setState({ currArtwork: currArtwork })
+        } else {
+            this.setState(prevState => ({ artwork: { ...prevState.artwork, [fieldName]: value } }))
+        }
     }
 
     onUploadImg = (ev) => {

@@ -26,6 +26,7 @@ class AppArtwork extends Component {
             <main className="container main-app-container">
                 <header>
                     <h2>ART PRINTS</h2>
+                    <h4>Hello {this.props.loggedInUser.fullName}</h4>
                     <p>
                         Purchase museum-quality art prints from the world's greatest living artists and iconic brands. Each print is produced using archival inks guaranteed to last for 75 years without fading or loss of color.
                     </p>
@@ -40,6 +41,7 @@ class AppArtwork extends Component {
 const mapStateToProps = state => {
     return {
         artworks: state.artwork.artworks,
+        loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {
