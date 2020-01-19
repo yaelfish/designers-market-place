@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArtworkList from '../../cmps/Artwork/ArtworkList';
 import { loadArtworks} from '../../actions/ArtworkActions';
-import {  } from '../../actions/UserActions';
 import Tags from '../../cmps/Tags';
 
 class AppArtwork extends Component {
