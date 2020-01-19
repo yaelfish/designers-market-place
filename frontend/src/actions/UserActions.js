@@ -61,12 +61,6 @@ export function logout() {
     }
   };
 }
-export function loggedIn(user) {
-  return {
-    type: 'CURR_USER',
-    user
-  };
-}
 
 function _setUser(user) {
   return {

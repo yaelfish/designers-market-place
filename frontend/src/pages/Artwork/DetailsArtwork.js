@@ -7,11 +7,9 @@ import { loadReviews,addReview } from '../../actions/ReviewActions'
 import Reviews from '../../cmps/Artwork/Reviews'
 // import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
-import MainNavbar from '../../cmps/MainNavbar';
-import ByArtist from '../../cmps/Artist/ByArtist';
 import Spinner from '../../cmps/Spinner';
 import like from '../../assets/images/icons/like.png';
-import Likes from '../../cmps/Artwork/Likes';
+import liked from '../../assets/images/icons/liked.png';
 
 class DetailsArtwork extends Component {
 
@@ -32,7 +30,6 @@ class DetailsArtwork extends Component {
         }
     }
 
-
     addToCart = () => {
         this.setState({ isAddedToCart: true })
     }
@@ -43,10 +40,12 @@ class DetailsArtwork extends Component {
     }
 
     updateLiked = async () => {
-        let { currUser, selectedArtwork } = this.props;
+        let { loggedInUser, selectedArtwork } = this.props;
+        console.log(loggedInUser, 'loggedInUser');
+        console.log(selectedArtwork, 'selectedArtwork');
         let artwork = { ...selectedArtwork };
         let usersLikes = artwork.likedByUsers;
-        this.state.isLiked ? usersLikes.push(currUser) : usersLikes.filter(user => user._id === currUser._id);
+        this.state.isLiked ? usersLikes.push(loggedInUser) : usersLikes.filter(user => user._id === loggedInUser._id);
         artwork = { ...artwork, usersLikes };
         console.log(artwork);
         
@@ -149,7 +148,8 @@ class DetailsArtwork extends Component {
                                 <div className="like-display" onClick={this.onToggleLike}>
                                     <div className="preview-likes-container flex align-center">
                                         <label htmlFor="like-toggle">
-                                            <img className="preview-icon-like" src={like} />
+                                        {!this.state.isLiked && <img className="preview-icon-like" src={like} />}
+                                        {this.state.isLiked && <img className="preview-icon-like" src={liked} />}
                                         </label>
                                         <input type="checkbox" id="like-toggle"/>
                                         <span className="likes-counter">{likedByUsers}</span>

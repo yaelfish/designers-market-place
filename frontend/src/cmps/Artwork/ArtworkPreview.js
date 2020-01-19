@@ -20,8 +20,8 @@ class ArtworkPreview extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }        
-        console.log(likedByUsers);
-        console.log(this.props.artwork);
+        // console.log(likedByUsers);
+        // console.log(this.props.artwork);
         
         
         return ( <>
