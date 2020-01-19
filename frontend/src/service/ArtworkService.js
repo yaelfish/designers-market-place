@@ -1,8 +1,8 @@
 import HttpService from './HttpService';
 // import { artworkData } from './data/artworks';
 
-function query() {
-    return HttpService.get('artwork');
+function query(filterBy = null) {
+    return HttpService.get('artwork', filterBy);
   }
 
 function remove(artworkId) {

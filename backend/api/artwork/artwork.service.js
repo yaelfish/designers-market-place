@@ -12,10 +12,12 @@ module.exports = {
 };
 
 
-async function getArtworks() {
+async function getArtworks(filterBy) {
+   
+    const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('Artwork')
     try {
-        const artworksToshow = await collection.find().toArray();
+        const artworksToshow = await collection.find(criteria).toArray();
         return artworksToshow
     } catch (err) {
         console.log('ERROR: cannot find artworks');
@@ -71,6 +73,38 @@ async function deleteArtwork(artworkId) {
     }
 }
 
+function _buildCriteria(filterBy) {
+
+    const criteria = {};
+
+    
+    if (filterBy.name) {
+        criteria.name = { $regex: `.*${filterBy.name}.*`, $options : 'i' };
+    }
+
+    if (filterBy.artist) {
+        criteria["artist.fullName"] = { $regex: `.*${filterBy.artist}.*`, $options : 'i' };
+    }
+
+    if (filterBy.tags) {
+        criteria.tags =  { $regex: `.*${filterBy.tags}.*`, $options : 'i' };
+    }
+
+    console.log(criteria)
 
 
+    // if (filterBy.stock !== 'all') {
+    //     if (filterBy.stock === 'in-stock') criteria.inStock = true;
+    //     else criteria.inStock = false
+    // }
+    // if (filterBy.type && filterBy.type !== "none") {
+    //     criteria.type = filterBy.type;
+    // }
+
+    // if (filterBy.price) {
+    //     criteria.price = {$lte : +filterBy.price}
+    // }
+
+    return criteria;
+}
 

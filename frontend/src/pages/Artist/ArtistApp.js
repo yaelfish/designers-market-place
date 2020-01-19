@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ArtworkList from '../../cmps/Artwork/ArtworkList';
 import { loadArtworks} from '../../actions/ArtworkActions';
 import Tags from '../../cmps/Tags';
-import MainNavbar from '../../cmps/MainNavbar';
 import ArtistTabs from '../../cmps/Artist/ArtistTabs'
 
 
@@ -18,7 +17,7 @@ class AppArtwork extends Component {
     render() {
         return (
         <React.Fragment>
-        <MainNavbar/>        
+      
             <main className="container main-app-container artist-container">
                 <header className="artist-header">
                       <h2>{this.props.user.fullName}'s Homepage</h2><img src={this.props.user.imgUrl}></img>

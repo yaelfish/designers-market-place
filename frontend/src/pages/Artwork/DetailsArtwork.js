@@ -70,7 +70,6 @@ class DetailsArtwork extends Component {
         // console.log(likes);
         
         return <React.Fragment>
-            <MainNavbar />
             <Breadcrumb />
             <section className="details-container flex">
                 <div className="container details-image-container">

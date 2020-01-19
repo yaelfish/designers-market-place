@@ -14,7 +14,6 @@ class AddArtwork extends Component {
 
     render() {
         return (<>
-        <MainNavbar/>
         <section className="container add-artwork-container flex column">
             <h2>Add A New Artwork</h2>
             <ArtworkForm onSave={this.onAddArtwork} isAdd={true}/>

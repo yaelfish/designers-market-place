@@ -14,7 +14,7 @@ class ArtistTabs extends Component {
       {/* <h1>Artist Space</h1> */}
       <Tabs>
         <div label="Artworks">
-        <ArtworkList artworks={this.props.artworks} />
+        <ArtworkList artworks={this.props.artworks} artistUser={this.props.user} />
         </div>
         <div label="Statistics">
           insert statistics here
