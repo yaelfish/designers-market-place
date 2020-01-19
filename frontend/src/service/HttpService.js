@@ -9,9 +9,10 @@ var axios = Axios.create({
 });
 
 export default {
-    get(endpoint, data){
-        const filterBy = data;
-        return ajax(`${endpoint}?name=${filterBy.name}&artist=${filterBy.artist}&tags=${filterBy.tags}`, 'GET', data)
+    get(endpoint, params){
+      
+        //?name=${filterBy.name}&artist=${filterBy.artist}&tags=${filterBy.tags}
+        return ajax(`${endpoint}`, 'GET', null, params)
     },
     post(endpoint, data){
         return ajax(endpoint, 'POST', data)
@@ -25,13 +26,14 @@ export default {
 }
 
 
-async function ajax(endpoint, method='get', data=null) {
+async function ajax(endpoint, method='get', data=null, params=null) {
     try {
         const res = await axios({
             
             url: `${BASE_URL}${endpoint}`,
             method,
-            data
+            data,
+            params
         })
         return res.data;
     } catch (err) {

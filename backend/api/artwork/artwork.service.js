@@ -13,6 +13,7 @@ module.exports = {
 
 
 async function getArtworks(filterBy) {
+   
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('Artwork')
     try {

@@ -13,6 +13,7 @@ class AppArtwork extends Component {
     }
 
     loadArtworks = () => {
+
         this.props.loadArtworks()
     }
 

@@ -3,7 +3,8 @@ const artworkService = require('./artwork.service')
 
 async function getArtworks(req, res) {
     try {
-        const filterBy = req.query;
+
+        const filterBy = req.query
         const artworks = await artworkService.getArtworks(filterBy)
         res.send(artworks)
     } catch (err) {
