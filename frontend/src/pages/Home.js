@@ -21,7 +21,7 @@ class Home extends Component {
           <div className="cover flex justify-center align-center"><img src={coverImg}></img><span className="home-title">Artwork Gallery</span></div>
           <ul className="category-links clean-list">
             <li className="category-li"> 
-              <Link className="category-link" to='/artwork'>
+              <Link className="category-link" to={{pathname:'/artwork', filterProps: {tags: "river"}}}>
                 <img className="category-link" src="https://www.howardshollow.com/canvascolor/IMAGES/modernist/b/2a.jpg"/>
               </Link>
               <span className="category-tag">River</span>

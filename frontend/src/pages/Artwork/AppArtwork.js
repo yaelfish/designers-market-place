@@ -9,7 +9,8 @@ class AppArtwork extends Component {
 
 
     componentDidMount() {
-        this.loadArtworks();
+        this.loadArtworks(this.props.location.filterProps);
+      
     }
 
     loadArtworks = () => {

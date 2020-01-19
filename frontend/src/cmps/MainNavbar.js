@@ -60,4 +60,3 @@ export default class MainNavbar extends Component {
 }
 
 
-//onFilter={props.onFilter}
