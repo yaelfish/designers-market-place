@@ -10,28 +10,41 @@ export default class MainNavbar extends Component {
 
     state= {
         pathname: window.location.pathname,
+        prevScrollpos: window.pageYOffset
     }
 
 
     componentDidMount() {
         this.unlisten =  this.props.history.listen((e)=>{
-            this.setState( {pathName : window.location.pathname})
+            this.setState( {pathname : window.location.pathname})
         })
+        window.addEventListener("scroll", this.handleScroll);
     }
 
+    componentDidUpdate() {
 
+    }
     
+    handleScroll = () => {
+        const { prevScrollpos } = this.state;
+        const currentScrollPos = window.pageYOffset;
+        this.setState({
+          prevScrollpos: currentScrollPos,
+        
+        });
+      };
 
     componentWillUnmount(){
         this.unlisten();
+        window.removeEventListener("scroll", this.handleScroll);
     }
 
 
 
     render() {
-      console.log(<ScrollTrigger />)
+      
     return (
-        <nav className={(this.state.pathname === "/") ? ((<ScrollTrigger />) ? "main-nav absolute scrolled" : "main-nav absolute") : "main-nav"}>
+        <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav absolute") : "main-nav"}>
             <ul className="nav-links">
                 <li ><NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li><span className="nav-separator">|</span>
                 <li ><NavLink className="nav-link" to='/about' activeClassName="active-link" exact>About</NavLink></li><span className="nav-separator">|</span>
