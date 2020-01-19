@@ -13,19 +13,21 @@
   .preview-likes-container {
     font-size: 12px;
 
-    // #like-toggle {
-    //   display: none;
-    //   background-image: url("../../images/icons/like.png");
-    // }
-
-    // #like-toggle:checked {
-    //   display: none;
-    //   background-image: url("../../images/icons/liked.png");
-    // }
-
-    // label:hover {
-    //   cursor: pointer;
-    // }
+    .likes-counter {
+      vertical-align: top;
+      display: inline-block;
+      color: #6e6e6e;
+      font-size: 16px;
+      line-height: 14px;
+      font-family: greycliff ,sans-serif;
+    }
+    label {
+      cursor: pointer;
+    }
+    input#like-toggle {
+      display: none;
+      cursor: pointer;
+    }
 
     .preview-icon-like {
       width: 17px;
