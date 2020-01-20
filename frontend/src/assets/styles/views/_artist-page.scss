@@ -2,6 +2,10 @@
     .artist-header{
         img {
             width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
         }
     }
 

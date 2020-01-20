@@ -3,6 +3,17 @@
   position: relative;
   display: flex;
   align-items: center;
+
+  
+  .search-filter {
+    width: 70px;
+    border: 1px solid #b1afb3;
+    border-right: none;
+    height: 32px;
+    outline: none;
+    color: dimgray;
+  }
+  
 }
 
 .searchTerm {

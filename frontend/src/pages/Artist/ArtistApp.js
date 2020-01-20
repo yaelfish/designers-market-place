@@ -20,7 +20,7 @@ class AppArtwork extends Component {
       
             <main className="container main-app-container artist-container">
                 <header className="artist-header">
-                      <h2>{this.props.user.fullName}'s Homepage</h2><img src={this.props.user.imgUrl}></img>
+                      <h2>{this.props.user.fullName}'s Homepage</h2><img className="profile-pic" src={this.props.user.imgUrl}></img>
                     <p>
                      Your personal space for all your artworks, statistics and information.
                     </p>
@@ -43,12 +43,12 @@ const mapStateToProps = state => {
     return {
         artworks: state.artwork.artworks,
         user: {
-            "_id" : "u1",
+            "_id" : "5e21b63a1c9d44000093752d",
             "userName" : "kerryjm2020",
             "fullName" : "Kerry James Marshall",
             "password" : "1234567890",
             "isArtist"	: true,
-            "imgUrl" : "http://lionhallattorneys.com.ng/wp-content/uploads/2015/12/empty-profile.png"
+            "imgUrl" : "https://www.americanacademy.de/wp-content/uploads/2017/04/Marshall-Kerry-James-1.jpg"
           }
     };
 };
