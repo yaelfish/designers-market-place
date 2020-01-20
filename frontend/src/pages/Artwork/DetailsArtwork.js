@@ -7,21 +7,31 @@ import { loadReviews,addReview } from '../../actions/ReviewActions'
 import Reviews from '../../cmps/Artwork/Reviews'
 import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
-import MainNavbar from '../../cmps/MainNavbar';
-import ByArtist from '../../cmps/Artist/ByArtist';
-import Spinner from '../../cmps/Spinner';
+import like from '../../assets/images/icons/like.png';
+import liked from '../../assets/images/icons/liked.png';
 
 class DetailsArtwork extends Component {
 
-    // TODO: order redux (cart)
     state = {
         isAddedToCart: false,
         isLiked: false
     }
 
-    componentDidMount() {
-        this.loadArtwork();
-        this.loadReviews();
+    async componentDidMount() {
+         try {
+           const artwork = await (this.loadArtwork(), this.setIsLiked);
+           const reviews = await this.loadReviews();
+           console.log(this.state.isLiked);
+           
+         } catch (err) {
+             console.log('err:' , err);
+             
+         }
+    }
+
+    setIsLiked = (artwork) => {
+        artwork.likedByUsers.includes(this.props.loggedInUser) ? 
+            this.setState({ isLiked: true }) : this.setState({ isLiked: false }) 
     }
 
     componentDidUpdate(prevProps) {
@@ -30,18 +40,36 @@ class DetailsArtwork extends Component {
         }
     }
 
-
     addToCart = () => {
         this.setState({ isAddedToCart: true })
     }
 
-    onToggleLike = () => {
-        this.setState(prevState => ({ isLiked: !prevState.isLiked }));
+    onToggleLike = async () => {
+        await this.setState(prevState => ({ isLiked: !prevState.isLiked }), this.updateLiked); 
     }
+
+    updateLiked = async () => {
+        let { loggedInUser, selectedArtwork } = this.props;
+        let artwork = { ...selectedArtwork };
+        let usersLikes = artwork.likedByUsers;
+        let arrLikes = this.state.isLiked ? 
+                        usersLikes.push(loggedInUser) : 
+                        usersLikes.filter(user => { 
+                            return user._id !== loggedInUser._id 
+                        });
+        console.log(arrLikes, 'arrLikes');
+        
+        artwork = { ...artwork, arrLikes };
+        this.setState({artwork})
+        console.log(artwork);
+        
+        await this.props.editArtwork(artwork);
+    } 
 
     loadArtwork = async() => {
         const { _id } = this.props.match.params;
-        await this.props.loadArtworkById(_id);
+        const currArtwork = await this.props.loadArtworkById(_id);
+        return currArtwork;
     }
 
     loadReviews = async () => {
@@ -65,31 +93,24 @@ class DetailsArtwork extends Component {
     };
 
     render() {
-        
-        if (!this.props.selectedArtwork) return this.props.loading() && <Spinner />
-        // <div className="loading">Loading...</div>
-        else this.props.doneLoading()
-
-        if (!this.props.selectedArtwork) return (
-            <Spinner/>
-        )
+        const {isLiked} = this.state
         const { selectedArtwork } = this.props;
         let artistObj = selectedArtwork.artist;
         let artist;
         if (artistObj) {
             artist = artistObj.fullName;
-        }        
-        
-        // let likes = selectedArtwork.likedByUsers.length;
-        // console.log(likes);
+        }     
+        let likedByUsersObj = selectedArtwork.likedByUsers;
+        let likedByUsers;
+        if (likedByUsersObj) {
+            likedByUsers = likedByUsersObj.length;
+        }
         
         return <React.Fragment>
             <Breadcrumb />
             <section className="details-container flex column">
                 <div className="details-product-container flex">
                 <div className="container details-image-container">
-                    
-
                     <Carousel artSrc={selectedArtwork.imgUrl}/>
                 </div>
 
@@ -99,11 +120,20 @@ class DetailsArtwork extends Component {
                             <li>
                                 <p className="art-name">{selectedArtwork.name}</p>
                                 <p className="artist-name">{artist}</p>
-                                {/* <ByArtist/> */}
-                                <button className="like-display" onClick={this.onToggleLike}>
-                                    <span className={(this.state.isLiked ? 'liked-icon': 'like-icon')}></span>
-                                    <span className="likes-num">13</span>
-                                </button>
+                                <div className="like-display">
+                                    <div className="preview-likes-container flex align-center">
+                                        <label htmlFor="like-toggle">
+                                        <img alt="" onClick={this.onToggleLike} 
+                                             className="preview-icon-like" 
+                                             src={isLiked ? liked : like} 
+                                        />
+                                            {/* <div onClick={this.onToggleLike} className={isLiked ? 'heart is-active' : 'heart'}></div> */}
+                                        </label>
+                                        
+                                        <input type="checkbox" id="like-toggle"/>
+                                        <span className="likes-counter">{likedByUsers}</span>
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <p className="art-description">{selectedArtwork.description}</p>
@@ -117,7 +147,7 @@ class DetailsArtwork extends Component {
                         <div className="action-btns flex justify-center">
                         
                             <button className="btn back" onClick={this.goBack}>Back</button>
-                            <Link className="btn edit-btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}>Edit</Link>
+                            <Link className="btn edit-btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button>Edit</button></Link>
                             <button className="btn delete" onClick={this.onDelete}></button> 
                         </div>
                     </aside>

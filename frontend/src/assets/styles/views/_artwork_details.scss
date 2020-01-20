@@ -2,8 +2,7 @@
   margin: 0 auto;
   max-width: $normal-breakpoint;
   .details-product-container {
-    margin-bottom:50px;
-
+    margin-bottom: 50px;
     .details-image-container {
       vertical-align: top;
       width: 58%;
@@ -15,13 +14,67 @@
     .art-name::first-letter {
       text-transform: capitalize;
     }
-    .like-icon {
-      background: url("../../images/icons/like.png") no-repeat center center;
-      width: 36px;
-    }
-    .liked-icon {
-      background: url("../../images/icons/liked.png") no-repeat center center;
-      width: 36px;
+    .preview-likes-container {
+      font-size: 12px;
+
+      .likes-counter {
+        vertical-align: top;
+        display: inline-block;
+        color: #6e6e6e;
+        font-size: 16px;
+        line-height: 14px;
+        font-family: greycliff, sans-serif;
+      }
+      label {
+        cursor: pointer;
+      }
+      input#like-toggle {
+        display: none;
+        cursor: pointer;
+      }
+
+      .preview-icon-like {
+        width: 17px;
+        height: 17px;
+        margin-left: 7px;
+        margin-right: 3px;
+        transition: 0.4s;
+      }
+      .art-name {
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+
+      .purchased-modal {
+        background: rgba(103, 236, 103, 0.4);
+        display: inline;
+        border-radius: 20px;
+      }
+      .art-name::first-letter {
+        text-transform: capitalize;
+      }
+      .like-icon {
+        background: url("../../images/icons/like.png") no-repeat center center;
+        width: 36px;
+      }
+      .liked-icon {
+        background: url("../../images/icons/liked.png") no-repeat center center;
+        width: 36px;
+      }
+      .heart {
+        width: 100px;
+        height: 100px;
+        background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+        background-position: 0 0;
+        cursor: pointer;
+        transition: background-position 1s steps(28);
+        transition-duration: 0s;
+
+        &.is-active {
+          transition-duration: 1s;
+          background-position: -2800px 0;
+        }
+      }
     }
     .action-btns {
       .edit-btn {
@@ -35,21 +88,8 @@
         color: #fff;
         border-radius: 2px;
         text-align: center;
-        text-decoration: none;
-        transition: all 0.2s;
-        cursor: pointer;
+        margin: 0 auto;
       }
-    }
-
-    .purchased-modal {
-      background: rgba(103, 236, 103, 0.4);
-      display: inline;
-      border-radius: 20px;
-      width: 120px;
-      text-align: center;
-      position: absolute;
-      margin: 0 auto;
-      z-index: 99;
     }
   }
 }

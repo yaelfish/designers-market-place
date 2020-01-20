@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadArtworkById, editArtwork } from '../../actions/ArtworkActions'
 import ArtworkForm from '../../cmps/Artwork/ArtworkForm'
-import MainNavbar from '../../cmps/MainNavbar';
 
 class EditArtwork extends Component {
 
