@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SocketService from '../service/SocketService';
-import MainNavbar from '../cmps/MainNavbar';
 export default class About extends Component {
   state = {
     msg: { from: 'Me', txt: '' },

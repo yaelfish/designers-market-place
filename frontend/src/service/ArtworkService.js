@@ -19,6 +19,8 @@ function getById(artworkId) {
 }
 
 async function edit(artwork) {
+  console.log('artwork edit service',artwork);
+  
   const editedArtWork = await HttpService.put(`artwork/${artwork._id}`, artwork);
   return editedArtWork;
 }

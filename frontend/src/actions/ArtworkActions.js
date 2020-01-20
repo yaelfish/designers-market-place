@@ -55,6 +55,8 @@ export function removeArtwork(artworkId) {
 
 
 export function editArtwork(artwork) {
+  console.log(artwork);
+  
   return async dispatch => {
     try {
       const editArtwork = await ArtworkService.edit(artwork)

@@ -7,7 +7,6 @@ import { loadReviews,addReview } from '../../actions/ReviewActions'
 import Reviews from '../../cmps/Artwork/Reviews'
 // import Carousel from '../../cmps/Carousel';
 import Breadcrumb from '../../cmps/Breadcrumb';
-import Spinner from '../../cmps/Spinner';
 import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
 
@@ -18,9 +17,21 @@ class DetailsArtwork extends Component {
         isLiked: false
     }
 
-    componentDidMount() {
-        this.loadArtwork();
-        this.loadReviews();
+    async componentDidMount() {
+         try {
+           const artwork = await (this.loadArtwork(), this.setIsLiked);
+           const reviews = await this.loadReviews();
+           console.log(this.state.isLiked);
+           
+         } catch (err) {
+             console.log('err:' , err);
+             
+         }
+    }
+
+    setIsLiked = (artwork) => {
+        artwork.likedByUsers.includes(this.props.loggedInUser) ? 
+            this.setState({ isLiked: true }) : this.setState({ isLiked: false }) 
     }
 
     componentDidUpdate(prevProps) {
@@ -50,12 +61,15 @@ class DetailsArtwork extends Component {
         
         artwork = { ...artwork, arrLikes };
         this.setState({artwork})
+        console.log(artwork);
+        
         await this.props.editArtwork(artwork);
     } 
 
     loadArtwork = async() => {
         const { _id } = this.props.match.params;
-        await this.props.loadArtworkById(_id);
+        const currArtwork = await this.props.loadArtworkById(_id);
+        return currArtwork;
     }
 
     loadReviews = async () => {
@@ -104,7 +118,7 @@ class DetailsArtwork extends Component {
                         <a href="#slide-5">5</a>
                         <div className="slides">
                             <div id="slide-1">
-                                <img src={this.props.selectedArtwork.imgUrl} ></img>
+                                <img alt="" src={this.props.selectedArtwork.imgUrl} ></img>
                             </div>
                             <div id="slide-2">2</div>
                             <div id="slide-3">3</div>
@@ -114,7 +128,7 @@ class DetailsArtwork extends Component {
                     </div>
 
                     {/* <Carousel artSrc={selectedArtwork.imgUrl}/> */}
-                    <img src={selectedArtwork.imgUrl} ></img>
+                    <img alt="" src={selectedArtwork.imgUrl} ></img>
                 </div>
 
                 <div className="details-text-container">
@@ -126,11 +140,13 @@ class DetailsArtwork extends Component {
                                 <div className="like-display">
                                     <div className="preview-likes-container flex align-center">
                                         <label htmlFor="like-toggle">
-                                        <img onClick={this.onToggleLike} 
+                                        <img alt="" onClick={this.onToggleLike} 
                                              className="preview-icon-like" 
                                              src={isLiked ? liked : like} 
                                         />
+                                            {/* <div onClick={this.onToggleLike} className={isLiked ? 'heart is-active' : 'heart'}></div> */}
                                         </label>
+                                        
                                         <input type="checkbox" id="like-toggle"/>
                                         <span className="likes-counter">{likedByUsers}</span>
                                     </div>
