@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import Search from '../cmps/Search'
+import { connect } from 'react-redux';
 import { render } from 'react-dom';
 
 
 
-export default class MainNavbar extends Component {
+class MainNavbar extends Component {
 
     state= {
         pathname: window.location.pathname,
@@ -52,7 +53,7 @@ export default class MainNavbar extends Component {
                 <li><NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink></li>
             </ul>
 
-
+    <div>Hello, {this.props.loggedInUser.fullName}!</div>
             <Search history={this.props.history}></Search>
 
         </nav>
@@ -60,3 +61,11 @@ export default class MainNavbar extends Component {
 }
 
 
+
+const mapStateToProps = state => {
+    return {
+        loggedInUser: state.user.loggedInUser
+    };
+};
+
+export default connect(mapStateToProps)(MainNavbar);

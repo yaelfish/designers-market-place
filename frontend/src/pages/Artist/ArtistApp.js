@@ -8,10 +8,23 @@ import ArtistTabs from '../../cmps/Artist/ArtistTabs'
 
 class AppArtwork extends Component {
 
- 
+    state = {
+        artistArtworks: []
+      }
 
     componentDidMount() {
-        this.props.loadArtworks({tags: ''});
+        this.props.loadArtworks();
+        this.loadArtistArtworks();
+        
+    }
+
+    loadArtistArtworks = () =>
+    {
+  
+      const artistArtworks = this.props.artworks.filter(artwork => {
+        return this.props.loggedInUser._id === artwork.artist._id
+      })
+      this.setState({artistArtworks})
     }
 
     render() {
@@ -24,10 +37,10 @@ class AppArtwork extends Component {
                     <p>
                      Your personal space for all your artworks, statistics and information.
                     </p>
-        
                 </header>
 
-                <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs>
+                <ArtworkList artworks={this.state.artistArtworks} />
+                {/* <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs> */}
               
             </main>
             
@@ -42,7 +55,7 @@ class AppArtwork extends Component {
 const mapStateToProps = state => {
     return {
         artworks: state.artwork.artworks,
-        // user: {
+        // loggedInUser: {
         //     "_id" : "5e21b63a1c9d44000093752d",
         //     "userName" : "kerryjm2020",
         //     "fullName" : "Kerry James Marshall",
