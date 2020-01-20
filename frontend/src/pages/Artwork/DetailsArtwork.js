@@ -26,7 +26,6 @@ class DetailsArtwork extends Component {
            const reviews = await this.loadReviews();
          } catch (err) {
              console.log('err:' , err);
-             
          }
     }
 
@@ -50,7 +49,6 @@ class DetailsArtwork extends Component {
         await this.setState(prevState => ({ isLiked: !prevState.isLiked })) 
         await this.updateLiked(); 
         console.log(this.state.isLiked);
-        
     }
 
     updateLiked = async () => {
@@ -60,16 +58,15 @@ class DetailsArtwork extends Component {
         console.log(likes);
         
         if (this.state.isLiked) likes = likes.filter(user => user._id !== loggedInUser._id)
-        else likes.push({_id: loggedInUser._id})
+        else likes.push(loggedInUser)
        
         selectedArtwork.likedByUsers = likes;
-        this.updateNewArtInStore({ ...selectedArtwork }, loggedInUser._id);
-        // this.setState({artwork},this.updateNewArtInStore)
-        
+        this.updateNewArtInStore({ ...selectedArtwork });
     } 
-    updateNewArtInStore = async (selectedArtwork, loggedInUserId)=> {
-        await this.props.toggleLike(selectedArtwork._id, loggedInUserId);
 
+    updateNewArtInStore = async (selectedArtwork)=> {
+        debugger
+        await this.props.editArtwork(selectedArtwork);
     }
 
     loadArtwork = async() => {
@@ -77,7 +74,6 @@ class DetailsArtwork extends Component {
         const currArtwork = await this.props.loadArtworkById(_id);
         // debugger
         console.log(currArtwork);
-        
         return currArtwork;
     }
 
