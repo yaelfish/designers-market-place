@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loadArtworkById, removeArtwork, editArtwork } from '../../actions/ArtworkActions';
+import { loadArtworkById, removeArtwork, editArtwork, toggleLike } from '../../actions/ArtworkActions';
 import { loading, doneLoading } from '../../actions/SystemActions'
 import { loadReviews,addReview } from '../../actions/ReviewActions'
 import Reviews from '../../cmps/Artwork/Reviews'
@@ -13,13 +13,14 @@ import liked from '../../assets/images/icons/liked.png';
 class DetailsArtwork extends Component {
 
     state = {
-        isAddedToCart: false,
-        isLiked: false
+        isAddedToCart: false
     }
 
     async componentDidMount() {
          try {
-           const artwork = await (this.loadArtwork(), this.setIsLiked);
+           const artwork = await this.loadArtwork();
+        //    console.log(artwork);
+            //  this.setIsLiked
            const reviews = await this.loadReviews();
            console.log(this.state.isLiked);
            
@@ -46,29 +47,34 @@ class DetailsArtwork extends Component {
 
     onToggleLike = async () => {
         await this.setState(prevState => ({ isLiked: !prevState.isLiked }), this.updateLiked); 
+        console.log(this.state.isLiked);
+        
     }
 
     updateLiked = async () => {
         let { loggedInUser, selectedArtwork } = this.props;
-        let artwork = { ...selectedArtwork };
-        let usersLikes = artwork.likedByUsers;
-        let arrLikes = this.state.isLiked ? 
-                        usersLikes.push(loggedInUser) : 
-                        usersLikes.filter(user => { 
-                            return user._id !== loggedInUser._id 
-                        });
-        console.log(arrLikes, 'arrLikes');
+        let likes = [...selectedArtwork.likedByUsers];
+        if( this.state.isLiked ) likes.push(loggedInUser)
+        else likes = likes.filter(user => user._id !== loggedInUser._id);
+        selectedArtwork.likedByUsers = likes;
+        console.log(selectedArtwork);
+        console.log(this.props);
         
-        artwork = { ...artwork, arrLikes };
-        this.setState({artwork})
-        console.log(artwork);
+        this.updateNewArtInStore({ ...selectedArtwork });
+        // this.setState({artwork},this.updateNewArtInStore)
         
-        await this.props.editArtwork(artwork);
     } 
+    updateNewArtInStore = async (selectedArtwork)=> {
+        await this.props.editArtwork(selectedArtwork);
+
+    }
 
     loadArtwork = async() => {
         const { _id } = this.props.match.params;
         const currArtwork = await this.props.loadArtworkById(_id);
+        debugger
+        console.log(currArtwork);
+        
         return currArtwork;
     }
 
@@ -192,6 +198,7 @@ const mapDispatchToProps = {
     loadArtworkById,
     removeArtwork,
     editArtwork,
+    toggleLike,
     addReview,
     loadReviews
 }
