@@ -26,11 +26,11 @@ export default class Reviews extends Component {
                 <textarea className placeholder="write something..." value={this.state.msg.txt} name="msg" onChange={this.msgHandleChange}></textarea>
                 <button onClick={(event) => this.addMsg(event, this.state.msg)}>Publish</button>
             </form>
-            <ul className="comments-area">
-                {this.props.reviews.length > 0 && this.props.reviews.map((review, idx) => (
+            {this.props.reviews.length > 0 && <ul className="comments-area">
+                { this.props.reviews.map((review, idx) => (
                     <li key={idx}><div className="comment-by-user">{review.byUser.fullName}</div> {review.msg}</li>
                 ))}
-            </ul>
+            </ul>}
 
         </div>
 
