@@ -67,11 +67,13 @@ export function editArtwork(artwork) {
   }
 }
 
-export function toggleLike(user) {
+export function toggleLike(artworkId, userId) {
   return async dispatch => {
     try {
-      const editArtwork = await ArtworkService.toggleLike(user)
-      dispatch(_editArtwork(editArtwork));
+      const toggleArtworkLike = await ArtworkService.toggleLike(artworkId, userId)
+      console.log('like',toggleArtworkLike);
+      
+      dispatch(_toggleArtwork(toggleArtworkLike));
     } catch (err) {
       console.log('ArtworkActions: err in toggle Like', err);
     }
@@ -104,6 +106,13 @@ function _editArtwork(editedArtwork) {
   return {
     type: 'ARTWORK_EDIT',
     editedArtwork
+  };
+}
+
+function _toggleArtwork(toggleArtworkLike) {
+  return {
+    type: 'LIKE_TOGGLE',
+    toggleLike
   };
 }
 

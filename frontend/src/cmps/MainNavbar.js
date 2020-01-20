@@ -1,17 +1,49 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Search from '../cmps/Search'
+import { render } from 'react-dom';
 
 
 
+export default class MainNavbar extends Component {
 
-export default function NavBar(props) {
+    state= {
+        pathname: window.location.pathname,
+        prevScrollpos: window.pageYOffset
+    }
 
 
-    const scrollTrigger = useScrollTrigger({ threshold: 0, disableHysteresis: true });
+    componentDidMount() {
+        this.unlisten =  this.props.history.listen((e)=>{
+            this.setState( {pathname : window.location.pathname})
+        })
+        window.addEventListener("scroll", this.handleScroll);
+    }
+
+    componentDidUpdate() {
+
+    }
+    
+    handleScroll = () => {
+        const { prevScrollpos } = this.state;
+        const currentScrollPos = window.pageYOffset;
+        this.setState({
+          prevScrollpos: currentScrollPos,
+        
+        });
+      };
+
+    componentWillUnmount(){
+        this.unlisten();
+        window.removeEventListener("scroll", this.handleScroll);
+    }
+
+
+
+    render() {
+      
     return (
-        <nav className={(props.isHome) ? ((scrollTrigger) ? "main-nav absolute scrolled" : "main-nav absolute") : "main-nav"}>
+        <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav absolute") : "main-nav"}>
             <ul className="nav-links">
                 <li ><NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li><span className="nav-separator">|</span>
                 <li ><NavLink className="nav-link" to='/about' activeClassName="active-link" exact>About</NavLink></li><span className="nav-separator">|</span>
@@ -21,10 +53,10 @@ export default function NavBar(props) {
             </ul>
 
 
-            <Search history={props.history}></Search>
+            <Search history={this.props.history}></Search>
 
         </nav>
-    )
+    )}
 }
 
-//onFilter={props.onFilter}
+

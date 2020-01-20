@@ -52,6 +52,21 @@ async function editArtwork(editedArtwork) {
     }
 }
 
+async function toggleLikeArtwork(artworkId, userId) {
+    const collection = await dbService.getCollection('Artwork')
+    try {
+        // const artworkId = editedArtwork._id;
+        // delete editedArtwork._id;
+
+        await collection.updateOne({ "_id": ObjectId(userId) }, { $set: artworkId.likedByUsers })
+        // editedArtwork._id = artworkId
+        // return editedArtwork
+    } catch (err) {
+        console.log(`ERROR: cannot update artwork ${editedArtwork._id}`, err)
+        throw err;
+    }
+}
+
 async function addArtwork(newArtwork) {
     const collection = await dbService.getCollection('Artwork')
     try {

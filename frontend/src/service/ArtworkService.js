@@ -18,6 +18,10 @@ function getById(artworkId) {
   return HttpService.get(`artwork/${artworkId}`);
 }
 
+async function toggleLike(toggleArtworkLike) {
+  const toggledLike = await HttpService.post(`artwork`, toggleArtworkLike);
+}
+
 async function edit(artwork) {
   console.log('artwork edit service',artwork);
   
@@ -30,5 +34,6 @@ export default {
   query,
   remove,
   edit,
-  getById
+  getById,
+  toggleLike
 };
