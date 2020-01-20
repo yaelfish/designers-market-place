@@ -23,7 +23,7 @@ export default class Reviews extends Component {
         return <div className="comments-container">
              Comments:
             <form className="comment-form flex">
-                <textarea className placeholder="write something..." value={this.state.msg.txt} name="msg" onChange={this.msgHandleChange}></textarea>
+                <textarea placeholder="write something..." value={this.state.msg.txt} name="msg" onChange={this.msgHandleChange}></textarea>
                 <button onClick={(event) => this.addMsg(event, this.state.msg)}>Publish</button>
             </form>
             {this.props.reviews.length > 0 && <ul className="comments-area">
