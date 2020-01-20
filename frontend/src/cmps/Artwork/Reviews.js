@@ -19,16 +19,22 @@ export default class Reviews extends Component {
 
 
     render() {
-        // console.log(this.props.reviews);
         return <div className="comments-container">
-             Comments:
+            Comments:
             <form className="comment-form flex">
                 <textarea placeholder="write something..." value={this.state.msg.txt} name="msg" onChange={this.msgHandleChange}></textarea>
                 <button onClick={(event) => this.addMsg(event, this.state.msg)}>Publish</button>
             </form>
             {this.props.reviews.length > 0 && <ul className="comments-area">
-                { this.props.reviews.map((review, idx) => (
-                    <li key={idx}><div className="comment-by-user">{review.byUser.fullName}</div> {review.msg}</li>
+                {this.props.reviews.map((review, idx) => (
+                    <li className="flex align-center" key={idx}>
+                            <div className="flex column align-center comment-profile">
+                                <img src={review.byUser.imgUrl}></img>
+                                <div className="comment-by-user">{review.byUser.fullName}</div>
+                            </div>
+                        <div>{review.msg}</div>
+                    </li>
+
                 ))}
             </ul>}
 
