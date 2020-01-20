@@ -20,6 +20,7 @@ function getById(artworkId) {
 
 async function toggleLike(toggleArtworkLike) {
   const toggledLike = await HttpService.post(`artwork`, toggleArtworkLike);
+  return toggledLike;
 }
 
 async function edit(artwork) {
