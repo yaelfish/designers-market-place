@@ -136,6 +136,7 @@ class DetailsArtwork extends Component {
                     </div>
 
                     {/* <Carousel artSrc={selectedArtwork.imgUrl}/> */}
+                    <img src={selectedArtwork.imgUrl} ></img>
                 </div>
 
                 <div className="details-text-container">
