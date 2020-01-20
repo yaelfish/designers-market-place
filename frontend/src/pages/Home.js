@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../actions/UserActions';
 import { connect } from 'react-redux';
+
 import coverImg from '../assets/images/coverHome.jpg'
 import photography from '../assets/images/tags/photography.jpg'
+import nature from '../assets/images/tags/nature.jpg'
+import landscape from '../assets/images/tags/landscape.jpg'
+import animals from '../assets/images/tags/animals.jpg'
 
 class Home extends Component {
   state = {
@@ -28,17 +32,17 @@ class Home extends Component {
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork', filterProps: {tags: "reflection"}}}>
-                <img className="category-link" src="https://i.etsystatic.com/15350345/r/il/ee7c87/1641242091/il_570xN.1641242091_iqg2.jpg"/>
+              <Link className="category-link" to={{pathname:'/artwork', filterProps: {tags: "landscape"}}}>
+                <img className="category-link" src={landscape}/>
               </Link>
-              <span className="category-tag">Reflection</span>
+              <span className="category-tag">Landscape</span>
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork', filterProps: {tags: "sunset"}}}>
-                <img className="category-link" src="https://sw16624.smartweb-static.com/upload_dir/shop/Hilma-af-klint-plakat-poster-ur.jpg"/>
+              <Link className="category-link" to={{pathname:'/artwork', filterProps: {tags: "animals"}}}>
+                <img className="category-link" src={animals}/>
               </Link>
-              <span className="category-tag">Sunset</span>
+              <span className="category-tag">Animals</span>
             </li>
 
             <li className="category-li"> 
@@ -51,7 +55,7 @@ class Home extends Component {
             
             <li className="category-li"> 
               <Link className="category-link" to={{pathname:'/artwork', filterProps: {tags: "nature"}}}>
-                <img className="category-link" src="https://sw16624.smartweb-static.com/upload_dir/shop/Hilma-af-klint-plakat-poster-ur.jpg"/>
+                <img className="category-link" src={nature}/>
               </Link>
               <span className="category-tag">Nature</span>
             </li>
