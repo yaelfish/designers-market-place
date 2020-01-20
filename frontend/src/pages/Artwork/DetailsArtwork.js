@@ -72,8 +72,8 @@ class DetailsArtwork extends Component {
     loadArtwork = async() => {
         const { _id } = this.props.match.params;
         const currArtwork = await this.props.loadArtworkById(_id);
-        debugger
-        console.log(currArtwork);
+
+        // console.log(currArtwork);
         
         return currArtwork;
     }
