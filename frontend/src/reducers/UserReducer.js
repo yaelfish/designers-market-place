@@ -17,6 +17,8 @@ export default function (state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_USER':
       return { ...state, loggedInUser: action.user };
+    case 'CURR_USER':
+      return { ...state, loggedInUser: action.user };
     case 'USER_REMOVE':
       return {
         ...state,

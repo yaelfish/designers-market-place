@@ -1,50 +1,53 @@
-
 .card-artwork {
-     box-shadow: 0px 0px 4px 1px #707070;
-     position:relative;
+  box-shadow: 0px 0px 4px 1px #707070;
+  position: relative;
+  cursor: pointer;
 
-     &:hover{
-        box-shadow: 0px 0px 9px 4px #121313;
-        .preview-price{
-            display:inline;
-            text-shadow: 1px 2px 10px #3b0edc;
-            font-weight:600;
-        }
-     }
-
-     .art-preview-text {
-         p.preview-artwork-name {
-            font-weight: 800;
-            margin-bottom: 0;
-            margin: 0.75rem 0 0;
-        }
-        p.preview-artwork-artist {
-            font-size: 0.8rem;
-        }
-     }
-    .preview-price{
-        color:white;
-        position: absolute;
-        top:10px;
-        left:10px;
+  &:hover {
+    box-shadow: 0px 0px 9px 4px #121313;
+    cursor: pointer;
+    .preview-price {
+      display: inline;
+      text-shadow: 1px 2px 10px #3b0edc;
+      font-weight: 600;
     }
-        img {
-            max-height: 200px;
-            object-fit: cover;
-        }
-        .preview-info {
-            width: 100%;
-            padding: 2px 7px 0;
+  }
 
-            // p{
-            //     margin: rem(12px) 0 ;
-            // } 
-
-            .preview-icon{
-                width:24px;
-                height:24px;
-            }
-        }
-
-     
+  .art-preview-text {
+    p.preview-artwork-name {
+      font-weight: 800;
+      margin-bottom: 0;
+      margin: 0.75rem 0 0;
     }
+    p.preview-artwork-artist {
+      font-size: 0.8rem;
+    }
+  }
+  .preview-price {
+    color: white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  img {
+    max-height: 200px;
+    object-fit: cover;
+  }
+  .preview-info {
+    width: 100%;
+    padding: 2px 7px 0;
+
+    // p{
+    //     margin: rem(12px) 0 ;
+    // }
+    .preview-likes-container {
+      font-size: 12px;
+    }
+
+    .preview-icon-like {
+      width: 17px;
+      height: 17px;
+      margin-left: 7px;
+    }
+  }
+}

@@ -55,12 +55,27 @@ export function removeArtwork(artworkId) {
 
 
 export function editArtwork(artwork) {
+  console.log(artwork);
+  
   return async dispatch => {
     try {
       const editArtwork = await ArtworkService.edit(artwork)
       dispatch(_editArtwork(editArtwork));
     } catch (err) {
       console.log('ArtworkActions: err in editArtwork', err);
+    }
+  }
+}
+
+export function toggleLike(artworkId, userId) {
+  return async dispatch => {
+    try {
+      const toggleArtworkLike = await ArtworkService.toggleLike(artworkId, userId)
+      console.log('like',toggleArtworkLike);
+      
+      dispatch(_toggleArtwork(toggleArtworkLike));
+    } catch (err) {
+      console.log('ArtworkActions: err in toggle Like', err);
     }
   }
 }
@@ -91,6 +106,13 @@ function _editArtwork(editedArtwork) {
   return {
     type: 'ARTWORK_EDIT',
     editedArtwork
+  };
+}
+
+function _toggleArtwork(toggleArtworkLike) {
+  return {
+    type: 'LIKE_TOGGLE',
+    toggleLike
   };
 }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ArtworkForm from '../../cmps/Artwork/ArtworkForm'
-import MainNavbar from '../../cmps/MainNavbar';
 import { addArtwork } from '../../actions/ArtworkActions';
 
 class AddArtwork extends Component {

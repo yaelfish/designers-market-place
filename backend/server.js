@@ -9,10 +9,11 @@ const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-// const authRoutes = require('./api/auth/auth.routes')
-// const userRoutes = require('./api/user/user.routes')
+const authRoutes = require('./api/auth/auth.routes')
+const userRoutes = require('./api/user/user.routes')
 const artworkRoutes = require('./api/artwork/artwork.routes')
-// const connectSockets = require('./api/socket/socket.routes')
+const reviewRoutes = require('./api/review/review.routes')
+const connectSockets = require('./api/socket/socket.routes')
 
 
 app.use(cookieParser())
@@ -35,10 +36,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // routes
-// app.use('/api/auth', authRoutes)
-// app.use('/api/user', userRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/user', userRoutes)
 app.use('/api/artwork', artworkRoutes)
-// connectSockets(io)
+app.use('/api/review', reviewRoutes)
+connectSockets(io)
 
 
 

@@ -11,7 +11,7 @@ class AppArtwork extends Component {
  
 
     componentDidMount() {
-        this.props.loadArtworks();
+        this.props.loadArtworks({tags: ''});
     }
 
     render() {

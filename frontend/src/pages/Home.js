@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import MainNavbar from '../cmps/MainNavbar';
 import { login } from '../actions/UserActions';
 import { connect } from 'react-redux';
 import coverImg from '../assets/images/coverHome.jpg'
@@ -19,7 +18,7 @@ class Home extends Component {
       <React.Fragment>
 
         <div className="home">
-          <div className="cover flex justify-center align-center"><img src={coverImg}></img><span className="home-title">Artwork Gallery</span></div>
+          <div className="cover flex justify-center align-center"><img alt="" src={coverImg}></img><span className="home-title">Artwork Gallery</span></div>
           <ul className="category-links clean-list">
             <li className="category-li"> 
               <Link className="category-link" to={{pathname:'/artwork', filterProps: {tags: "photography"}}}>
@@ -59,17 +58,17 @@ class Home extends Component {
 
             <li>
               <Link className="category-link" to='/artwork'>
-                <img className="category-link" src="https://www.howardshollow.com/canvascolor/IMAGES/modernist/b/2a.jpg" />
+                <img alt="" className="category-link" src="https://www.howardshollow.com/canvascolor/IMAGES/modernist/b/2a.jpg" />
               </Link>
             </li>
             <li>
               <Link className="category-link" to='/artwork'>
-                <img className="category-link" src="https://sw16624.smartweb-static.com/upload_dir/shop/Hilma-af-klint-plakat-poster-ur.jpg" />
+                <img alt="" className="category-link" src="https://sw16624.smartweb-static.com/upload_dir/shop/Hilma-af-klint-plakat-poster-ur.jpg" />
               </Link>
             </li>
             <li>
               <Link className="category-link" to='/artwork'>
-                <img className="category-link" src="https://www.howardshollow.com/canvascolor/IMAGES/modernist/b/2a.jpg" />
+                <img alt="" className="category-link" src="https://www.howardshollow.com/canvascolor/IMAGES/modernist/b/2a.jpg" />
               </Link>
             </li>
           </ul>

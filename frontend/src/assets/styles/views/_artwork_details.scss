@@ -1,38 +1,107 @@
 .details-container {
-  .details-image-container {
-    vertical-align: top;
-    width: 58%;
-  }
-  .art-name {
-    font-weight: 700;
-    font-size: 1.5rem;
-  }
-  .art-name::first-letter {
-    text-transform: capitalize;
-  }
-  .like-icon {
-    background: url("../../images/icons/like.png") no-repeat center center;
-    width: 36px;
-  }
-  .liked-icon {
-    background: url("../../images/icons/liked.png") no-repeat center center;
-    width: 36px;
-  }
-  .action-btns {
-    .edit-btn {
-      width: 100px;
-    // padding: 8px 10px;
-    margin: 5px 0px;
-    font-size: 1rem;
-    font-weight: normal;
-    border: none;
-    background-color: #4CD4BF;
-    color: #fff;
-    border-radius: 2px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s;
-    cursor: pointer;
+  margin: 0 auto;
+  max-width: $normal-breakpoint;
+  .details-product-container {
+    margin-bottom: 50px;
+
+    .purchased-modal {
+      background: rgba(103, 236, 103, 0.4);
+      display: inline-block;
+      border-radius: 20px;
+      width: 120px;
+      text-align: center;
+      color: white;
+      font-weight: 700;
+      text-shadow: 0px 0px 4px black;
+      transform: rotate(-22deg);
+      position: absolute;
+      top: 11px;
+      left: -2px;
+    }
+    .details-text-container {
+      position: relative;
+    }
+    .details-image-container {
+      vertical-align: top;
+      width: 58%;
+    }
+    .art-name {
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .art-name::first-letter {
+      text-transform: capitalize;
+    }
+    .preview-likes-container {
+      font-size: 12px;
+
+      .likes-counter {
+        vertical-align: top;
+        display: inline-block;
+        color: #6e6e6e;
+        font-size: 16px;
+        line-height: 14px;
+        font-family: greycliff, sans-serif;
+      }
+      label {
+        cursor: pointer;
+      }
+      input#like-toggle {
+        display: none;
+        cursor: pointer;
+      }
+
+      .preview-icon-like {
+        width: 17px;
+        height: 17px;
+        margin-left: 7px;
+        margin-right: 3px;
+        transition: 0.4s;
+      }
+      .art-name {
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      .art-name::first-letter {
+        text-transform: capitalize;
+      }
+      .like-icon {
+        background: url("../../images/icons/like.png") no-repeat center center;
+        width: 36px;
+      }
+      .liked-icon {
+        background: url("../../images/icons/liked.png") no-repeat center center;
+        width: 36px;
+      }
+      .heart {
+        width: 100px;
+        height: 100px;
+        background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+        background-position: 0 0;
+        cursor: pointer;
+        transition: background-position 1s steps(28);
+        transition-duration: 0s;
+
+        &.is-active {
+          transition-duration: 1s;
+          background-position: -2800px 0;
+        }
+      }
+    }
+    .action-btns {
+      .edit-btn {
+        width: 100px;
+        // padding: 8px 10px;
+        margin: 5px 0px;
+        font-size: 1rem;
+        font-weight: normal;
+        border: none;
+        background-color: #4cd4bf;
+        color: #fff;
+        border-radius: 2px;
+        text-align: center;
+        margin: 0 auto;
+      }
     }
   }
 }

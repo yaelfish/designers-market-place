@@ -20,9 +20,9 @@ export default class Reviews extends Component {
 
     render() {
         // console.log(this.props.reviews);
-        return <div>
-            <form className="comment-form">
-                <input placeholder="write something..." value={this.state.msg.txt} name="msg" onChange={this.msgHandleChange}></input>
+        return <div className="comments-area">
+            <form className="comment-form flex">
+                <textarea className placeholder="write something..." value={this.state.msg.txt} name="msg" onChange={this.msgHandleChange}></textarea>
                 <button onClick={(event) => this.addMsg(event, this.state.msg)}>Publish</button>
             </form>
 
