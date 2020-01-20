@@ -28,11 +28,12 @@ export default class Reviews extends Component {
             {this.props.reviews.length > 0 && <ul className="comments-area">
                 {this.props.reviews.map((review, idx) => (
                     <li className="flex align-center" key={idx}>
-                            <div className="flex column align-center comment-profile">
-                                <img src={review.byUser.imgUrl}></img>
-                                <div className="comment-by-user">{review.byUser.fullName}</div>
-                            </div>
+                        <div className="flex column align-center comment-profile">
+                            <img src={review.byUser.imgUrl}></img>
+                            <div className="comment-by-user">{review.byUser.fullName}</div>
+                        </div>
                         <div>{review.msg}</div>
+                        <button className="btn delete-review delete" onClick={this.onDeleteReview}></button>
                     </li>
 
                 ))}
