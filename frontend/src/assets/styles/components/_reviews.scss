@@ -1,7 +1,27 @@
-.comment-form {
-    margin-left:40px;
-  textarea {
-    width: 450px;
-    align-self: center;
+.comments-container {
+  .comment-form {
+    margin-bottom: 10px;
+    textarea {
+      width: 450px;
+      align-self: center;
+    }
+  }
+  .comments-area {
+    border: solid 1px black;
+    padding: 2px;
+    background-clip: border-box;
+    li {
+      padding: 10px 20px;
+      background-clip: border-box;
+
+      &:nth-child(odd) {
+        background-color: rgba(206, 243, 250, 0.4);
+      }
+    }
+  }
+
+  .comment-by-user {
+    font-size: rem(10px);
+    font-weight: 800;
   }
 }
