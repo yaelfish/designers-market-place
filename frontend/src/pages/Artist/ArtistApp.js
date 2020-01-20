@@ -20,14 +20,14 @@ class AppArtwork extends Component {
       
             <main className="container main-app-container artist-container">
                 <header className="artist-header">
-                      <h2>{this.props.user.fullName}'s Homepage</h2><img className="profile-pic" src={this.props.user.imgUrl}></img>
+                      <h2>{this.props.loggedInUser.fullName}'s Homepage</h2><img className="profile-pic" src={this.props.loggedInUser.imgUrl}></img>
                     <p>
                      Your personal space for all your artworks, statistics and information.
                     </p>
         
                 </header>
 
-                <ArtistTabs artworks={this.props.artworks} user={this.props.user}></ArtistTabs>
+                <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs>
               
             </main>
             
@@ -42,14 +42,15 @@ class AppArtwork extends Component {
 const mapStateToProps = state => {
     return {
         artworks: state.artwork.artworks,
-        user: {
-            "_id" : "5e21b63a1c9d44000093752d",
-            "userName" : "kerryjm2020",
-            "fullName" : "Kerry James Marshall",
-            "password" : "1234567890",
-            "isArtist"	: true,
-            "imgUrl" : "https://www.americanacademy.de/wp-content/uploads/2017/04/Marshall-Kerry-James-1.jpg"
-          }
+        // user: {
+        //     "_id" : "5e21b63a1c9d44000093752d",
+        //     "userName" : "kerryjm2020",
+        //     "fullName" : "Kerry James Marshall",
+        //     "password" : "1234567890",
+        //     "isArtist"	: true,
+        //     "imgUrl" : "https://www.americanacademy.de/wp-content/uploads/2017/04/Marshall-Kerry-James-1.jpg"
+        //   }
+        loggedInUser: state.user.loggedInUser
     };
 };
 const mapDispatchToProps = {

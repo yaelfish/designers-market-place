@@ -43,15 +43,6 @@ const mapStateToProps = state => {
     return {
         artworks: state.artwork.artworks,
         loggedInUser: state.user.loggedInUser
-        // loggedInUser: {
-        //     _id: "5e21b63a1c9d44000093752d",
-        //     userName: "kerryjm2020",
-        //     fullName: "Kerry James Marshall",
-        //     password: "1234567890",
-        //     isArtist: true,
-        //     imgUrl: "http://lionhallattorneys.com.ng/wp-content/uploads/2015/12/empty-profile.png",
-        //     email: "kerryjm2020@gmail.com"
-        // }
     };
 };
 const mapDispatchToProps = {

@@ -19,7 +19,7 @@ class ArtistTabs extends Component {
   {
     
     const artistArtworks = this.props.artworks.filter(artwork => {
-      return this.props.user._id === artwork.artist._id
+      return this.props.artistUser._id === artwork.artist._id
     })
     this.setState({artistArtworks})
   }
@@ -36,7 +36,7 @@ class ArtistTabs extends Component {
             insert statistics here
         </div>
           <div label="Profile">
-            Name: {this.props.user.fullName}
+            Name: {this.props.artistUser.fullName}
             <div><button className="profileButton">Edit</button></div>
           </div>
         </Tabs>
