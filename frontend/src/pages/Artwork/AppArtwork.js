@@ -16,6 +16,8 @@ class AppArtwork extends Component {
     loadArtworks = () => {
 
         this.props.loadArtworks(this.props.location.filterProps)
+        console.log(this.props.location.filterProps);
+        
     }
 
 

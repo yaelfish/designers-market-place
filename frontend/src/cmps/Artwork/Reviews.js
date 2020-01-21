@@ -9,8 +9,8 @@ export default class Reviews extends Component {
 
     componentDidMount() {
         SocketService.setup();
-        SocketService.emit('chat topic', this.props.selectedArtwork._id);
-        SocketService.on('chat addMsg', this.addMsg);
+        SocketService.emit('chat topic', this.props.selectedArtwork);
+        SocketService.on('chat addMsg', this.receiveMsg);
     }
 
     // componentWillUnmount() {
@@ -24,22 +24,17 @@ export default class Reviews extends Component {
     };
 
 
-    sendMsg = (ev, newMsg) => {
+    sendMsg = async (ev, newMsg) => {
         ev.preventDefault();
-        this.props.sendMsg(newMsg);
-        SocketService.emit('chat newMsg', newMsg);
+        const msgReturned = await this.props.sendMsg(newMsg);
+        SocketService.emit('chat newMsg', msgReturned.msg);
+        this.props.loadReviews({ aboutArtworkId: this.props.selectedArtwork })
+
         this.setState({ msg: '' });
     }
 
-    addMsg = (newMsg) => {
-        return (<li className="flex align-center">
-            <div className="flex column align-center comment-profile">
-                <img src={this.props.loggedInUser.imgUrl}></img>
-                <div className="comment-by-user">{this.props.loggedInUser.fullName}</div>
-            </div>
-            <div>{newMsg}</div>
-            <button className="btn delete-review delete" onClick={this.props.onDeleteReview}></button>
-        </li>)
+    receiveMsg = (newMsg) => {
+        this.props.loadReviews({ aboutArtworkId: this.props.selectedArtwork });
     }
 
 
@@ -62,7 +57,7 @@ export default class Reviews extends Component {
                         <button className="btn delete-review delete" onClick={this.props.onDeleteReview}></button>
                     </li>
                 ))}
-                {this.addMsg}
+                {/* {this.addMsg} */}
             </ul>}
 
         </div>
