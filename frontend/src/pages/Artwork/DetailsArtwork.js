@@ -96,9 +96,8 @@ class DetailsArtwork extends Component {
         this.props.history.push('/artwork')
     }
 
-      addMsg = async newMsg => {
+    sendMsg = async newMsg => {
         await this.props.addReview(newMsg, this.props.selectedArtwork._id)
-        this.loadReviews();
     };
 
     render() {
@@ -165,7 +164,7 @@ class DetailsArtwork extends Component {
                 </div>
                 </div>
                 
-                <Reviews addMsg={this.addMsg} reviews={this.props.reviews} ></Reviews>
+                <Reviews sendMsg={this.sendMsg} reviews={this.props.reviews} selectedArtwork={this.props.selectedArtwork} loggedInUser={this.props.loggedInUser} ></Reviews>
             </section>
         </React.Fragment>
     }

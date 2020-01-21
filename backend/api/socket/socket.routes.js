@@ -3,7 +3,7 @@ module.exports = connectSockets
 
 function connectSockets(io) {
     io.on('connection', socket => {
-        socket.on('cchat newMsg', msg=>{
+        socket.on('chat newMsg', msg=>{
             console.log(msg)
             // io.emit('chat addMsg', msg)
             // emits only to sockets in the same room
