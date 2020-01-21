@@ -17,11 +17,24 @@
       &:nth-child(odd) {
         background-color: rgba(206, 243, 250, 0.4);
       }
-    }
-  }
 
-  .comment-by-user {
-    font-size: rem(10px);
-    font-weight: 800;
+      .delete-review{
+        object-fit: contain;
+        height:70px;
+      }
+
+      .comment-profile {
+        margin-right:20px;
+
+        .comment-by-user {
+          font-size: rem(10px);
+          font-weight: 800;
+        }
+        img {
+          width: 50px;
+          border-radius: 25px;
+        }
+      }
+    }
   }
 }

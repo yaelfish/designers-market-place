@@ -111,7 +111,7 @@ function _editArtwork(editedArtwork) {
 function _toggleArtwork(toggleArtworkLike) {
   return {
     type: 'LIKE_TOGGLE',
-    toggleLike
+    toggleArtworkLike
   };
 }
 

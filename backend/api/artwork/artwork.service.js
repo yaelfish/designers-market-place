@@ -2,16 +2,6 @@
 const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
-
-module.exports = {
-    deleteArtwork,
-    addArtwork,
-    getArtworkById,
-    editArtwork,
-    getArtworks
-};
-
-
 async function getArtworks(filterBy) {
    
     const criteria = _buildCriteria(filterBy)
@@ -53,14 +43,16 @@ async function editArtwork(editedArtwork) {
 }
 
 async function toggleLikeArtwork(artworkId, userId) {
+    artworkId = ObjectId(artworkId);
+    userId = ObjectId(userId);
     const collection = await dbService.getCollection('Artwork')
+    // const artworkId = editedArtwork._id;
+    // delete editedArtwork._id;
     try {
-        // const artworkId = editedArtwork._id;
-        // delete editedArtwork._id;
 
-        await collection.updateOne({ "_id": ObjectId(userId) }, { $set: artworkId.likedByUsers })
+        const toggle = await collection.updateOne({ "_id": ObjectId(artworkId) }, { $set: { "_id": ObjectId(userId)}})
         // editedArtwork._id = artworkId
-        // return editedArtwork
+        return toggle;
     } catch (err) {
         console.log(`ERROR: cannot update artwork ${editedArtwork._id}`, err)
         throw err;
@@ -123,3 +115,11 @@ function _buildCriteria(filterBy) {
     return criteria;
 }
 
+module.exports = {
+    deleteArtwork,
+    addArtwork,
+    getArtworkById,
+    editArtwork,
+    getArtworks,
+    toggleLikeArtwork
+};

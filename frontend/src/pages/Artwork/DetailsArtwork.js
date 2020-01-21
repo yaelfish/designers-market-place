@@ -13,26 +13,26 @@ import liked from '../../assets/images/icons/liked.png';
 class DetailsArtwork extends Component {
 
     state = {
-        isAddedToCart: false
+        isAddedToCart: false,
+        isLiked: false,
+        currUserId: ''
     }
 
     async componentDidMount() {
          try {
            const artwork = await this.loadArtwork();
-        //    console.log(artwork);
-            //  this.setIsLiked
+           const user = await this.props.loggedInUser;
+           this.setIsLiked(user._id);
            const reviews = await this.loadReviews();
-           console.log(this.state.isLiked);
-           
          } catch (err) {
              console.log('err:' , err);
-             
          }
     }
 
-    setIsLiked = (artwork) => {
-        artwork.likedByUsers.includes(this.props.loggedInUser) ? 
-            this.setState({ isLiked: true }) : this.setState({ isLiked: false }) 
+    setIsLiked = (currUserId) => {
+       const likesArr = this.props.selectedArtwork.likedByUsers;
+       const found = likesArr.find(user=>user._id === currUserId);
+       (found) ? this.setState({ isLiked: true }) : this.setState({ isLiked: false }) 
     }
 
     componentDidUpdate(prevProps) {
@@ -46,35 +46,34 @@ class DetailsArtwork extends Component {
     }
 
     onToggleLike = async () => {
-        await this.setState(prevState => ({ isLiked: !prevState.isLiked }), this.updateLiked); 
+        await this.setState(prevState => ({ isLiked: !prevState.isLiked })) 
+        await this.updateLiked(); 
         console.log(this.state.isLiked);
-        
     }
 
     updateLiked = async () => {
+        debugger
         let { loggedInUser, selectedArtwork } = this.props;
         let likes = [...selectedArtwork.likedByUsers];
-        if( this.state.isLiked ) likes.push(loggedInUser)
-        else likes = likes.filter(user => user._id !== loggedInUser._id);
+        console.log(likes);
+        
+        if (this.state.isLiked) likes = likes.filter(user => user._id !== loggedInUser._id)
+        else likes.push(loggedInUser)
+       
         selectedArtwork.likedByUsers = likes;
-        console.log(selectedArtwork);
-        console.log(this.props);
-        
         this.updateNewArtInStore({ ...selectedArtwork });
-        // this.setState({artwork},this.updateNewArtInStore)
-        
     } 
-    updateNewArtInStore = async (selectedArtwork)=> {
-        await this.props.editArtwork(selectedArtwork);
 
+    updateNewArtInStore = async (selectedArtwork)=> {
+        debugger
+        await this.props.editArtwork(selectedArtwork);
     }
 
     loadArtwork = async() => {
         const { _id } = this.props.match.params;
         const currArtwork = await this.props.loadArtworkById(_id);
-
-        // console.log(currArtwork);
-        
+        // debugger
+        console.log(currArtwork);
         return currArtwork;
     }
 
@@ -99,6 +98,8 @@ class DetailsArtwork extends Component {
     };
 
     render() {
+        console.log('render', this.state.isLiked);
+        
         const {isLiked} = this.state
         const { selectedArtwork } = this.props;
         let artistObj = selectedArtwork.artist;
