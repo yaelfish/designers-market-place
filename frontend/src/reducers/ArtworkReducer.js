@@ -9,6 +9,8 @@ export default function (state = initialState, action = {}) {
       return { ...state, artworks: action.artworks };
     case 'ARTWORK_ADD':
       return { ...state, artworks: [...state.artworks, action.artwork] };
+    case 'LIKE_TOGGLE':
+      return { ...state, artworks: [...state.artworks, action.toggleArtworkLike] };
     case 'ARTWORK_EDIT':
       return {
         ...state,

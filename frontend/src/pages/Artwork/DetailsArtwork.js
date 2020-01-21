@@ -6,6 +6,8 @@ import { loading, doneLoading } from '../../actions/SystemActions'
 import { loadReviews,addReview } from '../../actions/ReviewActions'
 import Reviews from '../../cmps/Artwork/Reviews'
 import Carousel from '../../cmps/Carousel';
+// import ArtTemplate from '../../cmps/Artwork/TemplatesArt/ArtTemplate';
+// import FramedArtwork from '../../Artwork/TemplatesArt/FramedArtwork';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
@@ -52,7 +54,7 @@ class DetailsArtwork extends Component {
     }
 
     updateLiked = async () => {
-        debugger
+        // debugger
         let { loggedInUser, selectedArtwork } = this.props;
         let likes = [...selectedArtwork.likedByUsers];
         console.log(likes);
@@ -65,7 +67,7 @@ class DetailsArtwork extends Component {
     } 
 
     updateNewArtInStore = async (selectedArtwork)=> {
-        debugger
+        // debugger
         await this.props.editArtwork(selectedArtwork);
     }
 
@@ -115,10 +117,12 @@ class DetailsArtwork extends Component {
         
         return <React.Fragment>
             <Breadcrumb />
+            
             <section className="details-container flex column">
                 <div className="details-product-container flex">
                 <div className="container details-image-container">
                     <Carousel artSrc={selectedArtwork.imgUrl}/>
+                        {/* <FramedArtwork artSrc={selectedArtwork.imgUrl} /> */}
                 </div>
 
                 <div className="details-text-container flex justify-space-between ">
