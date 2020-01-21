@@ -22,8 +22,8 @@ class DetailsArtwork extends Component {
          try {
            const artwork = await this.loadArtwork();
            const user = await this.props.loggedInUser;
-           this.setIsLiked(user._id);
            const reviews = await this.loadReviews();
+        //    this.setIsLiked(user._id);
          } catch (err) {
              console.log('err:' , err);
          }
