@@ -29,28 +29,28 @@ class Home extends Component {
           <div className="cover flex justify-center align-center"><img alt="" src={coverImg}></img><span className="home-title">Artwork Gallery</span></div>
           <ul className="category-links clean-list">
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=photography', filterProps: {tags: "photography"}}}>
+              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=photography'}}>
                 <img className="category-link" src={photography}/>
               </Link>
               <span className="category-tag">Photography</span>
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=landscape', filterProps: {tags: "landscape"}}}>
+              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=landscape'}}>
                 <img className="category-link" src={landscape}/>
               </Link>
               <span className="category-tag">Landscape</span>
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=animals', filterProps: {tags: "animals"}}}>
+              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=animals'}}>
                 <img className="category-link" src={animals}/>
               </Link>
               <span className="category-tag">Animals</span>
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork?tags=pop-art', filterProps: {tags: "Pop-art"}}}>
+              <Link className="category-link" to={{pathname:'/artwork?tags=pop-art'}}>
                 <img className="category-link" src={popArt}/>
               </Link>
               <span className="category-tag">Pop-Art</span>
@@ -58,28 +58,28 @@ class Home extends Component {
 
             
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=nature', filterProps: {tags: "nature"}}}>
+              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=nature'}}>
                 <img className="category-link" src={nature}/>
               </Link>
               <span className="category-tag">Nature</span>
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=illustration', filterProps: {tags: "illustration"}}}>
+              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=illustration'}}>
                 <img className="category-link" src={illustration}/>
               </Link>
               <span className="category-tag">Illustration</span>
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=watercolor', filterProps: {tags: "watercolor"}}}>
+              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=watercolor'}}>
                 <img className="category-link" src={watercolor}/>
               </Link>
               <span className="category-tag">watercolor</span>
             </li>
 
             <li className="category-li"> 
-              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=abstract', filterProps: {tags: "abstract"}}}>
+              <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=abstract'}}>
                 <img className="category-link" src={abstract}/>
               </Link>
               <span className="category-tag">abstract</span>

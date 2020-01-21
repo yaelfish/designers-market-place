@@ -39,8 +39,22 @@ class AppArtwork extends Component {
                      Your personal space for all your artworks, statistics and information.
                     </p>
                 </header>
-
-                <ArtworkList artworks={this.state.artistArtworks} />
+                <a href="#artwork-list">Artworks</a>
+                <a href="#statistics">Statistics</a>
+                <a href="#profile">Profile</a>
+                
+                
+                <div id="profile">Profile details here</div>
+                <div id="artwork-list"><ArtworkList artworks={this.state.artistArtworks} /></div>
+                <div id="statistics">Some Statistics</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
                 {/* <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs> */}
               
             </main>

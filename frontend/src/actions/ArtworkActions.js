@@ -4,7 +4,6 @@ import { loading, doneLoading } from './SystemActions';
 export function loadArtworks(filterBy) {
   return async dispatch => {
     try {
-      console.log('loadartworks action happened')
       const artworks = await ArtworkService.query(filterBy);
       dispatch(_setArtworks(artworks));
   
