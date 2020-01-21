@@ -24,8 +24,8 @@ class DetailsArtwork extends Component {
         try {
             const artwork = await this.loadArtwork();
             const user = await this.props.loggedInUser;
-            this.setIsLiked(user._id);
             const reviews = await this.loadReviews();
+            //    this.setIsLiked(user._id);
         } catch (err) {
             console.log('err:', err);
         }
@@ -67,7 +67,6 @@ class DetailsArtwork extends Component {
     }
 
     updateNewArtInStore = async (selectedArtwork) => {
-        // debעugger
         await this.props.editArtwork(selectedArtwork);
     }
 
@@ -94,9 +93,9 @@ class DetailsArtwork extends Component {
         this.props.history.push('/artwork')
     }
 
-    addMsg = async newMsg => {
-        await this.props.addReview(newMsg, this.props.selectedArtwork._id)
-        this.loadReviews();
+    sendMsg = async newMsg => {
+        const msg = await this.props.addReview(newMsg, this.props.selectedArtwork._id)
+        return msg;
     };
 
     render() {
@@ -165,9 +164,7 @@ class DetailsArtwork extends Component {
                     </div>
                 </div>
 
-                <Reviews addMsg={this.addMsg} reviews={this.props.reviews} ></Reviews>
-
-                {/* <FramedArtwork artSrc={selectedArtwork.imgUrl} /> */}
+                <Reviews sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
             </section>
         </React.Fragment>
     }

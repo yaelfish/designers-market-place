@@ -13,11 +13,12 @@ class ArtistTabs extends Component {
 
   componentDidMount() {
     this.loadArtistArtworks();
+  
 }
 
   loadArtistArtworks = () =>
   {
-    
+
     const artistArtworks = this.props.artworks.filter(artwork => {
       return this.props.artistUser._id === artwork.artist._id
     })

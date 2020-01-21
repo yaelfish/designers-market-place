@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 import Search from '../cmps/Search'
+import { connect } from 'react-redux';
+import { loadArtworks } from '../actions/ArtworkActions'
 import { render } from 'react-dom';
 
 
 
-export default class MainNavbar extends Component {
+class MainNavbar extends Component {
 
     state= {
         pathname: window.location.pathname,
@@ -20,8 +22,8 @@ export default class MainNavbar extends Component {
         window.addEventListener("scroll", this.handleScroll);
     }
 
-    componentDidUpdate() {
-
+    loadArtworks = () => {
+        this.props.loadArtworks()
     }
     
     handleScroll = () => {
@@ -47,12 +49,12 @@ export default class MainNavbar extends Component {
             <ul className="nav-links">
                 <li ><NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li><span className="nav-separator">|</span>
                 <li ><NavLink className="nav-link" to='/about' activeClassName="active-link" exact>About</NavLink></li><span className="nav-separator">|</span>
-                <li ><NavLink className="nav-link" to='/artwork' activeClassName="active-link" exact>Artworks</NavLink></li><span className="nav-separator">|</span>
+                <li onClick={this.loadArtworks}><NavLink className="nav-link" to='/artwork' activeClassName="active-link" exact>Artworks</NavLink></li><span className="nav-separator">|</span>
                 <li ><NavLink className="nav-link" to='/artist' activeClassName="active-link" exact>Artist</NavLink></li><span className="nav-separator">|</span>
                 <li><NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink></li>
             </ul>
 
-
+    <div>Hello, {this.props.loggedInUser.fullName}!</div>
             <Search history={this.props.history}></Search>
 
         </nav>
@@ -60,3 +62,18 @@ export default class MainNavbar extends Component {
 }
 
 
+
+const mapStateToProps = state => {
+    return {
+        loggedInUser: state.user.loggedInUser,
+        artworks: state.artwork.artworks
+    };
+};
+
+
+const mapDispatchToProps =  {
+loadArtworks,
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainNavbar);

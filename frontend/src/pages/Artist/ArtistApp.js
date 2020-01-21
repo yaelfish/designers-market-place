@@ -8,10 +8,24 @@ import ArtistTabs from '../../cmps/Artist/ArtistTabs'
 
 class AppArtwork extends Component {
 
- 
+    state = {
+        artistArtworks: []
+      }
 
     componentDidMount() {
-        this.props.loadArtworks({tags: ''});
+       
+        this.loadArtistArtworks()
+      
+        
+}
+
+    loadArtistArtworks =  async () =>
+    {
+        await this.props.loadArtworks()        
+        const artistArtworks = this.props.artworks.filter(artwork => {
+        return this.props.loggedInUser._id === artwork.artist._id
+      })  
+      this.setState({artistArtworks} )
     }
 
     render() {
@@ -24,10 +38,24 @@ class AppArtwork extends Component {
                     <p>
                      Your personal space for all your artworks, statistics and information.
                     </p>
-        
                 </header>
-
-                <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs>
+                <a href="#artwork-list">Artworks</a>
+                <a href="#statistics">Statistics</a>
+                <a href="#profile">Profile</a>
+                
+                
+                <div id="profile">Profile details here</div>
+                <div id="artwork-list"><ArtworkList artworks={this.state.artistArtworks} /></div>
+                <div id="statistics">Some Statistics</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                <div>bla</div>
+                {/* <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs> */}
               
             </main>
             
@@ -42,7 +70,7 @@ class AppArtwork extends Component {
 const mapStateToProps = state => {
     return {
         artworks: state.artwork.artworks,
-        // user: {
+        // loggedInUser: {
         //     "_id" : "5e21b63a1c9d44000093752d",
         //     "userName" : "kerryjm2020",
         //     "fullName" : "Kerry James Marshall",
