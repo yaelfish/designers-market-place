@@ -25,7 +25,7 @@ class DetailsArtwork extends Component {
             const artwork = await this.loadArtwork();
             const user = await this.props.loggedInUser;
             const reviews = await this.loadReviews();
-            //    this.setIsLiked(user._id);
+            this.setIsLiked(user._id);
         } catch (err) {
             console.log('err:', err);
         }
@@ -54,12 +54,11 @@ class DetailsArtwork extends Component {
     }
 
     updateLiked = async () => {
-        // debugger
         let { loggedInUser, selectedArtwork } = this.props;
         let likes = [...selectedArtwork.likedByUsers];
         console.log(likes);
 
-        if (this.state.isLiked) likes = likes.filter(user => user._id !== loggedInUser._id)
+        if (!this.state.isLiked) likes = likes.filter(user => user._id !== loggedInUser._id)
         else likes.push(loggedInUser)
 
         selectedArtwork.likedByUsers = likes;

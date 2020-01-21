@@ -34,6 +34,8 @@ export default class Reviews extends Component {
     }
 
     receiveMsg = (newMsg) => {
+        console.log("we are there");
+        
         this.props.loadReviews({ aboutArtworkId: this.props.selectedArtwork });
     }
 
@@ -43,7 +45,7 @@ export default class Reviews extends Component {
         return <div className="comments-container">
             Comments:
             <form className="comment-form flex">
-                <textarea placeholder="write something..." value={this.state.msg.txt} name="msg" onChange={this.msgHandleChange}></textarea>
+                <textarea placeholder="write something..." value={this.state.msg} name="msg" onChange={this.msgHandleChange}></textarea>
                 <button onClick={(event) => this.sendMsg(event, this.state.msg)}>Publish</button>
             </form>
             {this.props.reviews.length > 0 && <ul className="comments-area">
