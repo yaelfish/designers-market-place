@@ -11,5 +11,6 @@ function query(filterBy) {
 
 async function add(review) {
     const addedReview = await HttpService.post(`review`, review);
+    console.log(addedReview);
     return addedReview;
   }

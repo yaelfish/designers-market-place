@@ -7,9 +7,6 @@ import Tags from '../../cmps/Tags';
 
 class AppArtwork extends Component {
 
-
-
-
     componentDidMount() {
         this.loadArtworks()
 
@@ -25,19 +22,16 @@ class AppArtwork extends Component {
         await this.props.loadArtworks({tags})
     }
 
-
-
     render() {
         return (
             <React.Fragment>
-
                 <main className="container main-app-container">
                     <header>
                         <h2>ART PRINTS </h2>
                       
                         <p>
                             Purchase museum-quality art prints from the world's greatest living artists and iconic brands. Each print is produced using archival inks guaranteed to last for 75 years without fading or loss of color.
-                    </p>
+                        </p>
                     </header>
                     <Tags />
                     <ArtworkList artworks={this.props.artworks} />

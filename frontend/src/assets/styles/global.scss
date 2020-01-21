@@ -17,9 +17,11 @@
 @import "views/main-app-page.scss";
 @import "views/artwork_details";
 @import "views/artist-page";
+@import "views/add-artwork";
 
 // Components
 @import "components/carouselle";
+@import "components/art-template.scss";
 @import "components/main-header.scss";
 @import "components/artwork-list.scss";
 @import "components/cat-card.scss";
@@ -31,9 +33,5 @@
 @import "components/search.scss";
 @import "components/reviews.scss";
 
-// Views
-@import "views/home-page.scss";
-@import "views/add-artwork";
-@import "views/artist-page";
 
 
