@@ -13,18 +13,19 @@ class AppArtwork extends Component {
       }
 
     componentDidMount() {
-        this.props.loadArtworks();
-        this.loadArtistArtworks();
+       
+        this.loadArtistArtworks()
+      
         
-    }
+}
 
-    loadArtistArtworks = () =>
+    loadArtistArtworks =  async () =>
     {
-  
-      const artistArtworks = this.props.artworks.filter(artwork => {
+        await this.props.loadArtworks()        
+        const artistArtworks = this.props.artworks.filter(artwork => {
         return this.props.loggedInUser._id === artwork.artist._id
-      })
-      this.setState({artistArtworks})
+      })  
+      this.setState({artistArtworks} )
     }
 
     render() {

@@ -18,12 +18,11 @@ class AppArtwork extends Component {
 
 
 
-    loadArtworks = () => {
-        const search = this.props.location.search;
-        const params = new URLSearchParams(search);
-        const tags = params.get('tags');
-
-        this.props.loadArtworks({tags})
+    loadArtworks = async () => {
+        const search = await this.props.location.search;
+        const params = await new URLSearchParams(search);
+        const tags = await params.get('tags');
+        await this.props.loadArtworks({tags})
     }
 
 
@@ -53,7 +52,7 @@ const mapStateToProps = state => {
         loggedInUser: state.user.loggedInUser
     };
 };
-const mapDispatchToProps = {
+    const mapDispatchToProps =  {
     loadArtworks,
 };
 

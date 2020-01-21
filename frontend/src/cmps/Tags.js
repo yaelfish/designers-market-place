@@ -13,7 +13,9 @@ export default class Tags extends Component {
             <section className="tags-container">
                 <ul>
                     {this.state.tags.map(tag => {
-                        return <li className="tag" key={tag}><NavLink to={`/artwork?tag=${tag}`} exact>{tag}</NavLink></li>
+                        // return <li className="tag" key={tag}><NavLink  to={`/artwork?tags=${tag}`} exact>{tag}</NavLink></li>
+                        return <li className="tag" key={tag}><a href={`/artwork?tags=${tag}`}>{tag}</a></li>
+                        
                     })}
                 </ul>
             </section>
