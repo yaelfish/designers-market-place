@@ -15,6 +15,7 @@
     "json-server": "^0.15.1",
     "node-sass": "^4.13.1",
     "npm": "^6.13.6",
+    "query-string": "^6.10.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-fontawesome": "^1.7.1",

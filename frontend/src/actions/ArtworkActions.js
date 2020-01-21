@@ -4,10 +4,9 @@ import { loading, doneLoading } from './SystemActions';
 export function loadArtworks(filterBy) {
   return async dispatch => {
     try {
-      
       const artworks = await ArtworkService.query(filterBy);
       dispatch(_setArtworks(artworks));
-
+  
     } catch (err) {
       console.log('ArtworkActions: err in loadArtworks', err);
     }
