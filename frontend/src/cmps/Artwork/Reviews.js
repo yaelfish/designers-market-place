@@ -35,7 +35,7 @@ export default class Reviews extends Component {
 
     receiveMsg = (newMsg) => {
         console.log("we are there");
-        
+
         this.props.loadReviews({ aboutArtworkId: this.props.selectedArtwork });
     }
 
@@ -56,10 +56,11 @@ export default class Reviews extends Component {
                             <div className="comment-by-user">{review.byUser.fullName}</div>
                         </div>
                         <div>{review.msg}</div>
-                        <button className="btn delete-review delete" onClick={this.props.onDeleteReview}></button>
+                        {this.props.loggedInUser._id === review.byUser._id && <button className="btn delete-review delete"
+                            onClick={() => this.props.onDeleteReview(review._id)}></button>}
                     </li>
                 ))}
-                {/* {this.addMsg} */}
+
             </ul>}
 
         </div>

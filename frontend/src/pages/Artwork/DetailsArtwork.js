@@ -11,6 +11,7 @@ import FramedArtwork from '../../cmps/Artwork/TemplatesArt/FramedArtwork';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
+import { removeReview } from '../../actions/ReviewActions'
 
 class DetailsArtwork extends Component {
 
@@ -97,6 +98,10 @@ class DetailsArtwork extends Component {
         return msg;
     };
 
+    onDeleteReview = async (reviewId) => {
+        await this.props.removeReview(reviewId);
+    }
+
     render() {
         console.log('render', this.state.isLiked);
 
@@ -163,7 +168,7 @@ class DetailsArtwork extends Component {
                     </div>
                 </div>
 
-                <Reviews sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
+                <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
             </section>
         </React.Fragment>
     }
@@ -188,7 +193,8 @@ const mapDispatchToProps = {
     editArtwork,
     toggleLike,
     addReview,
-    loadReviews
+    loadReviews,
+    removeReview
 }
 
 export default connect(

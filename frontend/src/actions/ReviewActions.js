@@ -27,6 +27,17 @@ export function addReview(addedMsg, artworkId) {
     };
 }
 
+export function removeReview(reviewId) {
+    return async dispatch => {
+        try {
+            ReviewService.remove(reviewId)
+            dispatch(_removeReview(reviewId));
+        } catch (err) {
+            console.log('ReviewActions: err in removeReview', err);
+        }
+    }
+}
+
 
 function _setReviews(reviews) {
     return {
@@ -40,4 +51,11 @@ function _addReview(review) {
         type: 'ADD_REVIEW',
         review
     }
+}
+
+function _removeReview(reviewId) {
+    return {
+        type: 'REVIEW_REMOVE',
+        reviewId
+    };
 }
