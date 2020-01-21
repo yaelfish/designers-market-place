@@ -43,10 +43,12 @@ async function editArtwork(editedArtwork) {
 }
 
 async function toggleLikeArtwork(artworkId, userId) {
+    artworkId = ObjectId(artworkId);
+    userId = ObjectId(userId);
     const collection = await dbService.getCollection('Artwork')
+    // const artworkId = editedArtwork._id;
+    // delete editedArtwork._id;
     try {
-        // const artworkId = editedArtwork._id;
-        // delete editedArtwork._id;
 
         const toggle = await collection.updateOne({ "_id": ObjectId(artworkId) }, { $set: { "_id": ObjectId(userId)}})
         // editedArtwork._id = artworkId
