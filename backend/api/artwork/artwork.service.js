@@ -60,6 +60,8 @@ async function toggleLikeArtwork(artworkId, userId) {
 }
 
 async function addArtwork(newArtwork) {
+    const artistId = newArtwork.artist._id 
+     newArtwork.artist._id =  ObjectId(artistId) ;    
     const collection = await dbService.getCollection('Artwork')
     try {
         await collection.insertOne(newArtwork);

@@ -21,11 +21,11 @@ class AppArtwork extends Component {
 
     loadArtistArtworks =  async () =>
     {
-        await this.props.loadArtworks()        
+        await this.props.loadArtworks()
         const artistArtworks = this.props.artworks.filter(artwork => {
-        return this.props.loggedInUser._id === artwork.artist._id
-      })  
-      this.setState({artistArtworks} )
+            return this.props.loggedInUser._id === artwork.artist._id
+        })  
+        this.setState({artistArtworks} )
     }
 
     render() {

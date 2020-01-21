@@ -15,7 +15,7 @@ class AddArtwork extends Component {
         return (<>
         <section className="container add-artwork-container flex column">
             <h2>Add A New Artwork</h2>
-            <ArtworkForm onSave={this.onAddArtwork} isAdd={true}/>
+            <ArtworkForm artist={this.props.loggedInUser} onSave={this.onAddArtwork} isAdd={true}/>
         </section>
         </>)
     }
@@ -23,7 +23,8 @@ class AddArtwork extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        selectedArtwork: state.artwork.selectedArtwork
+        selectedArtwork: state.artwork.selectedArtwork,
+        loggedInUser: state.user.loggedInUser
     }
 }
 const mapDispatchToProps = {

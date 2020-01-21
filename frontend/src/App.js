@@ -8,7 +8,7 @@ import AppArtwork from './pages/Artwork/AppArtwork';
 import AddArtwork from './pages/Artwork/AddArtwork';
 import DetailsArtwork from './pages/Artwork/DetailsArtwork';
 import ArtistApp from './pages/Artist/ArtistApp'
-
+import '@progress/kendo-theme-material/dist/all.css';
 import MainNavbar from './cmps/MainNavbar'
 
 // import EditArtwork from './pages/Artwork/EditArtwork';

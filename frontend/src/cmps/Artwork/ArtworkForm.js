@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CloudinaryService from '../../service/CloudinaryService';
+import { MultiSelect } from '@progress/kendo-react-dropdowns';
+
+const tagsData = ["photography","illustration","nature","abstract","landscape","animals","vintage","pop-art","watercolor"]
+
 
 export default class ArtworkForm extends React.Component {
     state = {
@@ -10,18 +14,9 @@ export default class ArtworkForm extends React.Component {
                 _id: "u1",
                 fullName: "Kerry James Marshall"
             },
-            likedByUsers: [
-                {
-                    _id: "u1",
-                    fullName: "Kerry James Marshall"
-                },
-                {
-                    _id: "u2",
-                    fullName: "Shraga Puk"
-                }
-            ],
+            likedByUsers: [],
             imgUrl: [],
-            tags: ["nature","modernism"],
+            tags: [],
             price: 0,
             description: '',
             createdAt: Date.now()
@@ -38,6 +33,7 @@ export default class ArtworkForm extends React.Component {
             this.setFormDataForEdit();
         } else {
             this.setState({ isAddMode: true });
+            this.setState(prevState => ({artwork: { ...prevState.artwork, artist : {_id : this.props.artist._id, fullName: this.props.artist.fullName}}}))
             return;
         }
     }
@@ -50,6 +46,13 @@ export default class ArtworkForm extends React.Component {
         if (prevProps.artwork !== this.props.artwork) {
             this.setState({ artwork: this.props.artwork })
         }
+    }
+
+    onSelectTag = (event) => {
+        this.setState( {artwork : {...this.state.artwork, tags : [ ...event.target.value ] }})
+        
+   
+  
     }
 
     setFormDataForEdit = () => {
@@ -113,6 +116,18 @@ export default class ArtworkForm extends React.Component {
             <label>Description:</label>
             <textarea placeholder="description" name="description"
                       onChange={this.onInputChange} value={artwork.description}  />
+
+<div className="tags-selection">
+                <div>
+                    <div>Tags:</div>
+                    <MultiSelect
+                        data={tagsData}
+                        onChange={this.onSelectTag}
+                        value={this.state.artwork.tags}
+                    />
+                </div>
+            </div>
+
             <label> Upload your image:
                 <input onChange={this.onUploadImg} type="file" placeholder="image url" name="imgUrl" />
             </label>

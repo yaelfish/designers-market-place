@@ -48,7 +48,7 @@ class EditArtwork extends Component {
 const mapStateToProps = (state) => {
     return {
         selectedArtwork: state.artwork.selectedArtwork,
-        user: state.user
+        loggedInUser: state.user.loggedInUser
     }
 }
 const mapDispatchToProps = {
