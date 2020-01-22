@@ -18,6 +18,10 @@
       &:nth-child(odd) {
         background-color: rgba(206, 243, 250, 0.4);
       }
+      &:nth-child(even) {
+        background-color: #ffffff;
+      }
+
 
       .delete-review {
         object-fit: contain;

@@ -41,7 +41,7 @@ class OrderAdd extends Component {
     render() {
         console.log('log from render',this.props.artwork)
         return (
-            <button className="add-to-cart submit" onClick={this.onBuyNow}>Buy Now</button>
+            <button className="add-to-cart submit flex justify-center align-center" onClick={this.onBuyNow}><div>Buy Now</div></button>
         )
     }
 

@@ -2,6 +2,12 @@
   margin: 0 auto;
   max-width: $normal-breakpoint;
   margin-top: 40px;
+  .profile-picture-details {
+    object-fit: cover;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+  }
   .details-product-container {
     margin-bottom: 50px;
 
@@ -9,12 +15,32 @@
       position: relative;
       .art-price {
         color: $gold;
-        font-size: 20px;
+        font-size: 30px;
       }
-    }
-    .details-image-container {
-      vertical-align: top;
-      width: 58%;
+      aside {
+        background-color: #f9f8ee;
+        border-radius: 10px;
+        .add-to-cart {
+          display: flex;
+          width: calc(100% + 21px);
+          position: relative;
+          background: $gold;
+          padding: 15px 10px;
+          div {
+            font-weight: 800;
+          }
+        }
+        .add-to-cart::after {
+          content: "";
+          position: absolute;
+          display: block;
+          bottom: -10px;
+          right: 0px;
+          border-style: solid;
+          border-color: $gold transparent transparent $gold;
+          border-width: 5px;
+        }
+      }
     }
     .art-name {
       font-weight: 700;
@@ -45,9 +71,7 @@
       .preview-icon-like {
         width: 17px;
         height: 17px;
-        margin-left: 7px;
-        margin-right: 3px;
-        transition: 0.4s;
+        transition: 0.8s;
       }
       .art-name {
         font-weight: 700;
