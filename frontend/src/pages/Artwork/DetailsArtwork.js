@@ -12,18 +12,22 @@ import Breadcrumb from '../../cmps/Breadcrumb';
 import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
 import { removeReview } from '../../actions/ReviewActions'
+import OrderAdd from '../../cmps/Order/OrderAdd'
 
 class DetailsArtwork extends Component {
 
     state = {
         isAddedToCart: false,
         isLiked: false,
-        currUserId: ''
+        currUserId: '',
+        currArtwork: null
     }
 
     async componentDidMount() {
         try {
             const artwork = await this.loadArtwork();
+    
+            this.setState({currArtwork : this.props.selectedArtwork})
             const user = await this.props.loggedInUser;
             const reviews = await this.loadReviews();
             this.setIsLiked(user._id);
@@ -73,7 +77,7 @@ class DetailsArtwork extends Component {
     loadArtwork = async () => {
         const { _id } = this.props.match.params;
         const currArtwork = await this.props.loadArtworkById(_id);
-        // debugger
+     
         console.log(currArtwork);
         return currArtwork;
     }
@@ -107,6 +111,10 @@ class DetailsArtwork extends Component {
 
         const { isLiked } = this.state
         const { selectedArtwork } = this.props;
+        const order = {...selectedArtwork};
+ 
+     
+        
         let artistObj = selectedArtwork.artist;
         let artist;
         if (artistObj) {
@@ -155,9 +163,15 @@ class DetailsArtwork extends Component {
                                 <li>
                                     <p className="art-price">Price: {selectedArtwork.price}$</p>
                                 </li>
-                            </ul>
-                            <button className="add-to-cart submit flex align-center justify-center" onClick={this.addToCart}> Add To Cart</button>
-                            {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
+                            </ul>{this.state.currArtwork&&<OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser}/>}
+                            
+                            {this.state.isAddedToCart && <div>
+                                <h2>Thank you!</h2>
+                                <p><b>Your payment was successful and your order is complete.<br /> we have sent you an email as proof of delivery. The email will provide purchase details.
+                                <br /> Shipping will be made within up to 7 days, estimated time of arrival is 14-21 days.</b></p>
+                                </div>}
+
+                            {/* {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>} */}
                             <div className="action-btns flex justify-space-around">
 
                                 <button className="btn back" onClick={this.goBack}></button>
