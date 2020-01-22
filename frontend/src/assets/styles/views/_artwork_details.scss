@@ -1,18 +1,15 @@
 .details-container {
   margin: 0 auto;
   max-width: $normal-breakpoint;
-  margin-top:40px;
+  margin-top: 40px;
   .details-product-container {
     margin-bottom: 50px;
 
     .details-text-container {
       position: relative;
-      .add-to-cart {
-        img {
-          object-fit: contain;
-          width: 25px;
-          margin-right: 15px;
-        }
+      .art-price {
+        color: $gold;
+        font-size: 20px;
       }
     }
     .details-image-container {
@@ -83,7 +80,8 @@
       }
     }
     .action-btns {
-      width:350px;
+      width: 350px;
+      margin-bottom: 50px;
       .edit-btn {
         width: 100px;
         // padding: 8px 10px;
@@ -98,12 +96,31 @@
 
         button {
           background-color: #ebe9e5;
-          max-width:100px;
-          color:$clr1;
+          max-width: 100px;
+          color: $clr1;
         }
       }
-
-      
+    }
+    .details-certificate {
+      .icon {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        width: 32px;
+        height: 32px;
+        &.delivery {
+          background-image: url("../../images/icons/truck.png");
+          align-self: center;
+        }
+        &.medal {
+          background-image: url("../../images/icons/medal\ \(1\).png");
+          align-self: center;
+        }
+      }
+      .certificate-text {
+        max-width: 20ch;
+        text-align: center;
+      }
     }
   }
 }

@@ -164,6 +164,11 @@ class DetailsArtwork extends Component {
                                 <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                                 <button className="btn delete" onClick={this.onDelete}></button>
                             </div>
+                            <div className="details-certificate flex justify-space-around">
+                                <div className="flex column"><div className="icon medal"></div> <div className="certificate-text">Original work delivered with a certificate of authenticity.</div></div>
+                                <div className="flex column"><div className="icon delivery"></div><div className="certificate-text">Shipping usually takes up to 7 days.</div></div>
+
+                            </div>
                         </aside>
                     </div>
                 </div>
