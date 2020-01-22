@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class Tags extends Component {
 
     state = {
-        tags: ["photography","illustration","nature","abstract","landscape","animals","vintage","pop-art","watercolor"]
+        tags: ["photography","illustration","nature","abstract","landscape","animals","vintage","popart","watercolor"]
     }
 
     loadArtworks = (tag) => {
