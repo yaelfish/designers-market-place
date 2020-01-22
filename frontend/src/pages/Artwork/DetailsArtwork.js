@@ -129,7 +129,7 @@ class DetailsArtwork extends Component {
         return <React.Fragment>
             {/* <Breadcrumb /> */}
 
-            <section className="details-container flex column">
+            <section className="container details-container flex column">
                 <div className="details-product-container flex">
                     <div className="container details-image-container">
                         <Carousel artSrc={selectedArtwork.imgUrl} />

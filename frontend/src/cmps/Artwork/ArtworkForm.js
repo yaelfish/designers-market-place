@@ -4,7 +4,7 @@ import CloudinaryService from '../../service/CloudinaryService';
 import { MultiSelect } from '@progress/kendo-react-dropdowns';
 import UploadIcon from '../../assets/images/icons/upload.png'
 
-const tagsData = ["photography", "illustration", "nature", "abstract", "landscape", "animals", "vintage", "pop-art", "watercolor"]
+const tagsData = ["photography", "illustration", "nature", "abstract", "landscape", "portrait", "vintage", "popart", "watercolor"]
 
 
 export default class ArtworkForm extends React.Component {
