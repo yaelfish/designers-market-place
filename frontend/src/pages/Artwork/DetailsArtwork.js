@@ -26,8 +26,8 @@ class DetailsArtwork extends Component {
     async componentDidMount() {
         try {
             const artwork = await this.loadArtwork();
-    
-            this.setState({currArtwork : this.props.selectedArtwork})
+
+            this.setState({ currArtwork: this.props.selectedArtwork })
             const user = await this.props.loggedInUser;
             const reviews = await this.loadReviews();
             this.setIsLiked(user._id);
@@ -77,7 +77,7 @@ class DetailsArtwork extends Component {
     loadArtwork = async () => {
         const { _id } = this.props.match.params;
         const currArtwork = await this.props.loadArtworkById(_id);
-     
+
         console.log(currArtwork);
         return currArtwork;
     }
@@ -111,10 +111,10 @@ class DetailsArtwork extends Component {
 
         const { isLiked } = this.state
         const { selectedArtwork } = this.props;
-        const order = {...selectedArtwork};
- 
-     
-        
+        const order = { ...selectedArtwork };
+
+
+
         let artistObj = selectedArtwork.artist;
         let artist;
         if (artistObj) {
@@ -130,18 +130,30 @@ class DetailsArtwork extends Component {
             {/* <Breadcrumb /> */}
 
             <section className="details-container flex column">
-                <div className="details-product-container flex">
-                    <div className="container details-image-container">
-                        <Carousel artSrc={selectedArtwork.imgUrl} />
+                <div className="details-product-container flex justify-space-around">
+                    <div className="flex column">
+                        <div className="container details-image-container">
+                            <Carousel artSrc={selectedArtwork.imgUrl} />
 
+                        </div>
+                        <div>
+                            <p className="art-name">{selectedArtwork.name}</p>
+                            <p className="artist-name">By {artist}</p>
+                            <img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}></img>
+                        </div>
                     </div>
 
                     <div className="details-text-container flex justify-space-between ">
                         <aside className="container flex justify-space-between column">
                             <ul className="aside-fill">
+
                                 <li>
-                                    <p className="art-name">{selectedArtwork.name}</p>
-                                    <p className="artist-name">{artist}</p>
+                                    <p className="art-price">Price: {selectedArtwork.price}$</p>
+                                </li>
+                                <li>
+                                    <p className="art-description">{selectedArtwork.description}</p>
+                                </li>
+                                <li>
                                     <div className="like-display">
                                         <div className="preview-likes-container flex align-center">
                                             <label htmlFor="like-toggle">
@@ -157,19 +169,14 @@ class DetailsArtwork extends Component {
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <p className="art-description">{selectedArtwork.description}</p>
-                                </li>
-                                <li>
-                                    <p className="art-price">Price: {selectedArtwork.price}$</p>
-                                </li>
-                            </ul>{this.state.currArtwork&&<OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser}/>}
-                            
+                                {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
+                            </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
+
                             {this.state.isAddedToCart && <div>
                                 <h2>Thank you!</h2>
                                 <p><b>Your payment was successful and your order is complete.<br /> we have sent you an email as proof of delivery. The email will provide purchase details.
                                 <br /> Shipping will be made within up to 7 days, estimated time of arrival is 14-21 days.</b></p>
-                                </div>}
+                            </div>}
 
                             {/* {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>} */}
                             <div className="action-btns flex justify-space-around">
@@ -189,7 +196,7 @@ class DetailsArtwork extends Component {
 
                 <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
             </section>
-        </React.Fragment>
+        </React.Fragment >
     }
 }
 
