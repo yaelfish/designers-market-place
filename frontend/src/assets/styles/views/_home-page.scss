@@ -1,117 +1,213 @@
 .home {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  font-family: "gotham-medium", greycliff;
+  flex-direction: column;
+  line-height: 1.42857143;
 
-    .category-links {
-        padding: 0;
-        justify-content: center;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
-        grid-gap: 20px;
-        align-items: stretch;
-  
-        .category-link {
-            max-width: 100%;
-            height: 200px;
-            object-fit: cover;
-          
-        
-           
+  h1 {
+    color: #181818;
+    font-size: rem(40px);
+    font-weight: 500;
+    text-align: center;
+  }
 
-        }
-
+  .popular-artworks {
+    .popular-link {
+      border: 4px solid black;
+      padding: 5px;
+      height: 200px;
+      width: auto;
+      object-fit: cover;
     }
+  }
 
-    .category-li {
-        height: 100%;
-        width: 100%;
-        position: relative;
-        display: flex;
-        justify-content: center;
-   
-        
-     
+  .category-links {
+    padding: 0;
+    justify-content: center;
+    display: grid;
+    // grid-template-columns: repeat(3, 230px);
+    grid-template-columns: repeat(auto-fill, minmax(242px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;
+    width: 100%;
 
+    .category-link img {
+      box-shadow: inset 0px 0px 10px 0px black;
+      height: 255px;
+      object-fit: cover;
+      background: #f3f3f3;
+      padding: 16px;
+      border: 10px solid #161616;
+      position: relative;
+      bottom: 0;
+      vertical-align: bottom;
+      height: 100%;
 
-        .category-tag {
-            
-            font-family: montserrat, cabin, sans-serif;
-            align-self: flex-start;
-            margin-top: 20px;
-
-            padding: 10px;
-            position: absolute;
-            text-align: center;
-            z-index: 1;
-            color: #444444;
-            text-transform: uppercase;
-            font-size: rem(25px);
-            font-weight: 600;
-            background-color: rgba(255, 255, 255, 0.486);
-            pointer-events: none;
-            
-        }
-    }
-
-    .cover {
-        height: 80vh;
-        font-family: caveat;
-        font-size: rem(80px);
+      figure {
         text-align: center;
-        color: rgb(0, 0, 0);
-        margin-bottom:25px;
-       
-        .home-title{
-            background-color: rgba(255, 255, 255, 0.521);
-            padding: 20px;
-            border-radius: 20px;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        position: relative;
+        bottom: 0;
+        display: inline-block;
+
+        figcaption {
+          z-index: 3;
+          position: absolute;
+          width: 100%;
+          bottom: 90px;
+          text-align: center;
+          color: #fff;
+          padding: 0 30px;
+          transition: all 0.3s ease;
         }
 
-        img {
-            height: 80vh;
-            object-fit: cover;
-            position: absolute;
-            z-index: -1;
+        .arrow-icon-link {
+          color: #fff;
+          border-radius: 40px;
+          width: 40px;
+          height: 40px;
+          background-color: rgba(194, 152, 102, 0);
+          background-image: url(https://d17h7hjnfv5s46.cloudfront.net/assets/build/images/ico_arrow_new_right_white.f47bd428.svg);
+          background-size: 18px auto;
+          background-repeat: no-repeat;
+          background-position: 50%;
+          border: 2px solid #fff;
+          transition: all 0.2s ease;
+          position: absolute;
+          left: 50%;
+          margin: 0 auto 0 -25px;
         }
+
+        .arrow-icon-link:hover {
+          background-color: #c29866;
+          border: 2px solid #d5a770;
+        }
+      }
     }
-}
+  }
 
-
-
-.logo {
-    padding: rem(20px);
-    width: 140px;
-
-    @include for-normal-layout {
-        width: auto;
-    }
-}
-header {
+  .category-li {
+    position: relative;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    
+    justify-content: center;
+    margin: 5px 7px;
 
-    @include for-normal-layout {
-        // height: 86vh;
+    .category-tag {
+      font-family: "gotham-medium";
+      padding: 10px 20px;
+      position: absolute;
+      text-align: center;
+      z-index: 1;
+      color: white;
+      font-size: 1.9em;
+      font-weight: 600;
+      background-color: rgba(0, 0, 0, 0.76);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+    span.category-tag {
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: flex;
+      align-self: center;
+    }
+  }
+
+  .cover {
+    height: 80vh;
+    font-family: "gotham-light";
+    font-size: rem(80px);
+    text-align: center;
+    color: rgb(0, 0, 0);
+
+    .home-title {
+      display: block;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.8);
+      font-weight: 300;
+      text-align: center;
+      font-size: 2.2rem;
+      line-height: 1.5;
+      padding: 20px 30px 30px;
+      margin-top: 2px;
+      max-width: 21ch;
+    }
+
+    img {
+      height: 80vh;
+      object-fit: cover;
+      position: absolute;
+      z-index: -1;
+    }
+  }
+
+  .intro-home-container {
+    min-height: 350px;
+    color: #181818;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+    padding: 60px 0;
+
+    h2 {
+      font-size: rem(25px);
+    }
+  }
+
+  .discover-container {
+    .discover-container-left {
+      width: 29%;
+
+      h2 {
+        font-size: 32px;
+        line-height: 32px;
+        margin-bottom: 20px;
+        margin-top: 50px;
+      }
+    }
+  }
 }
 
-#nav {
-    a {
-        background: green;
+// .logo {
+//   padding: rem(20px);
+//   width: 140px;
 
-        &:first-child {
-            background-color: red;
-        }
+//   @include for-normal-layout {
+//     width: auto;
+//   }
+// }
+// header {
+//   display: flex;
+//   align-items: center;
+//   flex-direction: column;
 
-        body.homepage & {
-            color: gold;
-        }
-    }
-}
+//   @include for-normal-layout {
+//     // height: 86vh;
+//   }
+// }
+
+// #nav {
+//   a {
+//     background: green;
+
+//     &:first-child {
+//       background-color: red;
+//     }
+
+//     body.homepage & {
+//       color: gold;
+//     }
+//   }
+// }
 
 // body.homepage #nav a {
-    
+
 // }

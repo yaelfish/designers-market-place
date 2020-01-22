@@ -4,13 +4,7 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0px 0px 9px 4px #121313;
     cursor: pointer;
-    .preview-price {
-      display: inline;
-      text-shadow: 1px 2px 10px #3b0edc;
-      font-weight: 600;
-    }
   }
 
   .art-preview-text {
