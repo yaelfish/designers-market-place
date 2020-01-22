@@ -122,18 +122,30 @@ class DetailsArtwork extends Component {
             {/* <Breadcrumb /> */}
 
             <section className="details-container flex column">
-                <div className="details-product-container flex">
-                    <div className="container details-image-container">
-                        <Carousel artSrc={selectedArtwork.imgUrl} />
+                <div className="details-product-container flex justify-space-between">
+                    <div className="flex column">
+                        <div className="container details-image-container">
+                            <Carousel artSrc={selectedArtwork.imgUrl} />
 
+                        </div>
+                        <div>
+                            <p className="art-name">{selectedArtwork.name}</p>
+                            <p className="artist-name">By {artist}</p>
+                            <img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}></img>
+                        </div>
                     </div>
 
                     <div className="details-text-container flex justify-space-between ">
                         <aside className="container flex justify-space-between column">
                             <ul className="aside-fill">
+
                                 <li>
-                                    <p className="art-name">{selectedArtwork.name}</p>
-                                    <p className="artist-name">{artist}</p>
+                                    <p className="art-price">Price: {selectedArtwork.price}$</p>
+                                </li>
+                                <li>
+                                    <p className="art-description">{selectedArtwork.description}</p>
+                                </li>
+                                <li>
                                     <div className="like-display">
                                         <div className="preview-likes-container flex align-center">
                                             <label htmlFor="like-toggle">
@@ -149,12 +161,8 @@ class DetailsArtwork extends Component {
                                         </div>
                                     </div>
                                 </li>
-                                <li>
-                                    <p className="art-description">{selectedArtwork.description}</p>
-                                </li>
-                                <li>
-                                    <p className="art-price">Price: {selectedArtwork.price}$</p>
-                                </li>
+
+
                             </ul>
                             <button className="add-to-cart submit flex align-center justify-center" onClick={this.addToCart}> Add To Cart</button>
                             {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
