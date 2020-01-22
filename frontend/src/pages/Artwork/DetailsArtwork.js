@@ -130,7 +130,7 @@ class DetailsArtwork extends Component {
             {/* <Breadcrumb /> */}
 
             <section className="details-container flex column">
-                <div className="details-product-container flex justify-space-between">
+                <div className="details-product-container flex justify-space-around">
                     <div className="flex column">
                         <div className="container details-image-container">
                             <Carousel artSrc={selectedArtwork.imgUrl} />
@@ -169,7 +169,6 @@ class DetailsArtwork extends Component {
                                         </div>
                                     </div>
                                 </li>
-                                <button className="add-to-cart submit flex align-center justify-center" onClick={this.addToCart}> Add To Cart</button>
                                 {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
                             </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
