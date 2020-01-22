@@ -3,9 +3,6 @@
   width: 100%;
   z-index: 99;
   height: 70px;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
   transition: 0.5s;
 
   .main-nav-container {
@@ -33,22 +30,22 @@
 
     .nav-link {
       text-decoration: none;
-      padding-left: 5px;
       transition: 0.3s;
+      padding: 1px 6px 2px 6px;
 
       &:hover {
         color: $clr6;
-        background-color: $clr2;
+        background-color: $clr-btn-secondary-hover;
         border-radius: 3px;
-        padding: 4px;
+        padding: 1px 6px 2px 6px;
       }
     }
   }
   .active-link {
     color: $clr6;
-    background-color: $clr2;
-    border-radius: 3px;
-    padding: 4px;
+    background-color: $clr-btn-secondary-hover;
+    border-radius: 2px;
+    padding: 1px 6px 2px 6px;
   }
 
   &.scrolled {

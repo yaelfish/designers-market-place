@@ -7,31 +7,48 @@
     }
   }
   .comments-area {
-    border: solid 1px black;
     padding: 2px;
     background-clip: border-box;
     li {
-      padding: 10px 20px;
+      position: relative;
+      padding: 5px 20px;
       background-clip: border-box;
+      border-bottom: solid 1px black;
 
       &:nth-child(odd) {
         background-color: rgba(206, 243, 250, 0.4);
       }
 
-      .delete-review{
+      .delete-review {
         object-fit: contain;
-        height:70px;
+        height: 16px;
+        width: 16px;
+        background-color: transparent;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 8px;
+        left: 5px;
+        background-image: url("../../images/icons/remove.png");
+
+        &:hover{
+          background-image: url("../../images/icons/quit.png");
+        }
       }
 
+
+      .comment-user-msg {
+        font-size: rem(14px);
+      }
       .comment-profile {
-        margin-right:20px;
+        margin-right: 20px;
 
         .comment-by-user {
-          font-size: rem(10px);
+          font-size: rem(9px);
           font-weight: 800;
         }
         img {
-          width: 50px;
+          width: 35px;
           border-radius: 25px;
         }
       }

@@ -8,14 +8,14 @@ export default class About extends Component {
   };
 
   componentDidMount() {
-    // SocketService.setup();
-    // SocketService.emit('chat topic', this.state.topic);
-    // SocketService.on('chat addMsg', this.addMsg);
+    SocketService.setup();
+    SocketService.emit('chat topic', this.state.topic);
+    SocketService.on('chat addMsg', this.addMsg);
   }
 
   componentWillUnmount() {
-    // SocketService.off('chat addMsg', this.addMsg);
-    // SocketService.terminate();
+    SocketService.off('chat addMsg', this.addMsg);
+    SocketService.terminate();
   }
 
   addMsg = newMsg => {

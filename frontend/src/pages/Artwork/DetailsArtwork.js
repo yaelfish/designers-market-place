@@ -11,6 +11,7 @@ import FramedArtwork from '../../cmps/Artwork/TemplatesArt/FramedArtwork';
 import Breadcrumb from '../../cmps/Breadcrumb';
 import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
+import { removeReview } from '../../actions/ReviewActions'
 
 class DetailsArtwork extends Component {
 
@@ -97,8 +98,12 @@ class DetailsArtwork extends Component {
         return msg;
     };
 
+    onDeleteReview = async (reviewId) => {
+        await this.props.removeReview(reviewId);
+    }
+
     render() {
-        console.log('render', this.state.isLiked);
+        // console.log('render', this.state.isLiked);
 
         const { isLiked } = this.state
         const { selectedArtwork } = this.props;
@@ -114,7 +119,7 @@ class DetailsArtwork extends Component {
         }
 
         return <React.Fragment>
-            <Breadcrumb />
+            {/* <Breadcrumb /> */}
 
             <section className="details-container flex column">
                 <div className="details-product-container flex">
@@ -124,7 +129,7 @@ class DetailsArtwork extends Component {
                     </div>
 
                     <div className="details-text-container flex justify-space-between ">
-                        <aside className="container details-container flex justify-space-between column">
+                        <aside className="container flex justify-space-between column">
                             <ul className="aside-fill">
                                 <li>
                                     <p className="art-name">{selectedArtwork.name}</p>
@@ -151,19 +156,19 @@ class DetailsArtwork extends Component {
                                     <p className="art-price">Price: {selectedArtwork.price}$</p>
                                 </li>
                             </ul>
-                            <button className="add-to-cart submit" onClick={this.addToCart}>Add To Cart</button>
+                            <button className="add-to-cart submit flex align-center justify-center" onClick={this.addToCart}> Add To Cart</button>
                             {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
-                            <div className="action-btns flex justify-center">
+                            <div className="action-btns flex justify-space-around">
 
-                                <button className="btn back" onClick={this.goBack}>Back</button>
-                                <Link className="btn edit-btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button>Edit</button></Link>
+                                <button className="btn back" onClick={this.goBack}></button>
+                                <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                                 <button className="btn delete" onClick={this.onDelete}></button>
                             </div>
                         </aside>
                     </div>
                 </div>
 
-                <Reviews sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
+                <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
             </section>
         </React.Fragment>
     }
@@ -188,7 +193,8 @@ const mapDispatchToProps = {
     editArtwork,
     toggleLike,
     addReview,
-    loadReviews
+    loadReviews,
+    removeReview
 }
 
 export default connect(

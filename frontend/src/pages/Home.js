@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { login } from '../actions/UserActions';
 import { connect } from 'react-redux';
 import Search from '../cmps/Search';
+import HomeCarousel from '../cmps/HomeCarousel'
 import coverImg from '../assets/images/coverHome.jpg'
 import photography from '../assets/images/tags/photography.jpg'
 import nature from '../assets/images/tags/nature.jpg'
@@ -29,7 +30,7 @@ class Home extends Component {
           <div className="cover flex justify-center align-center">
             <img alt="" src={coverImg}/>
             <div className="cover-header flex column">
-              <span className="home-title">Artwork Gallery</span>
+              <span className="home-title">Discover The Creative Universe Of Our Artists</span>
               <Link className="btn discover" to={{ pathname: '/artwork' }}>
                 <button className="btn discover header">Discover</button>
               </Link>
@@ -41,25 +42,23 @@ class Home extends Component {
             <h2>Our current favorites</h2>
 
             <ul className="popular-artworks flex clean-list">
+              {/* <HomeCarousel/> */}
               <li className="category-li">
                 <Link className="category-link" to={{ pathname: '/artwork', search: '?tags=photography' }}>
                   <img className="popular-link" src={photography} />
                 </Link>
-                <span className="category-tag">Photography</span>
               </li>
 
               <li className="category-li">
                 <Link className="category-link" to={{ pathname: '/artwork', search: '?tags=landscape' }}>
                   <img className="popular-link" src={landscape} />
                 </Link>
-                <span className="category-tag">Landscape</span>
               </li>
 
               <li className="category-li">
                 <Link className="category-link" to={{ pathname: '/artwork', search: '?tags=animals' }}>
                   <img className="popular-link" src={animals} />
                 </Link>
-                <span className="category-tag">Animals</span>
               </li>
               </ul>
           </section>
@@ -87,21 +86,21 @@ class Home extends Component {
               </Link>
             </li> */}
 
-            <li className="category-li"> 
+            <li className="category-li picture-mixin "> 
               <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=landscape'}}>
                 <img className="category-link" src={landscape}/>
               </Link>
               <span className="category-tag">Landscape</span>
             </li>
 
-            <li className="category-li"> 
+              <li className="category-li picture-mixin"> 
               <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=animals'}}>
                 <img className="category-link" src={animals}/>
               </Link>
               <span className="category-tag">Animals</span>
             </li>
 
-            <li className="category-li"> 
+            <li className="category-li picture-mixin "> 
               <Link className="category-link" to={{pathname:'/artwork?tags=pop-art'}}>
                 <img className="category-link" src={popArt}/>
               </Link>
@@ -109,28 +108,28 @@ class Home extends Component {
             </li>
 
             
-            {/* <li className="category-li"> 
+            {/* <li className="category-l picture-mixin i"> 
               <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=nature'}}>
                 <img className="category-link" src={nature}/>
               </Link>
               <span className="category-tag">Nature</span>
             </li> */}
 
-            <li className="category-li"> 
+            <li className="category-li picture-mixin "> 
               <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=illustration'}}>
                 <img className="category-link" src={illustration}/>
               </Link>
               <span className="category-tag">Illustration</span>
             </li>
 
-            <li className="category-li"> 
+            <li className="category-li picture-mixin "> 
               <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=watercolor'}}>
                 <img className="category-link" src={watercolor}/>
               </Link>
               <span className="category-tag">watercolor</span>
             </li>
 
-            <li className="category-li"> 
+            <li className="category-li picture-mixin "> 
               <Link className="category-link" to={{pathname:'/artwork' , search:'?tags=abstract'}}>
                 <img className="category-link" src={abstract}/>
               </Link>

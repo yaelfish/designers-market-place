@@ -6,6 +6,8 @@ function connectSockets(io) {
         socket.on('chat newMsg', msg=>{
             console.log(msg)
             console.log(socket.myTopic)
+            // add with reviewService
+            // after it's done => emit
             // io.emit('chat addMsg', msg)
             // emits only to sockets in the same room
             io.to(socket.myTopic).emit('chat addMsg', msg)

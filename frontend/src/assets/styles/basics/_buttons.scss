@@ -28,12 +28,37 @@ button {
     margin-bottom: 10px;
   }
   &.back {
-    background-color: $clr2;
-    color: $clr6;
+    background-color: transparent;
+    background-image: url("../../images/icons/left-arrow.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 32px;
+    height: 32px;
   }
   &.delete {
-    background: no-repeat center/80% url("../../images/icons/bin.png");
-    background-size: 25px;
+    background: url("../../images/icons/remove.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+  }
+
+  &.edit {
+    background: url("../../images/icons/edit.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+  }
+  &.publish {
+    background-color: $clr-btn-secondary;
+    color: $clr6;
+  }
+  &.searchButton {
+    background-color: $clr-btn-secondary;
   }
   &.discover {
     text-transform: uppercase;
@@ -68,7 +93,7 @@ button {
 
   &.discover.header {
     margin: -104px auto 0;
-    width: 75%;
+    width: auto;
   }
   &.inner-discover {
     width: 75%;

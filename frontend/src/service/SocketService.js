@@ -15,10 +15,13 @@ export default {
 
 function setup() {
   socket = io(BASE_URL);
+  console.log('setup happened');
 }
 
 function terminate() {
   socket = null;
+  console.log('terminate happened');
+  
 }
 
 function on(eventName, cb) {
