@@ -13,10 +13,10 @@ export default class Reviews extends Component {
         SocketService.on('chat addMsg', this.receiveMsg);
     }
 
-    // componentWillUnmount() {
-    //     SocketService.off('chat addMsg', this.addMsg);
-    //     SocketService.terminate();
-    // }
+    componentWillUnmount() {
+        SocketService.off('chat addMsg', this.addMsg);
+        SocketService.terminate();
+    }
 
     msgHandleChange = ev => {
         const { name, value } = ev.target;
@@ -46,17 +46,17 @@ export default class Reviews extends Component {
             Comments:
             <form className="comment-form flex">
                 <textarea placeholder="write something..." value={this.state.msg} name="msg" onChange={this.msgHandleChange}></textarea>
-                <button onClick={(event) => this.sendMsg(event, this.state.msg)}>Publish</button>
+                <button className="publish" onClick={(event) => this.sendMsg(event, this.state.msg)}>Publish</button>
             </form>
             {this.props.reviews.length > 0 && <ul className="comments-area">
                 {this.props.reviews.map((review, idx) => (
                     <li className="flex align-center" key={idx}>
                         <div className="flex column align-center comment-profile">
                             <img src={review.byUser.imgUrl}></img>
-                            <div className="comment-by-user">{review.byUser.fullName}</div>
+                            <div className="comment-by-user">{review.byUser.userName}</div>
                         </div>
-                        <div>{review.msg}</div>
-                        {this.props.loggedInUser._id === review.byUser._id && <button className="btn delete-review delete"
+                        <div className="comment-user-msg">{review.msg}</div>
+                        {this.props.loggedInUser._id === review.byUser._id && <button className="btn delete-review"
                             onClick={() => this.props.onDeleteReview(review._id)}></button>}
                     </li>
                 ))}

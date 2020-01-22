@@ -1,6 +1,7 @@
 .details-container {
   margin: 0 auto;
   max-width: $normal-breakpoint;
+  margin-top:40px;
   .details-product-container {
     margin-bottom: 50px;
 
@@ -20,6 +21,13 @@
     }
     .details-text-container {
       position: relative;
+      .add-to-cart {
+        img {
+          object-fit: contain;
+          width: 25px;
+          margin-right: 15px;
+        }
+      }
     }
     .details-image-container {
       vertical-align: top;
@@ -89,6 +97,7 @@
       }
     }
     .action-btns {
+      width:350px;
       .edit-btn {
         width: 100px;
         // padding: 8px 10px;
@@ -96,12 +105,19 @@
         font-size: 1rem;
         font-weight: normal;
         border: none;
-        background-color: #4cd4bf;
         color: #fff;
         border-radius: 2px;
         text-align: center;
         margin: 0 auto;
+
+        button {
+          background-color: #ebe9e5;
+          max-width:100px;
+          color:$clr1;
+        }
       }
+
+      
     }
   }
 }
