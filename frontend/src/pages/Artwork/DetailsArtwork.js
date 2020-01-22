@@ -168,10 +168,10 @@ class DetailsArtwork extends Component {
                             {this.state.isAddedToCart && <div>
                                 <h2>Thank you!</h2>
                                 <p><b>Your payment was successful and your order is complete.<br /> we have sent you an email as proof of delivery. The email will provide purchase details.
-                                <br /> Delivery will be made within 2-3 days, estimated time of arrival is 14-21 days.</b></p>
+                                <br /> Shipping will be made within up to 7 days, estimated time of arrival is 14-21 days.</b></p>
                                 </div>}
 
-                            {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
+                            {/* {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>} */}
                             <div className="action-btns flex justify-space-around">
 
                                 <button className="btn back" onClick={this.goBack}></button>
