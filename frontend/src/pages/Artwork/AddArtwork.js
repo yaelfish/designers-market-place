@@ -23,7 +23,7 @@ class AddArtwork extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        selectedArtwork: state.artwork.selectedArtwork,
+        // selectedArtwork: state.artwork.selectedArtwork,
         loggedInUser: state.user.loggedInUser
     }
 }

@@ -49,7 +49,7 @@
   }
 
   .picture-mixin {
-      @include aspect-ratio(230, 255);
+      @include aspect-ratio(130, 155);
   }
   
   // Mixin for removing hover efects on iphone screen
