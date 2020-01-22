@@ -7,13 +7,13 @@
     }
   }
   .comments-area {
-    border: solid 1px black;
     padding: 2px;
     background-clip: border-box;
     li {
       position: relative;
       padding: 5px 20px;
       background-clip: border-box;
+      border-bottom: solid 1px black;
 
       &:nth-child(odd) {
         background-color: rgba(206, 243, 250, 0.4);
