@@ -32,7 +32,7 @@ class AppArtwork extends Component {
         return (
         <React.Fragment>
       
-            <main className="container main-app-container artist-container">
+            <main className="container main-app-container-artist artist-container">
                 <header className="artist-header">
                       <h2>{this.props.loggedInUser.fullName}'s Homepage</h2><img className="profile-pic" src={this.props.loggedInUser.imgUrl}></img>
                     <p>

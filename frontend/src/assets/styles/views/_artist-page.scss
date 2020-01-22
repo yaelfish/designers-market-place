@@ -1,5 +1,7 @@
 .artist-container {
+    margin-top: 6vh;
     .artist-header{
+        text-align: center;
         img {
             width: 200px;
             height: 200px;
@@ -12,7 +14,7 @@
 }
 
 
-.main-app-container {
+.main-app-container-artist {
     font-family: montserrat, cabin, sans-serif;
     color: $clr1;
     h2 {
