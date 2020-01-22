@@ -45,6 +45,13 @@ async function editOrder(editedOrder) {
 
 
 async function addOrder(newOrder) {
+
+    const userId = newOrder.byUser._id 
+    newOrder.byUser._id =  ObjectId(userId) ;  
+
+    const artworkId = newOrder.artwork._id 
+    newOrder.artwork._id =  ObjectId(artworkId) ;  
+
     const collection = await dbService.getCollection('Order')
     try {
         await collection.insertOne(newOrder);
@@ -93,6 +100,5 @@ module.exports = {
     addOrder,
     getOrderById,
     editOrder,
-    getOrders,
-    toggleLikeOrder
+    getOrders
 };
