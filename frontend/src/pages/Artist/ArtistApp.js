@@ -47,7 +47,7 @@ class AppArtwork extends Component {
                
                 
                 
-                <div id="profile">
+                <div id="profile" className="profile">
                     <h2>Profile</h2>
                 <div>Name: {this.props.loggedInUser.fullName}</div>
                 <div>Birthdate: October 17, 1955 (age 64 years)</div>
@@ -56,7 +56,7 @@ class AppArtwork extends Component {
 
 
                 </div>
-                <div id="artwork-list">
+                <div id="artwork-list" className="artist-artworks-list">
                 <h2>Your Artworks</h2>
                     <ArtworkList artworks={this.state.artistArtworks} /></div>
 

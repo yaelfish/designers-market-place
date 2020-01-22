@@ -1,5 +1,10 @@
 .artist-container {
     margin-top: 6vh;
+
+
+ .artist-artworks-list{
+     margin-bottom: 20px;
+ }
     .artist-header{
         text-align: center;
         img {
@@ -8,6 +13,13 @@
             border-radius: 100px;
             object-fit: cover;
             margin-bottom: 10px;
+        }
+    }
+    .profile {
+        max-width: 80ch;
+
+        .profileButton {
+            margin-top: 10px;
         }
     }
 
