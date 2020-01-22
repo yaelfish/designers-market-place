@@ -170,7 +170,7 @@ class DetailsArtwork extends Component {
                                     </div>
                                 </li>
                                 {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
-                            </ul><div className="details-buy-now">{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}</div>
+                            </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
                             {this.state.isAddedToCart && <div>
                                 <h2>Thank you!</h2>
