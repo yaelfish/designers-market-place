@@ -24,7 +24,7 @@ class OrderAdd extends Component {
 
         
             this.setState({ isAddMode: true });
-            this.setState(prevState => ({order: { ...prevState.order, byUser : {_id : props.user._id, fullName: props.user.fullName}, artwork: {_id : artwork._id, name : artwork.name, price: artwork.price}}}))
+            this.setState(prevState => ({order: { ...prevState.order, byUser : {_id : props.user._id, fullName: props.user.fullName}, artwork: {_id : artwork._id, name : artwork.name, price: artwork.price, artistId: artwork.artist._id}}}))
           
     }
 

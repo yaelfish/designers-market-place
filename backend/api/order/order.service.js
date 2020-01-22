@@ -52,6 +52,9 @@ async function addOrder(newOrder) {
     const artworkId = newOrder.artwork._id 
     newOrder.artwork._id =  ObjectId(artworkId) ;  
 
+    const artistId = newOrder.artwork.artistId
+    newOrder.artwork.artistId =  ObjectId(artistId) ;  
+
     const collection = await dbService.getCollection('Order')
     try {
         await collection.insertOne(newOrder);
@@ -76,20 +79,24 @@ function _buildCriteria(filterBy) {
 
     const criteria = {};
 
-    
-    if (filterBy.name) {
-        criteria.name = { $regex: `.*${filterBy.name}.*`, $options : 'i' };
-    }
-
     if (filterBy.artist) {
-        criteria["artist.fullName"] = { $regex: `.*${filterBy.artist}.*`, $options : 'i' };
+        criteria["artwork.artistId"] = ObjectId(filterBy.artist);
     }
 
-    if (filterBy.tags) {
-        criteria.tags =  { $regex: `.*${filterBy.tags}.*`, $options : 'i' };
-    }
+  
+    
+    // if (filterBy.name) {
+    //     criteria.name = { $regex: `.*${filterBy.name}.*`, $options : 'i' };
+    // }
 
-    console.log(criteria)
+    // if (filterBy.artist) {
+    //     criteria["artist.fullName"] = { $regex: `.*${filterBy.artist}.*`, $options : 'i' };
+    // }
+
+    // if (filterBy.tags) {
+    //     criteria.tags =  { $regex: `.*${filterBy.tags}.*`, $options : 'i' };
+    // }
+
 
 
     return criteria;
