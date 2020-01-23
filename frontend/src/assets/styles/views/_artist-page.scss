@@ -67,6 +67,7 @@
         }
 
         img {
+           
             width: 200px;
             height: 200px;
             border-radius: 100px;
@@ -96,21 +97,25 @@
 }
 
 .sold-list-titles{
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(50px, 1fr) minmax(130px, 1fr) minmax(30px, 1fr);
+
     border: 1px solid rgb(212, 211, 211);
     border-bottom: none;
-    padding-left: 200px;
+    margin-left: 200px;
     .sold-list-title{
-        padding-left: 15px;
-        padding-right: 40px;
-   
         border-left: 1px solid rgb(241, 240, 240);
     }
-  margin-top: 16vh;
+
+
+
+
+
   .artist-header {
     text-align: center;
     img {
-      width: 200px;
-      height: 200px;
+    //   width: 200px;
+    //   height: 200px;
       border-radius: 100px;
       object-fit: cover;
       margin-bottom: 10px;

@@ -30,12 +30,12 @@ class ArtistPurchasesPreview extends Component {
         return ( 
             <Link to={`/artwork/${_id}`}>
                 <div className="card-artwork-sold flex  align-start row">
-                    <img src={imgUrl} alt={name} />
+                    <img src={imgUrl} alt={name} className="square-ratio" />
                     <div className="preview-info-sold">
                         <div className="art-preview-text-sold flex row align-start">
                             <p className="preview-artwork-name">{name}</p>
                             <p className="preview-artwork-created"><Moment fromNow>{createdAt}</Moment></p>
-                            <p className="preview-artwork-tags">{tags.toString()}</p>
+                            {/* <p className="preview-artwork-tags">{tags.toString()}</p> */}
                             <span className="likes-counter"><p>{likedByUsers}</p></span>
                             {/* <div className="preview-likes-container flex align-center">
                             <span className="likes-counter">{likedByUsers}</span>

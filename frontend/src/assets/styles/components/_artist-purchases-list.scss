@@ -16,12 +16,13 @@
         }
         & .card-artwork-sold .preview-info-sold {
             width: 100%;
-            padding: 2px 7px 0;
+            // padding: 2px 7px 0;
      
 
             .art-preview-text-sold{
+
                 display: grid;
-                grid-template-columns: 2fr 3fr 3fr 1fr 1fr 1fr;
+                grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(50px, 1fr) minmax(130px, 1fr) minmax(30px, 1fr);
          
                 width: 100%;
               
@@ -29,8 +30,8 @@
                     
                     text-align: left;
                     width: 100%;
-                    padding-left: 10px;
-                    padding-right: 10px;
+                    // padding-left: 10px;
+                    // padding-right: 10px;
            
                     overflow-wrap: break-word;
                 }
