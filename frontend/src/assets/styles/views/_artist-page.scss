@@ -4,9 +4,9 @@
     .top-scroller {
 
         position: fixed;
-        height: 100px;
-        bottom: 40px;
-        right: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 30px;
         background-color: rgba(255, 255, 255, 0.829);
         border-radius: 100%;
         z-index: 1;
@@ -18,7 +18,7 @@
         }
 
         img {
-            width: 100px;
+            width: 50px;
         }
     }
 
@@ -93,6 +93,18 @@
         }
     }
 
+}
+
+.sold-list-titles{
+    border: 1px solid rgb(212, 211, 211);
+    border-bottom: none;
+    padding-left: 200px;
+    .sold-list-title{
+        padding-left: 15px;
+        padding-right: 40px;
+   
+        border-left: 1px solid rgb(241, 240, 240);
+    }
 }
 
 

@@ -87,6 +87,14 @@ componentWillUnmount(){
 
                     <div id="sold">
                     <h2>Sold</h2>
+                    <div className="sold-list-titles flex">
+                        <div className="sold-list-title">Artwork</div>
+                        <div className="sold-list-title">Last Sell</div>
+                        <div className="sold-list-title">Tags</div>
+                        <div className="sold-list-title">Rating</div>
+                        <div className="sold-list-title">Quantity</div>
+                        <div className="sold-list-title">Earnings</div>
+                    </div>
                     <ArtistPurchasesList artworks={this.state.artistArtworks} />
                     </div>
                    

@@ -6,6 +6,8 @@ import { loadArtworkById, removeArtwork } from '../../actions/ArtworkActions'
 import like from '../../assets/images/icons/like.png';
 // import afterLike from '../../assets/images/icons/after-like.png';
 import bin from '../../assets/images/icons/bin.png';
+import Moment from 'react-moment';
+
 
 
 class ArtistPurchasesPreview extends Component {
@@ -32,9 +34,9 @@ class ArtistPurchasesPreview extends Component {
                     <div className="preview-info-sold">
                         <div className="art-preview-text-sold flex row align-start">
                             <p className="preview-artwork-name">{name}</p>
-                            <p className="preview-artwork-artist">{Date(createdAt)}</p>
-                            <p className="preview-artwork-artist">{tags.toString()}</p>
-                            <span className="likes-counter">{likedByUsers}</span>
+                            <p className="preview-artwork-created"><Moment fromNow>{createdAt}</Moment></p>
+                            <p className="preview-artwork-tags">{tags.toString()}</p>
+                            <span className="likes-counter"><p>{likedByUsers}</p></span>
                             {/* <div className="preview-likes-container flex align-center">
                             <span className="likes-counter">{likedByUsers}</span>
                             <img className="preview-icon-like" src={like} />
