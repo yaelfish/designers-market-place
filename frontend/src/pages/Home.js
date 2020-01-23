@@ -40,7 +40,7 @@ class Home extends Component {
               </Link>
             </div>
           </div>
-          <main className="container">
+          <main>
             <section className="intro-home-container">
               <h1>Buy and Sell Original Art Online on our Art Gallery</h1>
               <h2>Our current favorites</h2>
@@ -74,7 +74,7 @@ class Home extends Component {
             </section>
 
             {/* <Search history={this.props.history}></Search> */}
-            <section className="container discover-container flex">
+            <section className="discover-container flex">
               <aside className="discover-container-left flex column">
                 <h2>Discover the world through original paintings for sale</h2>
                 <Link className="btn discover" to={{ pathname: '/artwork' }}>
