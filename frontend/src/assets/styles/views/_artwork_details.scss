@@ -1,10 +1,10 @@
 .details-container {
+  padding-top: 70px;
   width: 100%;
   display: grid;
   grid-template-areas:
-    ". image-area image-area image-area image-area image-area image-area text-area"
-    ". . . . . . . text-area"
-    ". comments-area comments-area comments-area comments-area comments-area comments-area text-area";
+    "image-area image-area image-area image-area image-area image-area text-area"
+    "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
   grid-gap: 20px;
 
   .image-area {
@@ -12,6 +12,17 @@
 
     .main-details {
       align-self: center;
+    }
+    margin: 0 auto;
+    max-width: $normal-breakpoint;
+    margin-top: 40px;
+    margin-top: 16vh;
+
+    .profile-picture-details {
+      object-fit: cover;
+      border-radius: 100px;
+      width: 60px;
+      height: 60px;
     }
   }
 
@@ -22,7 +33,9 @@
     border-radius: 10px;
     aside {
       padding: 0px 30px;
-      max-width: 42ch;
+      .art-description {
+        max-width: 25ch;
+      }
       .art-price {
         color: $gold;
         font-size: rem(30px);
@@ -39,10 +52,8 @@
       }
       .add-to-cart {
         display: flex;
-        width: 226px;
         background: $gold;
         padding: 15px 10px;
-        position: absolute;
         top: 380px;
         div {
           font-weight: 800;
@@ -128,8 +139,6 @@
   .action-btns {
     width: 100%;
     margin-bottom: 50px;
-    position: absolute;
-    top: 512px;
     .edit-btn {
       width: 100px;
       // padding: 8px 10px;
@@ -156,49 +165,47 @@
       "return return security security"
       ". warranty warranty .";
     grid-gap: 10px;
-    position: absolute;
-    top: 610px;
     .medal-area {
-      grid-area:medal;
+      grid-area: medal;
     }
     .delivery-area {
-      grid-area:delivery;
+      grid-area: delivery;
     }
     .return-area {
-      grid-area:return;
+      grid-area: return;
     }
     .security-area {
-      grid-area:security;
+      grid-area: security;
     }
     .warranty-area {
-      grid-area:warranty;
+      grid-area: warranty;
     }
 
-      .icon {
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: center;
-        width: 32px;
-        height: 32px;
-        &.delivery {
-          background-image: url("../../images/icons/truck.png");
-        }
-        &.medal {
-          background-image: url("../../images/icons/medal.png");
-        }
-        &.return {
-          background-image: url("../../images/icons/return.png");
-        }
-        &.security {
-          background-image: url("../../images/icons/password.png");
-        }
-        &.warranty {
-          background-image: url("../../images/icons/warranty.png");
-        }
+    .icon {
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      width: 32px;
+      height: 32px;
+      &.delivery {
+        background-image: url("../../images/icons/truck.png");
       }
-      .certificate-text {
-        max-width: 20ch;
-        text-align: center;
+      &.medal {
+        background-image: url("../../images/icons/medal.png");
+      }
+      &.return {
+        background-image: url("../../images/icons/return.png");
+      }
+      &.security {
+        background-image: url("../../images/icons/password.png");
+      }
+      &.warranty {
+        background-image: url("../../images/icons/warranty.png");
       }
     }
+    .certificate-text {
+      max-width: 20ch;
+      text-align: center;
+    }
   }
+}

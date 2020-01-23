@@ -1,0 +1,52 @@
+.sold-list{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(221, 219, 219);
+    margin-bottom: 10px;
+    
+    & .card-artwork-sold {
+       box-shadow: none;
+       border-bottom: 1px solid rgb(230, 221, 221);
+    
+    
+    }
+        & .card-artwork-sold img {
+            max-width: 200px;
+            object-fit: cover;
+        }
+        & .card-artwork-sold .preview-info-sold {
+            width: 100%;
+            // padding: 2px 7px 0;
+     
+
+            .art-preview-text-sold{
+
+                display: grid;
+                grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(50px, 1fr) minmax(130px, 1fr) minmax(30px, 1fr);
+         
+                width: 100%;
+              
+                p {
+                    
+                    text-align: left;
+                    width: 100%;
+                    // padding-left: 10px;
+                    // padding-right: 10px;
+           
+                    overflow-wrap: break-word;
+                }
+
+                .preview-artwork-tags{
+
+                    grid-column: 3 / 4;
+                }
+
+
+              
+               
+            }
+        }
+        p.preview-price-sold {
+            text-decoration: none;
+        }
+}

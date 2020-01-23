@@ -144,12 +144,12 @@ class DetailsArtwork extends Component {
                     </div>
                 </div>
                 <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
-                <div className="details-text-container flex justify-center">
-                    <aside className="container flex justify-space-between column align-center">
+                <div className="details-text-container flex justify-start">
+                    <aside className="container flex justify-start column align-center">
                         <ul className="aside-fill">
 
                             <li>
-                                <p className="art-price"><span className="price">Price: </span><br></br><span className="var-price">{selectedArtwork.price}$</span></p>
+                                {selectedArtwork.price && <p className="art-price"><span className="price">Price: </span><br></br><span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span></p>}
                             </li>
                             <li>
                                 <p className="art-description">{selectedArtwork.description}</p>

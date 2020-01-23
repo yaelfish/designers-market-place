@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link, animateScroll as scroll } from "react-scroll";
 import ArtworkList from '../../cmps/Artwork/ArtworkList';
 import { loadArtworks} from '../../actions/ArtworkActions';
 import ArtistPurchasesList from '../../cmps/Artist/ArtistPurchasesList'
 import Tags from '../../cmps/Tags';
 import ArtistTabs from '../../cmps/Artist/ArtistTabs'
+import ScrollTop from '../../assets/images/icons/scrolltop.png'
 
 
 class AppArtwork extends Component {
 
     state = {
-        artistArtworks: []
+        artistArtworks: [],
+    
       }
 
     componentDidMount() {
-       
+        window.addEventListener("scroll", this.handleScroll);
         this.loadArtistArtworks()
       
         
+}
+
+handleScroll = () => {
+    const { prevScrollpos } = this.state;
+    const currentScrollPos = window.pageYOffset;
+    this.setState({
+      prevScrollpos: currentScrollPos,
+    
+    });
+  };
+
+componentWillUnmount(){
+    window.removeEventListener("scroll", this.handleScroll);
 }
 
     loadArtistArtworks =  async () =>
@@ -32,36 +48,53 @@ class AppArtwork extends Component {
     render() {
         return (
         <React.Fragment>
-      
+     
             <main className="container main-app-container-artist artist-container">
+            {window.pageYOffset !== 0&&<div className="top-scroller" onClick={() => {scroll.scrollToTop()}}><img src={ScrollTop}/></div>}
                 <header className="artist-header">
                       <h2>{this.props.loggedInUser.fullName}'s Homepage</h2><img className="profile-pic" src={this.props.loggedInUser.imgUrl}></img>
                     <p>
                      Your personal space for all your artworks, statistics and information.
                     </p>
                 </header>
-                <a href="#profile">Profile  </a>
-                <a href="#artwork-list">Artworks  </a>
-                <a href="#sold">Sold  </a>
+
+                <div className="anchor-links">
+                {/* <a href="#profile">Profile  </a> */}
+                <Link className="anchor-link" activeClass="anchor-active" to="profile"  spy={true}  smooth={true}  offset={-70} duration= {500} >Profile</Link>
+                
+                <Link className="anchor-link" activeClass="anchor-active" to="artwork-list"  spy={true}  smooth={true}  offset={-70} duration= {500} >Artworks</Link>
+
+                <Link className="anchor-link" activeClass="anchor-active" to="sold"  spy={true}  smooth={true}  offset={-70} duration= {500} >Sold</Link>
+      
                 {/* <a href="#statistics">Statistics </a> */}
+                </div>
+                
                
-                
-                
-                <div id="profile">
+                <div id="profile" className="profile-container">
                     <h2>Profile</h2>
-                <div>Name: {this.props.loggedInUser.fullName}</div>
-                <div>Birthdate: October 17, 1955 (age 64 years)</div>
-                <div>About: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit, lectus nec volutpat aliquet, mi erat condimentum lorem, in congue magna augue nec odio. Integer iaculis cursus imperdiet. Duis molestie diam volutpat lorem mollis, ut volutpat tellus imperdiet. Duis ac venenatis lacus. Etiam tincidunt urna in semper rutrum. Pellentesque finibus vestibulum nulla vel aliquet. Sed sagittis mi at neque malesuada egestas. Donec ac dapibus magna. Praesent imperdiet libero in erat egestas ultrices. Ut vel aliquet leo.</div>
+                    <div className="profile-text">
+                <div className="profile-item"><p>Name: {this.props.loggedInUser.fullName}</p></div>
+                <div className="profile-item"><p>Birthdate: October 17, 1955 (age 64 years)</p></div>
+                <div className="profile-item"><p>About: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit, lectus nec volutpat aliquet, mi erat condimentum lorem, in congue magna augue nec odio. Integer iaculis cursus imperdiet. Duis molestie diam volutpat lorem mollis, ut volutpat tellus imperdiet. Duis ac venenatis lacus. Etiam tincidunt urna in semper rutrum. Pellentesque finibus vestibulum nulla vel aliquet. Sed sagittis mi at neque malesuada egestas. Donec ac dapibus magna. Praesent imperdiet libero in erat egestas ultrices. Ut vel aliquet leo.</p></div>
+                </div>
                 <div><button className="profileButton">Edit</button></div>
 
 
                 </div>
-                <div id="artwork-list">
+                <div id="artwork-list" className="artist-artworks-list">
                 <h2>Your Artworks</h2>
                     <ArtworkList artworks={this.state.artistArtworks} /></div>
 
                     <div id="sold">
                     <h2>Sold</h2>
+                    <div className="sold-list-titles flex justify-space-around">
+                        <div className="sold-list-title">Artwork</div>
+                        <div className="sold-list-title">Last Sell</div>
+                        {/* <div className="sold-list-title">Tags</div> */}
+                        <div className="sold-list-title">Rating</div>
+                        <div className="sold-list-title">Quantity</div>
+                        <div className="sold-list-title">Earnings</div>
+                    </div>
                     <ArtistPurchasesList artworks={this.state.artistArtworks} />
                     </div>
                    

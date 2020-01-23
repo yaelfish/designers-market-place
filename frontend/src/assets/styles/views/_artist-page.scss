@@ -1,8 +1,73 @@
 .artist-container {
     margin-top: 6vh;
+
+    .top-scroller {
+
+        position: fixed;
+        height: 50px;
+        bottom: 20px;
+        right: 30px;
+        background-color: rgba(255, 255, 255, 0.829);
+        border-radius: 100%;
+        z-index: 1;
+        cursor: pointer;
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: scale(1.3);
+        }
+
+        img {
+            width: 50px;
+        }
+    }
+
+    .anchor-links{
+        margin-top: 15px;
+        margin-bottom: 15px;
+
+.anchor-link{
+    cursor: pointer;
+    transition: border .2s;
+    border-radius: 5px;
+    padding: 10px;
+    color: rgb(2, 2, 2);
+    background-color: rgb(255, 255, 255);
+    border-left: 1px solid #cac6c6;
+    border-right: 1px solid #cac6c6;
+    margin: 2px;
+    transition: .3s;
+
+    &:hover{
+        color: white;
+        background-color: rgb(0, 0, 0);
+    }
+
+    
+}
+
+.anchor-active{
+    
+    color: white;
+    background-color: rgb(0, 0, 0);
+  
+    
+  
+}
+    }
+
+ .artist-artworks-list{
+     margin-bottom: 20px;
+ }
     .artist-header{
         text-align: center;
+
+        p{
+            max-width: none;
+        }
+
         img {
+           
             width: 200px;
             height: 200px;
             border-radius: 100px;
@@ -10,54 +75,94 @@
             margin-bottom: 10px;
         }
     }
+    .profile-container {
+        p{
+
+            max-width: 80ch;
+            text-align: left;
+        }
+        
+        .profile-text {
+           
+           .profile-item{
+          
+           }
+        }
+
+        .profileButton {
+            margin-top: 10px;
+        }
+    }
 
 }
 
+.sold-list-titles{
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(50px, 1fr) minmax(130px, 1fr) minmax(30px, 1fr);
+
+    border: 1px solid rgb(212, 211, 211);
+    border-bottom: none;
+    margin-left: 200px;
+    .sold-list-title{
+        border-left: 1px solid rgb(241, 240, 240);
+    }
+
+
+
+
+
+  .artist-header {
+    text-align: center;
+    img {
+    //   width: 200px;
+    //   height: 200px;
+      border-radius: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  }
+}
 
 .main-app-container-artist {
+  font-family: montserrat, cabin, sans-serif;
+  color: $clr1;
+  h2 {
     font-family: montserrat, cabin, sans-serif;
-    color: $clr1;
-    h2 {
-        font-family: montserrat, cabin, sans-serif;
-        text-align: center;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-    p {
-        text-align: center;
-    }
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  p {
+    text-align: center;
+  }
 }
 
 .profileButton {
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
-	background-color:#f9f9f9;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-    text-shadow:0px 1px 0px #ffffff;
-    
-    &:hover {
-        background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
-        background-color:#e9e9e9;
-    }
+  box-shadow: inset 0px 1px 0px 0px #ffffff;
+  background: linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #666666;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 
-    &:active {
-        position:relative;
-        top:1px;
-    }
-    &:focus{
-        outline: none;
-    }
+  &:hover {
+    background: linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+    background-color: #e9e9e9;
+  }
+
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  &:focus {
+    outline: none;
+  }
 }
-
-
-
-       

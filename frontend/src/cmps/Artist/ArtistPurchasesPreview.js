@@ -6,12 +6,14 @@ import { loadArtworkById, removeArtwork } from '../../actions/ArtworkActions'
 import like from '../../assets/images/icons/like.png';
 // import afterLike from '../../assets/images/icons/after-like.png';
 import bin from '../../assets/images/icons/bin.png';
+import Moment from 'react-moment';
+
 
 
 class ArtistPurchasesPreview extends Component {
 
     render() {
-        let { _id, name, artist, price, likedByUsers, imgUrl } = this.props.artwork;
+        let { _id, name, artist, price, likedByUsers, imgUrl, createdAt, tags } = this.props.artwork;
         let artistObj = artist;
         let likedByUsersObj = likedByUsers;
         if (artistObj) {
@@ -27,23 +29,30 @@ class ArtistPurchasesPreview extends Component {
         
         return ( 
             <Link to={`/artwork/${_id}`}>
-                <div className="card-artwork flex justify-center align-center column">
-                    <img src={imgUrl} alt={name} />
-                    <div className="preview-info flex align-center justify-space-between">
-                        <div className="art-preview-text flex column align-start">
+                <div className="card-artwork-sold flex  align-start row">
+                    <img src={imgUrl} alt={name} className="square-ratio" />
+                    <div className="preview-info-sold">
+                        <div className="art-preview-text-sold flex row align-start">
                             <p className="preview-artwork-name">{name}</p>
-                            <p className="preview-artwork-artist">{artist}</p>
-                            <p className="preview-artwork-artist">Quantity: {this.props.timesSold}</p>
-                        </div>
-                        {/* <button className="preview-icon btn delete" src={bin} 
-                                onClick={()=>this.props.removeArtwork(_id)}></button> */}
-                        <div className="preview-likes-container flex align-center">
+                            <p className="preview-artwork-created"><Moment fromNow>{createdAt}</Moment></p>
+                            {/* <p className="preview-artwork-tags">{tags.toString()}</p> */}
+                            <span className="likes-counter"><p>{likedByUsers}</p></span>
+                            {/* <div className="preview-likes-container flex align-center">
                             <span className="likes-counter">{likedByUsers}</span>
                             <img className="preview-icon-like" src={like} />
+                        </div> */}
+
+                            <p className="preview-artwork-quantity">{this.props.timesSold}</p>
+                            <div className="preview-earnings"> ${this.props.timesSold*price}</div>
                         </div>
+                        
+
+                        {/* <button className="preview-icon btn delete" src={bin} 
+                                onClick={()=>this.props.removeArtwork(_id)}></button> */}
+             
                         {/* <img className="preview-icon" src={afterLike}></img> */}
                     </div>
-                    <div className="preview-price none">price: {price}$</div>
+                  
                 </div>
             </Link>
          
