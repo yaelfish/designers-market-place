@@ -1,54 +1,75 @@
 .details-container {
-  margin: 0 auto;
-  max-width: $normal-breakpoint;
-  margin-top: 40px;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    ". image-area image-area image-area image-area image-area image-area text-area"
+    ". . . . . . . text-area"
+    ". comments-area comments-area comments-area comments-area comments-area comments-area text-area";
+  grid-gap: 20px;
+
+  .image-area {
+    grid-area: image-area;
+
+    .main-details {
+      align-self: center;
+    }
+  }
+
+  .details-text-container {
+    position: relative;
+    grid-area: text-area;
+    background-color: #f9f8ee;
+    border-radius: 10px;
+    aside {
+      padding: 0px 30px;
+      max-width: 42ch;
+      .art-price {
+        color: $gold;
+        font-size: rem(30px);
+        span {
+          &.var-price {
+            margin-left: 10px;
+          }
+          &.price {
+            font-size: rem(15px);
+            color: black;
+            font-weight: 500;
+          }
+        }
+      }
+      .add-to-cart {
+        display: flex;
+        width: 226px;
+        background: $gold;
+        padding: 15px 10px;
+        position: absolute;
+        top: 380px;
+        div {
+          font-weight: 800;
+        }
+      }
+    }
+  }
+
   .profile-picture-details {
     object-fit: cover;
     border-radius: 100px;
     width: 60px;
     height: 60px;
   }
-  .details-product-container {
-    margin-bottom: 50px;
+  .art-name {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .art-name::first-letter {
+    text-transform: capitalize;
+  }
 
-    .details-text-container {
-      position: relative;
-      .art-price {
-        color: $gold;
-        font-size: 30px;
-      }
-      aside {
-        background-color: #f9f8ee;
-        border-radius: 10px;
-        .add-to-cart {
-          display: flex;
-          width: calc(100% + 21px);
-          position: relative;
-          background: $gold;
-          padding: 15px 10px;
-          div {
-            font-weight: 800;
-          }
-        }
-        .add-to-cart::after {
-          content: "";
-          position: absolute;
-          display: block;
-          bottom: -10px;
-          right: 0px;
-          border-style: solid;
-          border-color: $gold transparent transparent $gold;
-          border-width: 5px;
-        }
-      }
-    }
-    .art-name {
-      font-weight: 700;
-      font-size: 1.5rem;
-    }
-    .art-name::first-letter {
-      text-transform: capitalize;
-    }
+  .like-display {
+    right: 20px;
+    top: 29px;
+    position: absolute;
+
     .preview-likes-container {
       font-size: 12px;
 
@@ -103,29 +124,56 @@
         }
       }
     }
-    .action-btns {
-      width: 350px;
-      margin-bottom: 50px;
-      .edit-btn {
-        width: 100px;
-        // padding: 8px 10px;
-        margin: 5px 0px;
-        font-size: 1rem;
-        font-weight: normal;
-        border: none;
-        color: #fff;
-        border-radius: 2px;
-        text-align: center;
-        margin: 0 auto;
+  }
+  .action-btns {
+    width: 100%;
+    margin-bottom: 50px;
+    position: absolute;
+    top: 512px;
+    .edit-btn {
+      width: 100px;
+      // padding: 8px 10px;
+      margin: 5px 0px;
+      font-size: 1rem;
+      font-weight: normal;
+      border: none;
+      color: #fff;
+      border-radius: 2px;
+      text-align: center;
+      margin: 0 auto;
 
-        button {
-          background-color: #ebe9e5;
-          max-width: 100px;
-          color: $clr1;
-        }
+      button {
+        background-color: #ebe9e5;
+        max-width: 100px;
+        color: $clr1;
       }
     }
-    .details-certificate {
+  }
+  .details-certificate {
+    display: grid;
+    grid-template-areas:
+      "delivery delivery medal medal"
+      "return return security security"
+      ". warranty warranty .";
+    grid-gap: 10px;
+    position: absolute;
+    top: 610px;
+    .medal-area {
+      grid-area:medal;
+    }
+    .delivery-area {
+      grid-area:delivery;
+    }
+    .return-area {
+      grid-area:return;
+    }
+    .security-area {
+      grid-area:security;
+    }
+    .warranty-area {
+      grid-area:warranty;
+    }
+
       .icon {
         background-repeat: no-repeat;
         background-size: contain;
@@ -134,11 +182,18 @@
         height: 32px;
         &.delivery {
           background-image: url("../../images/icons/truck.png");
-          align-self: center;
         }
         &.medal {
-          background-image: url("../../images/icons/medal\ \(1\).png");
-          align-self: center;
+          background-image: url("../../images/icons/medal.png");
+        }
+        &.return {
+          background-image: url("../../images/icons/return.png");
+        }
+        &.security {
+          background-image: url("../../images/icons/password.png");
+        }
+        &.warranty {
+          background-image: url("../../images/icons/warranty.png");
         }
       }
       .certificate-text {
@@ -147,4 +202,3 @@
       }
     }
   }
-}
