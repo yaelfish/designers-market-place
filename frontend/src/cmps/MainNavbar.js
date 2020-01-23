@@ -45,18 +45,21 @@ class MainNavbar extends Component {
     render() {
         
     return (
-        <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav absolute") : "main-nav"}>
+        <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav main-nav-home absolute") : "main-nav"}>
             <div className="main-nav-container flex justify-space-between align-center">
             <ul className="nav-links">
                 <li>
-                    <NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li><span className="nav-separator">|</span>
+                    <NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li>
+                    <span className="nav-separator">|</span>
                 <li>
                     <NavLink className="nav-link" to='/about' activeClassName="active-link" exact>About</NavLink>
                 </li>
+                
                 <span className="nav-separator">|</span>
                 <li onClick={this.loadArtworks}>
                     <NavLink className="nav-link" to='/artwork' activeClassName="active-link" exact>Artworks</NavLink>
                 </li>
+                
                 <span className="nav-separator">|</span>
                 <li>
                     <NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink>

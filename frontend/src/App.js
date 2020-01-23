@@ -12,7 +12,7 @@ import DetailsArtwork from './pages/Artwork/DetailsArtwork';
 import ArtistApp from './pages/Artist/ArtistApp'
 import MainNavbar from './cmps/MainNavbar'
 import EditArtwork from './pages/Artwork/EditArtwork';
-
+import Footer from './cmps/Footer'
 import Login from './pages/Login';
 import About from './pages/About';
 
@@ -39,6 +39,7 @@ class App extends Component {
             <Route component={ArtistApp} path="/artist" exact />
 
           </Switch>
+          <Footer/>
         </Router>
       </div>
     );

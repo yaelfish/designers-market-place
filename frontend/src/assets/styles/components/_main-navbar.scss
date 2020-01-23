@@ -1,13 +1,18 @@
 .main-nav {
   background-color: opacity($color: #000000);
+  background-color: $black;
   width: 100%;
   z-index: 99;
   height: 70px;
   transition: 0.5s;
+  position: fixed;
+  top: 0;
+  // mix-blend-mode: exclusion;
 
   .main-nav-container {
     height: 70px;
     padding: 0 12px;
+    // mix-blend-mode: exclusion;
   }
 
   .profile-pic {
@@ -20,6 +25,7 @@
   .nav-separator {
     margin-right: 5px;
     margin-left: 5px;
+    color: transparent;
   }
 
   .nav-links {
@@ -29,29 +35,49 @@
     padding: 0;
 
     .nav-link {
+      color: $white;
       text-decoration: none;
       transition: 0.3s;
       padding: 1px 6px 2px 6px;
 
+      &.nav-link.active-link {
+        color: $black;
+      }
+
       &:hover {
-        color: $clr6;
-        background-color: $clr-btn-secondary-hover;
+        color: $black;
+        background-color: $white;
         border-radius: 3px;
         padding: 1px 6px 2px 6px;
       }
     }
   }
   .active-link {
-    color: $clr6;
-    background-color: $clr-btn-secondary-hover;
+    color: $black;
+    background-color: $white;
     border-radius: 2px;
     padding: 1px 6px 2px 6px;
   }
 
+  &.main-nav-home {
+    background-color: transparent;
+    position: absolute;
+    //  background-color: opacity($color: #000000);
+  }
+
   &.scrolled {
-    background-color: $clr6;
+    background-color: $black;
     position: fixed;
     transition: 0.5s;
     color: $clr2;
+    border-bottom: 1px solid;
+
+    .nav-link {
+      color: $white;
+    }
+
+    .active-link {
+      color: $white;
+    }
   }
 }

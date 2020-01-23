@@ -2,6 +2,8 @@
   margin: 0 auto;
   max-width: $normal-breakpoint;
   margin-top: 40px;
+  margin-top: 16vh;
+  
   .profile-picture-details {
     object-fit: cover;
     border-radius: 100px;
@@ -20,6 +22,26 @@
       aside {
         background-color: #f9f8ee;
         border-radius: 10px;
+        .add-to-cart {
+          display: flex;
+          width: calc(100% + 21px);
+          position: relative;
+          background: $gold;
+          padding: 15px 10px;
+          div {
+            font-weight: 800;
+          }
+        }
+        .add-to-cart::after {
+          content: "";
+          position: absolute;
+          display: block;
+          bottom: -10px;
+          right: 0px;
+          border-style: solid;
+          border-color: $gold transparent transparent $gold;
+          border-width: 5px;
+        }
       }
     }
     .art-name {

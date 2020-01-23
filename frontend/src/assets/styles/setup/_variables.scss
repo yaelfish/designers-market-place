@@ -4,7 +4,9 @@ $clr2: #707070;
 $clr3: #95adbe;
 $clr4: #dff0ea;
 $clr5: #e3e3e3;
-$clr6: #fff;
+$white: #fff;
+$black: #000;
+$light-black: #1A1E22;
 $gold: #d5a770;
 $clr7: #ebe9e5;
 $gold: #d5a770;
@@ -17,10 +19,8 @@ $clr-btn-secondary-hover: #000;
 $clr-btn-third: #aaa;
 
 // Breakpoints
-// $mobile-breakpoint: 460px;
-// $narrow-breakpoint: 720px;
-// $normal-breakpoint: 960px;
-$mobile-breakpoint: 720px;
-$narrow-breakpoint: 960px;
-$normal-breakpoint: 1200px;
+$mobile-breakpoint: 460px;
+$narrow-breakpoint: 720px;
+$normal-breakpoint: 960px;
+$wide-breakpoint: 1200px;
 
