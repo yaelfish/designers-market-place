@@ -28,7 +28,7 @@ class ArtistPurchasesList extends Component {
 
     render() {
         return (
-            <div className="list-cards">
+            <div className="list-cards sold-list">
                 {this.state.purchases === 'sold' && this.props.orders && this.props.artworks.map(artwork => {
 
                     const orderedFromUsers = this.state.orderedFromUsers;

@@ -58,7 +58,7 @@ componentWillUnmount(){
                     </p>
                 </header>
 
-               
+                <div className="anchor-links">
                 {/* <a href="#profile">Profile  </a> */}
                 <Link className="anchor-link" activeClass="anchor-active" to="profile"  spy={true}  smooth={true}  offset={-70} duration= {500} >Profile</Link>
                 
@@ -67,7 +67,7 @@ componentWillUnmount(){
                 <Link className="anchor-link" activeClass="anchor-active" to="sold"  spy={true}  smooth={true}  offset={-70} duration= {500} >Sold</Link>
       
                 {/* <a href="#statistics">Statistics </a> */}
-               
+                </div>
                 
                
                 <div id="profile" className="profile-container">
