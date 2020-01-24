@@ -34,6 +34,7 @@ handleScroll = () => {
 
 componentWillUnmount(){
     window.removeEventListener("scroll", this.handleScroll);
+    window.scrollTo(0,0);
 }
 
     loadArtistArtworks =  async () =>
