@@ -13,6 +13,11 @@
     grid-area: image-area;
     padding-top: 80px;
     align-self: center;
+    .details-image-container {
+      width: 600px;
+      height: 600px;
+      position: relative;
+    }
   }
   .details-description {
     grid-area: description-area;
@@ -76,9 +81,10 @@
   }
 
   .like-display {
-    right: 20px;
-    top: 29px;
+    top: 16px;
+    right: 14px;
     position: absolute;
+    z-index: 99;
 
     .preview-likes-container {
       font-size: 12px;
@@ -86,10 +92,10 @@
       .likes-counter {
         vertical-align: top;
         display: inline-block;
-        color: #6e6e6e;
-        font-size: 16px;
+        color: white;
+        font-size:rem(14px);
         line-height: 14px;
-        font-family: greycliff, sans-serif;
+        font-weight:500;
       }
       label {
         cursor: pointer;
@@ -111,26 +117,21 @@
       .art-name::first-letter {
         text-transform: capitalize;
       }
-      .like-icon {
-        background: url("../../images/icons/like.png") no-repeat center center;
-        width: 36px;
-      }
-      .liked-icon {
-        background: url("../../images/icons/liked.png") no-repeat center center;
-        width: 36px;
-      }
       .heart {
         width: 100px;
         height: 100px;
-        background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+        background-size: contain;
+        background: url("https://cssanimation.rocks/images/posts/steps/heart.png");
         background-position: 0 0;
         cursor: pointer;
         transition: background-position 1s steps(28);
         transition-duration: 0s;
 
         &.is-active {
-          transition-duration: 1s;
           background-position: -2800px 0;
+        }
+        &.is-animating-like{
+          transition-duration: 1s;
         }
       }
     }

@@ -20,7 +20,8 @@ class DetailsArtwork extends Component {
         isAddedToCart: false,
         isLiked: false,
         currUserId: '',
-        currArtwork: null
+        currArtwork: null,
+        isAnimatingLike: false
     }
 
     async componentDidMount() {
@@ -55,7 +56,7 @@ class DetailsArtwork extends Component {
     onToggleLike = async () => {
         await this.setState(prevState => ({ isLiked: !prevState.isLiked }))
         await this.updateLiked();
-        console.log(this.state.isLiked);
+        this.setState({ isAnimatingLike: true })
     }
 
     updateLiked = async () => {
@@ -131,7 +132,18 @@ class DetailsArtwork extends Component {
             <section className="details-container">
                 <button className="btn back" onClick={this.goBack}></button>
                 <div className="flex column image-area align-center">
-                    <div className="details-image-container">
+                    <div className="details-image-container flex justify-center align-center">
+                        <div className="like-display">
+                            <div className="preview-likes-container flex column">
+                                <label htmlFor="like-toggle">
+                                    <div className={isLiked ? (this.state.isAnimatingLike ? 'heart is-animating-like is-active flex justify-center align-center' : 'heart is-active flex justify-center align-center') : 'heart flex justify-center align-center'} alt="" onClick={this.onToggleLike}
+                                        src={isLiked ? liked : like}>
+                                        <span className="likes-counter">{likedByUsers}</span>
+                                    </div>
+                                </label>
+                                <input type="checkbox" id="like-toggle" />
+                            </div>
+                        </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
                 </div>
@@ -151,26 +163,9 @@ class DetailsArtwork extends Component {
                             <li>
                                 {selectedArtwork.price && <p className="art-price"><span className="price">Price: </span><br></br><span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span></p>}
                             </li>
-                            <li>
-                                <div className="like-display">
-                                    <div className="preview-likes-container flex align-center">
-                                        <label htmlFor="like-toggle">
-                                            <img alt="" onClick={this.onToggleLike}
-                                                className="preview-icon-like"
-                                                src={isLiked ? liked : like}
-                                            />
-                                            {/* <div onClick={this.onToggleLike} className={isLiked ? 'heart is-active' : 'heart'}></div> */}
-                                        </label>
-
-                                        <input type="checkbox" id="like-toggle" />
-                                        <span className="likes-counter">{likedByUsers}</span>
-                                    </div>
-                                </div>
-                            </li>
                         </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
 
-                        {/* === .artist._id &&  */}
                         {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
                             <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                             <button className="btn delete" onClick={this.onDelete}></button>
