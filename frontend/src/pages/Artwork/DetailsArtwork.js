@@ -129,20 +129,19 @@ class DetailsArtwork extends Component {
         return <React.Fragment>
             {/* <Breadcrumb /> */}
             <section className="details-container">
-                <div className="flex column image-area align-start">
+                <div className="flex column image-area align-center">
                     <div className="details-image-container">
                         <Carousel artSrc={selectedArtwork.imgUrl} />
-
-                    </div>
-                    <div className="flex justify-center align-center">
-                        <img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}></img>
-                        <div className="main-details">
-                            <p className="art-name">{selectedArtwork.name}</p>
-                            <p className="artist-name">By {artist}</p>
-                        </div>
-
                     </div>
                 </div>
+
+                    <div className="details-description flex justify-center align-center">
+                        <div className="main-details">
+                            <p className="art-name">{selectedArtwork.name}</p>
+                            <p className="artist-name flex align-center"><img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}></img> By {artist} </p>
+                        </div>
+                        <p className="art-description">{selectedArtwork.description}</p>
+                    </div>
                 <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
                 <div className="details-text-container flex justify-start">
                     <aside className="container flex justify-start column align-center">
@@ -150,9 +149,6 @@ class DetailsArtwork extends Component {
 
                             <li>
                                 {selectedArtwork.price && <p className="art-price"><span className="price">Price: </span><br></br><span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span></p>}
-                            </li>
-                            <li>
-                                <p className="art-description">{selectedArtwork.description}</p>
                             </li>
                             <li>
                                 <div className="like-display">
@@ -170,14 +166,9 @@ class DetailsArtwork extends Component {
                                     </div>
                                 </div>
                             </li>
-                            {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>}
                         </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
-                        {this.state.isAddedToCart && <div>
-                            <h2>Thank you!</h2>
-                            <p><b>Your payment was successful and your order is complete.<br /> we have sent you an email as proof of delivery. The email will provide purchase details.
-                                <br /> Shipping will be made within up to 7 days, estimated time of arrival is 14-21 days.</b></p>
-                        </div>}
+
 
                         {/* {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>} */}
                         <div className="action-btns flex justify-space-around">
@@ -186,6 +177,10 @@ class DetailsArtwork extends Component {
                             <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                             <button className="btn delete" onClick={this.onDelete}></button>
                         </div>
+                        {this.state.isAddedToCart && <div className="purchase-msg">
+                            <h2>Thank you!</h2>
+                            <p>Your payment was successful and your order is complete.</p>
+                        </div>}
                         <div className="details-certificate flex justify-space-around">
                             <div className="flex column medal-area align-center"><div className="icon medal"></div> <div className="certificate-text">Original work delivered with a certificate of authenticity.</div></div>
                             <div className="flex column delivery-area align-center"><div className="icon delivery"></div><div className="certificate-text">Shipping usually takes up to 7 days.</div></div>

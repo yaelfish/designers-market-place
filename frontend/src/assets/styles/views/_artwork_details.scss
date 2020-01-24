@@ -4,25 +4,27 @@
   display: grid;
   grid-template-areas:
     "image-area image-area image-area image-area image-area image-area text-area"
+    "image-area image-area image-area image-area image-area image-area text-area"
+    "description-area description-area description-area description-area description-area description-area text-area"
     "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
   grid-gap: 20px;
 
   .image-area {
     grid-area: image-area;
-
+    padding-top: 80px;
+    align-self: center;
+  }
+  .details-description {
+    grid-area: description-area;
     .main-details {
       align-self: center;
     }
-    margin: 0 auto;
-    max-width: $normal-breakpoint;
-    margin-top: 40px;
-    margin-top: 16vh;
-
     .profile-picture-details {
       object-fit: cover;
       border-radius: 100px;
-      width: 60px;
-      height: 60px;
+      width: 40px;
+      height: 40px;
+      margin-right: 8px;
     }
   }
 
@@ -33,9 +35,6 @@
     border-radius: 10px;
     aside {
       padding: 0px 30px;
-      .art-description {
-        max-width: 25ch;
-      }
       .art-price {
         color: $gold;
         font-size: rem(30px);
