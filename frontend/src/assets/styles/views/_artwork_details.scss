@@ -32,20 +32,21 @@
     position: relative;
     grid-area: text-area;
     background-color: #f9f8ee;
-    border-radius: 10px;
+  
     aside {
       padding: 0px 30px;
       .art-price {
         color: $gold;
         font-size: rem(30px);
+        margin-left: 10px;
+        
         span {
-          &.var-price {
-            margin-left: 10px;
-          }
           &.price {
-            font-size: rem(15px);
-            color: black;
+            font-size: rem(13px);
+            color: $black;
             font-weight: 500;
+            text-transform: uppercase;
+            font-family: 'gotham-medium';
           }
         }
       }

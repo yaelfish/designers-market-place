@@ -19,7 +19,6 @@ class EditArtwork extends Component {
     loadArtwork = async () => {
         const { _id } = this.props.match.params;
         const art = await this.props.loadArtworkById(_id);
-        console.log(art);
     }
 
     goBack = () => {

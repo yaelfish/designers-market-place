@@ -48,7 +48,6 @@ class DetailsArtwork extends Component {
         let usersLikes = artwork.likedByUsers;
         this.state.isLiked ? usersLikes.push(currUser) : usersLikes.filter(user => user._id === currUser._id);
         artwork = { ...artwork, usersLikes };
-        console.log(artwork);
         
         this.setState({artwork})
         await this.props.editArtwork(artwork);
@@ -99,10 +98,6 @@ class DetailsArtwork extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }
-        console.log(likedByUsers);   
-        
-        // let likes = selectedArtwork.likedByUsers.length;
-        // console.log(likes);
         
         return <React.Fragment>
             <Breadcrumb />
@@ -136,7 +131,7 @@ class DetailsArtwork extends Component {
                     </div>
 
                     {/* <Carousel artSrc={selectedArtwork.imgUrl}/> */}
-                    <img src={selectedArtwork.imgUrl} ></img>
+                    <img src={selectedArtwork.imgUrl} alt=""/>
                 </div>
 
                 <div className="details-text-container">

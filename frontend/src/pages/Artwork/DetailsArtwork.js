@@ -13,6 +13,7 @@ import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
 import { removeReview } from '../../actions/ReviewActions'
 import OrderAdd from '../../cmps/Order/OrderAdd'
+import ChooseFrame from '../../cmps/Artwork/ChooseFrame';
 
 class DetailsArtwork extends Component {
 
@@ -77,8 +78,6 @@ class DetailsArtwork extends Component {
     loadArtwork = async () => {
         const { _id } = this.props.match.params;
         const currArtwork = await this.props.loadArtworkById(_id);
-
-        console.log(currArtwork);
         return currArtwork;
     }
 
@@ -131,24 +130,34 @@ class DetailsArtwork extends Component {
             <section className="details-container">
                 <div className="flex column image-area align-center">
                     <div className="details-image-container">
-                        <Carousel artSrc={selectedArtwork.imgUrl} />
+                        {/* <Carousel artSrc={selectedArtwork.imgUrl} /> */}
+                        <ChooseFrame artSrc={selectedArtwork.imgUrl}/>
                     </div>
                 </div>
 
                     <div className="details-description flex justify-center align-center">
                         <div className="main-details">
                             <p className="art-name">{selectedArtwork.name}</p>
-                            <p className="artist-name flex align-center"><img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}></img> By {artist} </p>
+                            <p className="artist-name flex align-center">
+                                <img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}/> By {artist} </p>
                         </div>
                         <p className="art-description">{selectedArtwork.description}</p>
                     </div>
-                <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
+                <Reviews 
+                    onDeleteReview={this.onDeleteReview} 
+                    sendMsg={this.sendMsg} 
+                    reviews={this.props.reviews} 
+                    loadReviews={this.props.loadReviews} 
+                    selectedArtwork={this.props.match.params._id} 
+                    loggedInUser={this.props.loggedInUser}>
+                </Reviews>
                 <div className="details-text-container flex justify-start">
                     <aside className="container flex justify-start column align-center">
                         <ul className="aside-fill">
-
                             <li>
-                                {selectedArtwork.price && <p className="art-price"><span className="price">Price: </span><br></br><span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span></p>}
+                                {selectedArtwork.price && <p className="art-price">
+                                <span className="price">Price </span>
+                                <span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span></p>}
                             </li>
                             <li>
                                 <div className="like-display">
@@ -167,14 +176,13 @@ class DetailsArtwork extends Component {
                                 </div>
                             </li>
                         </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
-
-
-
                         {/* {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>} */}
                         <div className="action-btns flex justify-space-around">
 
                             <button className="btn back" onClick={this.goBack}></button>
-                            <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
+                            <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}>
+                                <button className="edit"></button>
+                            </Link>
                             <button className="btn delete" onClick={this.onDelete}></button>
                         </div>
                         {this.state.isAddedToCart && <div className="purchase-msg">
@@ -182,11 +190,26 @@ class DetailsArtwork extends Component {
                             <p>Your payment was successful and your order is complete.</p>
                         </div>}
                         <div className="details-certificate flex justify-space-around">
-                            <div className="flex column medal-area align-center"><div className="icon medal"></div> <div className="certificate-text">Original work delivered with a certificate of authenticity.</div></div>
-                            <div className="flex column delivery-area align-center"><div className="icon delivery"></div><div className="certificate-text">Shipping usually takes up to 7 days.</div></div>
-                            <div className="flex column return-area align-center"><div className="icon return"></div><div className="certificate-text">We have a 14 day withdrawal period, starting on the day you receive the work.</div></div>
-                            <div className="flex column security-area align-center"><div className="icon security"></div><div className="certificate-text">You can pay safely by credit card or bank transfer.</div></div>
-                            <div className="flex column warranty-area align-center"><div className="icon warranty"></div><div className="certificate-text">Reliability and traceability guaranteed. </div></div>
+                            <div className="flex column medal-area align-center">
+                                <div className="icon medal"></div> 
+                                <div className="certificate-text">Original work delivered with a certificate of authenticity.</div>
+                            </div>
+                            <div className="flex column delivery-area align-center">
+                                <div className="icon delivery"></div>
+                                <div className="certificate-text">Shipping usually takes up to 7 days.</div>
+                            </div>
+                            <div className="flex column return-area align-center">
+                                <div className="icon return"></div>
+                                <div className="certificate-text">We have a 14 day withdrawal period, starting on the day you receive the work.</div>
+                            </div>
+                            <div className="flex column security-area align-center">
+                                <div className="icon security"></div>
+                                <div className="certificate-text">You can pay safely by credit card or bank transfer.</div>
+                            </div>
+                            <div className="flex column warranty-area align-center">
+                                <div className="icon warranty"></div>
+                                <div className="certificate-text">Reliability and traceability guaranteed. </div>
+                            </div>
                         </div>
                     </aside>
                 </div>

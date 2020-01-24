@@ -22,11 +22,7 @@ class ArtistPurchasesPreview extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }        
-        // console.log(likedByUsers);
-        // console.log(this.props.artwork);
    
-        
-        
         return ( 
             <Link to={`/artwork/${_id}`}>
                 <div className="card-artwork-sold flex  align-start row">

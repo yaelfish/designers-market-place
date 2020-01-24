@@ -17,7 +17,7 @@ export default class Carousel extends Component {
 
                 <div className="slides">
                     <div id="slide-1">
-                        <img className="carousel-img" src={artSrc} ></img>
+                        <img className="carousel-img" src={artSrc} alt=""/>
                     </div>
                     <div id="slide-2">
                         {/* <ArtTemplate artwork={artSrc} /> */}

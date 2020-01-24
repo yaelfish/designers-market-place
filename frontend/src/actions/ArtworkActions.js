@@ -54,7 +54,6 @@ export function removeArtwork(artworkId) {
 
 
 export function editArtwork(artwork) {
-  console.log(artwork);
   
   return async dispatch => {
     try {

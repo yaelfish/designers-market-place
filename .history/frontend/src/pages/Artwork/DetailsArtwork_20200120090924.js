@@ -164,7 +164,7 @@ class DetailsArtwork extends Component {
                                 <p className="art-description">{selectedArtwork.description}</p>
                             </li>
                             <li>
-                                <p className="art-price">Price: {selectedArtwork.price}$</p>
+                                <p className="art-price">Price {selectedArtwork.price}$</p>
                             </li>
                         </ul>
                         <button className="add-to-cart submit" onClick={this.addToCart}>Add To Cart</button>
