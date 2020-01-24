@@ -10,7 +10,7 @@ class MainNavbar extends Component {
 
     state= {
         pathname: window.location.pathname,
-        prevScrollpos: window.pageYOffset
+        prevScrollpos: window.pageYOffset,
     }
 
 
@@ -19,7 +19,7 @@ class MainNavbar extends Component {
             this.setState( {pathname : window.location.pathname})
         })
         window.addEventListener("scroll", this.handleScroll);
-        console.log(this.props.loggedInUser);
+ 
         
     }
 
@@ -46,13 +46,13 @@ class MainNavbar extends Component {
 
 
     render() {
-        
     return (
         <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav main-nav-home absolute") : "main-nav"}>
             <div className="main-nav-container flex justify-space-between align-center">
             <ul className="nav-links flex align-center">
                 <li>
-               { (this.state.pathname === "/")&&<Search history={this.props.history} isHome={true}></Search>}
+           
+      
                     <NavLink to='/' exact>
                         <div className="logo flex column align-center">
                             <img className="logo-pic" src={logo} alt="logo"/>
@@ -80,10 +80,10 @@ class MainNavbar extends Component {
                     <NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink>
                 </li>
             </ul>
-
+         
+            <Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search>
             {/* <div>Hello, {this.props.loggedInUser.fullName}!</div> */}
-            {!(this.state.pathname === "/") &&
-            <Search history={this.props.history}></Search>}
+
             <NavLink className="nav-link" to='/artist' exact>
                 <img className="profile-pic"
                     src={this.props.loggedInUser.imgUrl}

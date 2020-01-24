@@ -4,6 +4,7 @@ import { loading, doneLoading } from './SystemActions';
 export function loadArtworks(filterBy) {
   return async dispatch => {
     try {
+      console.log("I was called with this filter on actions", filterBy)
       const artworks = await ArtworkService.query(filterBy);
       dispatch(_setArtworks(artworks));
   

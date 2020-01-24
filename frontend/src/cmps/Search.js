@@ -34,7 +34,9 @@ class Search extends Component {
 
     handleKeyPress = (ev) => {
         if(ev.key === 'Enter'){
-        ev.preventDefault()
+        ev.target.value = '';
+        this.setState({dynamicSearch: false})
+
         this.props.history.push('/artwork')
         }
     }
@@ -71,13 +73,13 @@ class Search extends Component {
     render() {
         return (
             <div className="wrap">
-                {this.props.isHome ? 
-                <div id="content" >
+               
+                <div id="content" className={!this.props.isHome&&"none"} >
                 <input type="text"  onKeyPress={this.handleKeyPress} onChange={this.changeInput} name={this.state.selectedFilter}  className={ (this.state.dynamicSearch) ? "dynamic-search-input square" : "dynamic-search-input"} id="search-input" />
                 <button type="reset" className={ (this.state.dynamicSearch) ? "dynamic-search close" : "dynamic-search"} id="search-btn" onClick={this.toggleSearch}></button>
                   </div>
-                :
-                <div className="search">
+               
+                <div className={this.props.isHome ? "none" : "search"}>
                     <input  type="text" className="searchTerm" placeholder="What are you looking for?" onChange={this.changeInput} name={this.state.selectedFilter} />
                     <select className="search-filter" name="search-filter" onChange={this.changeSearchFilter} >
                         <option  value="tags">Tags</option>
@@ -90,7 +92,6 @@ class Search extends Component {
 
                     </button>
             </div>
-    }
             </div>
 
 
