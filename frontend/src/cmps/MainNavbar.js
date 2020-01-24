@@ -68,7 +68,7 @@ class MainNavbar extends Component {
                         </li>
 
                         <span className="nav-separator">|</span>
-                        <li onClick={this.loadArtworks}>
+                        <li   onClick={this.loadArtworks} >
                             <NavLink className="nav-link" to='/artwork' activeClassName="active-link" exact>Artworks</NavLink>
                         </li>
 
