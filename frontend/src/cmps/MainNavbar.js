@@ -4,6 +4,7 @@ import Search from '../cmps/Search'
 import { connect } from 'react-redux';
 import { loadArtworks } from '../actions/ArtworkActions'
 import { render } from 'react-dom';
+import logo from '../assets/images/logo.png'
 
 class MainNavbar extends Component {
 
@@ -47,10 +48,21 @@ class MainNavbar extends Component {
     return (
         <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav main-nav-home absolute") : "main-nav"}>
             <div className="main-nav-container flex justify-space-between align-center">
-            <ul className="nav-links">
+            <ul className="nav-links flex align-center">
                 <li>
-                    <NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink></li>
-                    <span className="nav-separator">|</span>
+                    <NavLink to='/' exact>
+                        <div className="logo flex column align-center">
+                            <img className="logo-pic" src={logo} alt="logo"/>
+                            <span className="logo-name">Early Bird</span>
+                        </div>
+                        
+                    </NavLink>
+                </li>
+                <span className="nav-separator">|</span>
+                <li>
+                    <NavLink className="nav-link" to='/' activeClassName="active-link" exact>Home</NavLink>
+                </li>
+                <span className="nav-separator">|</span>
                 <li>
                     <NavLink className="nav-link" to='/about' activeClassName="active-link" exact>About</NavLink>
                 </li>

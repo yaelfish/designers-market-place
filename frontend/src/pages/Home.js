@@ -18,6 +18,8 @@ import pop2 from '../assets/images/artworks/hilmaasklint.jpg'
 import pop3 from '../assets/images/artworks/Adulthood.jpg'
 import pop4 from '../assets/images/artworks/furure.jpg'
 
+import logo from '../assets/images/logo.png'
+
 class Home extends Component {
   state = {
     isHome: true
@@ -32,16 +34,19 @@ class Home extends Component {
 
         <div className="home">
           <div className="cover flex justify-center align-center">
-            <img alt="" src={coverImg} />
+            {/* <img alt="" src={coverImg} /> */}
             <div className="cover-header flex column">
+              {/* <div className="home-top-title">INSPIRATION</div>
+              <img className="home-logo" src={logo} alt="early bird logo"/> */}
+              {/* <span className="home-title">Welcome to Early Bird</span> */}
               <span className="home-title">Discover The Creative Universe Of Our Artists</span>
               <Link className="btn discover" to={{ pathname: '/artwork' }}>
-                <button className="btn discover header">Discover</button>
+                <button className="btn discover header">start browsing</button>
               </Link>
             </div>
           </div>
           <main>
-            <section className="intro-home-container">
+            <section className="intro-home-container">             
               <h1>Buy and Sell Original Art Online on our Art Gallery</h1>
               <h2>Our current favorites</h2>
 

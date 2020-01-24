@@ -130,12 +130,38 @@
   }
 
   .cover {
+    background-image: url("../../images/cover2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
     height: 80vh;
     font-family: "gotham-light";
     font-size: rem(80px);
     text-align: center;
     color: rgb(0, 0, 0);
 
+    .cover-header {
+      margin-right: 3%;
+
+      // @include for-narrow-layout {
+      //   margin-right: 4.3%;
+      // }
+    }
+
+    .home-logo {
+      width: 40px;
+      height: 40px;
+    }
+    .home-top-title {
+      font-size: 12px;
+      width: fit-content;
+      color: white;
+      z-index: 1;
+      font-weight: 700;
+      padding: 7px 14px;
+      margin: 1px auto -18px;
+      background-color: rgba(0, 0, 0, 1);
+    }
     .home-title {
       display: block;
       color: #fff;
@@ -146,7 +172,7 @@
       line-height: 1.5;
       padding: 20px 30px 30px;
       margin-top: 2px;
-      max-width: 21ch;
+      max-width: 19ch;
     }
 
     img {
@@ -173,7 +199,7 @@
   .discover-container {
     // background-color: $clr2;
     background: #e3e3e3;
-    padding: 80px 10px 80px 30px;
+    padding: 80px 10px 80px 45px;
 
     .discover-container-left {
       min-width: 11%;
