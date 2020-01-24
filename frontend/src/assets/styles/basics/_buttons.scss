@@ -35,6 +35,9 @@ button {
     background-position: center;
     width: 32px;
     height: 32px;
+    position: absolute;
+    top: 89px;
+    left: 11px;
   }
   &.delete {
     background: url("../../images/icons/remove.png");

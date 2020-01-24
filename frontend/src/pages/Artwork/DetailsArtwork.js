@@ -129,19 +129,20 @@ class DetailsArtwork extends Component {
         return <React.Fragment>
             {/* <Breadcrumb /> */}
             <section className="details-container">
+                <button className="btn back" onClick={this.goBack}></button>
                 <div className="flex column image-area align-center">
                     <div className="details-image-container">
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
                 </div>
 
-                    <div className="details-description flex justify-center align-center column">
-                        <div className="main-details">
-                            <p className="art-name">{selectedArtwork.name}</p>
-                            <p className="artist-name flex align-center"><img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}></img> By {artist} </p>
-                        </div>
-                        <p className="art-description">{selectedArtwork.description}</p>
+                <div className="details-description flex justify-center align-center column">
+                    <div className="main-details">
+                        <p className="art-name">{selectedArtwork.name}</p>
+                        <p className="artist-name flex align-center"> By {artist} </p>
                     </div>
+                    <p className="art-description">{selectedArtwork.description}</p>
+                </div>
                 <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
                 <div className="details-text-container flex justify-start">
                     <aside className="container flex justify-start column align-center">
@@ -169,14 +170,11 @@ class DetailsArtwork extends Component {
                         </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
 
-
-                        {/* {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>} */}
-                        <div className="action-btns flex justify-space-around">
-
-                            <button className="btn back" onClick={this.goBack}></button>
+                        {/* === .artist._id &&  */}
+                        {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
                             <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                             <button className="btn delete" onClick={this.onDelete}></button>
-                        </div>
+                        </div>}
                         {this.state.isAddedToCart && <div className="purchase-msg">
                             <h2>Thank you!</h2>
                             <p>Your payment was successful and your order is complete.</p>

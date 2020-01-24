@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ArtworkList from '../../cmps/Artwork/ArtworkList';
 import { loadArtworks } from '../../actions/ArtworkActions';
 import Tags from '../../cmps/Tags';
+import Spinner from '../../cmps/Spinner'
 
 // import queryString from 'query-string';
 
@@ -36,7 +37,7 @@ class AppArtwork extends Component {
                     </header>
                     <Tags />
                     
-                    <ArtworkList artworks={this.props.artworks} />
+                   {this.props.artworks?<ArtworkList artworks={this.props.artworks} />:<Spinner></Spinner>}
                 </main>
             </React.Fragment>)
     }
