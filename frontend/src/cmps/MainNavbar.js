@@ -23,6 +23,8 @@ class MainNavbar extends Component {
         
     }
 
+
+
     loadArtworks = () => {
         this.props.loadArtworks()
     }
@@ -50,6 +52,7 @@ class MainNavbar extends Component {
             <div className="main-nav-container flex justify-space-between align-center">
             <ul className="nav-links flex align-center">
                 <li>
+               { (this.state.pathname === "/")&&<Search history={this.props.history} isHome={true}></Search>}
                     <NavLink to='/' exact>
                         <div className="logo flex column align-center">
                             <img className="logo-pic" src={logo} alt="logo"/>

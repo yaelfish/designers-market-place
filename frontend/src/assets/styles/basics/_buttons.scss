@@ -12,9 +12,9 @@ button {
   transition: all 0.2s;
   cursor: pointer;
 
-  &:hover {
-    background-color: $clr-btn-hover;
-  }
+  // &:hover {
+  //  background-color: $clr-btn-hover;
+  // }
   &.like {
     background: no-repeat center/80% url("../../images/icons/like.png");
     background-size: 20px;

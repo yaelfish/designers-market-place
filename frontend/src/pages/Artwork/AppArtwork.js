@@ -4,13 +4,11 @@ import ArtworkList from '../../cmps/Artwork/ArtworkList';
 import { loadArtworks } from '../../actions/ArtworkActions';
 import Tags from '../../cmps/Tags';
 
-// import queryString from 'query-string';
 
 class AppArtwork extends Component {
 
     componentDidMount() {
         this.loadArtworks()
-
     }
 
 
