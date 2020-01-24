@@ -14,7 +14,7 @@ export default class Footer extends Component {
                     </div>
                 </NavLink>
                 <small className="container">
-                    Copyright © 2020 FineArt - All Rights Reserved to Ohad, Tal & Yael</small>
+                    Copyright © 2020 Early Bird - All Rights Reserved</small>
             </footer>
         </>)
     }
