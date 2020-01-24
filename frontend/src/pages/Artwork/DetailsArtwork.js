@@ -135,7 +135,7 @@ class DetailsArtwork extends Component {
                     </div>
                 </div>
 
-                    <div className="details-description flex justify-center align-center">
+                    <div className="details-description flex justify-center align-center column">
                         <div className="main-details">
                             <p className="art-name">{selectedArtwork.name}</p>
                             <p className="artist-name flex align-center"><img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}></img> By {artist} </p>
