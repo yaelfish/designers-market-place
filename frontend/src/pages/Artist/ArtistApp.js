@@ -14,16 +14,15 @@ class AppArtwork extends Component {
 
     state = {
         artistArtworks: [],
-        purchases: []
+        artworksBoughtByUser: []
 
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         window.addEventListener("scroll", this.handleScroll);
+        await this.props.loadArtworks()
         this.loadArtistArtworks();
         this.loadPurchases();
-
-
     }
 
     handleScroll = () => {
@@ -37,18 +36,25 @@ class AppArtwork extends Component {
 
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
+        window.scrollTo(0, 0);
     }
 
     loadPurchases = async () => {
         await this.props.loadOrders();
-        const purchases = this.props.orders.filter(order => {
+        const userOrders = this.props.orders.filter(order => {
             return order.byUser._id === this.props.loggedInUser._id
         })
-        this.setState({ purchases })
+        const artworksBoughtByUser = this.props.artworks.filter(artwork => {
+            for (let i = 0; i < userOrders.length; i++) {
+                if (userOrders[i].artwork._id === artwork._id)
+                    return true;
+            }
+            return false;
+        })
+        this.setState({ artworksBoughtByUser })
     }
 
     loadArtistArtworks = async () => {
-        await this.props.loadArtworks()
         const artistArtworks = this.props.artworks.filter(artwork => {
             return this.props.loggedInUser._id === artwork.artist._id
         })
@@ -111,7 +117,7 @@ class AppArtwork extends Component {
 
                     <div id="purchases" className="artist-artworks-list">
                         <h2>Your Purchases</h2>
-                        <ArtworkList artworks={this.state.purchases} /></div>
+                        <ArtworkList artworks={this.state.artworksBoughtByUser} /></div>
 
 
                     {/* <div id="statistics">Some Statistics</div>
