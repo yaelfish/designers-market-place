@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CloudinaryService from '../../service/CloudinaryService';
 import { MultiSelect } from '@progress/kendo-react-dropdowns';
-import UploadIcon from '../../assets/images/icons/upload.png'
+import UploadIcon from '../../assets/images/icons/upload.png';
+import Spinner from '../../cmps/Spinner';
 
 const tagsData = ["photography", "illustration", "nature", "abstract", "landscape", "portrait", "vintage", "popart", "watercolor"]
 
@@ -24,7 +25,8 @@ export default class ArtworkForm extends React.Component {
         },
         isAddMode: false,
         imgUrl: '',
-        artistName: ''
+        artistName: '',
+        isUploading: false
     }
 
     componentDidMount() {
@@ -93,8 +95,9 @@ export default class ArtworkForm extends React.Component {
     }
 
     onUploadImg = (ev) => {
+        this.setState({ isUploading: true })
         CloudinaryService.uploadImg(ev).then(res => {
-            this.setState({ imgUrl: res })
+            this.setState({ imgUrl: res, isUploading: false })
             let currArtwork = { ...this.state.artwork }
             currArtwork.imgUrl = res;
             this.setState({ artwork: currArtwork })
@@ -132,11 +135,11 @@ export default class ArtworkForm extends React.Component {
                 <label> Upload your image:
                 <input className="upload-img" onChange={this.onUploadImg} type="file" placeholder="image url" name="imgUrl" />
                 </label>
-                <div className={artwork.imgUrl && artwork.imgUrl.length ? "img-edit-container" : 'img-edit-container no-img flex justify-center align-center'}>
-                    <img className={artwork.imgUrl && artwork.imgUrl.length ? 'uploaded-img' : 'upload-img-icon'}
-                        src={artwork.imgUrl && artwork.imgUrl.length ? artwork.imgUrl : UploadIcon} alt="" width="250" /></div>
+                <div className={artwork.imgUrl && artwork.imgUrl.length ? "img-edit-container flex justify-center align-center" : 'img-edit-container flex justify-center align-center'}>
+                    {this.state.isUploading ? <Spinner></Spinner> : <img className={artwork.imgUrl && artwork.imgUrl.length ? 'uploaded-img' : 'upload-img-icon'}
+    src={artwork.imgUrl && artwork.imgUrl.length ? artwork.imgUrl : UploadIcon} alt="" width="250" />}</div>
 
-                <button className="btn submit" type="submit">Submit</button>
+                {!this.state.isUploading && < button className="btn submit" type="submit">Submit</button>}
                 {/* <button className="btn back" onClick={this.goBack}>Back</button> */}
                 <Link to={`/artwork`}><button className="back"></button></Link>
             </form>
