@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { login } from '../actions/UserActions';
+import { loadArtworks } from '../actions/ArtworkActions';
 import { connect } from 'react-redux';
 import Search from '../cmps/Search';
 import HomeCarousel from '../cmps/HomeCarousel'
@@ -24,6 +25,13 @@ class Home extends Component {
   state = {
     isHome: true
   }
+
+loadArtworks = (ev) => {
+  ev.persist();
+  this.props.loadArtworks();
+}
+
+
   render() {
     return (
       <React.Fragment>
@@ -37,7 +45,7 @@ class Home extends Component {
               {/* <span className="home-title">Welcome to Early Bird</span> */}
               <span className="home-title">Discover The Creative Universe Of Our Artists</span>
               <Link className="btn discover" to={{ pathname: '/artwork' }}>
-                <button className="btn discover header">start browsing</button>
+                <button className="btn discover header" onClick={this.loadArtworks}>start browsing</button>
               </Link>
             </div>
           </div>
@@ -50,25 +58,25 @@ class Home extends Component {
                 {/* <HomeCarousel/> */}
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop1} />
+                    <img className="popular-link" src={pop1}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
 
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop2} />
+                    <img className="popular-link" src={pop2}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
 
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop3} />
+                    <img className="popular-link" src={pop3}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
 
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop4} />
+                    <img className="popular-link" src={pop4}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
               </ul>
@@ -78,8 +86,8 @@ class Home extends Component {
             <section className="discover-container flex">
               <aside className="discover-container-left flex column">
                 <h2>Discover the world through original paintings for sale</h2>
-                <Link className="btn discover" to={{ pathname: '/artwork' }}>
-                  <button className="btn discover inner-discover">Discover</button>
+                <Link className="btn discover" to={{ pathname: '/artwork'}}>
+                  <button className="btn discover inner-discover" onClick={this.loadArtworks}>Discover</button>
                 </Link>
               </aside>
 
@@ -137,10 +145,12 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
+    artworks: state.artwork.artworks
   };
 };
 const mapDispatchToProps = {
   login,
+  loadArtworks
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

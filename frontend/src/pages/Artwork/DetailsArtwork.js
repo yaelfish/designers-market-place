@@ -13,8 +13,8 @@ import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
 import { removeReview } from '../../actions/ReviewActions'
 import OrderAdd from '../../cmps/Order/OrderAdd'
+import ChooseFrame from '../../cmps/Artwork/ChooseFrame';
 
-import { frameLogo } from '../../assets/images/icons/square-frame.png'; 
 class DetailsArtwork extends Component {
 
     state = {
@@ -121,7 +121,7 @@ class DetailsArtwork extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }
-        return <React.Fragment>
+        return (<React.Fragment>
             {/* <Breadcrumb /> */}
             <section className="details-container">
                 <button className="btn back" onClick={this.goBack}></button>
@@ -140,7 +140,7 @@ class DetailsArtwork extends Component {
                         </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
-                    
+                    <ChooseFrame artSrc={selectedArtwork.imgUrl} />
                 </div>
                 <div className="details-description flex justify-center align-center column">
                     <div className="main-details">
@@ -155,14 +155,20 @@ class DetailsArtwork extends Component {
                     reviews={this.props.reviews} 
                     loadReviews={this.props.loadReviews} 
                     selectedArtwork={this.props.match.params._id} 
-                    loggedInUser={this.props.loggedInUser} >
+                    loggedInUser={this.props.loggedInUser}>
                 </Reviews>
                 <div className="details-text-container flex justify-start">
                     <aside className="container flex justify-start column align-center">
                         {selectedArtwork.price && <div className="art-price">
-                        <p className="price">Price </p>
-                        <span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span>
-                        <p className="free-sheeping">Free worldwide shipping and returns</p>
+                            <p className="price">
+                                Price 
+                            </p>
+                            <span className="var-price">
+                                ${selectedArtwork.price.toLocaleString("USD")}
+                            </span>
+                            <p className="free-sheeping">
+                                Free worldwide shipping and returns
+                            </p>
                         </div>}
                            
                        {this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
@@ -178,20 +184,16 @@ class DetailsArtwork extends Component {
                             </button>
                         </div>}
                         {this.state.isAddedToCart && <div className="purchase-msg">
-                            <h2>Thank you!</h2>
-                            <p>Your payment was successful and your order is complete.</p>
+                            <h2>
+                                Thank you!
+                            </h2>
+                            <p>
+                                Your payment was successful and your order is complete.
+                            </p>
                         </div>}
-                        <div className="add-frame">
-                            <div className="icon medal"></div> 
-                            <p>Would you like to add a frame to this artwork?</p>
-                            <Link className="btn flex justify-center align-center"
-                                to={`/artwork/simulate/${selectedArtwork._id}`}>
-                                <button className="secondary-btn">choose a frame</button>
-                            </Link>
-                            
-                        </div>
+                        <div></div>
                         <div className="details-certificate flex justify-space-around">
-                            <hr />
+                            {/* <hr /> */}
                             <div className="flex column medal-area align-center">
                                 <div className="icon medal"></div> 
                                 <div className="certificate-text">
@@ -226,7 +228,7 @@ class DetailsArtwork extends Component {
                     </aside>
                 </div>
             </section>
-        </React.Fragment >
+        </React.Fragment >)
     }
 }
 

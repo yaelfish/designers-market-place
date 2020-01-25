@@ -24,10 +24,12 @@ class App extends Component {
     this.props.login({ email: "kerryjm2020@gmail.com", password: 1234567890 });
   }
 
+
+
   render(){
     return (
       <div className="App">
-        <Router history={history}>
+        <Router history={history}  >
           <MainNavbar history={history} loggedInUser={this.props.loggedInUser}></MainNavbar>
           <Switch>
             <Route path="/about" component={About} exact />

@@ -2,6 +2,7 @@
   padding-top: 70px;
   width: 100%;
   display: grid;
+  position: relative;
   grid-template-areas:
     "image-area image-area image-area image-area image-area image-area text-area"
     "image-area image-area image-area image-area image-area image-area text-area"
@@ -41,6 +42,7 @@
     aside {
       padding: 13% 30px 0;
 
+      // padding: 40px 30px;
       .art-price {
         color: $gold;
         font-size: rem(40px);
@@ -62,6 +64,11 @@
             font-family: "gotham-medium";
           }
         }
+      }
+      .purchase-msg{
+        text-align: center;
+        width: 300px;
+        height: 120px;
       }
       .add-to-cart {
         display: flex;
@@ -146,8 +153,13 @@
     }
   }
   .action-btns {
-    width: 100%;
+    width: 150px;
     margin-bottom: 50px;
+    position: absolute;
+    top: 21px;
+    left: 54px;
+
+
     .edit-btn {
       width: 100px;
       // padding: 8px 10px;

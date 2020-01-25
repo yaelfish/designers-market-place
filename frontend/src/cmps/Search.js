@@ -22,12 +22,12 @@ class Search extends Component {
 
     loadArtworks = () => {
         this.props.loadArtworks(this.state.filterBy)
-        console.log('artworks to show', this.props.artworks)
     }
 
-    toggleSearch = () => {
+    toggleSearch = (ev) => {
         if (this.state.dynamicSearch) {
             this.setState({dynamicSearch: false})
+            document.querySelector(".dynamic-search-input").value = '';
         } else
         this.setState({dynamicSearch: true})
     }
@@ -74,7 +74,7 @@ class Search extends Component {
         return (
             <div className="search-wrap">
                
-                <div id="content" className={!this.props.isHome&&"none"} >
+                <div id="content" className={!this.props.isHome ? "none" : ""} >
                 <input type="text"  onKeyPress={this.handleKeyPress} onChange={this.changeInput} name={this.state.selectedFilter}  className={ (this.state.dynamicSearch) ? "dynamic-search-input square" : "dynamic-search-input"} id="search-input" />
                 <button type="reset" className={ (this.state.dynamicSearch) ? "dynamic-search close" : "dynamic-search"} id="search-btn" onClick={this.toggleSearch}></button>
                   </div>
