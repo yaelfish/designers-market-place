@@ -56,6 +56,21 @@ button {
     width: 32px;
     height: 32px;
   }
+  &.choose-frame {
+    // background: url("../../images/icons/frame.png");
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    // background-position: center;
+    width: 100%;
+    background-color: $clr-btn-secondary;
+    color: $white;
+    height: 60px;
+    text-transform: uppercase;
+    font-size: rem(14px);
+    line-height: 1.2;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
   &.publish {
     background-color: $clr-btn-secondary;
     color: $white;

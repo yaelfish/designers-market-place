@@ -140,7 +140,7 @@ class DetailsArtwork extends Component {
                         </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
-                    <ChooseFrame artSrc={selectedArtwork.imgUrl} />
+                    {/* <ChooseFrame artSrc={selectedArtwork.imgUrl} /> */}
                 </div>
                 <div className="details-description flex justify-center align-center column">
                     <div className="main-details">
@@ -170,8 +170,27 @@ class DetailsArtwork extends Component {
                                 Free worldwide shipping and returns
                             </p>
                         </div>}
-                           
-                       {this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
+
+                        {this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
+
+                        <div className="choose-frame-container">
+                            
+                            <Link
+                                className="choose-frame flex justify-center align-center column"
+                                to={`/artwork/simulate/${selectedArtwork._id}`}>
+                                <button className="btn choose-frame">Choose Your Frame</button>
+                                {/* <button className="choose-frame"></button> */}
+                            </Link>
+                            <h3>
+                                Would you like to add a frame to this artwork?
+                            </h3>
+                            <Link to={`/artwork/simulate/${selectedArtwork._id}`}>
+                                <div className="icon-frame"></div>
+                            </Link>
+                            <hr></hr>
+                        </div>
+                        
+                    
                         {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
                             <Link 
                                 className="btn flex justify-center align-center" 
@@ -192,8 +211,8 @@ class DetailsArtwork extends Component {
                             </p>
                         </div>}
                         <div></div>
+                        <hr></hr>
                         <div className="details-certificate flex justify-space-around">
-                            {/* <hr /> */}
                             <div className="flex column medal-area align-center">
                                 <div className="icon medal"></div> 
                                 <div className="certificate-text">
