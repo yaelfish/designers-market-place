@@ -1,18 +1,26 @@
 
-   
+.sales-summary {
+    p{
+        text-align: left;
+    }
+}
 
 .sold-list{
+    
     display: flex;
     flex-direction: column;
-    border: 1px solid $clr5;
+    border-top: 1px $clr5;
     margin-bottom: 10px;
+  
+
 
 
   
     
     & .card-artwork-sold {
        box-shadow: none;
-       border-bottom: 1px solid $clr5;
+       border: 1px solid $clr5;
+       border-top: none;
     
     
     }
@@ -43,7 +51,7 @@
                 
                
                 display: grid;
-                grid-template-columns: minmax(150px, 1fr) minmax(150px, 1fr) minmax(50px, 1fr) minmax(130px, 1fr) minmax(30px, 1fr);
+                grid-template-columns: minmax(150px, 1.3fr) minmax(150px, 0.8fr) minmax(50px, 0.6fr) minmax(80px, 0.6fr) minmax(80px, 0.8fr);
                 @media (max-width: $normal-breakpoint)  {
                     grid-template-columns:  minmax(75px, 1fr) minmax(75px, 1fr) minmax(15px, 1fr) minmax(15px, 1fr) minmax(15px, 1fr);
                     font-size: rem(14px);

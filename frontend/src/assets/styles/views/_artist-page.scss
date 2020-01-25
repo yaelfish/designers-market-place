@@ -102,9 +102,9 @@
 }
 
 .sold-list-titles{
-    text-align: center;
+    text-align: left;
     display: grid;
-    grid-template-columns:  minmax(150px, 1fr) minmax(150px, 1fr) minmax(50px, 1fr) minmax(130px, 1fr) minmax(30px, 1fr);
+    grid-template-columns:  minmax(150px, 1.3fr) minmax(150px, 0.8fr) minmax(50px, 0.6fr) minmax(80px, 0.6fr) minmax(80px, 0.8fr);
     @media (max-width: $normal-breakpoint)  {
       grid-template-columns:  minmax(75px, 1fr) minmax(75px, 1fr) minmax(15px, 1fr) minmax(15px, 1fr) minmax(15px, 1fr);
       font-size: rem(14px);
@@ -115,7 +115,7 @@
 
 
     border: 1px solid rgb(212, 211, 211);
-    border-bottom: none;
+ 
     margin-left: 200px;
 
     @media (max-width: $normal-breakpoint){

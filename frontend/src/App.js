@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Router, Switch, Route} from 'react-router';
 import { connect } from 'react-redux';
 import { login } from './actions/UserActions';
+import ScrollToTop from './cmps/ScrollToTop'
 import '@progress/kendo-theme-material/dist/all.css';
 import './assets/styles/global.scss';
 import history from './history';
@@ -31,11 +32,11 @@ class App extends Component {
     return (
       <div className="App">
         <Router history={history}  >
+        <ScrollToTop />
           <MainNavbar history={history} loggedInUser={this.props.loggedInUser}></MainNavbar>
           <Switch>
             <Route path="/about" component={About} exact />
             <Route path="/login" component={Login} exact />
-
             <Route component={Home} path="/" exact />
             <Route component={AppArtwork} path="/artwork" exact />
             <Route component={AddArtwork} path="/artwork/add" exact />
