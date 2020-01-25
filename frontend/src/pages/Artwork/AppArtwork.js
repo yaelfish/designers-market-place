@@ -20,7 +20,7 @@ class AppArtwork extends Component {
 
 
     loadArtworks = async () => {
-        window.scrollTo(0, 0)
+        // window.scrollTo(0, 0)
         const search = await this.props.location.search;
         const params = await new URLSearchParams(search);
         const tags = await params.get('tags');

@@ -12,6 +12,8 @@ import Moment from 'react-moment';
 
 class ArtistPurchasesPreview extends Component {
 
+  
+
     render() {
         let { _id, name, artist, price, likedByUsers, imgUrl, createdAt, tags } = this.props.artwork;
         let artistObj = artist;
@@ -21,7 +23,8 @@ class ArtistPurchasesPreview extends Component {
         } 
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
-        }        
+        }   
+        
    
         return ( 
             <Link to={`/artwork/${_id}`}>
@@ -30,7 +33,7 @@ class ArtistPurchasesPreview extends Component {
                     <div className="preview-info-sold">
                         <div className="art-preview-text-sold flex row align-start">
                             <p className="preview-artwork-name">{name}</p>
-                            <p className="preview-artwork-created"><Moment fromNow>{createdAt}</Moment></p>
+                            <p className="preview-artwork-created"><Moment fromNow>{this.props.lastOrder.createdAt}</Moment></p>
                             {/* <p className="preview-artwork-tags">{tags.toString()}</p> */}
                             <span className="likes-counter"><p>{likedByUsers}</p></span>
                             {/* <div className="preview-likes-container flex align-center">
@@ -39,7 +42,7 @@ class ArtistPurchasesPreview extends Component {
                         </div> */}
 
                             <p className="preview-artwork-quantity">{this.props.timesSold}</p>
-                            <p className="preview-earnings"> ${this.props.timesSold*price}</p>
+                            <p className="preview-earnings"> ${(this.props.timesSold*price).toLocaleString("USD")}</p>
                         </div>
                         
 

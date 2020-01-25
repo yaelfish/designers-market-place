@@ -14,7 +14,8 @@ class AppArtwork extends Component {
 
     state = {
         artistArtworks: [],
-        artworksBoughtByUser: []
+        artworksBoughtByUser: [],
+        totalEarnings: 0
 
     }
 
@@ -34,9 +35,15 @@ class AppArtwork extends Component {
         });
     };
 
+    updateTotals = (totalEarnings) => {
+        this.setState(totalEarnings, console.log('artistartworks', this.state.artistArtworks))
+
+
+    }
+
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
-        window.scrollTo(0, 0);
+
     }
 
     loadPurchases = async () => {
@@ -102,7 +109,7 @@ class AppArtwork extends Component {
                         <h2>Your Artworks</h2>
                         <ArtworkList artworks={this.state.artistArtworks} /></div>}
 
-                    {this.props.loggedInUser && this.props.loggedInUser.isArtist && <div id="sold">
+                    {this.props.loggedInUser && this.props.loggedInUser.isArtist && <div id="sold" className="sold-container">
                         <h2>Sold</h2>
                         <div className="sold-list-titles flex justify-space-around">
                             <div className="sold-list-title">Artwork</div>
@@ -112,10 +119,11 @@ class AppArtwork extends Component {
                             <div className="sold-list-title">Quantity</div>
                             <div className="sold-list-title">Earnings</div>
                         </div>
-                        <ArtistPurchasesList artworks={this.state.artistArtworks} />
-                        <div className="sales-summary">Total Earnings: </div>
+                        <ArtistPurchasesList artworks={this.state.artistArtworks} updateTotals={this.updateTotals} />
+                        <div className="sales-summary"> <p>Total Earnings: ${this.state.totalEarnings.toLocaleString("USD")}</p>
+                                </div>
                     </div>
-                    
+
                     }
 
                     <div id="purchases" className="artist-artworks-list">
