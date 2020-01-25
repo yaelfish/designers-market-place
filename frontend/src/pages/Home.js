@@ -26,7 +26,10 @@ class Home extends Component {
     isHome: true
   }
 
-
+loadArtworks = (ev) => {
+  ev.persist();
+  this.props.loadArtworks();
+}
 
 
   render() {
@@ -42,7 +45,7 @@ class Home extends Component {
               {/* <span className="home-title">Welcome to Early Bird</span> */}
               <span className="home-title">Discover The Creative Universe Of Our Artists</span>
               <Link className="btn discover" to={{ pathname: '/artwork' }}>
-                <button className="btn discover header" onClick={() => this.props.loadArtworks}>start browsing</button>
+                <button className="btn discover header" onClick={this.loadArtworks}>start browsing</button>
               </Link>
             </div>
           </div>
@@ -55,25 +58,25 @@ class Home extends Component {
                 {/* <HomeCarousel/> */}
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop1}  onClick={() => this.props.loadArtworks} />
+                    <img className="popular-link" src={pop1}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
 
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop2}  onClick={() => this.props.loadArtworks} />
+                    <img className="popular-link" src={pop2}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
 
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop3}  onClick={() => this.props.loadArtworks} />
+                    <img className="popular-link" src={pop3}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
 
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop4}  onClick={() => this.props.loadArtworks} />
+                    <img className="popular-link" src={pop4}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
               </ul>
@@ -84,7 +87,7 @@ class Home extends Component {
               <aside className="discover-container-left flex column">
                 <h2>Discover the world through original paintings for sale</h2>
                 <Link className="btn discover" to={{ pathname: '/artwork'}}>
-                  <button className="btn discover inner-discover" onClick={() => this.props.loadArtworks}>Discover</button>
+                  <button className="btn discover inner-discover" onClick={this.loadArtworks}>Discover</button>
                 </Link>
               </aside>
 
@@ -142,7 +145,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-   
+    artworks: state.artwork.artworks
   };
 };
 const mapDispatchToProps = {
