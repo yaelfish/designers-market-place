@@ -19,12 +19,14 @@ class Search extends Component {
     componentDidMount() {
         this.loadArtworks();
     }
+    
+
 
     loadArtworks = () => {
         this.props.loadArtworks(this.state.filterBy)
     }
 
-    toggleSearch = (ev) => {
+    toggleSearch = () => {
         if (this.state.dynamicSearch) {
             this.setState({dynamicSearch: false})
             document.querySelector(".dynamic-search-input").value = '';
@@ -34,8 +36,9 @@ class Search extends Component {
 
     handleKeyPress = (ev) => {
         if(ev.key === 'Enter'){
-        ev.target.value = '';
-        this.setState({dynamicSearch: false})
+        // ev.target.value = '';
+        // this.setState({dynamicSearch: false})
+        this.toggleSearch();
 
         this.props.history.push('/artwork')
         }
@@ -82,7 +85,6 @@ class Search extends Component {
                 <div className={this.props.isHome ? "none" : "search"}>
                     <input  type="text" className="searchTerm" placeholder="What are you looking for?" onChange={this.changeInput} name={this.state.selectedFilter} />
                     <select className="search-filter" name="search-filter" onChange={this.changeSearchFilter} >
-                        <option  value="tags">Tags</option>
                         <option  value="name">Artwork</option>
                         <option  value="artist">Artist</option>
 
