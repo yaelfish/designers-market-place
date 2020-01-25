@@ -138,7 +138,7 @@ class DetailsArtwork extends Component {
                                 <label htmlFor="like-toggle">
                                     <div className={isLiked ? (this.state.isAnimatingLike ? 'heart is-animating-like is-active flex justify-center align-center' : 'heart is-active flex justify-center align-center') : 'heart flex justify-center align-center'} alt="" onClick={this.onToggleLike}
                                         src={isLiked ? liked : like}>
-                                        <span className="likes-counter">{likedByUsers}</span>
+                                        {likedByUsers!==0 && <span className="likes-counter">{likedByUsers}</span>}
                                     </div>
                                 </label>
                                 <input type="checkbox" id="like-toggle" />
