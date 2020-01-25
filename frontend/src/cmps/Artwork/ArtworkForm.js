@@ -140,7 +140,9 @@ export default class ArtworkForm extends React.Component {
                         src={artwork.imgUrl && artwork.imgUrl.length ? artwork.imgUrl : UploadIcon} alt="" />}
                 </div>
 
-                {!this.state.isUploading && < button className="btn submit" type="submit">Submit</button>}
+                {/* {!this.state.isUploading && < button className="btn submit" type="submit">Submit</button>} */}
+                
+                {artwork.imgUrl && artwork.imgUrl.length ? < button className="btn submit"  type="submit">Submit</button> :  < button className="btn submit" style={{backgroundColor: "grey", cursor: "auto"}} disabled={true}>Submit</button>}
                 {/* <button className="btn back" onClick={this.goBack}>Back</button> */}
                 <Link to={`/artwork`}><button className="back"></button></Link>
             </form>
