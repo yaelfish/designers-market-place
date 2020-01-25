@@ -28,7 +28,6 @@ class DetailsArtwork extends Component {
     async componentDidMount() {
         try {
             const artwork = await this.loadArtwork();
-
             this.setState({ currArtwork: this.props.selectedArtwork })
             const user = await this.props.loggedInUser;
             const reviews = await this.loadReviews();

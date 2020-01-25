@@ -9,7 +9,8 @@ class ArtistPurchasesList extends Component {
         {
             purchases: 'sold',
             orderedFromUsers: null,
-            totalEarnings: 0
+            totalEarnings: 0,
+            numOfArtworks: 0
         }
 
     componentDidMount() {
@@ -17,22 +18,30 @@ class ArtistPurchasesList extends Component {
 
     }
 
-    calcEarnings = (totalEarnings) => {
-        this.setState({totalEarnings})
+    calcEarnings = () => {
+        const orderedFromUsers = [...this.state.orderedFromUsers];
+      
+        var totalEarnings = 0;
+        for (var i=0; i<orderedFromUsers.length; i++){
+            totalEarnings += orderedFromUsers[i].artwork.price;
+        }
+        this.setState({totalEarnings, numOfArtworks: [...this.props.artworks].length})
+        console.log(this.state.numOfArtworks)
 
     }
 
     loadOrders = async () => {
         const artistId = this.props.loggedInUser._id
-        const orderedFromUsers = await this.props.loadOrders({ artist: artistId });
-
+        await this.props.loadOrders({ artist: artistId });
         this.setState({ orderedFromUsers: this.props.orders })
-        return orderedFromUsers
+        // return orderedFromUsers
+        this.calcEarnings();
+
     }
 
 
     render() {
-        var totalEarnings = 0;
+        
         return (
             <div className="list-cards sold-list">
                 {this.state.purchases === 'sold' && this.props.orders && this.props.artworks.map(artwork => {
@@ -43,7 +52,6 @@ class ArtistPurchasesList extends Component {
                         if (artwork._id === order.artwork._id) return countTimesOrdered++
                     })
 
-                    totalEarnings += [countTimesOrdered*artwork.price];
 
                     return (countTimesOrdered !== 0 && <ArtistPurchasesPreview key={artwork._id} artwork={artwork} timesSold={countTimesOrdered}>
                     </ArtistPurchasesPreview>)
