@@ -8,24 +8,24 @@ export default class Carousel extends Component {
 
 
     render() {
-        const artSrc = this.props.artSrc;
+        // const artSrc = this.props.artSrc;
         return (<>
             <div className="home-carousel-container">
                 <div className="slides">
                     <div id="slide-1">
-                        <img className="carousel-img" src={pop1} ></img>
+                        <img className="carousel-img" src={pop1} alt=""/>
                     </div>
                     <div id="slide-2">
-                        <img className="carousel-img" src={pop2} ></img>
+                        <img className="carousel-img" src={pop2} alt=""/>
                     </div>
                     <div id="slide-3">
-                        <img className="carousel-img" src={pop3} ></img>
+                        <img className="carousel-img" src={pop3} alt=""/>
                     </div>
                     <div id="slide-4">
-                        <img className="carousel-img" src={pop4} ></img>
+                        <img className="carousel-img" src={pop4} alt=""/>
                     </div>
                     <div id="slide-5">
-                        <img className="carousel-img" src={pop1} ></img>
+                        <img className="carousel-img" src={pop1} alt=""/>
                     </div>
                 </div>
             </div>

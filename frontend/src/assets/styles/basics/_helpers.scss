@@ -53,6 +53,9 @@
   &.wrap {
     flex-wrap: wrap;
   }
+  &.no-wrap {
+    flex-wrap: nowrap;
+  }
   &.space-between {
     justify-content: space-between;
   }

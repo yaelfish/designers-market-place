@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { loadArtworkById, editArtwork } from '../../actions/ArtworkActions';
-import ArtworkForm from '../../cmps/Artwork/ArtworkForm'
+import { loadArtworkById, editArtwork } from '../../actions/ArtworkActions'
+import ChooseFrame from '../../cmps/Artwork/ChooseFrame';
 
-class EditArtwork extends Component {
+class SimulateArtwork extends Component {
 
     componentDidMount() {
         this.loadArtwork();
@@ -22,23 +22,27 @@ class EditArtwork extends Component {
     }
 
     goBack = () => {
-        const { _id } = this.props.match.params;   
+        const { _id } = this.props.match.params;
         this.props.history.push('/artwork/' + _id)
     }
 
     onEditArtwork = async (artwork) => {
         await this.props.editArtwork(artwork);
-        console.log('onEditArtwork sent',artwork);   
+        console.log('onEditArtwork sent', artwork);
         this.props.history.push('/artwork/' + artwork._id);
     }
 
     render() {
         if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
-        // const { selectedArtwork } = this.props;
+        const { selectedArtwork } = this.props;
         return (<>
             <section className="container add-artwork-container flex column">
-                <h2>Edit Artwork</h2>
-                <ArtworkForm artwork={this.props.selectedArtwork} onSave={this.onEditArtwork} isAdd={false}/>
+                <button className="btn back" onClick={this.goBack}></button>
+                <header>
+                    <h2>Framing</h2>
+                    <h3>Choose Your Frame</h3>
+                </header>
+                <ChooseFrame artSrc={selectedArtwork.imgUrl} />
             </section>
         </>)
     }
@@ -59,5 +63,5 @@ export default withRouter(
     connect(
         mapStateToProps,
         mapDispatchToProps
-    )(EditArtwork)
+    )(SimulateArtwork)
 );

@@ -54,7 +54,6 @@ export function removeOrder(orderId) {
 
 
 export function editOrder(order) {
-  console.log(order);
   
   return async dispatch => {
     try {

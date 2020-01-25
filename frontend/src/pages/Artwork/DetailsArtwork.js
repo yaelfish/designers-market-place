@@ -13,6 +13,7 @@ import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
 import { removeReview } from '../../actions/ReviewActions'
 import OrderAdd from '../../cmps/Order/OrderAdd'
+import ChooseFrame from '../../cmps/Artwork/ChooseFrame';
 
 class DetailsArtwork extends Component {
 
@@ -78,8 +79,6 @@ class DetailsArtwork extends Component {
     loadArtwork = async () => {
         const { _id } = this.props.match.params;
         const currArtwork = await this.props.loadArtworkById(_id);
-
-        console.log(currArtwork);
         return currArtwork;
     }
 
@@ -108,13 +107,9 @@ class DetailsArtwork extends Component {
     }
 
     render() {
-        // console.log('render', this.state.isLiked);
-
         const { isLiked } = this.state
         const { selectedArtwork } = this.props;
         const order = { ...selectedArtwork };
-
-
 
         let artistObj = selectedArtwork.artist;
         let artist;
@@ -126,8 +121,7 @@ class DetailsArtwork extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }
-
-        return <React.Fragment>
+        return (<React.Fragment>
             {/* <Breadcrumb /> */}
             <section className="details-container">
                 <button className="btn back" onClick={this.goBack}></button>
@@ -143,7 +137,7 @@ class DetailsArtwork extends Component {
                                 <label htmlFor="like-toggle">
                                     <div className={isLiked ? (this.state.isAnimatingLike ? 'heart is-animating-like is-active flex justify-center align-center' : 'heart is-active flex justify-center align-center') : 'heart flex justify-center align-center'} alt="" onClick={this.onToggleLike}
                                         src={isLiked ? liked : like}>
-                                        {likedByUsers !== 0 && <span className="likes-counter">{likedByUsers}</span>}
+                                        <span className="likes-counter">{likedByUsers}</span>
                                     </div>
                                 </label>
                                 <input type="checkbox" id="like-toggle" />
@@ -151,8 +145,8 @@ class DetailsArtwork extends Component {
                         </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
+                    <ChooseFrame artSrc={selectedArtwork.imgUrl} />
                 </div>
-
                 <div className="details-description flex justify-center align-center column">
                     <div className="main-details">
                         <p className="art-name">{selectedArtwork.name}</p>
@@ -187,7 +181,7 @@ class DetailsArtwork extends Component {
 
                 <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
             </section>
-        </React.Fragment >
+        </React.Fragment >)
     }
 }
 

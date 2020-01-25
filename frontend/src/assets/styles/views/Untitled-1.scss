@@ -42,6 +42,7 @@
           span {
             &.var-price {
               margin-left: 10px;
+              display: block;
             }
             &.price {
               font-size: rem(15px);

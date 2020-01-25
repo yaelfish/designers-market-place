@@ -1,0 +1,33 @@
+.carousel-container {
+    width: 85%;
+  .main-carousel-artwork {
+    .main-carousel-img {
+      width: 80%;
+      margin: auto;
+    }
+  }
+
+  .secondary-carousel-images {
+    .demo-image1-container {
+      .carousel-img-template {
+        height: 300px;
+        background-color: $gold;
+      }
+    //   background-image: url("../../images/template-imgs/wall2.jpg");
+    //   background-repeat: no-repeat;
+    //   position: relative;
+    }
+    .demo-image1-container {
+       .carousel-img-template {
+         height: 300px;
+        background-color: $clr3;
+      }
+    //   background-image: url("../../images/template-imgs/wall3.jpg");
+    //   background-repeat: no-repeat;
+    //   position: relative;
+    }
+    .carousel-img {
+      
+    }
+  }
+}

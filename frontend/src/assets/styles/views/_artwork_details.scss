@@ -22,8 +22,8 @@
     padding-top: 80px;
     align-self: center;
     .details-image-container {
-      max-width: 600px;
-      height: 600px;
+      // width: 600px;
+      // height: 600px;
       position: relative;
     }
   }
@@ -49,20 +49,30 @@
       grid-area: text-area;
     }
     background-color: #f9f8ee;
-    border-radius: 10px;
+
     aside {
-      padding: 40px 30px;
+      padding: 13% 30px 0;
+
+      // padding: 40px 30px;
       .art-price {
         color: $gold;
-        font-size: rem(30px);
-        span {
-          &.var-price {
-            margin-left: 10px;
-          }
+        font-size: rem(40px);
+        line-height: 40px;
+        margin-bottom: 20px;
+        .free-sheeping {
+          color: $black;
+          font-size: rem(16px);
+          line-height: 1.3;
+          margin-top: 20px;
+        }
+        p {
           &.price {
-            font-size: rem(15px);
-            color: black;
+            font-size: rem(13px);
+            color: $black;
             font-weight: 500;
+            margin: 0;
+            text-transform: uppercase;
+            font-family: "gotham-medium";
           }
         }
       }
@@ -206,8 +216,8 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
-      width: 32px;
-      height: 32px;
+      width: 60px;
+      height: 65px;
       &.delivery {
         background-image: url("../../images/icons/truck.png");
       }

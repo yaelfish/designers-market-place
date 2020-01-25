@@ -72,7 +72,7 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="wrap">
+            <div className="search-wrap">
                
                 <div id="content" className={!this.props.isHome ? "none" : ""} >
                 <input type="text"  onKeyPress={this.handleKeyPress} onChange={this.changeInput} name={this.state.selectedFilter}  className={ (this.state.dynamicSearch) ? "dynamic-search-input square" : "dynamic-search-input"} id="search-input" />

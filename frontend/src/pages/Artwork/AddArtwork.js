@@ -7,7 +7,6 @@ class AddArtwork extends Component {
 
     onAddArtwork = async (artwork) => {
         let addedArt = this.props.addArtwork(artwork)
-        console.log(addedArt);
         this.props.history.push('/artwork');
     }
 
