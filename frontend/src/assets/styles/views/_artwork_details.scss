@@ -1,22 +1,26 @@
 .details-container {
   padding-top: 70px;
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  grid-template-areas:
-    "image-area image-area image-area image-area image-area image-area text-area"
-    "image-area image-area image-area image-area image-area image-area text-area"
-    "description-area description-area description-area description-area description-area description-area text-area"
-    "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
-  grid-gap: 20px;
+  @include for-normal-layout {
+    display: grid;
+    grid-template-areas:
+      "image-area image-area image-area image-area image-area image-area text-area"
+      "image-area image-area image-area image-area image-area image-area text-area"
+      "description-area description-area description-area description-area description-area description-area text-area"
+      "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
+    grid-gap: 20px;
+  }
 
   .image-area {
-    grid-area: image-area;
-    padding-top: 80px;
+    @include for-normal-layout {
+      grid-area: image-area;
+    }
+    padding-top: 150px;
     align-self: center;
     .details-image-container {
-      // width: 600px;
-      // height: 600px;
       position: relative;
     }
   }
@@ -36,7 +40,9 @@
     }
   }
   .details-description {
-    grid-area: description-area;
+    @include for-normal-layout {
+      grid-area: description-area;
+    }
     .main-details {
       align-self: center;
     }
@@ -51,7 +57,9 @@
 
   .details-text-container {
     position: relative;
-    grid-area: text-area;
+    @include for-normal-layout {
+      grid-area: text-area;
+    }
     background-color: #f9f8ee;
 
     aside {
@@ -112,10 +120,10 @@
   }
 
   .like-display {
-    top: 16px;
-    right: 14px;
+    top: -48px;
+    right: -48px;
     position: absolute;
-    z-index: 5;
+    z-index: 1;
 
     .preview-likes-container {
       font-size: 12px;
@@ -169,10 +177,9 @@
   }
   .action-btns {
     width: 150px;
-    margin-bottom: 50px;
-    // position: absolute;
-    margin-top: 21px;
-    left: 54px;
+    position: absolute;
+    left: 11px;
+    top: -40px;
 
     .edit-btn {
       width: 100px;
