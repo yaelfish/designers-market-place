@@ -30,7 +30,7 @@ class ArtistPurchasesPreview extends Component {
         return ( 
             <Link to={`/artwork/${_id}`}>
                 <div className="card-artwork-sold flex  align-start row">
-                    <img src={imgUrl} alt={name} className="square-ratio" />
+                <img src={imgUrl} alt={name} className="square-ratio" />
                     <div className="preview-info-sold">
                         <div className="art-preview-text-sold flex row align-start">
                             <p className="preview-artwork-name">{name}</p>
@@ -43,7 +43,7 @@ class ArtistPurchasesPreview extends Component {
                         </div> */}
 
                             <p className="preview-artwork-quantity">{this.props.timesSold}</p>
-                            <div className="preview-earnings"> ${this.props.timesSold*price}</div>
+                            <p className="preview-earnings"> ${this.props.timesSold*price}</p>
                         </div>
                         
 
