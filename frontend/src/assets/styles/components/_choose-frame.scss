@@ -1,7 +1,13 @@
 .frame-section-container {
-  /* Color picker */
+  padding-top: 6vh;
+  
   .frame-form-container {
-    margin-top: 33px;
+    width: 50%;
+    height: 100%;
+    // margin-top: 33px;
+    padding: 60px;
+    background-color: #ececec;
+    text-align: center;
     header {
       h2 {
         font-family: montserrat, cabin, sans-serif;
@@ -18,6 +24,9 @@
   }
 
   .frame-artwork-container {
+    width: 50%;
+    height: 100%;
+    
     img {
       max-width: 84%;
       max-height: 82%;
@@ -33,6 +42,7 @@
       border-image-slice: 40;
       border-image-width: 15px;
       border-image-outset: 14px;
+      transition: 0.4s;
     }
   }
 
@@ -48,7 +58,8 @@
     margin: 10px 10px 1px 10px;
     border-radius: 3px;
     cursor: pointer;
-    box-shadow: 0px 0px 3px 0px rgba(255, 255, 255, 0.6);
+    box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+    transition: 0.3s;
   }
 
   #container::after {
