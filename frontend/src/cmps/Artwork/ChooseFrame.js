@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ColorPicker from './ColorPicker';
 import FrameWidthPicker from './FrameWidthPicker';
 
-export default class ChooseFrame extends Component {
+class ChooseFrame extends Component {
 
     state = {
         isEditFrameMode: true,
@@ -10,6 +12,11 @@ export default class ChooseFrame extends Component {
             color: '',
             width: 'small'
         }
+    }
+
+    goBack = () => {
+        const { _id } = this.props.match.params;
+        this.props.history.push('/artwork/' + _id)
     }
   
     setFrameWidth = (width) => {
@@ -34,20 +41,29 @@ export default class ChooseFrame extends Component {
                     </header>
 
                     <ColorPicker setFrameColor={this.setFrameColor}/>
-                    <div className="frames-options flex wrap">
-                    <h3>Choose the thickness of the frame</h3>
-                    <FrameWidthPicker setFrameWidth={this.setFrameWidth} />
-                    </div>
-                   
+                    
+                    {/* <div className="frames-options flex column">
+                        <h3 className="thick-title">Choose the thickness of the frame</h3>
+                        <FrameWidthPicker setFrameWidth={this.setFrameWidth} />
+                    </div> */}
+                    <button className="discover submit-frame" onClick={this.goBack}>Submit</button>
                 </div>
 
-                <div className="frame-artwork-container flex justify-center">
+                <div className="frame-artwork-container flex justify-center align-center">
                     <img
                         className={`${this.state.currFrame.color} ${this.state.currFrame.width}`}
                         src={artSrc}
                         alt="" />
+
+                 
                 </div>
             </section>
         </>)
     }
 }
+
+export default withRouter(
+    connect(
+        null
+    )(ChooseFrame)
+);

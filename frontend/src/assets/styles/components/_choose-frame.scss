@@ -1,21 +1,30 @@
 .frame-section-container {
-  padding-top: 6vh;
-  
+  padding-top:6vh;
+  width: 100%;
+
   .frame-form-container {
     width: 50%;
     height: 100%;
     // margin-top: 33px;
-    padding: 60px;
+    // padding: 60px;
+    padding: 8%;
     background-color: #ececec;
     text-align: center;
+    
     header {
+    
       h2 {
         font-family: montserrat, cabin, sans-serif;
         text-align: center;
         text-transform: uppercase;
         font-weight: 600;
         margin: 0;
+        font-size: rem(38px);
       }
+    }
+
+    .thick-title {
+      margin: 26px auto;
     }
   }
 
@@ -28,8 +37,8 @@
     height: 100%;
     
     img {
-      max-width: 84%;
-      max-height: 82%;
+      max-width: 77%;
+      max-height: 62%;
       width: auto;
       background: transparent;
       margin: auto;
@@ -37,7 +46,6 @@
       box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.4), 0 0 76px 0 rgba(0, 0, 0, 0.2);
       //   border-width: 0;
       border-image-repeat: stretch stretch;
-      //   width: 84%;
       border-width: 1px;
       border-image-slice: 40;
       border-image-width: 15px;
