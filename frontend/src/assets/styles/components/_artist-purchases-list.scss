@@ -1,18 +1,26 @@
 
-   
+.sales-summary {
+    p{
+        text-align: left;
+    }
+}
 
 .sold-list{
+    
     display: flex;
     flex-direction: column;
-    border: 1px solid $clr5;
+    border-top: 1px $clr5;
     margin-bottom: 10px;
+  
+
 
 
   
     
     & .card-artwork-sold {
        box-shadow: none;
-       border-bottom: 1px solid $clr5;
+       border: 1px solid $clr5;
+       border-top: none;
     
     
     }

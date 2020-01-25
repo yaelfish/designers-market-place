@@ -9,8 +9,7 @@ class ArtistPurchasesList extends Component {
         {
             purchases: 'sold',
             orderedFromUsers: null,
-            totalEarnings: 0,
-            numOfArtworks: 0
+            totalEarnings: 0
         }
 
     componentDidMount() {
@@ -20,23 +19,19 @@ class ArtistPurchasesList extends Component {
 
     calcEarnings = () => {
         const orderedFromUsers = [...this.state.orderedFromUsers];
-      
         var totalEarnings = 0;
         for (var i=0; i<orderedFromUsers.length; i++){
             totalEarnings += orderedFromUsers[i].artwork.price;
         }
-        this.setState({totalEarnings, numOfArtworks: [...this.props.artworks].length})
-        console.log(this.state.numOfArtworks)
-
+        this.setState({totalEarnings})
+        this.props.updateTotals({totalEarnings})
     }
 
     loadOrders = async () => {
         const artistId = this.props.loggedInUser._id
         await this.props.loadOrders({ artist: artistId });
         this.setState({ orderedFromUsers: this.props.orders })
-        // return orderedFromUsers
         this.calcEarnings();
-
     }
 
 
@@ -47,13 +42,17 @@ class ArtistPurchasesList extends Component {
                 {this.state.purchases === 'sold' && this.props.orders && this.props.artworks.map(artwork => {
 
                     const orderedFromUsers = this.state.orderedFromUsers;
+                    let lastOrder;
                     var countTimesOrdered = 0;
                     orderedFromUsers.forEach(order => {
-                        if (artwork._id === order.artwork._id) return countTimesOrdered++
+                        if (artwork._id === order.artwork._id) return (
+                            countTimesOrdered++,
+                            lastOrder = order
+                        )
                     })
 
 
-                    return (countTimesOrdered !== 0 && <ArtistPurchasesPreview key={artwork._id} artwork={artwork} timesSold={countTimesOrdered}>
+                    return (countTimesOrdered !== 0 && <ArtistPurchasesPreview key={artwork._id} artwork={artwork} timesSold={countTimesOrdered} lastOrder={lastOrder}>
                     </ArtistPurchasesPreview>)
                 })}
 
