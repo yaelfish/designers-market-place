@@ -1,27 +1,36 @@
 .details-container {
   padding-top: 70px;
   width: 100%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   position: relative;
-  grid-template-areas:
-    "image-area image-area image-area image-area image-area image-area text-area"
-    "image-area image-area image-area image-area image-area image-area text-area"
-    "description-area description-area description-area description-area description-area description-area text-area"
-    "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
-  grid-gap: 20px;
+  @include for-normal-layout {
+    display: grid;
+    grid-template-areas:
+      "image-area image-area image-area image-area image-area image-area text-area"
+      "image-area image-area image-area image-area image-area image-area text-area"
+      "description-area description-area description-area description-area description-area description-area text-area"
+      "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
+    grid-gap: 20px;
+  }
 
   .image-area {
-    grid-area: image-area;
+    @include for-normal-layout {
+      grid-area: image-area;
+    }
+
     padding-top: 80px;
     align-self: center;
     .details-image-container {
-      width: 600px;
+      max-width: 600px;
       height: 600px;
       position: relative;
     }
   }
   .details-description {
-    grid-area: description-area;
+    @include for-normal-layout {
+      grid-area: description-area;
+    }
     .main-details {
       align-self: center;
     }
@@ -36,7 +45,9 @@
 
   .details-text-container {
     position: relative;
-    grid-area: text-area;
+    @include for-normal-layout {
+      grid-area: text-area;
+    }
     background-color: #f9f8ee;
     border-radius: 10px;
     aside {
@@ -55,7 +66,7 @@
           }
         }
       }
-      .purchase-msg{
+      .purchase-msg {
         text-align: center;
         width: 300px;
         height: 120px;
@@ -87,10 +98,10 @@
   }
 
   .like-display {
-    top: 16px;
-    right: 14px;
+    top: -6px;
+    right: -50px;
     position: absolute;
-    z-index: 99;
+    z-index: 1;
 
     .preview-likes-container {
       font-size: 12px;
@@ -99,9 +110,9 @@
         vertical-align: top;
         display: inline-block;
         color: white;
-        font-size:rem(14px);
+        font-size: rem(14px);
         line-height: 14px;
-        font-weight:500;
+        font-weight: 500;
       }
       label {
         cursor: pointer;
@@ -136,7 +147,7 @@
         &.is-active {
           background-position: -2800px 0;
         }
-        &.is-animating-like{
+        &.is-animating-like {
           transition-duration: 1s;
         }
       }
@@ -146,9 +157,8 @@
     width: 150px;
     margin-bottom: 50px;
     position: absolute;
-    top: 21px;
-    left: 54px;
-
+    top: 5px;
+    left: 10px;
 
     .edit-btn {
       width: 100px;

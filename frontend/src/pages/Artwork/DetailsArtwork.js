@@ -131,13 +131,13 @@ class DetailsArtwork extends Component {
             {/* <Breadcrumb /> */}
             <section className="details-container">
                 <button className="btn back" onClick={this.goBack}></button>
-               
+
                 <div className="flex column image-area align-center">
                     <div className="details-image-container flex justify-center align-center">
-                    {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
-                    <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
-                    <button className="btn delete" onClick={this.onDelete}></button>
-                </div>}
+                        {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
+                            <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
+                            <button className="btn delete" onClick={this.onDelete}></button>
+                        </div>}
                         <div className="like-display">
                             <div className="preview-likes-container flex column">
                                 <label htmlFor="like-toggle">
@@ -160,7 +160,7 @@ class DetailsArtwork extends Component {
                     </div>
                     <p className="art-description">{selectedArtwork.description}</p>
                 </div>
-                <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
+
                 <div className="details-text-container flex justify-start">
                     <aside className="container flex justify-start column align-center">
                         <ul className="aside-fill">
@@ -175,7 +175,7 @@ class DetailsArtwork extends Component {
                             {this.state.isAddedToCart && <div><h2>Thank you!</h2>
                                 <p>Your payment was successful and your order is complete.</p></div>}
                         </div>
-                        <div className="details-certificate flex justify-space-around">
+                        <div className="details-certificate">
                             <div className="flex column medal-area align-center"><div className="icon medal"></div> <div className="certificate-text">Original work delivered with a certificate of authenticity.</div></div>
                             <div className="flex column delivery-area align-center"><div className="icon delivery"></div><div className="certificate-text">Shipping usually takes up to 7 days.</div></div>
                             <div className="flex column return-area align-center"><div className="icon return"></div><div className="certificate-text">We have a 14 day withdrawal period, starting on the day you receive the work.</div></div>
@@ -185,7 +185,7 @@ class DetailsArtwork extends Component {
                     </aside>
                 </div>
 
-
+                <Reviews onDeleteReview={this.onDeleteReview} sendMsg={this.sendMsg} reviews={this.props.reviews} loadReviews={this.props.loadReviews} selectedArtwork={this.props.match.params._id} loggedInUser={this.props.loggedInUser} ></Reviews>
             </section>
         </React.Fragment >
     }
