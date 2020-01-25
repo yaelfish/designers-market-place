@@ -127,11 +127,12 @@ class DetailsArtwork extends Component {
                 <button className="btn back" onClick={this.goBack}></button>
 
                 <div className="flex column image-area align-center">
-                    <div className="details-image-container flex justify-center align-center">
+                    <div className="details-image-container">
                         {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
                             <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                             <button className="btn delete" onClick={this.onDelete}></button>
                         </div>}
+
                         <div className="like-display">
                             <div className="preview-likes-container flex column">
                                 <label htmlFor="like-toggle">
@@ -145,7 +146,7 @@ class DetailsArtwork extends Component {
                         </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
-                    <ChooseFrame artSrc={selectedArtwork.imgUrl} />
+                    {/* <ChooseFrame artSrc={selectedArtwork.imgUrl} /> */}
                 </div>
                 <div className="details-description flex justify-center align-center column">
                     <div className="main-details">
@@ -157,24 +158,77 @@ class DetailsArtwork extends Component {
 
                 <div className="details-text-container flex justify-start">
                     <aside className="container flex justify-start column align-center">
-                        <ul className="aside-fill">
+                        {selectedArtwork.price && <div className="art-price">
+                            <p className="price">
+                                Price
+                            </p>
+                            <span className="var-price">
+                                ${selectedArtwork.price.toLocaleString("USD")}
+                            </span>
+                            <p className="free-sheeping">
+                                Free worldwide shipping and returns
+                            </p>
+                        </div>}
 
-                            <li>
-                                {selectedArtwork.price && <p className="art-price"><span className="price">Price: </span><br></br><span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span></p>}
-                            </li>
-                        </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
+                        {this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
+                        <div className="choose-frame-container">
 
-                        <div className="purchase-msg">
-                            {this.state.isAddedToCart && <div><h2>Thank you!</h2>
-                                <p>Your payment was successful and your order is complete.</p></div>}
+                            <Link
+                                className="choose-frame flex justify-center align-center column"
+                                to={`/artwork/simulate/${selectedArtwork._id}`}>
+                                <button className="btn choose-frame">Choose Your Frame</button>
+                                {/* <button className="choose-frame"></button> */}
+                            </Link>
+                            <h3>
+                                Would you like to add a frame to this artwork?
+                            </h3>
+                            <Link to={`/artwork/simulate/${selectedArtwork._id}`}>
+                                <div className="icon-frame"></div>
+                            </Link>
+                            <hr></hr>
                         </div>
-                        <div className="details-certificate">
-                            <div className="flex column medal-area align-center"><div className="icon medal"></div> <div className="certificate-text">Original work delivered with a certificate of authenticity.</div></div>
-                            <div className="flex column delivery-area align-center"><div className="icon delivery"></div><div className="certificate-text">Shipping usually takes up to 7 days.</div></div>
-                            <div className="flex column return-area align-center"><div className="icon return"></div><div className="certificate-text">We have a 14 day withdrawal period, starting on the day you receive the work.</div></div>
-                            <div className="flex column security-area align-center"><div className="icon security"></div><div className="certificate-text">You can pay safely by credit card or bank transfer.</div></div>
-                            <div className="flex column warranty-area align-center"><div className="icon warranty"></div><div className="certificate-text">Reliability and traceability guaranteed. </div></div>
+                        {this.state.isAddedToCart && <div className="purchase-msg">
+                            <h2>
+                                Thank you!
+                            </h2>
+                            <p>
+                                Your payment was successful and your order is complete.
+                            </p>
+                        </div>}
+                        <div></div>
+                        <hr></hr>
+                        <div className="details-certificate flex justify-space-around">
+                            <div className="flex column medal-area align-center">
+                                <div className="icon medal"></div>
+                                <div className="certificate-text">
+                                    Original work delivered with a certificate of authenticity.
+                                </div>
+                            </div>
+                            <div className="flex column delivery-area align-center">
+                                <div className="icon delivery"></div>
+                                <div className="certificate-text">
+                                    Shipping usually takes up to 7 days.
+                                </div>
+                            </div>
+                            <div className="flex column return-area align-center">
+                                <div className="icon return"></div>
+                                <div className="certificate-text">
+                                    We have a 14 day withdrawal period, starting on the day you receive the work.
+                                </div>
+                            </div>
+                            <div className="flex column security-area align-center">
+                                <div className="icon security"></div>
+                                <div className="certificate-text">
+                                    You can pay safely by credit card or bank transfer.
+                                </div>
+                            </div>
+                            <div className="flex column warranty-area align-center">
+                                <div className="icon warranty"></div>
+                                <div className="certificate-text">
+                                    Reliability and traceability guaranteed.
+                                </div>
+                            </div>
                         </div>
                     </aside>
                 </div>

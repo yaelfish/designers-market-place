@@ -12,9 +12,10 @@ export default class ColorPicker extends Component {
 
     render() {
         return (<>
-            <div className="frames-options flex column">
-                <div className="flex no-wrap">{this.state.frameColors.map(color => {
-                    return <div key={color} className="flex column justify-center align-center">
+            <div className="frames-options flex">
+            <form>
+                <div className="flex wrap">{this.state.frameColors.map(color => {
+                    return <div key={color} className="flex column justify-space-between align-center">
                             <label key={color} htmlFor={color} 
                             className={`color-picker ${color}`}>
                                 <input type="radio"
@@ -27,6 +28,8 @@ export default class ColorPicker extends Component {
                             <div className="frame-color-description">{color}</div>
                         </div>
                 })}</div>
+                {/* <button className="send" onClick={this.onHandleSubmit}>Submit</button> */}
+            </form>
             </div>
         </>)
     }

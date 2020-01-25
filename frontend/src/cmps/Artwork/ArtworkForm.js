@@ -53,9 +53,6 @@ export default class ArtworkForm extends React.Component {
 
     onSelectTag = (event) => {
         this.setState({ artwork: { ...this.state.artwork, tags: [...event.target.value] } })
-
-
-
     }
 
     setFormDataForEdit = () => {
