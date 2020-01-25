@@ -8,12 +8,17 @@ class ArtistPurchasesList extends Component {
     state =
         {
             purchases: 'sold',
-            orderedFromUsers: null
+            orderedFromUsers: null,
+            totalEarnings: 0
         }
 
     componentDidMount() {
         this.loadOrders()
 
+    }
+
+    calcEarnings = (totalEarnings) => {
+        this.setState({totalEarnings})
 
     }
 
@@ -27,15 +32,18 @@ class ArtistPurchasesList extends Component {
 
 
     render() {
+        var totalEarnings = 0;
         return (
             <div className="list-cards sold-list">
                 {this.state.purchases === 'sold' && this.props.orders && this.props.artworks.map(artwork => {
 
                     const orderedFromUsers = this.state.orderedFromUsers;
-                    var countTimesOrdered = 0
+                    var countTimesOrdered = 0;
                     orderedFromUsers.forEach(order => {
                         if (artwork._id === order.artwork._id) return countTimesOrdered++
                     })
+
+                    totalEarnings += [countTimesOrdered*artwork.price];
 
                     return (countTimesOrdered !== 0 && <ArtistPurchasesPreview key={artwork._id} artwork={artwork} timesSold={countTimesOrdered}>
                     </ArtistPurchasesPreview>)
