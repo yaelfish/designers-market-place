@@ -42,13 +42,13 @@ export default class Reviews extends Component {
 
 
     render() {
-        return <div className="comments-container">
+        return <div className="comments-container flex column">
             Comments:
             <form className="comment-form flex">
                 <textarea placeholder="write something..." value={this.state.msg} name="msg" onChange={this.msgHandleChange}></textarea>
                 <button className="publish" onClick={(event) => this.sendMsg(event, this.state.msg)}>Publish</button>
             </form>
-            {this.props.reviews.length > 0 && <ul className="comments-area">
+            {this.props.reviews.length > 0 ? <ul className="comments-area">
                 {this.props.reviews.map((review, idx) => (
                     <li className="flex align-center" key={idx}>
                         <div className="flex column align-center comment-profile">
@@ -61,7 +61,7 @@ export default class Reviews extends Component {
                     </li>
                 ))}
 
-            </ul>}
+            </ul>:<p className="no-comments-msg">No Comments</p>}
 
         </div>
 

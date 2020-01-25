@@ -131,14 +131,19 @@ class DetailsArtwork extends Component {
             {/* <Breadcrumb /> */}
             <section className="details-container">
                 <button className="btn back" onClick={this.goBack}></button>
+               
                 <div className="flex column image-area align-center">
                     <div className="details-image-container flex justify-center align-center">
+                    {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
+                    <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
+                    <button className="btn delete" onClick={this.onDelete}></button>
+                </div>}
                         <div className="like-display">
                             <div className="preview-likes-container flex column">
                                 <label htmlFor="like-toggle">
                                     <div className={isLiked ? (this.state.isAnimatingLike ? 'heart is-animating-like is-active flex justify-center align-center' : 'heart is-active flex justify-center align-center') : 'heart flex justify-center align-center'} alt="" onClick={this.onToggleLike}
                                         src={isLiked ? liked : like}>
-                                        {likedByUsers!==0 && <span className="likes-counter">{likedByUsers}</span>}
+                                        {likedByUsers !== 0 && <span className="likes-counter">{likedByUsers}</span>}
                                     </div>
                                 </label>
                                 <input type="checkbox" id="like-toggle" />
@@ -166,14 +171,10 @@ class DetailsArtwork extends Component {
                         </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
 
-                        {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
-                            <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
-                            <button className="btn delete" onClick={this.onDelete}></button>
-                        </div>}
-                        {this.state.isAddedToCart && <div className="purchase-msg">
-                            <h2>Thank you!</h2>
-                            <p>Your payment was successful and your order is complete.</p>
-                        </div>}
+                        <div className="purchase-msg">
+                            {this.state.isAddedToCart && <div><h2>Thank you!</h2>
+                                <p>Your payment was successful and your order is complete.</p></div>}
+                        </div>
                         <div className="details-certificate flex justify-space-around">
                             <div className="flex column medal-area align-center"><div className="icon medal"></div> <div className="certificate-text">Original work delivered with a certificate of authenticity.</div></div>
                             <div className="flex column delivery-area align-center"><div className="icon delivery"></div><div className="certificate-text">Shipping usually takes up to 7 days.</div></div>

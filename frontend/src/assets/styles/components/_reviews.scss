@@ -1,6 +1,11 @@
 .comments-container {
   grid-area: comments-area;
   padding-left: 20px;
+  .no-comments-msg{
+    align-self: center;
+    height:200px;
+    margin-top:100px;
+  }
   .comment-form {
     margin-bottom: 10px;
     textarea {
