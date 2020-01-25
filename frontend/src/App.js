@@ -16,6 +16,7 @@ import EditArtwork from './pages/Artwork/EditArtwork';
 import Footer from './cmps/Footer'
 import Login from './pages/Login';
 import About from './pages/About';
+import ArtworkOnWall from './pages/Artwork/ArtworkOnWall';
 
 class App extends Component {
 
@@ -40,6 +41,7 @@ class App extends Component {
             <Route component={AddArtwork} path="/artwork/add" exact />
             <Route component={EditArtwork} path="/artwork/edit/:_id/" exact />
             <Route component={SimulateArtwork} path="/artwork/simulate/:_id/" exact />
+            <Route component={ArtworkOnWall} path="/artwork/wall/:_id/" exact />
             <Route component={DetailsArtwork} path="/artwork/:_id" exact />
             <Route component={ArtistApp} path="/artist" exact />
 

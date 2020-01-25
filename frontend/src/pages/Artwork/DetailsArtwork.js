@@ -126,7 +126,7 @@ class DetailsArtwork extends Component {
             <section className="details-container">
                 <button className="btn back" onClick={this.goBack}></button>
                 <div className="flex column image-area align-center">
-                    <div className="details-image-container flex justify-center align-center">
+                    <div className="details-image-container flex column justify-center align-center">
                         <div className="like-display">
                             <div className="preview-likes-container flex column">
                                 <label htmlFor="like-toggle">
@@ -211,6 +211,13 @@ class DetailsArtwork extends Component {
                             </p>
                         </div>}
                         <div></div>
+
+                        {/* <Link
+                            className="choose-frame flex justify-center align-center column"
+                            to={`/artwork/wall/${selectedArtwork._id}`}>
+                            <button className="btn choose-frame">SEE IT ON A WALL</button>
+                        </Link> */}
+
                         <hr></hr>
                         <div className="details-certificate flex justify-space-around">
                             <div className="flex column medal-area align-center">

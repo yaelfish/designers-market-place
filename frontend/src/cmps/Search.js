@@ -19,8 +19,6 @@ class Search extends Component {
     componentDidMount() {
         this.loadArtworks();
     }
-    
-
 
     loadArtworks = () => {
         this.props.loadArtworks(this.state.filterBy)
@@ -78,8 +76,16 @@ class Search extends Component {
             <div className="search-wrap">
                
                 <div id="content" className={!this.props.isHome ? "none" : ""} >
-                <input type="text"  onKeyPress={this.handleKeyPress} onChange={this.changeInput} name={this.state.selectedFilter}  className={ (this.state.dynamicSearch) ? "dynamic-search-input square" : "dynamic-search-input"} id="search-input" />
-                <button type="reset" className={ (this.state.dynamicSearch) ? "dynamic-search close" : "dynamic-search"} id="search-btn" onClick={this.toggleSearch}></button>
+                    <input type="text"  
+                           onKeyPress={this.handleKeyPress} 
+                           onChange={this.changeInput} 
+                           name={this.state.selectedFilter}  
+                           className={ (this.state.dynamicSearch) ? "dynamic-search-input square" : "dynamic-search-input"} id="search-input"/>
+                    <button type="reset" 
+                            className={ (this.state.dynamicSearch) ? "dynamic-search close" : "dynamic-search"} 
+                            id="search-btn" 
+                            onClick={this.toggleSearch}>
+                    </button>
                   </div>
                
                 <div className={this.props.isHome ? "none" : "search"}>

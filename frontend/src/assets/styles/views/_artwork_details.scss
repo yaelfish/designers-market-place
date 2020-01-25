@@ -18,6 +18,12 @@
       // width: 600px;
       // height: 600px;
       position: relative;
+
+      .carousel-desc p {
+        margin-top: 15px;
+        color: $clr2;
+        font-size: rem(14px);
+      }
     }
   }
 
@@ -112,8 +118,8 @@
   }
 
   .like-display {
-    top: 16px;
-    right: 14px;
+    top: -9px;
+    right: -4px;
     position: absolute;
     z-index: 5;
 
