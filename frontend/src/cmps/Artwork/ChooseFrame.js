@@ -32,13 +32,10 @@ export default class ChooseFrame extends Component {
                         alt="" />
                 </div>
                 <div className="frame-form-container flex column justify-center align-center">
-                    <header>
-                        <h2>Framing</h2>
-                        <h3>Choose Your Frame</h3>
-                    </header>
+                    
                     <ColorPicker setFrameColor={this.setFrameColor}/>
                     <div className="frames-options flex no-wrap">
-                    Choose the thickness of the frame
+                    <h3>Choose the thickness of the frame</h3>
                     <FrameWidthPicker setFrameWidth={this.setFrameWidth} />
                     </div>
                    

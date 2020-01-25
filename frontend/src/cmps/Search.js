@@ -12,7 +12,8 @@ class Search extends Component {
             artist: '',
             tags: ''
         },
-        selectedFilter: 'name'
+        selectedFilter: 'name',
+        dynamicSearch: false
     }
 
     componentDidMount() {
@@ -21,26 +22,49 @@ class Search extends Component {
 
     loadArtworks = () => {
         this.props.loadArtworks(this.state.filterBy)
+        console.log('artworks to show', this.props.artworks)
+    }
+
+    toggleSearch = () => {
+        if (this.state.dynamicSearch) {
+            this.setState({dynamicSearch: false})
+        } else
+        this.setState({dynamicSearch: true})
+    }
+
+    handleKeyPress = (ev) => {
+        if(ev.key === 'Enter'){
+        ev.target.value = '';
+        this.setState({dynamicSearch: false})
+
+        this.props.history.push('/artwork')
+        }
     }
 
     onFilter = (updatedFilterProp) => {
+        
         this.setState(prevState => ({ filterBy: { ...prevState.filterBy, ...updatedFilterProp } }), this.loadArtworks);
     }
 
+    
 
     changeInput = (ev) => {
-        this.props.history.push('/artwork')
+        if (!this.props.isHome){
+            this.props.history.push('/artwork')
+            }
         const field = ev.target.name;
         const value = ev.target.value;
         this.onFilter({ [field]: value })
-
+  
     }
 
     changeSearchFilter = (ev) => {
+
         const filter = ev.target.value;
         this.setState({ selectedFilter: filter })
         document.querySelector(".searchTerm").value = '';
         this.setState({ filterBy: { name: '', artist: '', tags: '' } })
+      
     }
 
 
@@ -48,10 +72,15 @@ class Search extends Component {
 
     render() {
         return (
-
-            <div className="wrap">
-                <div className="search">
-                    <input type="text" className="searchTerm" placeholder="What are you looking for?" onChange={this.changeInput} name={this.state.selectedFilter} />
+            <div className="search-wrap">
+               
+                <div id="content" className={!this.props.isHome&&"none"} >
+                <input type="text"  onKeyPress={this.handleKeyPress} onChange={this.changeInput} name={this.state.selectedFilter}  className={ (this.state.dynamicSearch) ? "dynamic-search-input square" : "dynamic-search-input"} id="search-input" />
+                <button type="reset" className={ (this.state.dynamicSearch) ? "dynamic-search close" : "dynamic-search"} id="search-btn" onClick={this.toggleSearch}></button>
+                  </div>
+               
+                <div className={this.props.isHome ? "none" : "search"}>
+                    <input  type="text" className="searchTerm" placeholder="What are you looking for?" onChange={this.changeInput} name={this.state.selectedFilter} />
                     <select className="search-filter" name="search-filter" onChange={this.changeSearchFilter} >
                         <option  value="tags">Tags</option>
                         <option  value="name">Artwork</option>
@@ -62,9 +91,7 @@ class Search extends Component {
                         <FontAwesomeIcon icon={faSearch} />
 
                     </button>
-                </div>
-
-
+            </div>
             </div>
 
 

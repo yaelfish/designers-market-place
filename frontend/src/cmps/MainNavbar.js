@@ -8,35 +8,37 @@ import logo from '../assets/images/logo.png'
 
 class MainNavbar extends Component {
 
-    state= {
+    state = {
         pathname: window.location.pathname,
-        prevScrollpos: window.pageYOffset
+        prevScrollpos: window.pageYOffset,
     }
 
 
     componentDidMount() {
-        this.unlisten =  this.props.history.listen((e)=>{
-            this.setState( {pathname : window.location.pathname})
+        this.unlisten = this.props.history.listen((e) => {
+            this.setState({ pathname: window.location.pathname })
         })
         window.addEventListener("scroll", this.handleScroll);
-        console.log(this.props.loggedInUser);
+ 
         
     }
+
+
 
     loadArtworks = () => {
         this.props.loadArtworks()
     }
-    
+
     handleScroll = () => {
         const { prevScrollpos } = this.state;
         const currentScrollPos = window.pageYOffset;
         this.setState({
-          prevScrollpos: currentScrollPos,
-        
-        });
-      };
+            prevScrollpos: currentScrollPos,
 
-    componentWillUnmount(){
+        });
+    };
+
+    componentWillUnmount() {
         this.unlisten();
         window.removeEventListener("scroll", this.handleScroll);
     }
@@ -44,12 +46,13 @@ class MainNavbar extends Component {
 
 
     render() {
-        
     return (
         <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav main-nav-home absolute") : "main-nav"}>
             <div className="main-nav-container flex justify-space-between align-center">
             <ul className="nav-links flex align-center">
                 <li>
+           
+      
                     <NavLink to='/' exact>
                         <div className="logo flex column align-center">
                             <img className="logo-pic" src={logo} alt="logo"/>
@@ -77,10 +80,10 @@ class MainNavbar extends Component {
                     <NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink>
                 </li>
             </ul>
-
+         
+            <Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search>
             {/* <div>Hello, {this.props.loggedInUser.fullName}!</div> */}
-            {!(this.state.pathname === "/") &&
-            <Search history={this.props.history}></Search>}
+
             <NavLink className="nav-link" to='/artist' exact>
                 <img className="profile-pic"
                     src={this.props.loggedInUser.imgUrl}
@@ -101,8 +104,8 @@ const mapStateToProps = state => {
 };
 
 
-const mapDispatchToProps =  {
-loadArtworks,
+const mapDispatchToProps = {
+    loadArtworks,
 };
 
 

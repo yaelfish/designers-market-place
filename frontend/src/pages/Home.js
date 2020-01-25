@@ -24,10 +24,6 @@ class Home extends Component {
   state = {
     isHome: true
   }
-
-  // componentDidMount() {
-  //   this.props.login({ email: "kerryjm2020@gmail.com", password: 1234567890 });
-  // }
   render() {
     return (
       <React.Fragment>

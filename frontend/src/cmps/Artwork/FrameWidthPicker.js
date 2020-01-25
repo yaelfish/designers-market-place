@@ -7,7 +7,6 @@ export default class FrameWidthPicker extends Component {
     }
 
     setFrameWidth = (ev) => {
-        console.log(ev.target.value);
         this.props.setFrameWidth(ev.target.value);
     }
 

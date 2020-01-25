@@ -8,6 +8,7 @@ import history from './history';
 import Home from './pages/Home';
 import AppArtwork from './pages/Artwork/AppArtwork';
 import AddArtwork from './pages/Artwork/AddArtwork';
+import SimulateArtwork from './pages/Artwork/SimulateArtwork';
 import DetailsArtwork from './pages/Artwork/DetailsArtwork';
 import ArtistApp from './pages/Artist/ArtistApp'
 import MainNavbar from './cmps/MainNavbar'
@@ -19,6 +20,7 @@ import About from './pages/About';
 class App extends Component {
 
   componentDidMount() {
+    // this.props.login({ email: "idan2030@gmail.com", password: 'AwesomePortown' });
     this.props.login({ email: "kerryjm2020@gmail.com", password: 1234567890 });
   }
 
@@ -35,6 +37,7 @@ class App extends Component {
             <Route component={AppArtwork} path="/artwork" exact />
             <Route component={AddArtwork} path="/artwork/add" exact />
             <Route component={EditArtwork} path="/artwork/edit/:_id/" exact />
+            <Route component={SimulateArtwork} path="/artwork/simulate/:_id/" exact />
             <Route component={DetailsArtwork} path="/artwork/:_id" exact />
             <Route component={ArtistApp} path="/artist" exact />
 

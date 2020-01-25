@@ -12,9 +12,9 @@ button {
   transition: all 0.2s;
   cursor: pointer;
 
-  &:hover {
-    background-color: $clr-btn-hover;
-  }
+  // &:hover {
+  //  background-color: $clr-btn-hover;
+  // }
   &.like {
     background: no-repeat center/80% url("../../images/icons/like.png");
     background-size: 20px;
@@ -35,6 +35,9 @@ button {
     background-position: center;
     width: 32px;
     height: 32px;
+    position: absolute;
+    top: 89px;
+    left: 11px;
   }
   &.delete {
     background: url("../../images/icons/remove.png");

@@ -13,15 +13,16 @@ import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
 import { removeReview } from '../../actions/ReviewActions'
 import OrderAdd from '../../cmps/Order/OrderAdd'
-import ChooseFrame from '../../cmps/Artwork/ChooseFrame';
 
+import { frameLogo } from '../../assets/images/icons/square-frame.png'; 
 class DetailsArtwork extends Component {
 
     state = {
         isAddedToCart: false,
         isLiked: false,
         currUserId: '',
-        currArtwork: null
+        currArtwork: null,
+        isAnimatingLike: false
     }
 
     async componentDidMount() {
@@ -56,7 +57,7 @@ class DetailsArtwork extends Component {
     onToggleLike = async () => {
         await this.setState(prevState => ({ isLiked: !prevState.isLiked }))
         await this.updateLiked();
-        console.log(this.state.isLiked);
+        this.setState({ isAnimatingLike: true })
     }
 
     updateLiked = async () => {
@@ -106,13 +107,9 @@ class DetailsArtwork extends Component {
     }
 
     render() {
-        // console.log('render', this.state.isLiked);
-
         const { isLiked } = this.state
         const { selectedArtwork } = this.props;
         const order = { ...selectedArtwork };
-
-
 
         let artistObj = selectedArtwork.artist;
         let artist;
@@ -124,97 +121,110 @@ class DetailsArtwork extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }
-
         return <React.Fragment>
             {/* <Breadcrumb /> */}
             <section className="details-container">
+                <button className="btn back" onClick={this.goBack}></button>
                 <div className="flex column image-area align-center">
-                    <div className="details-image-container">
-                        {/* <Carousel artSrc={selectedArtwork.imgUrl} /> */}
-                        <ChooseFrame artSrc={selectedArtwork.imgUrl}/>
-                    </div>
-                </div>
-
-                    <div className="details-description flex justify-center align-center">
-                        <div className="main-details">
-                            <p className="art-name">{selectedArtwork.name}</p>
-                            <p className="artist-name flex align-center">
-                                <img className="profile-picture-details" src={this.props.loggedInUser.imgUrl}/> By {artist} </p>
+                    <div className="details-image-container flex justify-center align-center">
+                        <div className="like-display">
+                            <div className="preview-likes-container flex column">
+                                <label htmlFor="like-toggle">
+                                    <div className={isLiked ? (this.state.isAnimatingLike ? 'heart is-animating-like is-active flex justify-center align-center' : 'heart is-active flex justify-center align-center') : 'heart flex justify-center align-center'} alt="" onClick={this.onToggleLike}
+                                        src={isLiked ? liked : like}>
+                                        <span className="likes-counter">{likedByUsers}</span>
+                                    </div>
+                                </label>
+                                <input type="checkbox" id="like-toggle" />
+                            </div>
                         </div>
-                        <p className="art-description">{selectedArtwork.description}</p>
+                        <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
+                    
+                </div>
+                <div className="details-description flex justify-center align-center column">
+                    <div className="main-details">
+                        <p className="art-name">{selectedArtwork.name}</p>
+                        <p className="artist-name flex align-center"> By {artist} </p>
+                    </div>
+                    <p className="art-description">{selectedArtwork.description}</p>
+                </div>
                 <Reviews 
                     onDeleteReview={this.onDeleteReview} 
                     sendMsg={this.sendMsg} 
                     reviews={this.props.reviews} 
                     loadReviews={this.props.loadReviews} 
                     selectedArtwork={this.props.match.params._id} 
-                    loggedInUser={this.props.loggedInUser}>
+                    loggedInUser={this.props.loggedInUser} >
                 </Reviews>
                 <div className="details-text-container flex justify-start">
                     <aside className="container flex justify-start column align-center">
-                        <ul className="aside-fill">
-                            <li>
-                                {selectedArtwork.price && <p className="art-price">
-                                <span className="price">Price </span>
-                                <span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span></p>}
-                            </li>
-                            <li>
-                                <div className="like-display">
-                                    <div className="preview-likes-container flex align-center">
-                                        <label htmlFor="like-toggle">
-                                            <img alt="" onClick={this.onToggleLike}
-                                                className="preview-icon-like"
-                                                src={isLiked ? liked : like}
-                                            />
-                                            {/* <div onClick={this.onToggleLike} className={isLiked ? 'heart is-active' : 'heart'}></div> */}
-                                        </label>
-
-                                        <input type="checkbox" id="like-toggle" />
-                                        <span className="likes-counter">{likedByUsers}</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>{this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
-                        {/* {this.state.isAddedToCart && <div className="purchased-modal">Purchased</div>} */}
-                        <div className="action-btns flex justify-space-around">
-
-                            <button className="btn back" onClick={this.goBack}></button>
-                            <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}>
-                                <button className="edit"></button>
+                        {selectedArtwork.price && <div className="art-price">
+                        <p className="price">Price </p>
+                        <span className="var-price">${selectedArtwork.price.toLocaleString("USD")}</span>
+                        <p className="free-sheeping">Free worldwide shipping and returns</p>
+                        </div>}
+                           
+                       {this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
+                        {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
+                            <Link 
+                                className="btn flex justify-center align-center" 
+                                to={`/artwork/edit/${selectedArtwork._id}`}>
+                                    <button className="edit"></button>
                             </Link>
-                            <button className="btn delete" onClick={this.onDelete}></button>
-                        </div>
+                            <button 
+                                className="btn delete" 
+                                onClick={this.onDelete}>
+                            </button>
+                        </div>}
                         {this.state.isAddedToCart && <div className="purchase-msg">
                             <h2>Thank you!</h2>
                             <p>Your payment was successful and your order is complete.</p>
                         </div>}
+                        <div className="add-frame">
+                            <div className="icon medal"></div> 
+                            <p>Would you like to add a frame to this artwork?</p>
+                            <Link className="btn flex justify-center align-center"
+                                to={`/artwork/simulate/${selectedArtwork._id}`}>
+                                <button className="secondary-btn">choose a frame</button>
+                            </Link>
+                            
+                        </div>
                         <div className="details-certificate flex justify-space-around">
+                            <hr />
                             <div className="flex column medal-area align-center">
                                 <div className="icon medal"></div> 
-                                <div className="certificate-text">Original work delivered with a certificate of authenticity.</div>
+                                <div className="certificate-text">
+                                    Original work delivered with a certificate of authenticity.
+                                </div>
                             </div>
                             <div className="flex column delivery-area align-center">
                                 <div className="icon delivery"></div>
-                                <div className="certificate-text">Shipping usually takes up to 7 days.</div>
+                                <div className="certificate-text">
+                                    Shipping usually takes up to 7 days.
+                                </div>
                             </div>
                             <div className="flex column return-area align-center">
                                 <div className="icon return"></div>
-                                <div className="certificate-text">We have a 14 day withdrawal period, starting on the day you receive the work.</div>
+                                <div className="certificate-text">
+                                    We have a 14 day withdrawal period, starting on the day you receive the work.
+                                </div>
                             </div>
                             <div className="flex column security-area align-center">
                                 <div className="icon security"></div>
-                                <div className="certificate-text">You can pay safely by credit card or bank transfer.</div>
+                                <div className="certificate-text">
+                                    You can pay safely by credit card or bank transfer.
+                                </div>
                             </div>
                             <div className="flex column warranty-area align-center">
                                 <div className="icon warranty"></div>
-                                <div className="certificate-text">Reliability and traceability guaranteed. </div>
+                                <div className="certificate-text">
+                                    Reliability and traceability guaranteed. 
+                                </div>
                             </div>
                         </div>
                     </aside>
                 </div>
-
-
             </section>
         </React.Fragment >
     }
