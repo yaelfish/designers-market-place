@@ -5,23 +5,26 @@ import { loadArtworks } from '../../actions/ArtworkActions';
 import Tags from '../../cmps/Tags';
 import Spinner from '../../cmps/Spinner'
 
-// import queryString from 'query-string';
 
 class AppArtwork extends Component {
 
+    state={
+        something: null
+    }
+
     componentDidMount() {
         this.loadArtworks()
-
+   
     }
 
 
 
-
     loadArtworks = async () => {
+        window.scrollTo(0, 0)
         const search = await this.props.location.search;
         const params = await new URLSearchParams(search);
         const tags = await params.get('tags');
-        await this.props.loadArtworks({tags})
+        (tags)&&this.props.loadArtworks({tags})
     }
 
     render() {

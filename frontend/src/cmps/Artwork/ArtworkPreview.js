@@ -22,6 +22,7 @@ class ArtworkPreview extends Component {
         }        
         // console.log(likedByUsers);
         // console.log(this.props.artwork);
+  
         
         
         return ( <>
@@ -51,7 +52,6 @@ class ArtworkPreview extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        artworks: state.artwork.artworks,
         selectedArtwork: state.artwork.selectedArtwork,
         user: state.user
     }
