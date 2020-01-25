@@ -1,5 +1,9 @@
 .artwork-form {
+  
+  @media (min-width: 850px){
   width: $narrow-breakpoint;
+  }
+
   input {
     border: 0px;
     background-color: #f2f2f2;
@@ -28,15 +32,38 @@
     padding: 12px;
     margin-bottom: 15px;
     height: 400px;
+
+
+   
   }
   img {
+   
+
     &.upload-img-icon {
       width: 50px;
       height: 50px;
+      
     }
     &.uploaded-img {
       object-fit: contain;
-      height:380px
+      border: 3px dashed $clr2;
+     
     }
   }
+
+  .img-edit-container-uploaded{
+    border: 3px dashed $clr2;
+    img {
+      
+      &.uploaded-img {
+        object-fit: contain;
+        height: auto;
+        padding: auto;
+        border: none;
+        
+      }
+
+     
+  }
+}
 }
