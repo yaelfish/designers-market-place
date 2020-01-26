@@ -22,8 +22,8 @@ import ArtworkOnWall from './pages/Artwork/ArtworkOnWall';
 class App extends Component {
 
   componentDidMount() {
-    this.props.login({ email: "idan2030@gmail.com", password: 'AwesomePortown' });
-    // this.props.login({ email: "kerryjm2020@gmail.com", password: 1234567890 });
+    // this.props.login({ email: "idan2030@gmail.com", password: 'AwesomePortown' });
+    this.props.login({ email: "kerryjm2020@gmail.com", password: 1234567890 });
   }
 
 
