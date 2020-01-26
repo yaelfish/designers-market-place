@@ -6,12 +6,12 @@
   position: relative;
   @include for-normal-layout {
     display: grid;
+    grid-gap: 20px 0px;
     grid-template-areas:
       "image-area image-area image-area image-area image-area image-area text-area"
       "image-area image-area image-area image-area image-area image-area text-area"
       "description-area description-area description-area description-area description-area description-area text-area"
       "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
-    grid-gap: 20px;
   }
 
   .image-area {
@@ -43,6 +43,7 @@
       width: 47x;
       height: 50px;
       margin: 15px auto 40px;
+      opacity: 0.68;
     }
   }
   .details-description {
@@ -214,7 +215,10 @@
       "delivery delivery medal medal"
       "return return security security"
       ". warranty warranty .";
-    grid-gap: 10px;
+    grid-gap: 20px 40px;
+    font-size: rem(13px);
+    padding: 0 20px;
+    width: 100%;
     .medal-area {
       grid-area: medal;
     }
@@ -237,6 +241,7 @@
       background-position: center;
       width: 60px;
       height: 65px;
+      margin-bottom: 20px;
       &.delivery {
         background-image: url("../../images/icons/truck.png");
       }
@@ -258,4 +263,11 @@
       text-align: center;
     }
   }
+}
+
+.please-delete-me-for-yael{
+  width:100px;
+  height:100px;
+  background-color: blue;
+  margin-right:10px;
 }

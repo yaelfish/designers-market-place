@@ -145,6 +145,7 @@ class DetailsArtwork extends Component {
                         </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
+                    <div className="flex"><div className="please-delete-me-for-yael">1</div><div className="please-delete-me-for-yael">2</div></div>
                     {/* <ChooseFrame artSrc={selectedArtwork.imgUrl} /> */}
                 </div>
                 <div className="details-description flex justify-center align-center column">
