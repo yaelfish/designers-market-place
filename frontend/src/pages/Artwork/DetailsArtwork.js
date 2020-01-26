@@ -146,14 +146,7 @@ class DetailsArtwork extends Component {
                             </div>
                         </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
-                    </div>
-                    <div className="flex justify-space-around">
-                        {/* <div className="please-delete-me-for-yael">
-                            <ArtTemplate artSrc={selectedArtwork.imgUrl}/>
-                        </div>
-                        <div className="please-delete-me-for-yael">
-                            <ArtTemplate2 artSrc={selectedArtwork.imgUrl}/>
-                        </div> */}
+                        {/* <div className="flex justify-space-between please-delete-me-also"><div className="please-delete-me-for-yael">1</div><div className="please-delete-me-for-yael">2</div></div> */}
                     </div>
                     {/* <ChooseFrame artSrc={selectedArtwork.imgUrl} /> */}
                 </div>

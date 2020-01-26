@@ -106,16 +106,16 @@ export default class ArtworkForm extends React.Component {
         return (<>
             <form className='container flex column artwork-form' onSubmit={this.onSave}>
                 <label>Name:</label>
-                <input type="text" placeholder="name" name="name"
+                <input required type="text" placeholder="name" name="name"
                     onChange={this.onInputChange} value={artwork.name} />
                 {/* TODO: create as dropdown with option to choose different creator name */}
                 {/* <input type="hidden" placeholder="artist" name="artist"
                    onChange={this.onInputChange} value={artwork.artist} /> */}
                 <label>Price:</label>
-                <input type="number" placeholder="price" name="price"
+                <input required type="number" placeholder="price" name="price"
                     onChange={this.onInputChange} value={artwork.price} />
                 <label>Description:</label>
-                <textarea placeholder="description" name="description"
+                <textarea required placeholder="description" name="description"
                     onChange={this.onInputChange} value={artwork.description} />
 
                 <div className="tags-selection">
