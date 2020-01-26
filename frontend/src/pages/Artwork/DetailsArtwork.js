@@ -126,7 +126,7 @@ class DetailsArtwork extends Component {
                 <button className="btn back" onClick={this.goBack}></button>
 
                 <div className="flex column image-area align-center">
-                    <div className="details-image-container">
+                    <div className="details-image-container flex column justify-center align-center">
                         {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
                             <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                             <button className="btn delete" onClick={this.onDelete}></button>
@@ -196,6 +196,13 @@ class DetailsArtwork extends Component {
                             </p>
                         </div>}
                         <div></div>
+
+                        {/* <Link
+                            className="choose-frame flex justify-center align-center column"
+                            to={`/artwork/wall/${selectedArtwork._id}`}>
+                            <button className="btn choose-frame">SEE IT ON A WALL</button>
+                        </Link> */}
+
                         <hr></hr>
                         <div className="details-certificate flex justify-space-around">
                             <div className="flex column medal-area align-center">

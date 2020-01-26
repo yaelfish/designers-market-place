@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { loadArtworkById, removeArtwork } from '../../../actions/ArtworkActions'
-import { wall } from './canvas_1x1_oss.png';
+// import  wall from '../../../assets/images/template-imgs/wall1.png'
 
 
 export default class FramedArtwork extends Component {

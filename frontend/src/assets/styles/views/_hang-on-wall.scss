@@ -1,0 +1,40 @@
+.hang-on-wall-container {
+  width: 100%;
+  padding: 80px 10px 80px 45px;
+  background-color: azure;
+  position: relative;
+
+  .carousel-container {
+      width: 90%;
+    padding-top: 12%;
+    position: absolute;
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: repeat(2, 5vw);
+    // grid-gap: 15px;
+
+    .big-img-container {
+        position: relative;
+        top: 0;
+      width: 34%;
+      padding-top: 12%;
+    }
+    .small-images-container {
+      width: 100%;
+
+      & > div {
+        width: 50%;
+      }
+    }
+  }
+
+  .wall-bg {
+    background-image: url("../../images/template-imgs/wall1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    width: 500px;
+    height: auto;
+  }
+}
