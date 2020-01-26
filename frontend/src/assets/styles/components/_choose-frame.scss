@@ -1,18 +1,33 @@
 .frame-section-container {
-  padding-top:6vh;
+  padding-top: 6vh;
   width: 100%;
+
+  //   @include for-narrow-layout {
+  //   flex-direction: column-reverse;
+  // }
+
+  @include for-mobile-layout {
+    flex-direction: column-reverse;
+  }
+
+
 
   .frame-form-container {
     width: 50%;
     height: 100%;
-    // margin-top: 33px;
-    // padding: 60px;
     padding: 8%;
     background-color: #ececec;
     text-align: center;
-    
+
+    @include for-mobile-layout {
+      width: 100%;
+    }
+
+    @include for-narrow-layout {
+      width: 100%;
+    }
+
     header {
-    
       h2 {
         font-family: montserrat, cabin, sans-serif;
         text-align: center;
@@ -35,7 +50,25 @@
   .frame-artwork-container {
     width: 50%;
     height: 100%;
-    
+
+    @include for-narrow-layout {
+      height: auto;
+      width: 100%;
+      display: flex;
+      margin: 20% 0 11%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @include for-mobile-layout {
+      height: auto;
+      width: 100%;
+      display: flex;
+      margin: 20% 0 11%;
+      justify-content: center;
+      align-items: center;
+    }
+
     img {
       max-width: 77%;
       max-height: 62%;
@@ -51,6 +84,14 @@
       border-image-width: 15px;
       border-image-outset: 14px;
       transition: 0.4s;
+
+      @include for-mobile-layout {
+        max-height: initial;
+      }
+
+       @include for-narrow-layout {
+        max-height: initial;
+      }
     }
   }
 
@@ -66,8 +107,18 @@
     margin: 10px 10px 1px 10px;
     border-radius: 3px;
     cursor: pointer;
-    box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+    box-shadow: 1px 0px 9px 1px rgba(0, 0, 0, 0.5);
     transition: 0.3s;
+
+    @include for-mobile-layout {
+      width: 60px;
+      height: 60px;
+    }
+
+    //  @include for-narrow-layout {
+    //   width: 60px;
+    //   height: 60px;
+    // }
   }
 
   #container::after {

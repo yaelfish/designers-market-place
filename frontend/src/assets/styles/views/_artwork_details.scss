@@ -219,6 +219,8 @@
     font-size: rem(13px);
     padding: 0 20px;
     width: 100%;
+    padding-bottom: 15%;
+
     .medal-area {
       grid-area: medal;
     }
@@ -265,9 +267,9 @@
   }
 }
 
-.please-delete-me-for-yael{
-  width:100px;
-  height:100px;
+.please-delete-me-for-yael {
+  width: 100px;
+  height: 100px;
   background-color: blue;
-  margin-right:10px;
+  margin-right: 10px;
 }

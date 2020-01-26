@@ -6,6 +6,8 @@ import { loading, doneLoading } from '../../actions/SystemActions'
 import { loadReviews, addReview } from '../../actions/ReviewActions'
 import Reviews from '../../cmps/Artwork/Reviews'
 import Carousel from '../../cmps/Carousel';
+import ArtTemplate from '../../cmps/Artwork/TemplatesArt/ArtTemplate';
+import ArtTemplate2 from '../../cmps/Artwork/TemplatesArt/ArtTemplate2';
 // import ArtTemplate from '../../cmps/Artwork/TemplatesArt/ArtTemplate';
 import FramedArtwork from '../../cmps/Artwork/TemplatesArt/FramedArtwork';
 import Breadcrumb from '../../cmps/Breadcrumb';
@@ -145,7 +147,14 @@ class DetailsArtwork extends Component {
                         </div>
                         <Carousel artSrc={selectedArtwork.imgUrl} />
                     </div>
-                    <div className="flex"><div className="please-delete-me-for-yael">1</div><div className="please-delete-me-for-yael">2</div></div>
+                    <div className="flex justify-space-around">
+                        {/* <div className="please-delete-me-for-yael">
+                            <ArtTemplate artSrc={selectedArtwork.imgUrl}/>
+                        </div>
+                        <div className="please-delete-me-for-yael">
+                            <ArtTemplate2 artSrc={selectedArtwork.imgUrl}/>
+                        </div> */}
+                    </div>
                     {/* <ChooseFrame artSrc={selectedArtwork.imgUrl} /> */}
                 </div>
                 <div className="details-description flex justify-center align-center column">
