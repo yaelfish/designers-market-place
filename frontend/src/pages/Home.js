@@ -76,7 +76,7 @@ loadArtworks = (ev) => {
 
                 <li className="category-li">
                   <Link className="category-link" to={{ pathname: '/artwork' }}>
-                    <img className="popular-link" src={pop4}  onClick={this.loadArtworks} />
+                    <img id="main-popular-link" className="popular-link" src={pop4}  onClick={this.loadArtworks} />
                   </Link>
                 </li>
               </ul>
