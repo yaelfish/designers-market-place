@@ -28,7 +28,7 @@ class ArtistPurchasesPreview extends Component {
    
         return ( 
             <Link to={`/artwork/${_id}`}>
-                <div className="card-artwork-sold flex  align-start row">
+                <div className="card-artwork-sold flex  align-center row">
                 <img src={imgUrl} alt={name} className="square-ratio" />
                     <div className="preview-info-sold">
                         <div className="art-preview-text-sold flex row align-start">
