@@ -8,15 +8,15 @@ export default class Reviews extends Component {
     }
 
     componentDidMount() {
-        SocketService.setup();
-        SocketService.emit('chat topic', this.props.selectedArtwork);
-        SocketService.on('chat addMsg', this.receiveMsg);
+        // SocketService.setup();
+        // SocketService.emit('chat topic', this.props.selectedArtwork);
+        // SocketService.on('chat addMsg', this.receiveMsg);
     }
 
-    componentWillUnmount() {
-        SocketService.off('chat addMsg', this.addMsg);
-        SocketService.terminate();
-    }
+    // componentWillUnmount() {
+    //     SocketService.off('chat addMsg', this.addMsg);
+    //     SocketService.terminate();
+    // }
 
     msgHandleChange = ev => {
         const { name, value } = ev.target;
@@ -27,7 +27,7 @@ export default class Reviews extends Component {
     sendMsg = async (ev, newMsg) => {
         ev.preventDefault();
         const msgReturned = await this.props.sendMsg(newMsg);
-        SocketService.emit('chat newMsg', msgReturned.msg);
+        // SocketService.emit('chat newMsg', msgReturned.msg);
         this.receiveMsg();
 
         this.setState({ msg: '' });
