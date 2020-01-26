@@ -112,7 +112,8 @@ class AppArtwork extends Component {
                     {this.props.loggedInUser && this.props.loggedInUser.isArtist && <div id="sold" className="sold-container">
                         <h2>Sold</h2>
                         <div className="sold-list-titles flex justify-space-around">
-                            <div className="sold-list-title">Artwork</div>
+                            <div className="sold-list-title artwork-title">Artwork</div>
+                            <div className="sold-list-title">Name</div>
                             <div className="sold-list-title">Last Sell</div>
                             {/* <div className="sold-list-title">Tags</div> */}
                             <div className="sold-list-title">Likes</div>
