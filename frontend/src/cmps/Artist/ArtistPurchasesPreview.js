@@ -34,22 +34,12 @@ class ArtistPurchasesPreview extends Component {
                         <div className="art-preview-text-sold flex row align-start">
                             <p className="preview-artwork-name">{name}</p>
                             <p className="preview-artwork-created"><Moment fromNow>{this.props.lastOrder.createdAt}</Moment></p>
-                            {/* <p className="preview-artwork-tags">{tags.toString()}</p> */}
-                            <span className="likes-counter"><p>{likedByUsers}</p></span>
-                            {/* <div className="preview-likes-container flex align-center">
-                            <span className="likes-counter">{likedByUsers}</span>
-                            <img className="preview-icon-like" src={like} />
-                        </div> */}
-
+                            <p className="likes-counter">{likedByUsers}</p>
                             <p className="preview-artwork-quantity">{this.props.timesSold}</p>
                             <p className="preview-earnings"> ${(this.props.timesSold*price).toLocaleString("USD")}</p>
                         </div>
                         
 
-                        {/* <button className="preview-icon btn delete" src={bin} 
-                                onClick={()=>this.props.removeArtwork(_id)}></button> */}
-             
-                        {/* <img className="preview-icon" src={afterLike}></img> */}
                     </div>
                   
                 </div>
