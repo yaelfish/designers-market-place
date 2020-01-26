@@ -90,9 +90,9 @@ class MainNavbar extends Component {
                         </li>
 
                         <span className="nav-separator">|</span>
-                        <li>
+                        {this.props.loggedInUser && this.props.loggedInUser.isArtist && < li >
                             <NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink>
-                        </li>
+                        </li>}
                     </ul>
 
                     <Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search>
@@ -104,7 +104,7 @@ class MainNavbar extends Component {
                             alt={this.props.loggedInUser.userName} />
                     </NavLink>
                 </div>
-            </nav>
+            </nav >
         )
     }
 }
