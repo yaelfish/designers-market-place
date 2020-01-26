@@ -161,7 +161,7 @@
 
   #black-wood:checked ~ #container::after {
     content: url("../../images/frames/black-wood.jpg");
-    border: 8px solid $gold;
+    border: 20px solid $gold;
   }
 
   #dark-wood:checked ~ #container::after {
