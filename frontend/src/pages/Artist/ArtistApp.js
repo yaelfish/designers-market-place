@@ -115,16 +115,14 @@ class AppArtwork extends Component {
                             <div className="sold-list-title artwork-title">Artwork</div>
                             <div className="sold-list-title">Name</div>
                             <div className="sold-list-title">Last Sell</div>
-                            {/* <div className="sold-list-title">Tags</div> */}
                             <div className="sold-list-title">Likes</div>
                             <div className="sold-list-title">Quantity</div>
                             <div className="sold-list-title">Earnings</div>
                         </div>
                         <ArtistPurchasesList artworks={this.state.artistArtworks} updateTotals={this.updateTotals} />
                         <div className="sales-summary"> <p>Total Earnings: ${this.state.totalEarnings.toLocaleString("USD")}</p>
-                                </div>
+                        </div>
                     </div>
-
                     }
 
                     <div id="purchases" className="artist-artworks-list">
