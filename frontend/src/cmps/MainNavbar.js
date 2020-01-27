@@ -102,11 +102,11 @@ class MainNavbar extends Component {
                     <div className={(this.state.pathname === "/") ? "" : "nav-mobile"}><Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search></div>
                     {/* <div>Hello, {this.props.loggedInUser.fullName}!</div> */}
 
-                    <NavLink className="nav-link" to='/artist' exact>
-                        <img className="profile-pic"
+                   <NavLink className="nav-link" to='/artist' exact>
+                   { !this.state.menuShown&&<img className="profile-pic"
                             src={this.props.loggedInUser.imgUrl}
-                            alt={this.props.loggedInUser.userName} />
-                    </NavLink>
+                            alt={this.props.loggedInUser.userName} /> }
+                    </NavLink> 
                 </div>
             </nav >
         )
