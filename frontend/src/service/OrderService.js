@@ -18,11 +18,6 @@ function getById(orderId) {
   return HttpService.get(`order/${orderId}`);
 }
 
-async function toggleLike(toggleOrderLike) {
-  const toggledLike = await HttpService.post(`order`, toggleOrderLike);
-  return toggledLike;
-}
-
 async function edit(order) {
   console.log('order edit service',order);
   
