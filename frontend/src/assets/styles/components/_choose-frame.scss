@@ -1,6 +1,10 @@
 .frame-section-container {
-  padding-top: 6vh;
+  padding-top: 70px;
   width: 100%;
+
+  @media (max-width:720px){
+    padding-top: 120px;
+  }
 
   @include for-mobile-layout {
     flex-direction: column-reverse;
