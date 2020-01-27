@@ -115,4 +115,12 @@
     transition-delay: 0.4s, 0s, 0.4s;
       transform: translate( 0, -50%);
   }
+
+  @media (max-width: 460px) {
+    .square {
+      width: 55vw;
+    }
+ 
+
+  }
   
