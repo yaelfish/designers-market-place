@@ -15,6 +15,11 @@
     max-width: 24ch;
     line-height: 1.5;
     margin: 0 auto 15px;
+
+    @media (max-width: $narrow-breakpoint) {
+      font-size: 2rem;
+      padding: 0 20px;
+    }
   }
 
   main.container {
@@ -31,6 +36,10 @@
       height: 260px;
       width: auto;
       object-fit: cover;
+
+      @media (max-width: $narrow-breakpoint) {
+        height: 173px;
+      }
     }
     #main-popular-link{
       max-width:80%;
@@ -43,6 +52,13 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 270px));
     grid-gap: 20px;
+    @media (max-width: 880px) {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 199px));
+    }
+    @media (max-width: $narrow-breakpoint){
+      grid-template-columns: repeat(auto-fill, minmax(80px, 144px));
+      grid-gap: 10px;
+    }
     width: 100%;
 
     .category-link img {
@@ -117,6 +133,12 @@
       z-index: 1;
       color: white;
       font-size: 1.6em;
+      @media (max-width: 880px) {
+        font-size: 1.3em;
+      }
+      @media (max-width: $narrow-breakpoint){
+        font-size: 1em;
+      }
       font-weight: 600;
       background-color: rgba(0, 0, 0, 0.76);
       pointer-events: none;
@@ -144,6 +166,9 @@
     font-size: rem(80px);
     text-align: center;
     color: rgb(0, 0, 0);
+    @media (max-width: $narrow-breakpoint){
+    padding: 0 0 0 10px;
+    }
 
     .cover-header {
       margin-right: 3%;
@@ -197,7 +222,7 @@
     padding: 40px 0 80px;
 
     h2 {
-      font-size: rem(25px);
+      font-size: rem(20px);
     }
   }
 
@@ -205,14 +230,26 @@
     // background-color: $clr2;
     background: #e3e3e3;
     padding: 80px 10px 80px 45px;
-
+    @media (max-width: $narrow-breakpoint){
+     flex-direction: column;
+     padding: 10px 20px 30px 20px;
+     
+    }
     .discover-container-left {
       min-width: 11%;
+      @media (max-width: $narrow-breakpoint){
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
       & h2 {
         font-size: rem(30px);
         line-height: 1.4;
         max-width: 18ch;
+        @media (max-width: $narrow-breakpoint){
+          max-width: 30ch;
+        }
         margin-bottom: 20px;
         margin-top: 50px;
         padding-right: 5px;
