@@ -5,8 +5,9 @@
     height: 35px;
     // width: 300px; 
     margin-left: 170px;
-    top: 30px;
+    top: 35px;
     right: 74px;
+    z-index: 99;
   }
   
   #content.on {
@@ -114,5 +115,13 @@
       padding 0.2s;
     transition-delay: 0.4s, 0s, 0.4s;
       transform: translate( 0, -50%);
+  }
+
+  @media (max-width: 460px) {
+    .square {
+      width: 55vw;
+    }
+ 
+
   }
   
