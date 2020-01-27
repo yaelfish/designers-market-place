@@ -1,5 +1,5 @@
 const express = require('express')
-// const {requireAuth, requireAdmin} = require('../../middlewares/requireAuth.middleware')
+const {requireAuth, requireAdmin} = require('../../middlewares/requireAuth.middleware')
 const { addArtwork, getArtworks, deleteArtwork, editArtwork, getArtworkById } = require('./artwork.controller')
 const router = express.Router()
 
@@ -8,8 +8,8 @@ const router = express.Router()
 
 router.get('/', getArtworks)
 router.get('/:id', getArtworkById)
-router.post('/', addArtwork)
-router.delete('/:id', deleteArtwork)
-router.put('/:id', editArtwork)
+router.post('/', requireAuth, addArtwork)
+router.delete('/:id', requireAuth, deleteArtwork)
+router.put('/:id', requireAuth, editArtwork)
 
 module.exports = router

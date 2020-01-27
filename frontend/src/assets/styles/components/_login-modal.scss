@@ -1,0 +1,32 @@
+.login-modal {
+  padding:10px;
+  position: absolute;
+  border-radius: 0.4em;
+  color: $white;
+  font-size: rem(16px);
+  font-weight: 600;
+  background-color: rgba($gold, 0.8);
+  right: 0px;
+  top: 126px;
+  z-index: 100;
+  max-width: 20ch;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 74px solid transparent;
+    border-bottom-color: rgba($gold, 0.8);
+    border-top: 0;
+    border-right: 0;
+    margin-left: -37px;
+    margin-top: -74px;
+  }
+  .close-login-modal {
+    margin-right: 10px;
+    border-radius: 100%;
+  }
+}

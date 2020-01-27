@@ -45,8 +45,10 @@ export default class Reviews extends Component {
         return <div className="comments-container">
             <h2>Comments</h2>
             <form className="comment-form flex">
-                <textarea placeholder="write something..." value={this.state.msg} name="msg" onChange={this.msgHandleChange}></textarea>
-                <button className="publish" onClick={(event) => this.sendMsg(event, this.state.msg)}>Publish</button>
+                {this.props.loggedInUser && <div className="flex">
+                    <textarea placeholder="write something..." value={this.state.msg} name="msg" onChange={this.msgHandleChange}></textarea>
+                    <button className="publish" onClick={(event) => this.sendMsg(event, this.state.msg)}>Publish</button>
+                </div>}
             </form>
             {this.props.reviews.length > 0 ? <ul className="comments-area">
                 {this.props.reviews.map((review, idx) => (
@@ -56,12 +58,12 @@ export default class Reviews extends Component {
                             <div className="comment-by-user">{review.byUser.userName}</div>
                         </div>
                         <div className="comment-user-msg">{review.msg}</div>
-                        {this.props.loggedInUser._id === review.byUser._id && <button className="btn delete-review"
+                        {this.props.loggedInUser && this.props.loggedInUser._id === review.byUser._id && <button className="btn delete-review"
                             onClick={() => this.props.onDeleteReview(review._id)}></button>}
                     </li>
                 ))}
 
-            </ul>:<p className="no-comments-msg">No Comments</p>}
+            </ul> : <p className="no-comments-msg">No Comments</p>}
 
         </div>
 

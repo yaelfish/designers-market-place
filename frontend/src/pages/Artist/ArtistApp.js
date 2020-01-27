@@ -140,14 +140,7 @@ class AppArtwork extends Component {
                 <div>bla</div>
                 <div>bla</div> */}
                     {/* <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs> */}
-
-
                 </main>
-
-
-
-
-
             </React.Fragment>)
     }
 }

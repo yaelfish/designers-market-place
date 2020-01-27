@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { loadArtworks } from '../actions/ArtworkActions'
 import { render } from 'react-dom';
 import logo from '../assets/images/logo.png'
+import LogoutIcon from '../assets/images/icons/logout.png'
+import { logout } from '../actions/UserActions'
+import profileIcon from '../assets/images/icons/account.png'
 
 class MainNavbar extends Component {
 
@@ -53,6 +56,10 @@ class MainNavbar extends Component {
         });
     };
 
+    logout = () => {
+        this.props.logout()
+    }
+
     componentWillUnmount() {
         this.unlisten();
         window.removeEventListener("scroll", this.handleScroll);
@@ -93,23 +100,27 @@ class MainNavbar extends Component {
                         {this.props.loggedInUser && this.props.loggedInUser.isArtist && < li >
                             <NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink>
                         </li>}
+                        <span className="nav-separator">|</span>
+                        {this.props.loggedInUser && <li className="flex align-center" onClick={this.logout}>
+                            <img className="log-out-icon" src={LogoutIcon}></img>
+                        </li>}
                     </ul>
 
                     <Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search>
                     {/* <div>Hello, {this.props.loggedInUser.fullName}!</div> */}
 
-                    <NavLink className="nav-link" to='/artist' exact>
+                    {this.props.loggedInUser?<NavLink className="nav-link" to='/artist' exact>
                         <img className="profile-pic"
-                            src={this.props.loggedInUser.imgUrl}
-                            alt={this.props.loggedInUser.userName} />
-                    </NavLink>
+                            src={this.props.loggedInUser.imgUrl} />
+                    </NavLink>:<NavLink className="nav-link" to='/login' exact>
+                        <img className="profile-pic"
+                            src={profileIcon} />
+                    </NavLink>}
                 </div>
             </nav >
         )
     }
 }
-
-
 
 const mapStateToProps = state => {
     return {
@@ -121,6 +132,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadArtworks,
+    logout
+
 };
 
 

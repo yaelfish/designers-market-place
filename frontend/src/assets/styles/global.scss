@@ -19,6 +19,7 @@
 @import "views/artist-page";
 @import "views/add-artwork";
 @import "views/hang-on-wall";
+@import "views/login.scss";
 
 // Components
 @import "components/carouselle";
@@ -40,6 +41,7 @@
 @import "components/artist-purchases-list";
 @import "components/footer" ;
 @import "components/dynamic-search";
+@import "components/_login-modal";
 
 
 
