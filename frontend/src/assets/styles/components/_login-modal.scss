@@ -1,32 +1,46 @@
 .login-modal {
-  padding:10px;
-  position: absolute;
-  border-radius: 0.4em;
+  margin: 40px;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  border-radius: 30px;
   color: $white;
   font-size: rem(16px);
   font-weight: 600;
-  background-color: rgba($gold, 0.8);
-  right: 0px;
-  top: 126px;
+  background-color: $gold;
   z-index: 100;
-  max-width: 20ch;
-
+  max-width: 50ch;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  border: 8px solid $black;
   &:after {
-    content: "";
+    content: " ";
     position: absolute;
-    top: 0;
-    left: 50%;
     width: 0;
     height: 0;
-    border: 74px solid transparent;
-    border-bottom-color: rgba($gold, 0.8);
-    border-top: 0;
-    border-right: 0;
-    margin-left: -37px;
-    margin-top: -74px;
+    left: auto;
+    right: 38px;
+    bottom: -20px;
+    border: 12px solid;
+    border-color: $gold $gold transparent transparent;
+  }
+  &:before {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 30px;
+    bottom: -40px;
+    border: 20px solid;
+    border-color: $black $black transparent transparent;
   }
   .close-login-modal {
     margin-right: 10px;
     border-radius: 100%;
+    text-align: right;
+    width:20px;
+    height:20px;
   }
 }
