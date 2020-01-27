@@ -7,8 +7,19 @@
   }
   .upload-img-btn {
     padding-bottom: 50px;
-    button {
-      width:250px;
+    div {
+      width: 250px;
+      padding: 8px 10px;
+      font-size: rem(16px);
+      font-weight: normal;
+      border: none;
+      background-color: $clr-btn;
+      color: $white;
+      border-radius: 2px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
     }
   }
   input {
