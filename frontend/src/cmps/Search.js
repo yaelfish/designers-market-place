@@ -89,7 +89,7 @@ class Search extends Component {
                   </div>
                
                 <div className={this.props.isHome ? "none" : "search"}>
-                    <input  type="text" className="searchTerm" placeholder="What are you looking for?" onChange={this.changeInput} name={this.state.selectedFilter} />
+                    <input  type="text" className="searchTerm" placeholder="Search" onChange={this.changeInput} name={this.state.selectedFilter} />
                     <select className="search-filter" name="search-filter" onChange={this.changeSearchFilter} >
                         <option  value="name">Artwork</option>
                         <option  value="artist">Artist</option>
