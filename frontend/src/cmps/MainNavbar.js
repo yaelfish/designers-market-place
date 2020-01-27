@@ -103,9 +103,10 @@ class MainNavbar extends Component {
                     {/* <div>Hello, {this.props.loggedInUser.fullName}!</div> */}
 
                    <NavLink className="nav-link" to='/artist' exact>
-                   { !this.state.menuShown&&<img className="profile-pic"
+                       
+                 <img className={"profile-pic"}
                             src={this.props.loggedInUser.imgUrl}
-                            alt={this.props.loggedInUser.userName} /> }
+                            alt={this.props.loggedInUser.userName} /> 
                     </NavLink> 
                 </div>
             </nav >
