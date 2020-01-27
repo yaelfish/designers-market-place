@@ -26,6 +26,14 @@ class Home extends Component {
     isHome: true
   }
 
+  componentDidMount(){
+    document.body.style.paddingTop = "0";
+  }
+
+  componentWillUnmount(){
+    document.body.style.paddingTop = "150px";
+  }
+
 loadArtworks = (ev) => {
   ev.persist();
   this.props.loadArtworks();

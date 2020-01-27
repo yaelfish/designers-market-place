@@ -847,7 +847,10 @@ button.submit-frame {
     display: -ms-grid;
     display: grid;
     grid-gap: 20px 0px;
-        grid-template-areas: "image-area image-area image-area image-area image-area image-area text-area" "image-area image-area image-area image-area image-area image-area text-area" "description-area description-area description-area description-area description-area description-area text-area" "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
+        grid-template-areas: "image-area image-area image-area image-area image-area image-area text-area"
+ "image-area image-area image-area image-area image-area image-area text-area"
+ "description-area description-area description-area description-area description-area description-area text-area"
+ "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
   }
 }
 
@@ -1081,7 +1084,9 @@ button.submit-frame {
 .details-container .details-certificate {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "delivery delivery medal medal" "return return security security" ". warranty warranty .";
+      grid-template-areas: "delivery delivery medal medal"
+ "return return security security"
+ ". warranty warranty .";
   grid-gap: 20px 40px;
   font-size: 0.8125rem;
   padding: 0 20px;
@@ -2242,7 +2247,7 @@ section.tags-container li.tag a {
   padding-bottom: 20px;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 720px) {
   .main-nav .nav-links {
     list-style: none;
     margin: 0;
@@ -2265,7 +2270,7 @@ section.tags-container li.tag a {
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 720px) {
   .main-nav .nav-links .logo {
     margin-right: 15px;
   }
@@ -2289,7 +2294,7 @@ section.tags-container li.tag a {
   transition: 0.3s;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 720px) {
   .main-nav .nav-links .nav-link {
     padding: 1px 6px 2px 6px;
   }
@@ -2305,7 +2310,7 @@ section.tags-container li.tag a {
   border-radius: 3px;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 720px) {
   .main-nav .nav-links .nav-link:hover {
     padding: 1px 6px 2px 6px;
   }
@@ -2317,7 +2322,7 @@ section.tags-container li.tag a {
   border-radius: 2px;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 720px) {
   .main-nav .active-link {
     padding: 1px 6px 2px 6px;
   }
@@ -2727,8 +2732,10 @@ footer small {
   font-weight: 400;
   font-family: Roboto;
   outline: 0;
-  -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
-  transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out, padding 0.2s;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
+ padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.8s ease-in-out,
+ padding 0.2s;
   -webkit-transition-delay: 0.4s;
           transition-delay: 0.4s;
   -webkit-transform: translate(0, -50%);
@@ -2816,8 +2823,10 @@ footer small {
   font-size: 16px;
   font-weight: 400;
   outline: 0;
-  -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
-  transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out, padding 0.2s;
+  -webkit-transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
+ padding 0.2s;
+  transition: width 0.4s ease-in-out, border-radius 0.4s ease-in-out,
+ padding 0.2s;
   -webkit-transition-delay: 0.4s, 0s, 0.4s;
           transition-delay: 0.4s, 0s, 0.4s;
   -webkit-transform: translate(0, -50%);
