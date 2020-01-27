@@ -2,8 +2,9 @@
   padding-top: 70px;
   width: 100%;
 
-  @media (max-width:720px){
+  @media (max-width: 720px) {
     padding-top: 120px;
+    flex-direction: column-reverse;
   }
 
   @include for-mobile-layout {
@@ -16,6 +17,11 @@
     padding: 8%;
     background-color: #ececec;
     text-align: center;
+
+    @media (max-width: 1000px) {
+      padding: 100px 0;
+      width: 100%;
+    }
 
     @include for-mobile-layout {
       width: 100%;
@@ -62,6 +68,11 @@
   .frame-artwork-container {
     width: 50%;
     height: 100%;
+    margin-top: 13%;
+
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
 
     @include for-mobile-layout {
       height: auto;

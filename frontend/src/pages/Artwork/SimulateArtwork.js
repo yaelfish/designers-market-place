@@ -35,11 +35,7 @@ class SimulateArtwork extends Component {
     render() {
         if (!this.props.selectedArtwork) return <div className="loading">Loading...</div>
         const { selectedArtwork } = this.props;
-        return (<>
-            <section className="simulate-artwork-container flex">
-                <ChooseFrame artSrc={selectedArtwork.imgUrl} />
-            </section>
-        </>)
+        return <ChooseFrame artSrc={selectedArtwork.imgUrl}/>
     }
 }
 
