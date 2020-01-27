@@ -8,3 +8,22 @@
     font-weight: 500;
   }
 }
+
+.k-multiselect{
+
+&.k-multiselect-wrap{
+
+  &.k-searchbar{
+
+&.k-input:focus{
+  box-shadow: none;
+  .artwork-form input:focus {
+    box-shadow: none;
+  }
+  border: none;
+  outline: none;
+}
+}
+}
+}
+

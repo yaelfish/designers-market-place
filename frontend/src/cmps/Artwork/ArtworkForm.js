@@ -26,6 +26,15 @@ export default class ArtworkForm extends React.Component {
         isUploading: false
     }
 
+
+
+    itemRender = (li, itemProps) => {
+        const index = itemProps.index;
+        const itemChildren = <span style={{ color: 'black'}}>{li.props.children}</span>;
+
+        return React.cloneElement(li, li.props, itemChildren);
+    }
+
     componentDidMount() {
         console.log(this.props);
         if (!this.props.isAdd) {
@@ -122,6 +131,13 @@ export default class ArtworkForm extends React.Component {
                             data={tagsData}
                             onChange={this.onSelectTag}
                             value={this.state.artwork.tags}
+                            autoClose={false}
+                            itemRender={this.itemRender}
+                            style={
+                               { boxShadow: "none"}
+                            }
+                            
+                            
                         />
                     </div>
                 </div>
