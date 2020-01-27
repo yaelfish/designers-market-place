@@ -30,6 +30,5 @@ export default {
   query,
   remove,
   edit,
-  getById,
-  toggleLike
+  getById
 };
