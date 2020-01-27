@@ -36,7 +36,10 @@ button {
     width: 32px;
     height: 32px;
     position: absolute;
-    top: 89px;
+    top: 118px;
+    @media (max-width: 720px){
+      top: 150px;
+    }
     left: 11px;
   }
   &.delete {
