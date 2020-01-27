@@ -32,7 +32,10 @@
   .menu-btn-mobile {
     background-color: inherit;
     font-size: rem(30px);
-    width:0px;
+    display: inline-block;
+    @include for-normal-layout {
+      display: none;
+    }
   }
 
   .nav-links {
@@ -52,7 +55,8 @@
     box-sizing: border-box;
     color: $white;
     text-shadow: $white 0px 0px 11px;
-    padding-bottom:20px;
+    padding-bottom: 20px;
+    display: none;
     @include for-normal-layout {
       list-style: none;
       margin: 0;
