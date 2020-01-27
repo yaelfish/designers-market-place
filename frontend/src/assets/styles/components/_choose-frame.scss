@@ -1,18 +1,27 @@
 .frame-section-container {
-  padding-top:6vh;
+  padding-top: 70px;
   width: 100%;
+
+  @media (max-width:720px){
+    padding-top: 120px;
+  }
+
+  @include for-mobile-layout {
+    flex-direction: column-reverse;
+  }
 
   .frame-form-container {
     width: 50%;
     height: 100%;
-    // margin-top: 33px;
-    // padding: 60px;
     padding: 8%;
     background-color: #ececec;
     text-align: center;
-    
+
+    @include for-mobile-layout {
+      width: 100%;
+    }
+
     header {
-    
       h2 {
         font-family: montserrat, cabin, sans-serif;
         text-align: center;
@@ -23,6 +32,22 @@
       }
     }
 
+    .frames-width-options {
+      label.width-label {
+        margin: auto;
+        cursor: pointer;
+      }
+      label.width-label-thin {
+        width: 25px;
+        height: 25px;
+        border: 3px solid $gold;
+      }
+      label.width-label-thick {
+        width: 35px;
+        height: 35px;
+        border: 6px solid $gold;
+      }
+    }
     .thick-title {
       margin: 26px auto;
     }
@@ -30,12 +55,23 @@
 
   .frame-color-description {
     font-size: rem(12px);
+    margin-top: 3px;
+    margin-bottom: 25px;
   }
 
   .frame-artwork-container {
     width: 50%;
     height: 100%;
-    
+
+    @include for-mobile-layout {
+      height: auto;
+      width: 100%;
+      display: flex;
+      margin: 20% 0 11%;
+      justify-content: center;
+      align-items: center;
+    }
+
     img {
       max-width: 77%;
       max-height: 62%;
@@ -51,12 +87,23 @@
       border-image-width: 15px;
       border-image-outset: 14px;
       transition: 0.4s;
-    }
-  }
 
-  input[type="radio"],
-  input[type="checkbox"] {
-    display: none;
+      &.thin {
+        border-image-width: 15px;
+        border-image-outset: 14px;
+      }
+
+      &.thick {
+        // border-image-width: 20px;
+        // border-image-outset: 18px;
+        border-image-width: 35px;
+        border-image-outset: 24px;
+      }
+
+      @include for-mobile-layout {
+        max-height: initial;
+      }
+    }
   }
 
   .color-picker {
@@ -66,13 +113,18 @@
     margin: 10px 10px 1px 10px;
     border-radius: 3px;
     cursor: pointer;
-    box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+    box-shadow: 1px 0px 9px 1px rgba(0, 0, 0, 0.5);
     transition: 0.3s;
+
+    @include for-mobile-layout {
+      width: 60px;
+      height: 60px;
+    }
   }
 
-  #container::after {
-    text-align: center;
-    display: block;
+  input[type="radio"],
+  input[type="checkbox"] {
+    visibility: hidden;
   }
 
   .black-wood {
@@ -122,71 +174,6 @@
   }
   img.golden {
     border-image-source: url("../../images/frames/golden-frame.png");
-  }
-
-  #black-wood:checked {
-    background-image: url("../../images/frames/black-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #dark-wood:checked {
-    background-image: url("../../images/frames/dark-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #white-wood:checked {
-    background-image: url("../../images/frames/black-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #light-wood:checked {
-    background-image: url("../../images/frames/black-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #simple-black:checked {
-    background-image: url("../../images/frames/black-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #simple-white:checked {
-    background-image: url("../../images/frames/black-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #golden:checked {
-    background-image: url("../../images/frames/black-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #black-wood:checked ~ #container::after {
-    content: url("../../images/frames/black-wood.jpg");
-    border: 20px solid $gold;
-  }
-
-  #dark-wood:checked ~ #container::after {
-    content: url("../../images/frames/dark-wood.jpg");
-    border: 8px solid $gold;
-  }
-
-  #white-wood:checked ~ #container::after {
-    content: url("../../images/frames/white-wood.jpg");
-  }
-
-  #light-wood:checked ~ #container::after {
-    content: url("../../images/frames/light-wood.jpg");
-  }
-
-  #simple-black:checked ~ #container::after {
-    content: url("../../images/frames/simple-black.jpg");
-  }
-
-  #simple-white:checked ~ #container::after {
-    content: url("../../images/frames/simple-white.jpg");
-  }
-
-  #golden:checked ~ #container::after {
-    content: url("../../images/frames/golden.jpg");
   }
 
   .green {

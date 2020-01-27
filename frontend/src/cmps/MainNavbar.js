@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 import { loadArtworks } from '../actions/ArtworkActions'
 import { render } from 'react-dom';
 import logo from '../assets/images/logo.png'
-import LogoutIcon from '../assets/images/icons/logout.png'
-import { logout } from '../actions/UserActions'
+
 import profileIcon from '../assets/images/icons/account.png'
 
 class MainNavbar extends Component {
@@ -25,16 +24,18 @@ class MainNavbar extends Component {
         window.addEventListener("scroll", this.handleScroll);
         window.addEventListener('resize', this.setToFlexOnExpand);
         window.addEventListener('click', this.closeMobileMenu);
-        if (window.innerWidth <= 960) this.setState({ menuShown: false });
+        if (window.innerWidth <= 720) this.setState({ menuShown: false });
+
+
     }
 
     closeMobileMenu = () => {
-        if (window.innerWidth <= 960) this.setState({ menuShown: false });
+        if (window.innerWidth <= 720) this.setState({ menuShown: false });
     }
 
     setToFlexOnExpand = () => {
-        if (window.innerWidth > 960) this.setState({ menuShown: true });
-        if (window.innerWidth <= 960) this.setState({ menuShown: false });
+        if (window.innerWidth > 720) this.setState({ menuShown: true });
+        if (window.innerWidth <= 720) this.setState({ menuShown: false });
     }
 
     onToggleMenu = (ev) => {
@@ -56,9 +57,7 @@ class MainNavbar extends Component {
         });
     };
 
-    logout = () => {
-        this.props.logout()
-    }
+  
 
     componentWillUnmount() {
         this.unlisten();
@@ -69,7 +68,7 @@ class MainNavbar extends Component {
 
     render() {
         return (
-            <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled" : "main-nav main-nav-home absolute") : "main-nav"}>
+            <nav className={(this.state.pathname === "/") ? (this.state.prevScrollpos !== 0 ? "main-nav absolute scrolled nav-scroll-home" : "main-nav main-nav-home absolute nav-scroll-home") : "main-nav"}>
                 <div className="main-nav-container flex justify-space-between align-center">
                     {!this.state.menuShown && <button className="menu-btn-mobile" onClick={this.onToggleMenu}>☰</button>}
                     <ul className={this.state.menuShown ? "nav-links flex align-center" : "nav-links none"}>
@@ -100,22 +99,21 @@ class MainNavbar extends Component {
                         {this.props.loggedInUser && this.props.loggedInUser.isArtist && < li >
                             <NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink>
                         </li>}
-                        <span className="nav-separator">|</span>
-                        {this.props.loggedInUser && <li className="flex align-center" onClick={this.logout}>
-                            <img className="log-out-icon" src={LogoutIcon}></img>
-                        </li>}
+
                     </ul>
 
-                    <Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search>
+                    {!this.state.menuShown && <div className={(this.state.pathname === "/" && this.state.prevScrollpos !== 0) || (this.state.pathname !== "/") ? "nav-mobile logo-mobile flex align-center" : "none"}>  <img className="logo-pic" src={logo} alt="logo" />
+                        <span className="logo-name logo-name-mobile">Early Bird</span></div>}
+                    <div className={(this.state.pathname === "/") ? "" : "nav-mobile"}><Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search></div>
                     {/* <div>Hello, {this.props.loggedInUser.fullName}!</div> */}
 
-                    {this.props.loggedInUser?<NavLink className="nav-link" to='/artist' exact>
+                    {this.props.loggedInUser ? <NavLink className="nav-link" to='/artist' exact>
                         <img className="profile-pic"
                             src={this.props.loggedInUser.imgUrl} />
-                    </NavLink>:<NavLink className="nav-link" to='/login' exact>
-                        <img className="profile-pic"
-                            src={profileIcon} />
-                    </NavLink>}
+                    </NavLink> : <NavLink className="nav-link" to='/login' exact>
+                            <img className="profile-pic"
+                                src={profileIcon} />
+                        </NavLink>}
                 </div>
             </nav >
         )
@@ -132,7 +130,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadArtworks,
-    logout
 
 };
 

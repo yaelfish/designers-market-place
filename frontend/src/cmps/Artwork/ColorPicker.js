@@ -12,9 +12,9 @@ export default class ColorPicker extends Component {
 
     render() {
         return (<>
-            <div className="frames-options flex">
+            <div className="frames-options">
             <form>
-                <div className="flex wrap">{this.state.frameColors.map(color => {
+                <div className="flex wrap justify-center">{this.state.frameColors.map(color => {
                     return <div key={color} className="flex column justify-space-between align-center">
                             <label key={color} htmlFor={color} 
                             className={`color-picker ${color}`}>

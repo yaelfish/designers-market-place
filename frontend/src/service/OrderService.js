@@ -18,7 +18,6 @@ function getById(orderId) {
   return HttpService.get(`order/${orderId}`);
 }
 
-
 async function edit(order) {
   console.log('order edit service',order);
   

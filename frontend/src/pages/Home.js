@@ -26,6 +26,7 @@ class Home extends Component {
     isHome: true
   }
 
+
 loadArtworks = (ev) => {
   ev.persist();
   this.props.loadArtworks();

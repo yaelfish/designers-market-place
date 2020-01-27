@@ -44,6 +44,15 @@
   &.align-start {
     align-items: flex-start;
   }
+  &.align-end {
+    align-items: flex-end;
+  }
+  &.justify-start{
+    justify-content: start;
+  }
+  &.justify-end{
+    justify-content: end;
+  }
   &.row {
     flex-direction: row;
   }

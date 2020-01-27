@@ -8,6 +8,9 @@ import ArtistPurchasesList from '../../cmps/Artist/ArtistPurchasesList'
 import Tags from '../../cmps/Tags';
 import ArtistTabs from '../../cmps/Artist/ArtistTabs'
 import ScrollTop from '../../assets/images/icons/scrolltop.png'
+import LogoutIcon from '../../assets/images/icons/logout.png'
+import { logout } from '../../actions/UserActions'
+import { withRouter } from 'react-router-dom';
 
 
 class AppArtwork extends Component {
@@ -68,11 +71,19 @@ class AppArtwork extends Component {
         this.setState({ artistArtworks })
     }
 
+    logout = () => {
+        this.props.logout();
+        this.props.history.push('/');
+    }
+
     render() {
         return (
             <React.Fragment>
 
                 <main className="container main-app-container-artist artist-container">
+                    {this.props.loggedInUser && <div className=" logout-button flex column justify-center align-end" onClick={this.logout}>
+                        <img className="log-out-icon" src={LogoutIcon}></img><p>Log Out</p>
+                    </div>}
                     {window.pageYOffset !== 0 && <div className="top-scroller" onClick={() => { scroll.scrollToTop() }}><img src={ScrollTop} /></div>}
                     <header className="artist-header">
                         <h2>{this.props.loggedInUser.fullName}'s Homepage</h2><img className="profile-pic" src={this.props.loggedInUser.imgUrl}></img>
@@ -154,9 +165,10 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
     loadArtworks,
-    loadOrders
+    loadOrders,
+    logout
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AppArtwork);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AppArtwork));
 
 
