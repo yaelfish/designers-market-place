@@ -5,9 +5,8 @@
     height: 35px;
     // width: 300px; 
     margin-left: 170px;
-    top: 35px;
+    top: 30px;
     right: 74px;
-    z-index: 99;
   }
   
   #content.on {
@@ -23,7 +22,8 @@
     height: 35px;
     border: 4px solid #ffffff;
     border-radius: 50%;
-    background: none;
+    background:none;
+  
     color: #fff;
     font-size: 16px;
     font-weight: 400;
@@ -33,6 +33,7 @@
       padding 0.2s;
     transition-delay: 0.4s;
      transform: translate( 0, -50%);
+
 
   
   }
@@ -52,6 +53,7 @@
     cursor: pointer;
     transition: 0.2s ease-in-out;
     transform: translate( 0, -50%);
+    
 
   }
 
@@ -115,13 +117,9 @@
       padding 0.2s;
     transition-delay: 0.4s, 0s, 0.4s;
       transform: translate( 0, -50%);
-  }
 
-  @media (max-width: 460px) {
-    .square {
-      width: 55vw;
-    }
- 
-
+      @media (max-width: 720px) {
+        width: 60vw;
+      }
   }
   
