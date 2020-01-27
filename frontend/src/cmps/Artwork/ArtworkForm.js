@@ -12,10 +12,7 @@ export default class ArtworkForm extends React.Component {
     state = {
         artwork: {
             name: '',
-            artist: {
-                _id: "u1",
-                fullName: "Kerry James Marshall"
-            },
+            artist: {},
             likedByUsers: [],
             imgUrl: [],
             tags: [],
@@ -136,11 +133,8 @@ export default class ArtworkForm extends React.Component {
                     {this.state.isUploading ? <Spinner></Spinner> : <img className={artwork.imgUrl && artwork.imgUrl.length ? 'uploaded-img' : 'upload-img-icon'}
                         src={artwork.imgUrl && artwork.imgUrl.length ? artwork.imgUrl : UploadIcon} alt="" />}
                 </div>
-
-                {/* {!this.state.isUploading && < button className="btn submit" type="submit">Submit</button>} */}
-
-                {artwork.imgUrl && artwork.imgUrl.length ? < button className="btn submit" type="submit">Submit</button> : < button className="btn submit" style={{ backgroundColor: "grey", cursor: "auto" }} disabled={true}>Submit</button>}
-                {/* <button className="btn back" onClick={this.goBack}>Back</button> */}
+                
+                {artwork.imgUrl && artwork.imgUrl.length ? < button className="btn submit"  type="submit">Submit</button> :  < button className="btn submit" style={{backgroundColor: "grey", cursor: "auto"}} disabled={true}>Submit</button>}
                 <Link to={`/artwork`}><button className="back"></button></Link>
             </form>
         </>)
