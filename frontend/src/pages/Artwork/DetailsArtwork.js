@@ -16,6 +16,7 @@ import liked from '../../assets/images/icons/liked.png';
 import { removeReview } from '../../actions/ReviewActions'
 import OrderAdd from '../../cmps/Order/OrderAdd'
 import ChooseFrame from '../../cmps/Artwork/ChooseFrame';
+import LoginModal from '../../cmps/LoginModal'
 
 class DetailsArtwork extends Component {
 
@@ -24,7 +25,8 @@ class DetailsArtwork extends Component {
         isLiked: false,
         currUserId: '',
         currArtwork: null,
-        isAnimatingLike: false
+        isAnimatingLike: false,
+        isModalShown: false
     }
 
     async componentDidMount() {
@@ -39,6 +41,14 @@ class DetailsArtwork extends Component {
         }
     }
 
+
+    showLoginModal = () => {
+        this.setState({ isModalShown: true })
+    }
+
+    closeLoginModal=()=>{
+        this.setState({ isModalShown: false })
+    }
     setIsLiked = (currUserId) => {
         const likesArr = this.props.selectedArtwork.likedByUsers;
         const found = likesArr.find(user => user._id === currUserId);
@@ -56,9 +66,14 @@ class DetailsArtwork extends Component {
     }
 
     onToggleLike = async () => {
-        await this.setState(prevState => ({ isLiked: !prevState.isLiked }))
-        await this.updateLiked();
-        this.setState({ isAnimatingLike: true })
+        if (this.props.loggedInUser) {
+            await this.setState(prevState => ({ isLiked: !prevState.isLiked }))
+            await this.updateLiked();
+            this.setState({ isAnimatingLike: true })
+        }
+        else {
+            this.showLoginModal()
+        }
     }
 
     updateLiked = async () => {
@@ -125,11 +140,11 @@ class DetailsArtwork extends Component {
         return (<React.Fragment>
             {/* <Breadcrumb /> */}
             <section className="details-container">
+                {this.state.isModalShown && <LoginModal closeLoginModal={this.closeLoginModal}></LoginModal>}
                 <button className="btn back" onClick={this.goBack}></button>
-
                 <div className="flex column image-area align-center">
                     <div className="details-image-container flex column justify-center align-center">
-                        {this.props.selectedArtwork.artist && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
+                        {this.props.selectedArtwork.artist && this.props.loggedInUser && this.props.loggedInUser._id === this.props.selectedArtwork.artist._id && <div className="action-btns flex justify-space-around">
                             <Link className="btn flex justify-center align-center" to={`/artwork/edit/${selectedArtwork._id}`}><button className="edit"></button></Link>
                             <button className="btn delete" onClick={this.onDelete}></button>
                         </div>}
@@ -172,7 +187,7 @@ class DetailsArtwork extends Component {
                             </p>
                         </div>}
 
-                        {this.state.currArtwork && <OrderAdd onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
+                        {this.state.currArtwork && <OrderAdd showLoginModal={this.showLoginModal} onBuy={this.addToCart} artwork={this.state.currArtwork} user={this.props.loggedInUser} />}
 
                         <div className="choose-frame-container">
 
@@ -256,7 +271,6 @@ const mapStateToProps = (state) => {
         reviews: state.review.reviews,
         user: state.user,
         loggedInUser: state.user.loggedInUser
-
     }
 }
 const mapDispatchToProps = {

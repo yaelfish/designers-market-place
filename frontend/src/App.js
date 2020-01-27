@@ -23,7 +23,7 @@ class App extends Component {
 
   componentDidMount() {
     // this.props.login({ email: "idan2030@gmail.com", password: 'AwesomePortown' });
-    this.props.login({ email: "kerryjm2020@gmail.com", password: 1234567890 });
+    // this.props.login({ email: "kerryjm2020@gmail.com", password: 1234567890 });
   }
 
 
@@ -35,8 +35,8 @@ class App extends Component {
         <ScrollToTop />
           <MainNavbar history={history} loggedInUser={this.props.loggedInUser}></MainNavbar>
           <Switch>
-            <Route path="/about" component={About} exact />
-            <Route path="/login" component={Login} exact />
+            <Route component={About} path="/about" exact />
+            <Route component={Login} path="/login" exact />
             <Route component={Home} path="/" exact />
             <Route component={AppArtwork} path="/artwork" exact />
             <Route component={AddArtwork} path="/artwork/add" exact />

@@ -1,0 +1,46 @@
+.login-modal {
+  margin: 40px;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  border-radius: 30px;
+  color: $white;
+  font-size: rem(16px);
+  font-weight: 600;
+  background-color: $gold;
+  z-index: 100;
+  max-width: 50ch;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  border: 8px solid $black;
+  &:after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 38px;
+    bottom: -20px;
+    border: 12px solid;
+    border-color: $gold $gold transparent transparent;
+  }
+  &:before {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 30px;
+    bottom: -40px;
+    border: 20px solid;
+    border-color: $black $black transparent transparent;
+  }
+  .close-login-modal {
+    margin-right: 10px;
+    border-radius: 100%;
+    text-align: right;
+    width:20px;
+    height:20px;
+  }
+}

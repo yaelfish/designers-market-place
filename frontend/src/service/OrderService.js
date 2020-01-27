@@ -30,5 +30,5 @@ export default {
   query,
   remove,
   edit,
-  getById
+  getById,
 };

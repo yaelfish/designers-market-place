@@ -6,6 +6,8 @@ import { loadArtworks } from '../actions/ArtworkActions'
 import { render } from 'react-dom';
 import logo from '../assets/images/logo.png'
 
+import profileIcon from '../assets/images/icons/account.png'
+
 class MainNavbar extends Component {
 
     state = {
@@ -23,8 +25,8 @@ class MainNavbar extends Component {
         window.addEventListener('resize', this.setToFlexOnExpand);
         window.addEventListener('click', this.closeMobileMenu);
         if (window.innerWidth <= 720) this.setState({ menuShown: false });
-        
-        
+
+
     }
 
     closeMobileMenu = () => {
@@ -54,6 +56,8 @@ class MainNavbar extends Component {
 
         });
     };
+
+  
 
     componentWillUnmount() {
         this.unlisten();
@@ -95,26 +99,26 @@ class MainNavbar extends Component {
                         {this.props.loggedInUser && this.props.loggedInUser.isArtist && < li >
                             <NavLink className="nav-link" to='/artwork/add' activeClassName="active-link" exact>Add new Work</NavLink>
                         </li>}
+
                     </ul>
 
-                    { !this.state.menuShown&&<div className={(this.state.pathname === "/"&&this.state.prevScrollpos !== 0)||(this.state.pathname !== "/") ? "nav-mobile logo-mobile flex align-center" : "none"}>  <img className="logo-pic" src={logo} alt="logo" />
-                                    <span className="logo-name logo-name-mobile">Early Bird</span></div>}
+                    {!this.state.menuShown && <div className={(this.state.pathname === "/" && this.state.prevScrollpos !== 0) || (this.state.pathname !== "/") ? "nav-mobile logo-mobile flex align-center" : "none"}>  <img className="logo-pic" src={logo} alt="logo" />
+                        <span className="logo-name logo-name-mobile">Early Bird</span></div>}
                     <div className={(this.state.pathname === "/") ? "" : "nav-mobile"}><Search history={this.props.history} isHome={(this.state.pathname === "/") ? true : false}></Search></div>
                     {/* <div>Hello, {this.props.loggedInUser.fullName}!</div> */}
 
-                   <NavLink className="nav-link" to='/artist' exact>
-                       
-                 <img className={"profile-pic"}
-                            src={this.props.loggedInUser.imgUrl}
-                            alt={this.props.loggedInUser.userName} /> 
-                    </NavLink> 
+                    {this.props.loggedInUser ? <NavLink className="nav-link" to='/artist' exact>
+                        <img className="profile-pic"
+                            src={this.props.loggedInUser.imgUrl} />
+                    </NavLink> : <NavLink className="nav-link" to='/login' exact>
+                            <img className="profile-pic"
+                                src={profileIcon} />
+                        </NavLink>}
                 </div>
             </nav >
         )
     }
 }
-
-
 
 const mapStateToProps = state => {
     return {
@@ -126,6 +130,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadArtworks,
+
 };
 
 

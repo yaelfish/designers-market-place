@@ -37,7 +37,7 @@ button {
     height: 32px;
     position: absolute;
     top: 118px;
-    @media (max-width: 720px){
+    @media (max-width: 720px) {
       top: 130px;
     }
     left: 11px;
@@ -49,6 +49,10 @@ button {
     background-position: center;
     width: 32px;
     height: 32px;
+
+    &:hover {
+      background-image: url("../../images/icons/quit.png");
+    }
   }
 
   &.edit {

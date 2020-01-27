@@ -1,6 +1,18 @@
 .artist-container {
     margin-top: 13vh;
 
+    .logout-button{
+      padding-top:50px;
+      img{
+        object-fit: contain;
+        width:40px;
+        height:40px;
+      }
+      p{
+        font-size: rem(14px);
+      }
+    }
+
     .top-scroller {
 
         position: fixed;
