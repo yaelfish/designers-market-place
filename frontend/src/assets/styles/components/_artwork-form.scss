@@ -2,75 +2,78 @@
   @media (min-width: 850px) {
     width: $narrow-breakpoint;
   }
-  .tags-selection {
-    padding-bottom: 50px;
+  .add-artwork-container{
+    padding-top: 30px;
   }
-  .upload-img-btn {
-    padding-bottom: 50px;
-    div {
-      width: 250px;
-      padding: 8px 10px;
-      font-size: rem(16px);
-      font-weight: normal;
-      border: none;
-      background-color: $clr-btn;
-      color: $white;
-      border-radius: 2px;
-      text-align: center;
-      text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
+    .tags-selection {
+      padding-bottom: 50px;
     }
-  }
-  input {
-    border: 0px;
-    background-color: #f2f2f2;
-    border-radius: 3px;
-    border: 2px solid #fff;
-    height: 52px;
-    &.upload-img {
-      background-color: transparent;
+    .upload-img-btn {
+      padding-bottom: 50px;
+      div {
+        width: 250px;
+        padding: 8px 10px;
+        font-size: rem(16px);
+        font-weight: normal;
+        border: none;
+        background-color: $clr-btn;
+        color: $white;
+        border-radius: 2px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 0.2s;
+        cursor: pointer;
+      }
     }
-  }
-  textarea {
-    border: 0px;
-    background-color: #f2f2f2;
-    border-radius: 3px;
-    border: 2px solid #fff;
-    height: 52px;
-    textarea:focus {
+    input {
+      border: 0px;
+      background-color: #f2f2f2;
+      border-radius: 3px;
+      border: 2px solid #fff;
+      height: 52px;
+      &.upload-img {
+        background-color: transparent;
+      }
+    }
+    textarea {
+      border: 0px;
+      background-color: #f2f2f2;
+      border-radius: 3px;
+      border: 2px solid #fff;
+      height: 52px;
+      textarea:focus {
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+      }
+    }
+    input:focus {
       box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
     }
-  }
-  input:focus {
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-  }
-  .img-edit-container {
-    border: 3px dashed $clr2;
-    padding: 12px;
-    margin-bottom: 15px;
-    height: 400px;
-  }
-  img {
-    &.upload-img-icon {
-      width: 50px;
-      height: 50px;
-    }
-    &.uploaded-img {
-      object-fit: contain;
+    .img-edit-container {
       border: 3px dashed $clr2;
+      padding: 12px;
+      margin-bottom: 15px;
+      height: 400px;
     }
-  }
-
-  .img-edit-container-uploaded {
-    border: 3px dashed $clr2;
     img {
+      &.upload-img-icon {
+        width: 50px;
+        height: 50px;
+      }
       &.uploaded-img {
         object-fit: contain;
-        height: auto;
-        padding: auto;
-        border: none;
+        border: 3px dashed $clr2;
+      }
+    }
+
+    .img-edit-container-uploaded {
+      border: 3px dashed $clr2;
+      img {
+        &.uploaded-img {
+          object-fit: contain;
+          height: auto;
+          padding: auto;
+          border: none;
+        }
       }
     }
   }
-}
