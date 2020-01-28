@@ -142,15 +142,15 @@ export default class ArtworkForm extends React.Component {
                     </div>
                 </div>
 
-                <label className="flex justify-center align-center upload-img-btn" ><button>Upload Image</button>
-                    <input className="upload-img none" onChange={this.onUploadImg} id="upload-img" type="file" placeholder="image url" name="imgUrl" />
+                <label htmlFor="upload-img" className="flex justify-center align-center upload-img-btn" ><div>Upload Image</div>
                 </label>
+                <input className="upload-img none" onChange={this.onUploadImg} id="upload-img" type="file" placeholder="image url" name="imgUrl" />
                 <div className={artwork.imgUrl && artwork.imgUrl.length ? "img-edit-container-uploaded flex justify-center align-center" : 'img-edit-container flex justify-center align-center'}>
                     {this.state.isUploading ? <Spinner></Spinner> : <img className={artwork.imgUrl && artwork.imgUrl.length ? 'uploaded-img' : 'upload-img-icon'}
                         src={artwork.imgUrl && artwork.imgUrl.length ? artwork.imgUrl : UploadIcon} alt="" />}
                 </div>
-                
-                {artwork.imgUrl && artwork.imgUrl.length ? < button className="btn submit"  type="submit">Submit</button> :  < button className="btn submit" style={{backgroundColor: "grey", cursor: "auto"}} disabled={true}>Submit</button>}
+
+                {artwork.imgUrl && artwork.imgUrl.length ? < button className="btn submit" type="submit">Submit</button> : < button className="btn submit" style={{ backgroundColor: "grey", cursor: "auto" }} disabled={true}>Submit</button>}
                 <Link to={`/artwork`}><button className="back"></button></Link>
             </form>
         </>)
