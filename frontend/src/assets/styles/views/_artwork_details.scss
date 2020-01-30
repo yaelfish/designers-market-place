@@ -1,3 +1,4 @@
+
 .details-container {
   padding-top: 70px;
   @media (max-width: 720px){
@@ -10,11 +11,11 @@
   @include for-normal-layout {
     display: grid;
     grid-gap: 20px 0px;
-    grid-template-areas:
-      "image-area image-area image-area image-area image-area image-area text-area"
-      "image-area image-area image-area image-area image-area image-area text-area"
-      "description-area description-area description-area description-area description-area description-area text-area"
-      "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
+    // grid-template-areas:
+    //   "image-area image-area image-area image-area image-area image-area text-area"
+    //   "image-area image-area image-area image-area image-area image-area text-area"
+    //   "description-area description-area description-area description-area description-area description-area text-area"
+    //   "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
   }
 
   .image-area {
@@ -172,7 +173,7 @@
         width: 100px;
         height: 100px;
         background-size: contain;
-        background: url("https://cssanimation.rocks/images/posts/steps/heart.png");
+        background: url("../../images/icons/heart.png");
         background-position: 0 0;
         cursor: pointer;
         transition: background-position 1s steps(28);
@@ -214,10 +215,10 @@
   }
   .details-certificate {
     display: grid;
-    grid-template-areas:
-      "delivery delivery medal medal"
-      "return return security security"
-      ". warranty warranty .";
+    // grid-template-areas:
+    //   "delivery delivery medal medal"
+    //   "return return security security"
+    //   ". warranty warranty .";
     grid-gap: 20px 40px;
     font-size: rem(13px);
     padding: 0 20px;
@@ -270,13 +271,13 @@
   }
 }
 
-// .please-delete-me-for-yael {
-//   width: 100px;
-//   height: 100px;
-//   background-color: blue;
-//   margin-right: 10px;
-// }
+// // .please-delete-me-for-yael {
+// //   width: 100px;
+// //   height: 100px;
+// //   background-color: blue;
+// //   margin-right: 10px;
+// // }
 
-// .please-delete-me-also {
-//   width: 100%;
-// }
+// // .please-delete-me-also {
+// //   width: 100%;
+// // }

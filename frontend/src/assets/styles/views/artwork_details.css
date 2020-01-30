@@ -1,0 +1,13 @@
+.details-container .details-certificate {
+    grid-template-areas: "delivery delivery medal medal" "return return security security" ". warranty warranty .";
+}
+
+@media screen and (min-width: 960px) {
+    .details-container {
+        grid-template-areas:
+          "image-area image-area image-area image-area image-area image-area text-area"
+          "image-area image-area image-area image-area image-area image-area text-area"
+          "description-area description-area description-area description-area description-area description-area text-area"
+          "comments-area comments-area comments-area comments-area comments-area comments-area text-area";
+    }
+}

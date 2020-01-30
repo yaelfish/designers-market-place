@@ -43,6 +43,9 @@ app.use('/api/user', userRoutes)
 app.use('/api/artwork', artworkRoutes)
 app.use('/api/review', reviewRoutes)
 app.use('/api/order', orderRoutes)
+app.get('/*', function(req,res){
+    res.sendFile(path.resolve(__dirname, 'public/index.html'))
+})
 connectSockets(io)
 
 
