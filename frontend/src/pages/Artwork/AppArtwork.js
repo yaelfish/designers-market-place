@@ -8,9 +8,6 @@ import Spinner from '../../cmps/Spinner'
 
 class AppArtwork extends Component {
 
-    state={
-        something: null
-    }
 
     componentDidMount() {
         this.loadArtworks()
@@ -19,12 +16,11 @@ class AppArtwork extends Component {
 
 
 
-    loadArtworks = async () => {
-        // window.scrollTo(0, 0)
-        const search = await this.props.location.search;
-        const params = await new URLSearchParams(search);
-        const tags = await params.get('tags');
-        (tags)&&this.props.loadArtworks({tags})
+    loadArtworks = () => {
+        const search = this.props.location.search;
+        const params = new URLSearchParams(search);
+        const tags =  params.get('tags');
+        this.props.loadArtworks({tags})
     }
 
     render() {
