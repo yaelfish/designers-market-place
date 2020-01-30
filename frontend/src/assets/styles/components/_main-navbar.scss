@@ -68,7 +68,7 @@
     object-fit: cover;
     margin-left: 20px;
     vertical-align: bottom;
-    margin-right: 30px;
+    margin-right: 20px;
     z-index: 99;
   }
 
@@ -126,6 +126,7 @@
     .logo {
       @media (min-width: 720px) {
         margin-right: 15px;
+        margin-left: 15px;
       }
     }
 
