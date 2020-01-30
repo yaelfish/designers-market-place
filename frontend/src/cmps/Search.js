@@ -16,9 +16,7 @@ class Search extends Component {
         dynamicSearch: false
     }
 
-    componentDidMount() {
-        this.loadArtworks();
-    }
+   
 
     loadArtworks = () => {
         this.props.loadArtworks(this.state.filterBy)
