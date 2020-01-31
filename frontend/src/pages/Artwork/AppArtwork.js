@@ -13,10 +13,10 @@ class AppArtwork extends Component {
     }
 
     loadArtworks = async () => {
-        const search = await this.props.location.search;
-        const params = await new URLSearchParams(search);
-        const tags = await params.get('tags');
-        (tags)&&this.props.loadArtworks({tags})
+        const search = this.props.location.search;
+        const params = new URLSearchParams(search);
+        const tags = params.get('tags');
+        (tags) && this.props.loadArtworks({ tags });
     }
 
     render() {
@@ -30,7 +30,7 @@ class AppArtwork extends Component {
                         </p>
                     </header>
                     <Tags />
-                   {this.props.artworks?<ArtworkList artworks={this.props.artworks} />:<Spinner></Spinner>}
+                    {this.props.artworks ? <ArtworkList artworks={this.props.artworks} /> : <Spinner></Spinner>}
                 </main>
             </React.Fragment>)
     }
@@ -42,7 +42,7 @@ const mapStateToProps = state => {
         loggedInUser: state.user.loggedInUser
     };
 };
-    const mapDispatchToProps =  {
+const mapDispatchToProps = {
     loadArtworks,
 };
 
