@@ -15,7 +15,7 @@ class AppArtwork extends Component {
 
 
     loadArtworks = () => {
-        console.log(this.props.artworks)
+   
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
         const tags =  params.get('tags');
