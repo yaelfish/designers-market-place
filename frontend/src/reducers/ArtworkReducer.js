@@ -1,5 +1,5 @@
 const initialState = {
-  artworks: [],
+  artworks: null,
   selectedArtwork: {}
 };
 

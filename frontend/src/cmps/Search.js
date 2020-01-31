@@ -16,13 +16,14 @@ class Search extends Component {
         dynamicSearch: false
     }
 
-   
+
 
     loadArtworks = () => {
         this.props.loadArtworks(this.state.filterBy)
     }
 
     toggleSearch = () => {
+  
         if (this.state.dynamicSearch) {
             this.setState({ dynamicSearch: false })
             document.querySelector(".dynamic-search-input").value = '';

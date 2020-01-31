@@ -15,10 +15,11 @@ class AppArtwork extends Component {
 
 
     loadArtworks = () => {
+        console.log(this.props.artworks)
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
         const tags =  params.get('tags');
-        this.props.loadArtworks({tags})
+        (tags)&&this.props.loadArtworks({tags})||(!this.props.artworks)&&this.props.loadArtworks()
     }
 
     render() {
