@@ -12,11 +12,14 @@ class AppArtwork extends Component {
         this.loadArtworks()
     }
 
-    loadArtworks = async () => {
+
+
+    loadArtworks = () => {
+   
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
-        const tags = params.get('tags');
-        (tags) && this.props.loadArtworks({ tags });
+        const tags =  params.get('tags');
+        (tags)&&this.props.loadArtworks({tags})||(!this.props.artworks)&&this.props.loadArtworks()
     }
 
     render() {
