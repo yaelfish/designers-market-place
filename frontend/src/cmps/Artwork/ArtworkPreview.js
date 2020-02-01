@@ -2,11 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { loadArtworkById, removeArtwork } from '../../actions/ArtworkActions'
-// import bin from '../../assets/images/icons/bin.png';
 import like from '../../assets/images/icons/like.png';
-// import afterLike from '../../assets/images/icons/after-like.png';
-import bin from '../../assets/images/icons/bin.png';
-
 
 class ArtworkPreview extends Component {
 
@@ -20,11 +16,7 @@ class ArtworkPreview extends Component {
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
         }        
-        // console.log(likedByUsers);
-        // console.log(this.props.artwork);
   
-        
-        
         return ( <>
             <Link to={`/artwork/${_id}`}>
                 <div className="card-artwork flex justify-center align-center column">
@@ -38,14 +30,13 @@ class ArtworkPreview extends Component {
                                 onClick={()=>this.props.removeArtwork(_id)}></button> */}
                         <div className="preview-likes-container flex align-center">
                             <span className="likes-counter">{likedByUsers}</span>
-                            <img className="preview-icon-like" src={like} />
+                            <img className="preview-icon-like" src={like} alt="like"/>
                         </div>
-                        {/* <img className="preview-icon" src={afterLike}></img> */}
                     </div>
                     <div className="preview-price none">price: {price}$</div>
                 </div>
             </Link>
-            </>
+        </>
         )
     }
 }

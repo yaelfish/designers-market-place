@@ -4,7 +4,6 @@ import { addOrder } from '../../actions/OrderActions';
 import { connect } from 'react-redux';
 
 
-
 class OrderAdd extends Component {
     state = {
         order: {
@@ -25,7 +24,6 @@ class OrderAdd extends Component {
             this.setState({ isAddMode: true });
             this.setState(prevState => ({ order: { ...prevState.order, byUser: { _id: props.user._id, fullName: props.user.fullName }, artwork: { _id: artwork._id, name: artwork.name, price: artwork.price, artistId: artwork.artist._id } } }))
         }
-
     }
 
 
@@ -36,7 +34,7 @@ class OrderAdd extends Component {
             let addedOrder = this.props.addOrder({ ...order })
             this.props.onBuy()
         }
-        else{
+        else {
             this.props.showLoginModal();
         }
         // this.props.history.push('/artwork');
@@ -48,7 +46,6 @@ class OrderAdd extends Component {
             <button className="add-to-cart submit flex justify-center align-center" onClick={this.onBuyNow}><div>Buy Now</div></button>
         )
     }
-
 }
 
 

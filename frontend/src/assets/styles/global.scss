@@ -3,7 +3,7 @@
 @import "setup/functions";
 @import "setup/mixins";
 
-// Basics
+// // Basics
 @import "basics/spinner";
 @import "basics/helpers";
 @import "basics/layout";
@@ -12,18 +12,20 @@
 @import "basics/buttons";
 @import "basics/typography";
 
-// Views
+// // Views
 @import "views/home-page";
 @import "views/main-app-page";
 @import "views/artwork_details";
+@import "views/artwork_details.css";  
+
 @import "views/artist-page";
 @import "views/add-artwork";
 @import "views/hang-on-wall";
 @import "views/login.scss";
 
-// Components
+// // Components
 @import "components/carouselle";
-// @import "components/carousel";
+@import "components/carousel";
 @import "components/choose-frame";
 @import "components/home-carousel";
 @import "components/art-template";
@@ -41,7 +43,8 @@
 @import "components/artist-purchases-list";
 @import "components/footer" ;
 @import "components/dynamic-search";
-@import "components/_login-modal";
+@import "components/login-modal";
+
 
 
 

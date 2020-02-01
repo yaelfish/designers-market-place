@@ -3,14 +3,11 @@ const dbService = require('../../services/db.service')
 const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy = {}) {
-    // const criteria = _buildCriteria(filterBy)
-    var x = filterBy
     const collection = await dbService.getCollection('Review')
     try {
-        // const reviews = await collection.find(criteria).toArray();
         var reviews = await collection.aggregate([
             {
-                $match: {aboutArtworkId:ObjectId(filterBy.aboutArtworkId)}
+                $match: { aboutArtworkId: ObjectId(filterBy.aboutArtworkId) }
             },
             {
                 $lookup:

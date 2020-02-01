@@ -1,109 +1,100 @@
 .artist-container {
-    margin-top: 13vh;
+  margin-top: 13vh;
 
-    .logout-button{
-      padding-top:50px;
-      img{
-        object-fit: contain;
-        width:40px;
-        height:40px;
-      }
-      p{
-        font-size: rem(14px);
-      }
+  .logout-button {
+    padding-top: 50px;
+    img {
+      object-fit: contain;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
     }
-
-    .top-scroller {
-
-        position: fixed;
-        height: 50px;
-        bottom: 20px;
-        right: 30px;
-        background-color: rgba(255, 255, 255, 0.829);
-        border-radius: 100%;
-        z-index: 1;
-        cursor: pointer;
-        transition: transform 0.2s;
-
-        &:hover {
-            transform: scale(1.3);
-        }
-
-        img {
-            width: 50px;
-        }
+    p {
+      font-size: rem(14px);
     }
+  }
 
-    .anchor-links{
-        margin-top: 15px;
-        margin-bottom: 15px;
-
-.anchor-link{
+  .top-scroller {
+    position: fixed;
+    height: 50px;
+    bottom: 20px;
+    right: 30px;
+    background-color: rgba(255, 255, 255, 0.829);
+    border-radius: 100%;
+    z-index: 1;
     cursor: pointer;
-    transition: border .2s;
-    border-radius: 5px;
-    padding: 10px;
-    color: rgb(2, 2, 2);
-    background-color: rgb(255, 255, 255);
-    border-left: 1px solid #cac6c6;
-    border-right: 1px solid #cac6c6;
-    margin: 2px;
-    transition: .3s;
+    transition: transform 0.2s;
 
-    &:hover{
+    &:hover {
+      transform: scale(1.3);
+    }
+
+    img {
+      width: 50px;
+    }
+  }
+
+  .anchor-links {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    .anchor-link {
+      cursor: pointer;
+      transition: border 0.2s;
+      border-radius: 5px;
+      padding: 10px;
+      color: rgb(2, 2, 2);
+      background-color: rgb(255, 255, 255);
+      border-left: 1px solid #cac6c6;
+      border-right: 1px solid #cac6c6;
+      margin: 2px;
+      transition: 0.3s;
+
+      &:hover {
         color: white;
         background-color: rgb(0, 0, 0);
+      }
     }
 
-    
-}
+    .anchor-active {
+      color: white;
+      background-color: rgb(0, 0, 0);
+    }
+  }
 
-.anchor-active{
-    
-    color: white;
-    background-color: rgb(0, 0, 0);
-  
-    
-  
-}
+  .artist-artworks-list {
+    margin-bottom: 20px;
+  }
+  .artist-header {
+    text-align: center;
+
+    p {
+      max-width: 60ch;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 45px;
     }
 
- .artist-artworks-list{
-     margin-bottom: 20px;
- }
-    .artist-header{
-        text-align: center;
-
-        p{
-            max-width: none;
-        }
-
-        img {
-           
-            width: 200px;
-            height: 200px;
-            border-radius: 100px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
+    img {
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      object-fit: cover;
+      margin-bottom: 10px;
     }
-    .profile-container {
-        p{
-
-            max-width: 80ch;
-            text-align: left;
-        }
-        
-        margin-bottom: 43px;
-
-        
- 
-
-        .profileButton {
-            margin-top: 10px;
-        }
+  }
+  .profile-container {
+    p {
+      max-width: 80ch;
+      text-align: left;
     }
 
+    margin-bottom: 43px;
+
+    .profileButton {
+      margin-top: 10px;
+    }
+  }
 }
 
 .sales-summary {
@@ -112,54 +103,52 @@
   margin: 0;
 }
 
-.sold-list-titles{
-    text-align: center;
-    display: grid;
-    grid-template-columns:  minmax(150px, 0.62fr) minmax(100px, 0.93fr) minmax(100px, 0.59fr) minmax(50px, 0.45fr) minmax(80px, 0.42fr) minmax(80px, 0.59fr);
-    @media (max-width: 1200px){
-      grid-template-columns:  minmax(150px, 0.82fr) minmax(100px, 0.93fr) minmax(100px, 0.59fr) minmax(50px, 0.43fr) minmax(80px, 0.44fr) minmax(80px, 0.57fr);
-    }
-  
-    @media (max-width: $normal-breakpoint)  {
-      grid-template-columns:  minmax(150px, 0.69fr) minmax(60px, 0.49fr) minmax(60px, 0.51fr) minmax(30px, 0.5fr) minmax(50px, 0.5fr) minmax(50px, 0.48fr);
-      font-size: rem(14px);
+.sold-list-titles {
+  text-align: center;
+  display: grid;
+  grid-template-columns: minmax(150px, 0.62fr) minmax(100px, 0.93fr) minmax(100px, 0.59fr) minmax(50px, 0.45fr) minmax(
+      80px,
+      0.42fr
+    ) minmax(80px, 0.59fr);
+  @media (max-width: 1200px) {
+    grid-template-columns: minmax(150px, 0.82fr) minmax(100px, 0.93fr) minmax(100px, 0.59fr) minmax(50px, 0.43fr) minmax(
+        80px,
+        0.44fr
+      ) minmax(80px, 0.57fr);
   }
 
-  @media (max-width: 550px){
-    grid-template-columns:   minmax(60px, 0.49fr) minmax(60px, 0.51fr) minmax(30px, 0.5fr) minmax(50px, 0.5fr) minmax(50px, 0.48fr);
+  @media (max-width: $normal-breakpoint) {
+    grid-template-columns: minmax(150px, 0.69fr) minmax(60px, 0.49fr) minmax(60px, 0.51fr) minmax(30px, 0.5fr) minmax(
+        50px,
+        0.5fr
+      ) minmax(50px, 0.48fr);
+    font-size: rem(14px);
   }
-  @media (max-width: $mobile-breakpoint){
-    font-size: rem(12px);  
-}
 
+  @media (max-width: 550px) {
+    grid-template-columns: minmax(60px, 0.49fr) minmax(60px, 0.51fr) minmax(30px, 0.5fr) minmax(50px, 0.5fr) minmax(
+        50px,
+        0.48fr
+      );
+  }
+  @media (max-width: $mobile-breakpoint) {
+    font-size: rem(12px);
+  }
 
-    // border: 1px solid rgb(212, 211, 211);
- 
-    // margin-left: 200px;
-
-
-
-    .sold-list-title{
-        // border-left: 1px solid rgb(241, 240, 240);
-        background-color: #d5a770;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        &.artwork-title{
-          @media (max-width: 550px){
-            display: none;
-          }
-        }
+  .sold-list-title {
+    background-color: #d5a770;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    &.artwork-title {
+      @media (max-width: 550px) {
+        display: none;
+      }
     }
-
-
-
-
+  }
 
   .artist-header {
     text-align: center;
     img {
-    //   width: 200px;
-    //   height: 200px;
       border-radius: 100px;
       object-fit: cover;
       margin-bottom: 10px;

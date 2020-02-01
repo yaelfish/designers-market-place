@@ -8,14 +8,10 @@ import Reviews from '../../cmps/Artwork/Reviews'
 import Carousel from '../../cmps/Carousel';
 import ArtTemplate from '../../cmps/Artwork/TemplatesArt/ArtTemplate';
 import ArtTemplate2 from '../../cmps/Artwork/TemplatesArt/ArtTemplate2';
-// import ArtTemplate from '../../cmps/Artwork/TemplatesArt/ArtTemplate';
-import FramedArtwork from '../../cmps/Artwork/TemplatesArt/FramedArtwork';
-import Breadcrumb from '../../cmps/Breadcrumb';
 import like from '../../assets/images/icons/like.png';
 import liked from '../../assets/images/icons/liked.png';
 import { removeReview } from '../../actions/ReviewActions'
 import OrderAdd from '../../cmps/Order/OrderAdd'
-import ChooseFrame from '../../cmps/Artwork/ChooseFrame';
 import LoginModal from '../../cmps/LoginModal'
 
 class DetailsArtwork extends Component {
@@ -26,10 +22,12 @@ class DetailsArtwork extends Component {
         currUserId: '',
         currArtwork: null,
         isAnimatingLike: false,
-        isModalShown: false
+        isModalShown: false,
+        screenWidth: null
     }
 
     async componentDidMount() {
+        window.addEventListener('resize', this.updateWindowDimensions());
         try {
             const artwork = await this.loadArtwork();
             this.setState({ currArtwork: this.props.selectedArtwork })
@@ -41,12 +39,19 @@ class DetailsArtwork extends Component {
         }
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions)
+    }
+
+    updateWindowDimensions = () => {
+        this.setState({ screenWidth: window.innerWidth });
+    }
 
     showLoginModal = () => {
         this.setState({ isModalShown: true })
     }
 
-    closeLoginModal=()=>{
+    closeLoginModal = () => {
         this.setState({ isModalShown: false })
     }
     setIsLiked = (currUserId) => {

@@ -8,23 +8,18 @@ import Spinner from '../../cmps/Spinner'
 
 class AppArtwork extends Component {
 
-    state={
-        something: null
-    }
-
     componentDidMount() {
         this.loadArtworks()
-   
     }
 
 
 
-    loadArtworks = async () => {
-        // window.scrollTo(0, 0)
-        const search = await this.props.location.search;
-        const params = await new URLSearchParams(search);
-        const tags = await params.get('tags');
-        (tags)&&this.props.loadArtworks({tags})
+    loadArtworks = () => {
+   
+        const search = this.props.location.search;
+        const params = new URLSearchParams(search);
+        const tags =  params.get('tags');
+        (tags)&&this.props.loadArtworks({tags})||(!this.props.artworks)&&this.props.loadArtworks()
     }
 
     render() {
@@ -33,14 +28,12 @@ class AppArtwork extends Component {
                 <main className="container main-app-container">
                     <header>
                         <h2>ART PRINTS </h2>
-                      
                         <p>
                             Purchase museum-quality art prints from the world's greatest living artists and iconic brands. Each print is produced using archival inks guaranteed to last for 75 years without fading or loss of color.
                         </p>
                     </header>
                     <Tags />
-                    
-                   {this.props.artworks?<ArtworkList artworks={this.props.artworks} />:<Spinner></Spinner>}
+                    {this.props.artworks ? <ArtworkList artworks={this.props.artworks} /> : <Spinner></Spinner>}
                 </main>
             </React.Fragment>)
     }
@@ -52,11 +45,9 @@ const mapStateToProps = state => {
         loggedInUser: state.user.loggedInUser
     };
 };
-    const mapDispatchToProps =  {
+const mapDispatchToProps = {
     loadArtworks,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppArtwork);
 
-
-//{this.props.location.filterProps && ("/ " + this.props.location.filterProps.tags)}

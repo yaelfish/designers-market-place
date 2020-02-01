@@ -2,17 +2,14 @@ import history from '../history';
 import Axios from 'axios';
 
 
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/api/' : '//localhost:3030/api/'
+const BASE_URL = (process.env.NODE_ENV === 'production') ? '/api/' : '//localhost:3030/api/'
 
 var axios = Axios.create({
     withCredentials: true
 });
-// data ? `${endpoint}/${data}` : endpoint
 
 export default {
     get(endpoint, params){
-      
-        //?name=${filterBy.name}&artist=${filterBy.artist}&tags=${filterBy.tags}
         return ajax(`${endpoint}`, 'GET', null, params)
     },
     post(endpoint, data) {

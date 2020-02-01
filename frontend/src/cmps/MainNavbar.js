@@ -21,7 +21,7 @@ class MainNavbar extends Component {
         this.unlisten = this.props.history.listen((e) => {
             this.setState({ pathname: window.location.pathname })
         })
-        window.addEventListener("scroll", this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll);
         window.addEventListener('resize', this.setToFlexOnExpand);
         window.addEventListener('click', this.closeMobileMenu);
         if (window.innerWidth <= 720) this.setState({ menuShown: false });
@@ -39,7 +39,7 @@ class MainNavbar extends Component {
     }
 
     onToggleMenu = (ev) => {
-        this.setState((prevState) => ({ menuShown: !prevState.menuShown }))
+        this.setState(prevState => ({ menuShown: !prevState.menuShown }))
         ev.stopPropagation();
     }
 
@@ -61,7 +61,9 @@ class MainNavbar extends Component {
 
     componentWillUnmount() {
         this.unlisten();
-        window.removeEventListener("scroll", this.handleScroll);
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.setToFlexOnExpand);
+        window.removeEventListener('click', this.closeMobileMenu);
     }
 
 
