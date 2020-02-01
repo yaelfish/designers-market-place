@@ -45,7 +45,6 @@ class App extends Component {
             <Route component={ArtworkOnWall} path="/artwork/wall/:_id/" exact />
             <Route component={DetailsArtwork} path="/artwork/:_id" exact />
             <Route component={ArtistApp} path="/artist" exact />
-
           </Switch>
           <Footer/>
         </Router>
