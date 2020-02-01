@@ -11,6 +11,7 @@ import ScrollTop from '../../assets/images/icons/scrolltop.png'
 import LogoutIcon from '../../assets/images/icons/logout.png'
 import { logout } from '../../actions/UserActions'
 import { withRouter } from 'react-router-dom';
+import Moment from 'react-moment';
 
 
 class AppArtwork extends Component {
@@ -55,17 +56,17 @@ class AppArtwork extends Component {
         await this.props.loadOrders();
         const userOrders = this.props.orders.filter(order => {
             return (order.byUser._id === this.props.loggedInUser._id
-                
+
             )
         })
-        this.setState({userOrders})
+        this.setState({ userOrders })
 
         let totalCost = 0;
         this.state.userOrders.forEach(order => {
             return totalCost += order.artwork.price;
         })
- 
-       
+
+
         const artworksBoughtByUser = this.props.artworks.filter(artwork => {
             for (let i = 0; i < userOrders.length; i++) {
                 if (userOrders[i].artwork._id === artwork._id)
@@ -105,7 +106,7 @@ class AppArtwork extends Component {
                     </header>
 
                     <div className="anchor-links">
-               
+
                         <Link className="anchor-link" activeClass="anchor-active" to="profile" spy={true} smooth={true} offset={-70} duration={500} >Profile</Link>
 
                         {this.props.loggedInUser && this.props.loggedInUser.isArtist && <Link className="anchor-link" activeClass="anchor-active" to="artwork-list" spy={true} smooth={true} offset={-70} duration={500} >Artworks</Link>}
@@ -120,9 +121,12 @@ class AppArtwork extends Component {
                     <div id="profile" className="profile-container">
                         <h2>Profile</h2>
                         <div className="profile-text">
+                            <div className="profile-item"><p>Username: {this.props.loggedInUser.userName}</p></div>
                             <div className="profile-item"><p>Name: {this.props.loggedInUser.fullName}</p></div>
-                            <div className="profile-item"><p>Birthdate: October 17, 1955 (age 64 years)</p></div>
-                            <div className="profile-item"><p>About: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit, lectus nec volutpat aliquet, mi erat condimentum lorem, in congue magna augue nec odio. Integer iaculis cursus imperdiet. Duis molestie diam volutpat lorem mollis, ut volutpat tellus imperdiet. Duis ac venenatis lacus. Etiam tincidunt urna in semper rutrum. Pellentesque finibus vestibulum nulla vel aliquet. Sed sagittis mi at neque malesuada egestas. Donec ac dapibus magna. Praesent imperdiet libero in erat egestas ultrices. Ut vel aliquet leo.</p></div>
+                            <div className="profile-item"><p>Birthdate: {this.props.loggedInUser.birthdate} (<Moment fromNow ago>{this.props.loggedInUser.birthdate}</Moment> old)</p></div>
+                            <div className="profile-item"><p>City: {this.props.loggedInUser.city}</p></div>
+                            <div className="profile-item"><p>Country: {this.props.loggedInUser.country}</p></div>
+                            <div className="profile-item"><p>About: {this.props.loggedInUser.about}</p></div>
                         </div>
                         <div><button className="profileButton">Edit</button></div>
                     </div>
