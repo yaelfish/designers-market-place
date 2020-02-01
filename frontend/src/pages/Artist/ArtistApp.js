@@ -11,6 +11,7 @@ import ScrollTop from '../../assets/images/icons/scrolltop.png'
 import LogoutIcon from '../../assets/images/icons/logout.png'
 import { logout } from '../../actions/UserActions'
 import { withRouter } from 'react-router-dom';
+import Moment from 'react-moment';
 
 
 class AppArtwork extends Component {
@@ -18,7 +19,9 @@ class AppArtwork extends Component {
     state = {
         artistArtworks: [],
         artworksBoughtByUser: [],
-        totalEarnings: 0
+        totalEarnings: 0,
+        totalCost: 0,
+        userOrders: null
 
     }
 
@@ -30,7 +33,7 @@ class AppArtwork extends Component {
     }
 
     handleScroll = () => {
-        const { prevScrollpos } = this.state;
+        // const { prevScrollpos } = this.state;
         const currentScrollPos = window.pageYOffset;
         this.setState({
             prevScrollpos: currentScrollPos,
@@ -38,7 +41,7 @@ class AppArtwork extends Component {
         });
     };
 
-    updateTotals = (totalEarnings) => {
+    updateTotalEarnings = (totalEarnings) => {
         this.setState(totalEarnings, console.log('artistartworks', this.state.artistArtworks))
 
 
@@ -52,8 +55,18 @@ class AppArtwork extends Component {
     loadPurchases = async () => {
         await this.props.loadOrders();
         const userOrders = this.props.orders.filter(order => {
-            return order.byUser._id === this.props.loggedInUser._id
+            return (order.byUser._id === this.props.loggedInUser._id
+
+            )
         })
+        this.setState({ userOrders })
+
+        let totalCost = 0;
+        this.state.userOrders.forEach(order => {
+            return totalCost += order.artwork.price;
+        })
+
+
         const artworksBoughtByUser = this.props.artworks.filter(artwork => {
             for (let i = 0; i < userOrders.length; i++) {
                 if (userOrders[i].artwork._id === artwork._id)
@@ -61,7 +74,7 @@ class AppArtwork extends Component {
             }
             return false;
         })
-        this.setState({ artworksBoughtByUser })
+        this.setState({ artworksBoughtByUser, totalCost })
     }
 
     loadArtistArtworks = async () => {
@@ -93,7 +106,7 @@ class AppArtwork extends Component {
                     </header>
 
                     <div className="anchor-links">
-                        {/* <a href="#profile">Profile  </a> */}
+
                         <Link className="anchor-link" activeClass="anchor-active" to="profile" spy={true} smooth={true} offset={-70} duration={500} >Profile</Link>
 
                         {this.props.loggedInUser && this.props.loggedInUser.isArtist && <Link className="anchor-link" activeClass="anchor-active" to="artwork-list" spy={true} smooth={true} offset={-70} duration={500} >Artworks</Link>}
@@ -102,16 +115,18 @@ class AppArtwork extends Component {
 
                         <Link className="anchor-link" activeClass="anchor-active" to="purchases" spy={true} smooth={true} offset={-70} duration={500} >Purchases</Link>
 
-                        {/* <a href="#statistics">Statistics </a> */}
                     </div>
 
 
                     <div id="profile" className="profile-container">
                         <h2>Profile</h2>
                         <div className="profile-text">
+                            <div className="profile-item"><p>Username: {this.props.loggedInUser.userName}</p></div>
                             <div className="profile-item"><p>Name: {this.props.loggedInUser.fullName}</p></div>
-                            <div className="profile-item"><p>Birthdate: October 17, 1955 (age 64 years)</p></div>
-                            <div className="profile-item"><p>About: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit, lectus nec volutpat aliquet, mi erat condimentum lorem, in congue magna augue nec odio. Integer iaculis cursus imperdiet. Duis molestie diam volutpat lorem mollis, ut volutpat tellus imperdiet. Duis ac venenatis lacus. Etiam tincidunt urna in semper rutrum. Pellentesque finibus vestibulum nulla vel aliquet. Sed sagittis mi at neque malesuada egestas. Donec ac dapibus magna. Praesent imperdiet libero in erat egestas ultrices. Ut vel aliquet leo.</p></div>
+                            <div className="profile-item"><p>Birthdate: {this.props.loggedInUser.birthdate} (<Moment fromNow ago>{this.props.loggedInUser.birthdate}</Moment> old)</p></div>
+                            <div className="profile-item"><p>City: {this.props.loggedInUser.city}</p></div>
+                            <div className="profile-item"><p>Country: {this.props.loggedInUser.country}</p></div>
+                            <div className="profile-item"><p>About: {this.props.loggedInUser.about}</p></div>
                         </div>
                         <div><button className="profileButton">Edit</button></div>
                     </div>
@@ -130,27 +145,27 @@ class AppArtwork extends Component {
                             <div className="sold-list-title">Quantity</div>
                             <div className="sold-list-title">Earnings</div>
                         </div>
-                        <ArtistPurchasesList artworks={this.state.artistArtworks} updateTotals={this.updateTotals} />
+                        <ArtistPurchasesList artworks={this.state.artistArtworks} updateTotalEarnings={this.updateTotalEarnings} purchases={'sold'} />
                         <div className="sales-summary"> <p>Total Earnings: ${this.state.totalEarnings.toLocaleString("USD")}</p>
                         </div>
                     </div>
                     }
 
-                    <div id="purchases" className="artist-artworks-list">
+                    <div id="purchases" className="sold-container">
                         <h2>Your Purchases</h2>
-                        <ArtworkList artworks={this.state.artworksBoughtByUser} /></div>
+                        <div className="sold-list-titles flex justify-space-around">
+                            <div className="sold-list-title artwork-title">Artwork</div>
+                            <div className="sold-list-title">Name</div>
+                            <div className="sold-list-title">Buying Date</div>
+                            <div className="sold-list-title">Likes</div>
+                            <div className="sold-list-title">Quantity</div>
+                            <div className="sold-list-title">Cost</div>
+                        </div>
+                        <ArtistPurchasesList artworks={this.state.artworksBoughtByUser} orders={this.state.userOrders} purchases={'bought'} />
+                        <div className="sales-summary"> <p>Total Spent: ${this.state.totalCost.toLocaleString("USD")}</p>
+                        </div>
+                    </div>
 
-
-                    {/* <div id="statistics">Some Statistics</div>
-                <div>bla</div>
-                <div>bla</div>
-                <div>bla</div>
-                <div>bla</div>
-                <div>bla</div>
-                <div>bla</div>
-                <div>bla</div>
-                <div>bla</div> */}
-                    {/* <ArtistTabs artworks={this.props.artworks} artistUser={this.props.loggedInUser}></ArtistTabs> */}
                 </main>
             </React.Fragment>)
     }
