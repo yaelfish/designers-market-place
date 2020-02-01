@@ -12,15 +12,15 @@ class ArtworkPreview extends Component {
         let likedByUsersObj = likedByUsers;
         if (artistObj) {
             artist = artistObj.fullName;
-        } 
+        }
         if (likedByUsersObj) {
             likedByUsers = likedByUsersObj.length;
-        }        
-  
-        return ( <>
+        }
+
+        return (<>
             <Link to={`/artwork/${_id}`}>
                 <div className="card-artwork flex justify-center align-center column">
-                    <img src={imgUrl} alt={name} />
+                        <img src={imgUrl} alt={name} />
                     <div className="preview-info flex align-center justify-space-between">
                         <div className="art-preview-text flex column align-start">
                             <p className="preview-artwork-name">{name}</p>
@@ -30,7 +30,7 @@ class ArtworkPreview extends Component {
                                 onClick={()=>this.props.removeArtwork(_id)}></button> */}
                         <div className="preview-likes-container flex align-center">
                             <span className="likes-counter">{likedByUsers}</span>
-                            <img className="preview-icon-like" src={like} alt="like"/>
+                            <img className="preview-icon-like" src={like} alt="like" />
                         </div>
                     </div>
                     <div className="preview-price none">price: {price}$</div>
