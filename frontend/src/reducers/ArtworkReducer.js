@@ -13,8 +13,6 @@ export default function (state = initialState, action = {}) {
       return { ...state, artworks: [...state.artworks, action.toggleArtworkLike] };
     case 'ARTWORK_EDIT':
       return { ...state, artworks: [state.artworks.map(artwork => {
-        console.log('action', action.editedArtwork._id);
-        console.log('artwork._id', artwork);
         return (artwork._id === action.editedArtwork._id) ? action.editedArtwork : artwork
       })]};
     case 'ARTWORK_REMOVE':
