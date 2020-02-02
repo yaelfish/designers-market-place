@@ -122,7 +122,7 @@ loadArtworks = (ev) => {
                 </li>
 
                 <li className="category-li picture-mixin ">
-                  <Link className="category-link" to={{ pathname: '/artwork?tags=popart' }}>
+                  <Link className="category-link" to={{ pathname: '/artwork', search:'?tags=popart' }}>
                     <img className="category-link" src={popArt} />
                   </Link>
                   <span className="category-tag">Pop-Art</span>
