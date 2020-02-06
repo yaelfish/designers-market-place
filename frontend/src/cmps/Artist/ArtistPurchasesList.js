@@ -7,14 +7,16 @@ import { loadOrders } from '../../actions/OrderActions'
 class ArtistPurchasesList extends Component {
     state =
         {
-            purchases: 'sold',
+            purchases: null,
             orderedFromUsers: null,
-            totalEarnings: 0
+            totalEarnings: 0,
+            userOrders: null
         }
 
     componentDidMount() {
-        this.loadOrders()
-
+        this.setState({purchases : this.props.purchases})
+        if (this.props.purchases === 'sold') this.loadOrdersSold()
+        if (this.props.purchases === 'bought') this.loadOrdersBought()
     }
 
     calcEarnings = () => {
@@ -24,14 +26,19 @@ class ArtistPurchasesList extends Component {
             totalEarnings += orderedFromUsers[i].artwork.price;
         }
         this.setState({totalEarnings})
-        this.props.updateTotals({totalEarnings})
+        this.props.updateTotalEarnings({totalEarnings})
     }
 
-    loadOrders = async () => {
+    loadOrdersSold = async () => {
         const artistId = this.props.loggedInUser._id
         await this.props.loadOrders({ artist: artistId });
-        this.setState({ orderedFromUsers: this.props.orders })
+        this.setState({ orderedFromUsers: this.props.orders})
         this.calcEarnings();
+    }
+
+    
+    loadOrdersBought = () => {
+        this.setState({ userOrders: this.props.orders})
     }
 
 
@@ -54,7 +61,22 @@ class ArtistPurchasesList extends Component {
 
                     return (countTimesOrdered !== 0 && <ArtistPurchasesPreview key={artwork._id} artwork={artwork} timesSold={countTimesOrdered} lastOrder={lastOrder}>
                     </ArtistPurchasesPreview>)
+                })}{this.state.purchases === 'bought' && this.props.orders && this.props.artworks.map(artwork => {
+                    const userOrders = this.props.orders;
+                    let lastOrder;
+                    var countTimesOrdered = 0;
+                    userOrders.forEach(order => {
+                        if (artwork._id === order.artwork._id) return (
+                            countTimesOrdered++,
+                            lastOrder = order
+                        )
+                    })
+
+
+                    return (countTimesOrdered !== 0 && <ArtistPurchasesPreview key={artwork._id} artwork={artwork} timesSold={countTimesOrdered} lastOrder={lastOrder}>
+                    </ArtistPurchasesPreview>)
                 })}
+
 
             </div>
         )

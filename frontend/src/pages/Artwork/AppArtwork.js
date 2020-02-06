@@ -8,6 +8,10 @@ import Spinner from '../../cmps/Spinner'
 
 class AppArtwork extends Component {
 
+    state = {
+        tags: null
+    }
+
     componentDidMount() {
         this.loadArtworks()
     }
@@ -15,11 +19,11 @@ class AppArtwork extends Component {
 
 
     loadArtworks = () => {
-   
         const search = this.props.location.search;
         const params = new URLSearchParams(search);
-        const tags =  params.get('tags');
-        (tags)&&this.props.loadArtworks({tags})||(!this.props.artworks)&&this.props.loadArtworks()
+        const tags = params.get('tags');
+        this.setState({ tags });
+        (tags) && this.props.loadArtworks({ tags }) || (!this.props.artworks) && this.props.loadArtworks()
     }
 
     render() {
@@ -27,7 +31,7 @@ class AppArtwork extends Component {
             <React.Fragment>
                 <main className="container main-app-container">
                     <header>
-                        <h2>ART PRINTS </h2>
+                        <h2>ART PRINTS</h2>
                         <p>
                             Purchase museum-quality art prints from the world's greatest living artists and iconic brands. Each print is produced using archival inks guaranteed to last for 75 years without fading or loss of color.
                         </p>

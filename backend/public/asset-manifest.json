@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.e26f51f2.chunk.css",
-    "main.js": "/static/js/main.90c0c42f.chunk.js",
-    "main.js.map": "/static/js/main.90c0c42f.chunk.js.map",
+    "main.css": "/static/css/main.5a40821f.chunk.css",
+    "main.js": "/static/js/main.328ac64b.chunk.js",
+    "main.js.map": "/static/js/main.328ac64b.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.cb82405f.js",
     "runtime-main.js.map": "/static/js/runtime-main.cb82405f.js.map",
     "static/css/2.7f1829de.chunk.css": "/static/css/2.7f1829de.chunk.css",
-    "static/js/2.3fd527e8.chunk.js": "/static/js/2.3fd527e8.chunk.js",
-    "static/js/2.3fd527e8.chunk.js.map": "/static/js/2.3fd527e8.chunk.js.map",
+    "static/js/2.1c75f054.chunk.js": "/static/js/2.1c75f054.chunk.js",
+    "static/js/2.1c75f054.chunk.js.map": "/static/js/2.1c75f054.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.fe4aef4cabf7a9b09cc87752094f08c2.js": "/precache-manifest.fe4aef4cabf7a9b09cc87752094f08c2.js",
+    "precache-manifest.d28c4b6a7418d1b048f96c60a31d052a.js": "/precache-manifest.d28c4b6a7418d1b048f96c60a31d052a.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.7f1829de.chunk.css.map": "/static/css/2.7f1829de.chunk.css.map",
-    "static/css/main.e26f51f2.chunk.css.map": "/static/css/main.e26f51f2.chunk.css.map",
-    "static/js/2.3fd527e8.chunk.js.LICENSE": "/static/js/2.3fd527e8.chunk.js.LICENSE",
+    "static/css/main.5a40821f.chunk.css.map": "/static/css/main.5a40821f.chunk.css.map",
+    "static/js/2.1c75f054.chunk.js.LICENSE": "/static/js/2.1c75f054.chunk.js.LICENSE",
     "static/media/1484629537_large-image_hilma-af-klint-they-tens-mainstay-iv-1907-lg.jpg": "/static/media/1484629537_large-image_hilma-af-klint-they-tens-mainstay-iv-1907-lg.51a42eac.jpg",
     "static/media/9858-Hockney-Pacific-Coast-Highway-and-Santa-Monica.jpg": "/static/media/9858-Hockney-Pacific-Coast-Highway-and-Santa-Monica.4dfcde34.jpg",
     "static/media/Adulthood.jpg": "/static/media/Adulthood.1f243c20.jpg",
@@ -38,8 +38,8 @@
   "entrypoints": [
     "static/js/runtime-main.cb82405f.js",
     "static/css/2.7f1829de.chunk.css",
-    "static/js/2.3fd527e8.chunk.js",
-    "static/css/main.e26f51f2.chunk.css",
-    "static/js/main.90c0c42f.chunk.js"
+    "static/js/2.1c75f054.chunk.js",
+    "static/css/main.5a40821f.chunk.css",
+    "static/js/main.328ac64b.chunk.js"
   ]
 }
